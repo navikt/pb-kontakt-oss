@@ -15,9 +15,23 @@ export const varsler = [
 ];
 
 export const urls = {
+  // TODO: Fjern!
+  tilbakemeldingerTemp: {
+    forside: `/person/kontakt-oss/tilbakemeldinger`,
+    klagepavedtak: `${navUrl}/soknader/nb/klage`,
+    klagerettigheter: `${navUrl}/no/NAV+og+samfunn/Kontakt+NAV/Klage+ris+og+ros/Klagerettigheter`,
+    serviceklage: {
+      form: `/person/kontakt-oss/tilbakemeldinger/serviceklage`,
+      login: `/person/kontakt-oss/tilbakemeldinger/serviceklage/login`
+    },
+    feilogmangler: `/person/kontakt-oss/tilbakemeldinger/feil-og-mangler`,
+    rostilnav: `/person/kontakt-oss/tilbakemeldinger/ros-til-nav`
+  },
+
   baseAppPath: baseAppPath,
   appUrl: appUrl,
   forside: "/person/kontakt-oss",
+  forsideNy: "/person/kontakt-oss/ny",
   tilbakemeldinger: {
     forside: `${baseAppPath}/tilbakemeldinger`,
     klagepavedtak: `${navUrl}/soknader/nb/klage`,

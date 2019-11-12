@@ -25,6 +25,16 @@ import { getFeatureToggleStatus } from "./utils/unleash";
 import BestillingAvSamtale from "./pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
 import { urls, vars } from "./Config";
 import ChatRouter from "./pages/chat/ChatRouter";
+import Environment from "./Environments";
+
+const RedirectForsideIProd = () => {
+  if (Environment().miljo === "PROD") {
+    window.location.assign(urls.gamleKontaktOss);
+    return null;
+  } else {
+    return <KontaktOssFrontpage />;
+  }
+};
 
 const App = () => {
   const [{ auth }, dispatch] = useStore();
@@ -83,6 +93,11 @@ const App = () => {
             <Route
               exact={true}
               path={`(|${urls.forside})`}
+              component={RedirectForsideIProd}
+            />
+            <Route
+              exact={true}
+              path={urls.forsideNy}
               component={KontaktOssFrontpage}
             />
             <Route
@@ -97,27 +112,27 @@ const App = () => {
             />
             <Route
               exact={true}
-              path={urls.tilbakemeldinger.forside}
+              path={[urls.tilbakemeldinger.forside, urls.tilbakemeldingerTemp.forside]}
               component={Tilbakemeldinger}
             />
             <Route
               exact={true}
-              path={urls.tilbakemeldinger.serviceklage.login}
+              path={[urls.tilbakemeldinger.serviceklage.login, urls.tilbakemeldingerTemp.serviceklage.login]}
               component={ServiceKlageLogin}
             />
             <Route
               exact={true}
-              path={urls.tilbakemeldinger.serviceklage.form}
+              path={[urls.tilbakemeldinger.serviceklage.form, urls.tilbakemeldingerTemp.serviceklage.form]}
               component={ServiceKlage}
             />
             <Route
               exact={true}
-              path={urls.tilbakemeldinger.rostilnav}
+              path={[urls.tilbakemeldinger.rostilnav, urls.tilbakemeldingerTemp.rostilnav]}
               component={Ros}
             />
             <Route
               exact={true}
-              path={urls.tilbakemeldinger.feilogmangler}
+              path={[urls.tilbakemeldinger.feilogmangler, urls.tilbakemeldingerTemp.feilogmangler]}
               component={FeilOgMangler}
             />
             <Route

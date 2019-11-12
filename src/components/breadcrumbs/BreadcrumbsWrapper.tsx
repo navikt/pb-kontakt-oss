@@ -9,11 +9,28 @@ const baseLenker: Array<BreadcrumbLenke> = [
   {url: Environment().baseUrl, lenketekstId: "breadcrumb.nav-no", isExternal: true},
 ];
 
-export default () => (
-  <Breadcrumbs
-    currentPath={window.location.pathname}
-    basePath={urls.baseAppPath}
-    ikonUrl={HjemIkon}
-    baseLenker={baseLenker}
-  />
-);
+export default () => {
+  // TODO: FJERN!
+  const basePath = urls.baseAppPath;
+  const currentPath = window.location.pathname;
+
+  if (!currentPath.includes(basePath)) {
+    return(
+      <Breadcrumbs
+        currentPath={window.location.pathname}
+        basePath={urls.forside}
+        ikonUrl={HjemIkon}
+        baseLenker={baseLenker}
+      />
+    );
+  }
+
+  return(
+    <Breadcrumbs
+      currentPath={window.location.pathname}
+      basePath={urls.baseAppPath}
+      ikonUrl={HjemIkon}
+      baseLenker={baseLenker}
+    />
+  );
+};

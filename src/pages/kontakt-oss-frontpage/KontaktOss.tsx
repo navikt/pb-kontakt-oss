@@ -59,7 +59,9 @@ const KontaktOssFrontpage = () => {
             <AlertStripeInfo key={varsel.tittel}>
               <Undertittel>{varsel.tittel}</Undertittel>
               <div className={"varsel__body"}>{varsel.beskrivelse}</div>
-              <Lenke href={varsel.lenke}>{varsel.lenkeTekst}</Lenke>
+              {varsel.lenke && varsel.lenkeTekst && (
+                <Lenke href={varsel.lenke}>{varsel.lenkeTekst}</Lenke>
+              )}
             </AlertStripeInfo>
           ))}
           <div className="frontpage__content">

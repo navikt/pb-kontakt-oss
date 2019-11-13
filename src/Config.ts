@@ -3,16 +3,15 @@ import Environment from "./Environments";
 const { tjenesteUrl, appUrl, baseAppPath } = Environment();
 const navUrl = Environment().baseUrl;
 
-export const varsler = [
-  {
-    tittel: "Feiltolkning av EØS-reglene",
-    beskrivelse:
-      "Her finner du informasjon knyttet til feil tolkning og praktisering av EØS-reglene for mottakere av arbeidsavklaringspenger, sykepenger og pleiepenger.",
-    lenke:
-      "https://www.nav.no/no/NAV+og+samfunn/Kontakt+NAV/Kontakt+oss/Feiltolkning+av+E%C3%98S-reglene",
-    lenkeTekst: "Les mer"
-  }
-];
+interface Varsel {
+  tittel: string;
+  beskrivelse: string;
+  lenke: string;
+  lenkeTekst: string;
+}
+
+/* Viktige meldinger her */
+export const varsler: Varsel[] = [];
 
 export const urls = {
   // TODO: Fjern!

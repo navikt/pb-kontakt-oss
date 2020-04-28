@@ -1,7 +1,7 @@
-import { LocaleLink, LocaleString } from "../common-types";
+import { LocaleUrl, LocaleString } from "../common-types";
 
 export type FAQLenke = {
-  lenke: LocaleLink;
+  lenke: LocaleUrl;
   tittel: LocaleString;
   priority: number;
 };

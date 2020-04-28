@@ -20,7 +20,7 @@ export type LocaleBlock = { [key in Locale]: TextBlock };
 
 export type LocaleString = { [key in Locale]: string };
 
-export type LocaleLink = { [key in Locale]: string };
+export type LocaleUrl = { [key in Locale]: string };
 
 export type Page = {
   content: LocaleBlock;

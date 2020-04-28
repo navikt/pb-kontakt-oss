@@ -11,11 +11,12 @@ export default {
   "varsel.koronavirus.navkontor.lenke": "Coronavirus - dialogue with NAV",
 
   //
-  // Språkvelger
+  // Språk
   //
   "sprak.velg": "Språk/language",
   "sprak.nb": "Norsk",
   "sprak.en": "English",
+  "sprak.lenke.norsk": " (in Norwegian)",
 
   //
   // Breadcrumbs

@@ -28,7 +28,7 @@ const InputMelding = (props: Props) => {
             values={
               {
                 dittnav: urls.tilbakemeldinger.serviceklage.dittNav,
-                saksoversikt: urls.tilbakemeldinger.serviceklage.saksoversikt,
+                saksoversikt: urls.tilbakemeldinger.serviceklage.saksoversikt[locale],
                 saksbehandlingstider: urls.tilbakemeldinger.serviceklage.saksbehandlingstider,
                 skrivtiloss: localePath(paths.skrivTilOss.forside, locale)
               }

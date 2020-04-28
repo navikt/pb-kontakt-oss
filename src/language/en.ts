@@ -299,10 +299,10 @@ export default {
   "felter.melding.beskrivelse":
     "Avoid sending sensitive personal information about your health condition or diagnoses. " +
     "You can’t ask about the status of your application here. Login to " +
-    "<a href=\"{dittnav}\" class=\"lenke\">Ditt NAV</a> and go to " +
+    "<a href=\"{dittnav}\" class=\"lenke\">Ditt NAV</a> (text in Norwegian) and go to " +
     "<a href=\"{saksoversikt}\" class=\"lenke\">Dine saker</a> for this information. " +
     "If you don’t find the answer there you can check " +
-    "<a href=\"{saksbehandlingstider}\" class=\"lenke\">case processing times</a> " +
+    "<a href=\"{saksbehandlingstider}\" class=\"lenke\">case processing times</a> (text in Norwegian) " +
     "or <a href=\"{skrivtiloss}\" class=\"lenke\">write to us</a>.",
   "felter.noegikkgalt": "Oops! Something went wrong:",
   "felter.send": "Send",

@@ -136,12 +136,18 @@ export const urls = {
       nb: `${navUrl}/soknader/nb/klage`,
       en: `${navUrl}/soknader/en/klage/person`
     },
-    klagerettigheter: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
+    klagerettigheter: {
+      nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
+      en: `${navUrl}/en/home/rules-and-regulations/appeals`
+    },
     serviceklage: {
       dittNav: `${navUrl}/person/dittnav`,
       fullmaktskjema: `${navUrl}/soknader/nb/person/diverse/fullmaktskjema`,
       saksbehandlingstider: `${navUrl}/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav`,
-      saksoversikt: `${tjenesteUrl}/saksoversikt/`
+      saksoversikt: {
+        nb: `${tjenesteUrl}/saksoversikt/?lang=nb`,
+        en: `${tjenesteUrl}/saksoversikt/?lang=en`
+      }
     },
   },
   samegiella: {
@@ -158,7 +164,10 @@ export const urls = {
   // Midlertidige url'er
   //
   koronaVarsel: `${navUrl}/person/koronaveiviser`,
-  koronaVarselDialog: `${navUrl}/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset`
+  koronaVarselDialog: {
+    nb: `${navUrl}/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset`,
+    en: `${navUrl}/en/home/useful-information/contacting-nav-about-the-coronavirus-covid-19`
+}
 };
 
 export const vars = {

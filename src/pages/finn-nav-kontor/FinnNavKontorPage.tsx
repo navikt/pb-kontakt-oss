@@ -7,12 +7,12 @@ import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { ResultatvisningVedSubmit } from "./components/ResultatvisningVedSubmit";
 import { ResultatvisningDynamisk } from "./components/ResultatvisningDynamisk";
-import { kjorSokOgReturnerResultat } from "./FinnNavKontorSok";
-import { minQueryLength, SokeResultat } from "./FinnNavKontorSok";
+import { kjorSokOgReturnerResultat, minQueryLength, SokeResultat } from "./FinnNavKontorSok";
 import Lenke from "nav-frontend-lenker";
 import Config, { paths } from "../../Config";
 import { Varsel } from "../../components/varsler/Varsel";
 import { MetaTags } from "../../components/metatags/MetaTags";
+import { useStore } from "../../providers/Provider";
 
 const cssPrefix = "finn-kontor";
 
@@ -23,6 +23,7 @@ const FinnNavKontorPage = () => {
     sokeResultatDynamisk,
     setSokeResultatDynamisk
   ] = useState<SokeResultat | null>();
+  const [{ locale }] = useStore();
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
@@ -52,7 +53,7 @@ const FinnNavKontorPage = () => {
                 <FormattedMessage id={"varsel.koronavirus.navkontor"} />
               </Normaltekst>
             </div>
-            <Lenke href={Config.urls.koronaVarselDialog}>
+            <Lenke href={Config.urls.koronaVarselDialog[locale]}>
               <FormattedMessage id={"varsel.koronavirus.navkontor.lenke"} />
             </Lenke>
           </>

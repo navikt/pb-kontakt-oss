@@ -43,10 +43,10 @@ export const SprakVelger = () => {
       ...provided,
       backgroundColor: state.isFocused
         ? "#0067C5"
-        : provided.backgroundColor,
+        : "#FFFFFF",
       color: state.isFocused
         ? "#FFFFFF"
-        : provided.color
+        : "#000000"
     }),
     control: (provided, state) => ({
       ...provided,

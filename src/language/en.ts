@@ -207,8 +207,8 @@ export default {
   "tilbakemeldinger.sidetittel": "Complaints and feedback",
   "tilbakemeldinger.klageanke.tittel": "Complain or appeal a decision",
   "tilbakemeldinger.klageanke.beskrivelse":
-  "You can send us a complaint if your application is completely or partially rejected. " +
-    "If your complaint is not supported by NAV you can in some cases appeal to the National Insurance Court. " +
+  "You can send us a complaint if your application is completely or partially rejected (helt eller delvis avslag). " +
+    "If your complaint is not supported by NAV you can in some cases appeal to the National Insurance Court (Trygderetten). " +
     "Read more about your <a href=\"{klagerettigheter}\" class=\"lenke\">right to appeal</a> a decision. ",
   "tilbakemeldinger.klageanke.link": "Send a complaint or appeal a decision",
 
@@ -219,7 +219,7 @@ export default {
   "tilbakemeldinger.serviceklage.login.overskrift": "Do you want to log in?",
   "tilbakemeldinger.serviceklage.login.beskrivelse":
     "We recommend logging in so you don't have to enter any personal information.</br>" +
-    "You must state who you are regardless of whether or not you are logged in.",
+    "You must state who you are in both cases.",
   "tilbakemeldinger.serviceklage.login.knapp": "Log in",
   "tilbakemeldinger.serviceklage.login.knapp.fortsettuten":
     "Continue without logging in",
@@ -229,10 +229,10 @@ export default {
   "tilbakemeldinger.serviceklage.form.tittel": "Complaints about service",
   "tilbakemeldinger.serviceklage.form.overskrift": "Submit a complaint about service",
   "tilbakemeldinger.serviceklage.form.onskersvar":
-    "Do you want a response from us to the complaint about service?",
-  "tilbakemeldinger.serviceklage.form.onskersvar.ja": "Yes, I want a response",
+    "Do you want us to contact you?",
+  "tilbakemeldinger.serviceklage.form.onskersvar.ja": "Yes, I would like to be contacted",
   "tilbakemeldinger.serviceklage.form.onskersvar.nei":
-    "No, I just wanted to tell you",
+    "No, I just wanted to inform you",
 
   "tilbakemeldinger.feilogmangler.tittel": "Errors and wrong or missing information",
   "tilbakemeldinger.feilogmangler.beskrivelse":
@@ -250,7 +250,7 @@ export default {
 
   "tilbakemeldinger.ros.tittel": "Praise for NAV",
   "tilbakemeldinger.ros.beskrivelse":
-    "Have you had a good experience? Would you like to praise an employee or share other positive feedback with NAV?",
+    "Have you had a good experience? Would you like to praise a colleague or employee or share other positive feedback with NAV?",
   "tilbakemeldinger.ros.link": "Give praise to NAV",
   "tilbakemeldinger.ros.form.tittel": "Praise for NAV",
   "tilbakemeldinger.ros.form.overskrift": "Submit praise to NAV",
@@ -294,7 +294,7 @@ export default {
   "felter.typefeil.tittel": "What kind of error or wrong information did you find?",
   "felter.typefeil.tekniskfeil": "Technical error",
   "felter.typefeil.feilinformasjon": "Wrong information",
-  "felter.typefeil.uu": "Error when using accessibility device or technology",
+  "felter.typefeil.uu": "Error when using screen readers or other accessibility devices",
   "felter.melding.tittel": "Your feedback",
   "felter.melding.beskrivelse":
     "Avoid sending sensitive personal information about your health condition or diagnoses. " +
@@ -309,7 +309,7 @@ export default {
   "felter.tilbake": "Back",
   "felter.hvemroses.tittel": "Who do you want to praise?",
   "felter.hvemroses.navkontaktsenter": "NAV Contact centre",
-  "felter.hvemroses.digitaletjenester": "NAV's digital services",
+  "felter.hvemroses.digitaletjenester": "NAVs digital services",
   "felter.hvemroses.navkontor": "NAV office",
   "felter.hvemroses.navkontor.velg": "Choose NAV unit",
   "felter.klagerpa.navkontor.velg": "Which NAV department does the complaint relate to?",
@@ -319,7 +319,7 @@ export default {
     "Select the most appropriate option. You can select multiple categories.",
   "felter.klagetyper.telefon": "Telephone",
   "felter.klagetyper.navkontor": "Local NAV office",
-  "felter.klagetyper.digitaletjenester": "NAV's digital services",
+  "felter.klagetyper.digitaletjenester": "NAVs digital services",
   "felter.klagetyper.brev": "Letter",
   "felter.klagetyper.annet": "Other",
   "felter.hvemfra": "Who are you writing on behalf of?",
@@ -358,7 +358,7 @@ export default {
     "Here you can give feedback to NAV, complain or appeal against decisions or service and report errors and defects on" +
     " nav.no. You can also send praise about our services and employees.",
   "seo.rostilnav.description":
-    "Have you had a good experience? Would you like to praise an employee, or is there otherwise something positive you want to share with NAV?",
+    "Have you had a good experience? Would you like to praise a colleague or employee or share other positive feedback with NAV?",
   "seo.feilogmangler.description": "Report errors and omissions at nav.no",
   "seo.klagepaservice.description":
     "Submit a complaint about service from NAV. What does your feedback apply to and who are you writing on behalf of?",

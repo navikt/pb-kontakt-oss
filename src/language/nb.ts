@@ -293,7 +293,7 @@ export default {
   "felter.typefeil.tittel": "Hva slags feil eller mangel fant du?",
   "felter.typefeil.tekniskfeil": "Teknisk feil",
   "felter.typefeil.feilinformasjon": "Feil informasjon",
-  "felter.typefeil.uu": "Feil på siden ved bruk av hjelpemiddelteknologi",
+  "felter.typefeil.uu": "Feil på siden ved bruk av skjermleser eller annet hjelpemiddel",
   "felter.melding.tittel": "Din tilbakemelding",
   "felter.melding.beskrivelse":
     "Unngå sensitive personopplysninger, som for eksempel opplysninger om helseforhold eller diagnoser. " +

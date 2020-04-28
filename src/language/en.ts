@@ -71,25 +71,25 @@ export default {
   "kontaktoss.skrivtiloss.tittel": "Write to us",
   "kontaktoss.skrivtiloss.beskrivelse":
     "'Write to us' is a secure alternative to email.",
-  "kontaktoss.skrivtiloss.knapp": "Write to us (logged in)",
+  "kontaktoss.skrivtiloss.knapp": "Write to us (login)",
 
   "kontaktoss.kontaktveileder.tittel": "Contact your counsellor",
   "kontaktoss.kontaktveileder.beskrivelse":
     "You must be registered as a jobseeker to contact your counsellor.",
-  "kontaktoss.kontaktveileder.knapp": "Contact your counsellor (logged in)",
+  "kontaktoss.kontaktveileder.knapp": "Contact your counsellor (login)",
 
   "kontaktoss.facebook.tittel": "Ask us on Facebook",
-  "kontaktoss.facebook.foreldrepenger": "Parental benefit on Facebook",
-  "kontaktoss.facebook.jobblyst": "Jobseeker on Facebook",
+  "kontaktoss.facebook.foreldrepenger": "Parental benefit on Facebook (text in Norwegian)",
+  "kontaktoss.facebook.jobblyst": "Jobseeker on Facebook (text in Norwegian)",
 
   "kontaktoss.navkontor.tittel": "Find NAV offices",
-  "kontaktoss.navkontor.innlogget.lenke": "Find your local NAV office (logged in)",
+  "kontaktoss.navkontor.innlogget.lenke": "Find your local NAV office (login)",
   "kontaktoss.navkontor.uinnlogget.lenke": "Find a NAV office",
-  "kontaktoss.hjelpemiddelsentral.lenke": "Find a NAV Assistive Technology Centre",
+  "kontaktoss.hjelpemiddelsentral.lenke": "Find a NAV Assistive Technology Centre (text in Norwegian)",
 
   "kontaktoss.tolketjenesten.tittel": "Interpreter services",
   "kontaktoss.tolketjenesten.link":
-    "Contact the interpreter service for the deaf, deaf-blind and hearing impaired",
+    "Contact the interpreter service for the deaf, deaf-blind and hearing impaired (text in Norwegian)",
   "kontaktoss.tolketjenesten.link.spraktolk":
     "Language interpreter for conversation with counsellor",
 
@@ -101,15 +101,15 @@ export default {
     "How to submit a complaint or feedback to NAV",
 
   "kontaktoss.tekniskfeil.tittel": "Technical errors on nav.no",
-  "kontaktoss.tekniskfeil.link.losselv": "Options to try solving the problem yourself",
+  "kontaktoss.tekniskfeil.link.losselv": "Options to try solving the problem yourself  (text in Norwegian)",
   "kontaktoss.tekniskfeil.link.meldifra": "Report errors and wrong or missing information",
-  "kontaktoss.tekniskfeil.link.ring": "Call technical support",
+  "kontaktoss.tekniskfeil.link.ring": "Call technical support (text in Norwegian)",
 
   "kontaktoss.presse.tittel": "Public Relations",
-  "kontaktoss.presse.link": "Contact Public Relations",
+  "kontaktoss.presse.link": "Contact Public Relations (text in Norwegian)",
 
   "kontaktoss.sosialemedier.tittel": "NAV on social media",
-  "kontaktoss.sosialemedier.link": "NAV social media accounts and pages",
+  "kontaktoss.sosialemedier.link": "NAV social media accounts and pages (text in Norwegian)",
 
   //
   // Chat

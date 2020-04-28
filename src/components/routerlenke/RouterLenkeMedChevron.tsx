@@ -14,12 +14,12 @@ type Props = {
 
 const lenkeTekstMedChevron = (tekst: React.ReactNode) => (
   <>
-    <div>
+    <span>
       <HoyreChevron className={"chevronlenke__chevron"} />
-    </div>
-    <div>
+    </span>
+    <span>
       {tekst}
-    </div>
+    </span>
   </>
 );
 

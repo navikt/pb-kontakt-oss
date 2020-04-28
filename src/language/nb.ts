@@ -13,7 +13,7 @@ export default {
   //
   // Språkvelger
   //
-  "sprak.velg": "Velg språk",
+  "sprak.velg": "Språk/language",
   "sprak.nb": "Norsk",
   "sprak.en": "English",
 

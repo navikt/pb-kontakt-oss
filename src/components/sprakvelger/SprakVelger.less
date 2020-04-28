@@ -6,16 +6,27 @@
   align-items: center;
   white-space: nowrap;
 
-  &__ikon-container {
+  &__select {
+    width: 200px;
+  }
+
+  &__placeholder {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__chevron {
+    margin-right: 0.5rem;
   }
 
   &__ikon {
-    width: 24px;
-    height: 24px;
-    margin-left: 0.5em;
+    width: 20px;
+    height: 20px;
+    filter: invert(50%);
+    margin-right: 0.5em;
   }
 
   @media (max-width: @screen-tablet) {
-    margin: 0 0 1.5em 0;
+    margin-top: 1rem;
   }
 }

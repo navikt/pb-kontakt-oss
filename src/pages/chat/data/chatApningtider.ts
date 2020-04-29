@@ -2,16 +2,10 @@ import ApningsTider from "../../../utils/apningstider";
 import { AvviksPeriode, Ukedag } from "../../../types/datotid";
 import { ChatTema } from "../../../types/kanaler";
 
-const paske2020: AvviksPeriode = {
-  visFraDato: "12:00 02-04-2020",
+const avvikAlle: AvviksPeriode = {
+  visFraDato: "09:00 29-04-2020",
   datoer: {
-    "08-04-2020": {
-      start: "09.00",
-      end: "12.00"
-    },
-    "09-04-2020": null,
-    "10-04-2020": null,
-    "13-04-2020": null,
+    "01-05-2020": null,
   }
 };
 
@@ -39,7 +33,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Jobbsoker]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "09.00",
@@ -63,7 +57,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Syk]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "09.00",
@@ -87,7 +81,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Familie]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "09.00",
@@ -111,7 +105,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Ufor]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "09.00",
@@ -135,7 +129,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Sosial]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "09.00",
@@ -159,7 +153,7 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [paske2020]),
+  }, [avvikAlle]),
   [ChatTema.Okonomi]: new ApningsTider({
     [Ukedag.Mandag]: {
       start: "10.00",
@@ -183,13 +177,6 @@ export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
     },
     [Ukedag.Lordag]: null,
     [Ukedag.Sondag]: null
-  }, [{
-    ...paske2020,
-    datoer:
-      {
-        ...paske2020.datoer,
-        "08-04-2020": { start: "10:00", end: "12:00" }
-      }
-  }]),
+  }, [avvikAlle]),
   [ChatTema.EURES]: null
 };

@@ -10,6 +10,12 @@ import { Styles } from "react-select/src/styles";
 
 const cssPrefix = "sprakvelger";
 
+const farger = {
+  navGra60: "#78706A",
+  navBla: "#0067C5",
+  navBlaDarken60: "#254b6d"
+};
+
 type LocaleOption = {
   value: Locale;
   label: JSX.Element;
@@ -42,17 +48,30 @@ export const SprakVelger = () => {
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isFocused
-        ? "#0067C5"
-        : "#FFFFFF",
+        ? farger.navBla
+        : "white",
       color: state.isFocused
-        ? "#FFFFFF"
-        : "#000000"
+        ? "white"
+        : "black"
     }),
     control: (provided, state) => ({
       ...provided,
       boxShadow: state.isFocused
-        ? "0 0 0 3px #254b6d"
+        ? `0 0 0 3px ${farger.navBlaDarken60}`
         : provided.boxShadow,
+      borderColor: farger.navGra60,
+      "&:hover": { borderColor: farger.navBla }
+    }),
+    menu: (provided) => ({
+      ...provided,
+      marginTop: "3px",
+      paddingTop: "1px",
+      borderTopLeftRadius: "0",
+      borderTopRightRadius: "0"
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: "black"
     })
   };
 

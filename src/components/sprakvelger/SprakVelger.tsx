@@ -35,9 +35,9 @@ export const SprakVelger = () => {
   const { formatMessage } = useIntl();
 
   const selectionHandler = (selected: ValueType<LocaleOption>) => {
-    const option = (selected as LocaleOption).value;
-    logEvent({ event: `sprakvelger-valgt-${option}` });
-    selected && setNewLocale(option, dispatch);
+    const value = (selected as LocaleOption).value;
+    logEvent({ event: `sprakvelger-valgt-${value}` });
+    selected && setNewLocale(value, dispatch);
   };
 
   const options: LocaleOption[] = [

@@ -7,6 +7,8 @@ import Select from "react-select";
 import { Normaltekst } from "nav-frontend-typografi";
 import { HoyreChevron } from "nav-frontend-chevron";
 import { Styles } from "react-select/src/styles";
+import { ValueType } from "react-select/src/types";
+import { logEvent } from "../../utils/logger";
 
 const cssPrefix = "sprakvelger";
 
@@ -31,6 +33,12 @@ const option = (text: string) => (
 export const SprakVelger = () => {
   const [, dispatch] = useStore();
   const { formatMessage } = useIntl();
+
+  const selectionHandler = (selected: ValueType<LocaleOption>) => {
+    const option = (selected as LocaleOption).value;
+    logEvent({ event: `sprakvelger-valgt-${option}` });
+    selected && setNewLocale(option, dispatch);
+  };
 
   const options: LocaleOption[] = [
     { value: "nb", label: option(formatMessage({ id: "sprak.nb" })) },
@@ -78,14 +86,13 @@ export const SprakVelger = () => {
   return (
     <div className={cssPrefix}>
       <Select
-        onChange={(selected) => {
-          selected && setNewLocale((selected as LocaleOption).value, dispatch);
-        }}
+        onChange={selectionHandler}
         className={`${cssPrefix}__select`}
         options={options}
         isSearchable={false}
         placeholder={placeholder}
         styles={styles}
+        onMenuOpen={() => logEvent({ event: "sprakvelger-clicked" })}
       />
     </div>
   );

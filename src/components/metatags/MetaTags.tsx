@@ -34,6 +34,10 @@ export const MetaTags = ({ path, titleId, descriptionId, children }: Props) => {
         <>
           <link rel="canonical" href={`${baseUrl}${localePath(path, locale)}`} />
           <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="nb" />
+          <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="nn" />
+          <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="sv" />
+          <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="da" />
+          <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="is" />
           <link rel="alternate" href={`${baseUrl}${localePath(path, "en")}`} hrefLang="en" />
           <link rel="alternate" href={`${baseUrl}${localePath(path, "en")}`} hrefLang="x-default" />
         </>

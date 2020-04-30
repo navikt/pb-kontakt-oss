@@ -1,4 +1,3 @@
-// TODO: Erstatt/merge denne med den andre lenkepanel komponenten
 import { LenkepanelBase } from "nav-frontend-lenkepanel/lib";
 import { Link } from "react-router-dom";
 import { Undertittel } from "nav-frontend-typografi";
@@ -7,8 +6,10 @@ import React from "react";
 import { logEvent } from "../../utils/logger";
 import { useStore } from "../../providers/Provider";
 import { TemaLenke } from "../../types/kanaler";
-import { SanityBlocks } from "../sanity-blocks/SanityBlocks";
+import { LocaleBlockContent } from "../sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../content-loader/NavContentLoader";
+import { useLocaleString } from "../../utils/sanity/useLocaleString";
+import { localePath } from "../../utils/locale";
 
 type Props = {
   lenkepanelData: TemaLenke;
@@ -21,16 +22,18 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
     logEvent({ event: lenkepanelData.grafanaId });
   };
 
-  const tema = lenkepanelData.tema;
-  const [{ themes }] = useStore();
-  const temaProps = themes.props[tema];
+  const [{ themes, locale }] = useStore();
+  const localeString = useLocaleString();
 
-  const closed = temaProps.status && temaProps.status.closed;
-  const closedMsg = temaProps.status && temaProps.status.message;
+  const tema = lenkepanelData.tema;
+  const {status, link} = themes.props[tema];
+
+  const closed = status && status.closed;
+  const closedMsg = status && status.message;
   const isDisabled = closed && disableIfClosed;
-  const lenkePanelTekst = temaProps.link;
-  const tittel = lenkePanelTekst && lenkePanelTekst.title;
-  const ingress = lenkePanelTekst && lenkePanelTekst.description;
+
+  const tittel = link && link.title;
+  const ingress = link && link.description;
 
   return (
     <LenkepanelBase
@@ -49,7 +52,7 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
           </a>
         ) : (
           <Link
-            to={lenkepanelData.url}
+            to={localePath(lenkepanelData.url, locale)}
             className={props.className}
             onClick={onClick}
           >
@@ -63,15 +66,15 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
         <div>
           <Undertittel className={`${cssPrefix}__temalenke-header lenkepanel__heading`}>
             {tittel
-              ? <SanityBlocks blocks={tittel} />
+              ? localeString(tittel)
               : <FormattedMessage id={lenkepanelData.fallbackTittelId} />}
           </Undertittel>
           <div className={`${cssPrefix}__lenkepanel-ingress`}>
             {themes.isLoaded
-              ? <SanityBlocks blocks={ingress} />
+              ? <LocaleBlockContent localeBlock={ingress} />
               : <NavContentLoader lines={2} lineHeight={6} />}
           </div>
-          {isDisabled && closedMsg && <SanityBlocks blocks={closedMsg} />}
+          {isDisabled && <LocaleBlockContent localeBlock={closedMsg} />}
         </div>
       </div>
     </LenkepanelBase>

@@ -2,13 +2,14 @@ import React from "react";
 import { FormattedMessage } from "react-intl";
 
 import IkonPanel from "../../../components/ikonpanel/IkonPanel";
-import { urls } from "../../../Config";
+import { urls, useLocalePaths } from "../../../Config";
 
 import ikon from "assets/forside-navkontor-ikon.svg";
 import RouterLenke from "../../../components/routerlenke/RouterLenkeMedChevron";
 
 const FinnNavKontor = () => {
   const tittel = <FormattedMessage id={"kontaktoss.navkontor.tittel"} />;
+  const paths = useLocalePaths();
 
   return (
     <IkonPanel ikon={ikon} tittel={tittel} id={"finn-nav-kontor"}>
@@ -21,7 +22,7 @@ const FinnNavKontor = () => {
           <FormattedMessage id="kontaktoss.navkontor.innlogget.lenke" />
         </RouterLenke>
         <RouterLenke
-          href={urls.finnNavKontor.finnDittNavKontorUinnlogget}
+          href={paths.finnDittNavKontorUinnlogget}
           isExternal={false}
           className={"lenke__avstand-under"}
         >

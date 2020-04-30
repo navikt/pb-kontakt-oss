@@ -1,5 +1,5 @@
-import { LocaleBlock, LocaleString, TextBlock } from "../serializers";
 import { Kanal } from "../../../types/kanaler";
+import { LocaleBlock, LocaleString } from "../common-types";
 
 export type ChannelProps = {
   _id?: string;
@@ -8,8 +8,8 @@ export type ChannelProps = {
     closed?: boolean;
     message?: LocaleBlock;
   }
-  description?: TextBlock[];
-  preamble?: TextBlock[];
+  description?: LocaleBlock;
+  preamble?: LocaleBlock;
 };
 
 export type Channels = {

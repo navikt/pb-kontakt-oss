@@ -1,10 +1,10 @@
 import { Normaltekst } from "nav-frontend-typografi";
-import { Language } from "../../utils/sanity/serializers";
 import React from "react";
 import { useStore } from "../../providers/Provider";
 import { Kanal } from "../../types/kanaler";
-import { SanityBlocks } from "../../components/sanity-blocks/SanityBlocks";
+import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../../components/content-loader/NavContentLoader";
+import { useLocaleString } from "../../utils/sanity/useLocaleString";
 
 type Props = {
   kanal: Kanal;
@@ -14,6 +14,8 @@ type Props = {
 
 export const KanalVisning = ({ kanal, visHvisStengt, children }: Props) => {
   const [{ channels }] = useStore();
+  const localeString = useLocaleString();
+
   if (!channels.isLoaded) {
     return <NavContentLoader lines={3} />;
   }
@@ -21,7 +23,7 @@ export const KanalVisning = ({ kanal, visHvisStengt, children }: Props) => {
   const channelProps = channels.props[kanal];
 
   const { answer_time, status, description } = channelProps;
-  const svartid = answer_time && answer_time[Language.Bokmaal];
+  const svartid = localeString(answer_time);
   const closed = status && status.closed;
   const closedMsg = status && status.message;
 
@@ -32,8 +34,8 @@ export const KanalVisning = ({ kanal, visHvisStengt, children }: Props) => {
           {svartid}
         </Normaltekst>
       )}
-      {description && <SanityBlocks blocks={description} />}
-      {closed && <SanityBlocks blocks={closedMsg} />}
+      {description && <LocaleBlockContent localeBlock={description} />}
+      {closed && <LocaleBlockContent localeBlock={closedMsg} />}
       {(!closed || visHvisStengt) && children}
     </>
   );

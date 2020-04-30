@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
-import BreadcrumbsWrapper from "../../components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "../../components/topp-linje/ToppLinje";
 import ChatbotWrapper from "./ChatbotWrapper";
 import { Hovedknapp } from "nav-frontend-knapper";
 import Config from "../../Config";
@@ -14,30 +14,31 @@ import { ChatTema, Kanal } from "../../types/kanaler";
 import { chatTemaSideData } from "./data/chatTemasideData";
 import { chatApningstider } from "./data/chatApningtider";
 import { chatConfig } from "./data/chatConfig";
-import { Language } from "../../utils/sanity/serializers";
-import { SanityBlocks } from "../../components/sanity-blocks/SanityBlocks";
+import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../../components/content-loader/NavContentLoader";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { SanityVarsel } from "../../components/varsler/SanityVarsel";
 import { Varsel } from "../../components/varsler/Varsel";
+import { useLocaleString } from "../../utils/sanity/useLocaleString";
+import { MetaTags } from "../../components/metatags/MetaTags";
 
 type Props = {
   chatTema: ChatTema,
+  path: string
 };
 
 const cssPrefix = "chat-tema";
 
-const ChatTemaside = ({ chatTema }: Props) => {
+const ChatTemaside = ({ chatTema, path }: Props) => {
   const [chatButtonClickedTimestamp, setChatButtonClickedTimestamp] = useState();
   const [serverTidOffset, setServerTidOffset] = useState(0);
   const [{ themes, channels }] = useStore();
-  const intl = useIntl();
+  const localeString = useLocaleString();
 
   const startChat = chatTema === ChatTema.EURES
-    ? () => window.location.assign(Config.urls.chat.eures.chat)
+    ? () => window.location.assign(Config.urls.chatEures)
     : () => setChatButtonClickedTimestamp(Date.now());
 
-  const { harChatbot, tittelId, grafanaId } = chatTemaSideData[chatTema];
+  const { harChatbot, tittelId, metaTittelId, grafanaId } = chatTemaSideData[chatTema];
   const temaProps = themes.props[chatTema];
   const channelProps = channels.props[Kanal.Chat];
   const isLoaded = themes.isLoaded && channels.isLoaded;
@@ -47,14 +48,8 @@ const ChatTemaside = ({ chatTema }: Props) => {
     || (channelProps.status && channelProps.status.message);
 
   const text = temaProps.page;
-  const tittel = (text && text.title && text.title[Language.Bokmaal])
-    || intl.formatMessage({ id: tittelId });
-  const ingress = text && <SanityBlocks blocks={text.content} />;
-
-  const documentTitle = `${tittel} - www.nav.no`;
-  useEffect(() => {
-    document.title = documentTitle;
-  }, [documentTitle]);
+  const tittel = (text && localeString(text.title)) || <FormattedMessage id={tittelId} />;
+  const ingress = text && <LocaleBlockContent localeBlock={text.content} />;
 
   useEffect(() => {
     fetchServerTidOffset(setServerTidOffset);
@@ -79,8 +74,12 @@ const ChatTemaside = ({ chatTema }: Props) => {
 
   return (
     <>
-      <div className={`${cssPrefix} pagecontent`}>
-        <BreadcrumbsWrapper />
+      <div className={`pagecontent`}>
+        <Topplinje />
+        <MetaTags
+          titleId={metaTittelId}
+          path={path}
+        />
         <PanelBase className={cssPrefix}>
           <div className={`${cssPrefix}__header`}>
             <Systemtittel>
@@ -91,7 +90,11 @@ const ChatTemaside = ({ chatTema }: Props) => {
             <VarselVisning kanal={Kanal.Chat}>
               <>
                 {!chatErNormaltApen && <Varsel tekstId={"chat.stengt.info"} type={"info"} />}
-                {chatVeilederStengtAvAdmin && closedMsg && <SanityVarsel localeBlock={closedMsg} type={"info"} />}
+                {chatVeilederStengtAvAdmin && (
+                  <Varsel type={"info"}>
+                    <LocaleBlockContent localeBlock={closedMsg} />
+                  </Varsel>
+                )}
               </>
             </VarselVisning>
             {(isLoaded) ? ingress

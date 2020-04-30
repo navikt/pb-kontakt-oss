@@ -1,11 +1,11 @@
 import React from "react";
 import { Alert } from "../../utils/sanity/endpoints/alert";
-import { SanityBlocks } from "../sanity-blocks/SanityBlocks";
 import { KoronaVirusVarsel } from "./korona-virus-varsel/KoronaVirusVarsel";
 import { TekniskProblemBackend } from "./teknisk-problem-backend/TekniskProblemBackend";
 import { useStore } from "../../providers/Provider";
 import { Kanal } from "../../types/kanaler";
 import { forsideSanityId, kanalToSanityId } from "../../utils/sanity/endpoints/channels";
+import { SanityVarsel } from "./SanityVarsel";
 
 type Props = {
   kanal?: Kanal;
@@ -26,7 +26,8 @@ export const VarselVisning = ({ kanal, children }: Props) => {
     <div className={`${alerts.isLoaded ? " varsler-container--loaded" : "varsler-container--loading"}`}>
       {visTekniskFeilMelding && <TekniskProblemBackend />}
       <KoronaVirusVarsel />
-      {varslerSomSkalVises.map((varsel, index) => <SanityBlocks blocks={varsel} key={index} />)}
+      {varslerSomSkalVises
+        .map((varsel, index) => <SanityVarsel varsel={varsel} key={index} />)}
       {children}
     </div>
   );

@@ -1,25 +1,22 @@
-import React, { useEffect } from "react";
-import { FormattedMessage, useIntl } from "react-intl";
+import React from "react";
+import { FormattedMessage } from "react-intl";
 import { Sidetittel } from "nav-frontend-typografi";
-import BreadcrumbsWrapper from "../../components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
 import { Kanal, TemaLenke } from "../../types/kanaler";
 import { chatTemaLenker } from "./data/chatTemaLenker";
 import TemaLenkepanel from "../../components/lenkepanel/TemaLenkepanel";
-import { SanityBlocks } from "../../components/sanity-blocks/SanityBlocks";
+import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../../components/content-loader/NavContentLoader";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { SanityVarsel } from "../../components/varsler/SanityVarsel";
+import { Varsel } from "../../components/varsler/Varsel";
+import { MetaTags } from "../../components/metatags/MetaTags";
+import { paths } from "../../Config";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
 
 const ChatForside = () => {
-  const documentTitle = `${useIntl().formatMessage({ id: sideTittelId })} - www.nav.no`;
-  useEffect(() => {
-    document.title = documentTitle;
-  }, [documentTitle]);
-
   const [{ channels }] = useStore();
   const chatProps = channels.props[Kanal.Chat];
   const isClosed = chatProps.status && chatProps.status.closed;
@@ -28,7 +25,12 @@ const ChatForside = () => {
   return (
     <>
       <div className={`${cssPrefix} pagecontent`}>
-        <BreadcrumbsWrapper />
+        <Topplinje />
+        <MetaTags
+          titleId={"chat.forside.tittel"}
+          descriptionId={"kontaktoss.chat.beskrivelse"}
+          path={paths.chat.forside}
+        />
         <div className={`${cssPrefix}__header`}>
           <Sidetittel>
             <FormattedMessage id={sideTittelId} />
@@ -36,10 +38,16 @@ const ChatForside = () => {
         </div>
         <div className={`${cssPrefix}__ingress`}>
           {channels.isLoaded
-            ? <SanityBlocks blocks={chatProps.preamble} />
+            ? <LocaleBlockContent localeBlock={chatProps.preamble} />
             : <NavContentLoader lines={1} />}
           <VarselVisning kanal={Kanal.Chat}>
-            {isClosed && closedMsg ? <SanityVarsel localeBlock={closedMsg} type={"info"}/> : undefined}
+            <>
+              {isClosed && (
+                <Varsel type={"info"}>
+                  <LocaleBlockContent localeBlock={closedMsg} />
+                </Varsel>
+              )}
+            </>
           </VarselVisning>
         </div>
         <div className={`${cssPrefix}__temapanel-seksjon`}>

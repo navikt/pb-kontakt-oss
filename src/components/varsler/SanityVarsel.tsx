@@ -1,16 +1,14 @@
-import { AlertStripeType } from "nav-frontend-alertstriper";
 import React from "react";
-import { LocaleBlock, LocaleString } from "../../utils/sanity/serializers";
-import { SanityBlocks } from "../sanity-blocks/SanityBlocks";
+import { LocaleBlockContent } from "../sanity-blocks/LocaleBlockContent";
 import { Varsel } from "./Varsel";
+import { Alert } from "../../utils/sanity/endpoints/alert";
 
 type Props = {
-  localeBlock: LocaleBlock | LocaleString;
-  type: AlertStripeType;
+  varsel: Alert;
 };
 
-export const SanityVarsel = ({ localeBlock, type }: Props) => (
-  <Varsel type={type}>
-    <SanityBlocks blocks={localeBlock} />
+export const SanityVarsel = ({ varsel }: Props) => (
+  <Varsel type={varsel.type}>
+    <LocaleBlockContent localeBlock={varsel.description} />
   </Varsel>
 );

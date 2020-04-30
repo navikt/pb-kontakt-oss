@@ -1,7 +1,7 @@
-import { LocaleLink, LocaleString } from "../serializers";
+import { LocaleUrl, LocaleString } from "../common-types";
 
 export type FAQLenke = {
-  lenke: LocaleLink;
+  lenke: LocaleUrl;
   tittel: LocaleString;
   priority: number;
 };

@@ -7,12 +7,13 @@ import { logEvent } from "utils/logger";
 import RouterLenke from "components/routerlenke/RouterLenkeMedChevron";
 import { KanalVisning } from "../KanalVisning";
 import { Kanal } from "../../../types/kanaler";
+import { Locale } from "../../../utils/locale";
 
-const RingOss = () => {
-  const tittel = <FormattedMessage id={"kontaktoss.ringoss.tittel"}/>;
+const RingOss = ({ locale }: { locale: Locale }) => {
+  const tittel = <FormattedMessage id={"kontaktoss.ringoss.tittel"} />;
 
   const onClick = () => {
-    logEvent({event: "ring-oss"});
+    logEvent({ event: "ring-oss" });
   };
 
   return (
@@ -20,11 +21,11 @@ const RingOss = () => {
       <KanalVisning kanal={Kanal.RingOss}>
         <RouterLenke
           isExternal={true}
-          href={urls.ringOss}
+          href={urls.ringOss[locale]}
           onClick={onClick}
           className={"lenke__avstand-over"}
         >
-          <FormattedMessage id={"kontaktoss.ringoss.knapp"}/>
+          <FormattedMessage id={"kontaktoss.ringoss.knapp"} />
         </RouterLenke>
       </KanalVisning>
     </IkonPanel>

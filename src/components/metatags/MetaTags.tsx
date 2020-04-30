@@ -30,7 +30,7 @@ export const MetaTags = ({ path, titleId, descriptionId, children }: Props) => {
           content={intl.formatMessage({ id: descriptionId })}
         />
       )}
-      {path && (
+      {(path || path === "") && (
         <>
           <link rel="canonical" href={`${baseUrl}${localePath(path, locale)}`} />
           <link rel="alternate" href={`${baseUrl}${localePath(path, "nb")}`} hrefLang="nb" />

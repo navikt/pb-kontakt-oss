@@ -2,9 +2,9 @@
   {
     "_createdAt": "2020-03-17T12:07:05Z",
     "_id": "chat",
-    "_rev": "lrDMfu4dQPEWZuTSwsekIX",
+    "_rev": "qcX24G56U0OlNpp3hJ78Kl",
     "_type": "channel",
-    "_updatedAt": "2020-03-17T12:08:04Z",
+    "_updatedAt": "2020-03-19T15:34:00Z",
     "themes": [
       {
         "_key": "arbeidsgiver",
@@ -43,21 +43,53 @@
   {
     "_createdAt": "2020-03-17T11:35:23Z",
     "_id": "chat-med-oss",
-    "_rev": "ssUhVIC0YlcCKh06Iroahb",
+    "_rev": "VdTcsTJkAuZveXGf2hWQqI",
     "_type": "channel",
-    "_updatedAt": "2020-03-25T10:00:11Z",
-    "answer_time": {
-      "_type": "localeString"
-    },
+    "_updatedAt": "2020-04-06T13:07:06Z",
     "description": {
       "_type": "localeBlock",
-      "nb": [
+      "en": [
         {
-          "_key": "65d4a497bc39",
+          "_key": "da0c2f48bbce",
           "_type": "block",
           "children": [
             {
-              "_key": "65d4a497bc390",
+              "_key": "da0c2f48bbce0",
+              "_type": "span",
+              "marks": [],
+              "text": "Chat in english!"
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ],
+      "nb": [
+        {
+          "_key": "b2e90fcebbe2",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "b2e90fcebbe20",
+              "_type": "span",
+              "marks": [],
+              "text": "Chatten er ikke innlogget. Du kan være anonym, og vi ser ikke informasjon om deg."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ]
+    },
+    "preamble": {
+      "_type": "localeBlock",
+      "nb": [
+        {
+          "_key": "3b2730fe0af0",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "3b2730fe0af00",
               "_type": "span",
               "marks": [],
               "text": "Chatten er ikke innlogget. Du kan være anonym, og vi ser ikke informasjon om deg"
@@ -68,118 +100,70 @@
         }
       ]
     },
-    "preamble": {
-      "_type": "localeBlock",
-      "nb": [
-        {
-          "_key": "2d1c6dcdcfc3",
-          "_type": "block",
-          "children": [
-            {
-              "_key": "2d1c6dcdcfc30",
-              "_type": "span",
-              "marks": [],
-              "text": "På chat svarer vi ikke på spørsmål om saken din."
-            }
-          ],
-          "markDefs": [],
-          "style": "normal"
-        }
-      ]
-    },
     "status": {
       "_type": "status",
       "closed": false,
       "message": {
-        "_type": "localeBlock",
-        "nb": [
-          {
-            "_key": "b5f55fe74384",
-            "_type": "block",
-            "children": [
-              {
-                "_key": "b5f55fe743840",
-                "_type": "span",
-                "marks": [
-                  "em"
-                ],
-                "text": "Chat med veileder er stengt"
-              }
-            ],
-            "markDefs": [],
-            "style": "normal"
-          }
-        ]
+        "_type": "localeBlock"
       }
     }
   },
   {
     "_createdAt": "2020-03-17T11:35:04Z",
     "_id": "kontakt-din-veileder",
-    "_rev": "04GyqxWeUbLYr2t4W54CEs",
+    "_rev": "04GyqxWeUbLYr2t4W54KLr",
     "_type": "channel",
-    "_updatedAt": "2020-03-24T10:30:32Z",
+    "_updatedAt": "2020-03-24T10:37:56Z",
     "answer_time": {
       "_type": "localeString",
-      "nb": "Svartid: 2 arbeidsdager. På grunn av stor pågang kan svartiden være lenger enn vanlig"
+      "nb": "Svartid: 2 arbeidsdager"
     },
     "description": {
       "_type": "localeBlock",
       "nb": [
         {
-          "_key": "c82de56703de",
+          "_key": "4aa269e53c89",
           "_type": "block",
           "children": [
             {
-              "_key": "c82de56703de0",
+              "_key": "4aa269e53c890",
               "_type": "span",
               "marks": [],
-              "text": "Vi opplever for tiden stor pågang. Svartiden kan derfor være lenger enn vanlig."
+              "text": "Du må være registrert som arbeidssøker for å kontakte veilederen din."
             }
           ],
           "markDefs": [],
           "style": "normal"
         }
       ]
-    },
-    "status": {
-      "_type": "status",
-      "closed": false
     }
   },
   {
     "_createdAt": "2020-03-17T11:34:48Z",
     "_id": "ring-oss",
-    "_rev": "9lyDtJBYotz3ZVD1nz43Hi",
+    "_rev": "4HSN1iflZZx2rre9qUBn3G",
     "_type": "channel",
-    "_updatedAt": "2020-03-24T10:30:14Z",
-    "description": {
-      "_type": "localeBlock"
-    },
-    "status": {
-      "_type": "status",
-      "closed": false
-    }
+    "_updatedAt": "2020-03-18T08:38:56Z"
   },
   {
     "_createdAt": "2020-03-17T11:36:00Z",
     "_id": "skriv-til-oss",
-    "_rev": "ssUhVIC0YlcCKh06IrorKF",
+    "_rev": "9lyDtJBYotz3ZVD1nz46Xj",
     "_type": "channel",
-    "_updatedAt": "2020-03-25T10:09:15Z",
+    "_updatedAt": "2020-03-24T10:38:05Z",
     "answer_time": {
       "_type": "localeString",
-      "nb": "Svartid: 3 arbeidsdager."
+      "nb": "Svartid: 3 arbeidsdager"
     },
     "description": {
       "_type": "localeBlock",
       "nb": [
         {
-          "_key": "1f2e2fa758ad",
+          "_key": "bb2f35d40dd6",
           "_type": "block",
           "children": [
             {
-              "_key": "1f2e2fa758ad0",
+              "_key": "bb2f35d40dd60",
               "_type": "span",
               "marks": [],
               "text": "Send oss spørsmål eller nye opplysninger i saken din. 'Skriv til oss' er et sikkert alternativ til e-post."
@@ -187,20 +171,6 @@
           ],
           "markDefs": [],
           "style": "normal"
-        },
-        {
-          "_key": "d71063f2ef19",
-          "_type": "block",
-          "children": [
-            {
-              "_key": "d71063f2ef190",
-              "_type": "span",
-              "marks": [],
-              "text": ""
-            }
-          ],
-          "markDefs": [],
-          "style": "normal"
         }
       ]
     },
@@ -208,67 +178,42 @@
       "_type": "localeBlock",
       "nb": [
         {
-          "_key": "d3808293afb5",
+          "_key": "dbbd47405c8c",
           "_type": "block",
           "children": [
             {
-              "_key": "d3808293afb50",
+              "_key": "dbbd47405c8c0",
               "_type": "span",
               "marks": [],
-              "text": "Send oss spørsmål eller nye opplysninger i saken din."
+              "text": "Send oss spørsmål eller nye opplysninger i saken din. 'Skriv til oss' er et sikkert alternativ til e-post."
             }
           ],
           "markDefs": [],
           "style": "normal"
         }
       ]
-    },
-    "status": {
-      "_type": "status",
-      "closed": false,
-      "message": {
-        "_type": "localeBlock",
-        "nb": [
-          {
-            "_key": "cffa3aaf6c8c",
-            "_type": "block",
-            "children": [
-              {
-                "_key": "cffa3aaf6c8c0",
-                "_type": "span",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Vi har stengt, prøv senere"
-              }
-            ],
-            "markDefs": [],
-            "style": "h4"
-          }
-        ]
-      }
     }
   },
   {
     "_createdAt": "2020-03-17T12:07:05Z",
     "_id": "telephone",
-    "_rev": "lrDMfu4dQPEWZuTSwsekIX",
+    "_rev": "u0aCImji0gMopsRIxGHjfG",
     "_type": "channel",
     "_updatedAt": "2020-03-17T12:07:05Z"
   },
   {
     "_createdAt": "2020-03-17T12:07:05Z",
     "_id": "tutor",
-    "_rev": "lrDMfu4dQPEWZuTSwsekIX",
+    "_rev": "qcX24G56U0OlNpp3hJ78ER",
     "_type": "channel",
     "_updatedAt": "2020-03-17T12:07:05Z"
   },
   {
     "_createdAt": "2020-03-17T12:07:05Z",
     "_id": "write",
-    "_rev": "lrDMfu4dQPEWZuTSwsekIX",
+    "_rev": "u0aCImji0gMopsRIxGHjhG",
     "_type": "channel",
-    "_updatedAt": "2020-03-17T12:08:04Z",
+    "_updatedAt": "2020-03-19T15:34:00Z",
     "themes": [
       {
         "_key": "jobbsoker",

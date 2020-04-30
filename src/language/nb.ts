@@ -1,12 +1,22 @@
-import Config, { urls } from "../Config";
-
 export default {
   //
   // Varsler
   //
   "varsel.teknisk.feil": "Det er for øyeblikket tekniske problemer med baksystemene våre. Dette kan føre til at noe informasjon mangler fra sidene.",
-  "varsel.stor.paagang": "Det er for tiden mange som kontakter oss. Hvis henvendelsen din ikke haster, ber vi deg ta kontakt senere.",
-  "tjeneste.stengt": "Tjenesten er for øyeblikket stengt, prøv igjen senere.",
+  "varsel.koronavirus": "Koronavirus - hva gjelder i min situasjon",
+  "varsel.koronavirus.navkontor":
+    "For å forhindre spredning av koronaviruset er besøk på\n" +
+    "NAV-kontoret nå erstattet med at du kan ta kontakt i digitale\n" +
+    "kanaler. Hvis du er i en krisesituasjon, kan du ringe og få en time hos NAV-kontoret.",
+  "varsel.koronavirus.navkontor.lenke": "Koronavirus - dialog med NAV",
+
+  //
+  // Språk
+  //
+  "sprak.velg": "Språk/language",
+  "sprak.nb": "Norsk",
+  "sprak.en": "English",
+  "sprak.lenke.norsk": "",
 
   //
   // Breadcrumbs
@@ -116,13 +126,21 @@ export default {
   "chat.admin-stengt.veileder": "Chat med veileder er for øyeblikket utilgjengelig.",
 
   "chat.arbeidsgiver.tittel": "Arbeidsgiver og samhandler",
+  "chat.arbeidsgiver.metatittel": "Chat med oss - Arbeidsgiver og samhandler",
   "chat.jobbsoker.tittel": "Jobbsøker",
+  "chat.jobbsoker.metatittel": "Chat med oss - Jobbsøker",
   "chat.syk.tittel": "Syk",
+  "chat.syk.metatittel": "Chat med oss - Syk",
   "chat.familie.tittel": "Foreldre, barn og familie",
+  "chat.familie.metatittel": "Chat med oss - Foreldre, barn og familie",
   "chat.ufor.tittel": "Ufør",
+  "chat.ufor.metatittel": "Chat med oss - Ufør",
   "chat.sosialhjelp.tittel": "Sosiale tjenester og økonomisk sosialhjelp",
+  "chat.sosialhjelp.metatittel": "Chat med oss - Sosiale tjenester og økonomisk sosialhjelp",
   "chat.okonomi.tittel": "Økonomi og gjeldsrådgivning",
+  "chat.okonomi.metatittel": "Chat med oss - Økonomi og gjeldsrådgivning",
   "chat.eures.tittel": "Spør EURES om jobb og rekruttering i i EØS-området",
+  "chat.eures.metatittel": "Chat med EURES om jobb og rekruttering i i EØS-området",
 
   "apningstid.avvik": "<p>Spesielle åpningstider:</p>",
   "apningstid.avvik.chatbot":
@@ -192,7 +210,7 @@ export default {
   "tilbakemeldinger.klageanke.beskrivelse":
     "Har du fått helt eller delvis avslag på søknaden din, kan du klage på avslaget. " +
     "Får du ikke medhold i klagen din i NAV, kan du med noen unntak anke til Trygderetten. " +
-    `Les mer om dine <a href="${urls.tilbakemeldinger.klagerettigheter}" class="lenke">klagerettigheter</a>.`,
+    "Les mer om dine <a href=\"{klagerettigheter}\" class=\"lenke\">klagerettigheter</a>.",
   "tilbakemeldinger.klageanke.link": "Send klage eller anke på vedtak",
 
   "tilbakemeldinger.serviceklage.tittel": "Klage på service",
@@ -276,10 +294,14 @@ export default {
   "felter.typefeil.tittel": "Hva slags feil eller mangel fant du?",
   "felter.typefeil.tekniskfeil": "Teknisk feil",
   "felter.typefeil.feilinformasjon": "Feil informasjon",
-  "felter.typefeil.uu": "Feil på siden ved bruk av hjelpemiddelteknologi",
+  "felter.typefeil.uu": "Feil på siden ved bruk av skjermleser eller annet hjelpemiddel",
   "felter.melding.tittel": "Din tilbakemelding",
   "felter.melding.beskrivelse":
-    `Unngå sensitive personopplysninger, som for eksempel opplysninger om helseforhold eller diagnoser. Du kan ikke spørre om status i saken din, da må du logge inn og sjekke på Ditt NAV under <a href="${Config.urls.tilbakemeldinger.serviceklage.saksoversikt}" class="lenke">Dine saker</a>. Finner du ikke svaret, kan du sjekke <a href="${Config.urls.tilbakemeldinger.serviceklage.saksbehandlingstider}" class="lenke">saksbehandlingstider</a> eller ta kontakt i <a href="${Config.urls.skrivTilOss.forside}" class="lenke">Skriv til oss</a>.`,
+    "Unngå sensitive personopplysninger, som for eksempel opplysninger om helseforhold eller diagnoser. " +
+    "Du kan ikke spørre om status i saken din, da må du logge inn og sjekke på Ditt NAV under " +
+    "<a href=\"{saksoversikt}\" class=\"lenke\">Dine saker</a>. " +
+    "Finner du ikke svaret, kan du sjekke <a href=\"{saksbehandlingstider}\" class=\"lenke\">saksbehandlingstider</a> " +
+    "eller ta kontakt i <a href=\"{skrivtiloss}\" class=\"lenke\">Skriv til oss</a>.",
   "felter.noegikkgalt": "Oi! Noe gikk galt:",
   "felter.send": "Send",
   "felter.tilbake": "Tilbake",
@@ -314,9 +336,9 @@ export default {
   "felter.fullmakt": "Har du fullmakt?",
   "felter.fullmakt.ja": "Ja, jeg har fullmakt",
   "felter.fullmakt.nei": "Nei, jeg har ikke fullmakt",
-  "felter.fullmakt.advarsel": `
-        Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder.
-        <a href="${urls.tilbakemeldinger.serviceklage.fullmaktskjema}" target="_blank">Gå til fullmaktskjema</a>.`,
+  "felter.fullmakt.advarsel":
+    "Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder. " +
+    "<a href=\"{fullmaktskjema}\" target=\"_blank\">Gå til fullmaktskjema</a>.",
   "felter.orgnavn": "Organisasjonsnavn",
   "felter.orgnr": "Organisasjonsnummer (til din lokale enhet)",
   "felter.postadr": "Bedriftens postadresse",
@@ -327,21 +349,15 @@ export default {
   "felter.gjeldersosialhjelp.nei": "Nei",
   "felter.gjeldersosialhjelp.vetikke": "Vet ikke",
 
-  "seo.kontaktoss.tittel": "Kontakt oss - www.nav.no",
   "seo.kontaktoss.description":
     "Kontakt NAV via chat, skriv til oss, telefon eller sosiale medier. Finn ditt NAV-kontor, kontakt tolketjenesten," +
     " send klage eller tilbakemelding.",
-  "seo.tilbakemeldinger.tittel": "Tilbakemelding til NAV - www.nav.no",
   "seo.tilbakemeldinger.description":
     "Her kan du gi tilbakemelding til NAV, klage eller anke på vedtak, service og melde fra om feil og mangler på" +
     " nav.no. Du kan også gi oss ros om våre tjenester og medarbeidere.",
-  "seo.rostilnav.tittel": "Ros til NAV - www.nav.no",
   "seo.rostilnav.description":
     "Har du en god opplevelse? Vil du rose en medarbeider, eller er det noe annet positivt du vil dele med NAV?",
-  "seo.feilogmangler.tittel": "Feil og mangler - www.nav.no",
   "seo.feilogmangler.description": "Meld fra om feil og mangler på nav.no",
-  "seo.klagepaservice.login.tittel": "Logg inn - Klage på service - www.nav.no",
-  "seo.klagepaservice.tittel": "Klage på service - www.nav.no",
   "seo.klagepaservice.description":
     "Send klage på service hos NAV. Hva gjelder tilbakemeldingen og hvem skriver du på vegne av?",
 

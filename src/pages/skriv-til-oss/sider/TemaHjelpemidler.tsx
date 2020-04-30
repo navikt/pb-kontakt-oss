@@ -1,30 +1,19 @@
 import React from "react";
-import { useIntl } from "react-intl";
-import MetaTags from "react-meta-tags";
 import SkrivTilOssBase from "../SkrivTilOssBase";
 import { hjelpemidlerLenkepaneler } from "../skrivTilOssTemaLenker";
-
-const Ingress = () => {
-  const intl = useIntl();
-  return (
-    <MetaTags>
-      <title>{intl.messages["skrivtiloss.hjelpemidler.mellomside.tittel"]}</title>
-      <meta
-        name="description"
-        content={
-          intl.messages["skrivtiloss.hjelpemidler.description"] as string
-        }
-      />
-    </MetaTags>
-  );
-};
+import { MetaTags } from "../../../components/metatags/MetaTags";
+import { paths } from "../../../Config";
 
 const TemaHjelpemidler = () => (
   <SkrivTilOssBase
     tittelId={"skrivtiloss.hjelpemidler.mellomside.tittel"}
     lenkepanelData={hjelpemidlerLenkepaneler}
   >
-    <Ingress />
+    <MetaTags
+      titleId={"skrivtiloss.hjelpemidler.mellomside.tittel"}
+      descriptionId={"skrivtiloss.hjelpemidler.description"}
+      path={paths.skrivTilOss.hjelpemidler}
+    />
   </SkrivTilOssBase>
 );
 

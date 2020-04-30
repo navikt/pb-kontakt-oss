@@ -1,40 +1,97 @@
 import Environment from "./Environments";
+import { useStore } from "./providers/Provider";
+import { localePath } from "./utils/locale";
+
 export const forsidePath = "/person/kontakt-oss";
 const { tjenesteUrl, baseAppPath } = Environment();
 const navUrl = Environment().baseUrl;
 
-export const urls = {
+export const useLocalePaths = () => {
+  const [{ locale }] = useStore();
+  const locPath = (path: string) => localePath(path, locale);
+
+  // TODO: få dette til å virke med type-checks
+  // type ObjType = {[key: string]: object | string};
+  //
+  // const setLocalePaths = (paths: ObjType): ObjType =>
+  //   Object.entries(paths).reduce((acc, [key, value]) =>
+  //     ({...acc, key: typeof value === "object" ? setLocalePaths(value as ObjType) : locPath(value)}), {});
+  //
+  // return setLocalePaths(paths);
+
+  return {
+    baseAppPath: `${paths.baseAppPath}/${locale}`,
+    chat: {
+      forside: locPath(paths.chat.forside),
+      arbeidsgiver: locPath(paths.chat.arbeidsgiver),
+      jobbsoker: locPath(paths.chat.jobbsoker),
+      syk: locPath(paths.chat.syk),
+      familie: locPath(paths.chat.familie),
+      ufor: locPath(paths.chat.ufor),
+      sosialhjelp: locPath(paths.chat.sosialhjelp),
+      okonomi: locPath(paths.chat.okonomi),
+      eures: locPath(paths.chat.eures),
+    },
+    skrivTilOss: {
+      forside: locPath(paths.skrivTilOss.forside),
+      hjelpemidler: locPath(paths.skrivTilOss.hjelpemidler),
+    },
+    finnDittNavKontorUinnlogget: locPath(paths.finnDittNavKontorUinnlogget),
+    tilbakemeldinger: {
+      forside: locPath(paths.tilbakemeldinger.forside),
+      serviceklage: {
+        form: locPath(paths.tilbakemeldinger.serviceklage.form),
+        login: locPath(paths.tilbakemeldinger.serviceklage.login),
+      },
+      feilogmangler: locPath(paths.tilbakemeldinger.feilogmangler),
+      rostilnav: locPath(paths.tilbakemeldinger.rostilnav)
+    },
+    samegiella: {
+      base: locPath(paths.samegiella.base),
+      samtale: locPath(paths.samegiella.samtale)
+    }
+  };
+};
+
+export const paths = {
   baseAppPath: baseAppPath,
   chat: {
-    forside: `${baseAppPath}/chat`,
-    arbeidsgiver: {
-      temaside: `${baseAppPath}/chat/arbeidsgiver`
-    },
-    jobbsoker: {
-      temaside: `${baseAppPath}/chat/jobbsoker`
-    },
-    syk: {
-      temaside: `${baseAppPath}/chat/syk`
-    },
-    familie: {
-      temaside: `${baseAppPath}/chat/familie`
-    },
-    ufor: {
-      temaside: `${baseAppPath}/chat/ufor`
-    },
-    sosialhjelp: {
-      temaside: `${baseAppPath}/chat/sosialhjelp`
-    },
-    okonomi: {
-      temaside: `${baseAppPath}/chat/okonomi`
-    },
-    eures: {
-      temaside: `${baseAppPath}/chat/eures`,
-      chat:
-        "https://ec.europa.eu/eures/main.jsp?acro=eures&lang=no&catId=10821&parentCategory=10821"
-    }
+    forside: "/chat",
+    arbeidsgiver: "/chat/arbeidsgiver",
+    jobbsoker: "/chat/jobbsoker",
+    syk: "/chat/syk",
+    familie: "/chat/familie",
+    ufor: "/chat/ufor",
+    sosialhjelp: "/chat/sosialhjelp",
+    okonomi: "/chat/okonomi",
+    eures: "/chat/eures"
   },
-  ringOss: `${navUrl}/no/nav-og-samfunn/kontakt-nav/kontakt-nav-pa-telefon2`,
+  skrivTilOss: {
+    forside: "/skriv-til-oss",
+    hjelpemidler: "/skriv-til-oss/hjelpemidler",
+  },
+  finnDittNavKontorUinnlogget: "/finnkontor",
+  tilbakemeldinger: {
+    forside: "/tilbakemeldinger",
+    serviceklage: {
+      form: "/tilbakemeldinger/serviceklage",
+      login: "/tilbakemeldinger/serviceklage/login",
+    },
+    feilogmangler: "/tilbakemeldinger/feil-og-mangler",
+    rostilnav: "/tilbakemeldinger/ros-til-nav"
+  },
+  samegiella: {
+    base: "/samegiella",
+    samtale: "/samegiella/bestilling-av-samtale"
+  }
+};
+
+export const urls = {
+  chatEures: "https://ec.europa.eu/eures/main.jsp?acro=eures&lang=no&catId=10821&parentCategory=10821",
+  ringOss: {
+    nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/kontakt-nav-pa-telefon2`,
+    en: `${navUrl}/en/home/about-nav/contact-us`
+  },
   faqDefault: {
     utbetalingsoversikt: `${tjenesteUrl}/utbetalingsoversikt/`,
     saksoversikt: `${tjenesteUrl}/saksoversikt/`,
@@ -45,14 +102,13 @@ export const urls = {
   },
   kontaktVeileder: `${navUrl}/arbeid/dialog`,
   skrivTilOss: {
-    forside: `${baseAppPath}/skriv-til-oss`,
     jobbsoker: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ARBD`,
     syk: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ARBD`,
     familieogbarn: `${tjenesteUrl}/mininnboks/sporsmal/skriv/FMLI`,
     ufor: `${tjenesteUrl}/mininnboks/sporsmal/skriv/UFRT`,
     pensjonist: `${tjenesteUrl}/mininnboks/sporsmal/skriv/PENS`,
     sosialhjelp: `${tjenesteUrl}/mininnboks/sporsmal/skriv/OKSOS`,
-    hjelpemidler: `${baseAppPath}/skriv-til-oss/hjelpemidler`,
+    hjelpemidler: "/skriv-til-oss/hjelpemidler",
     temaHjelpemidler: {
       generelt: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HJLPM`,
       ortopediske: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ORT_HJE`,
@@ -66,31 +122,36 @@ export const urls = {
   finnNavKontor: {
     finnDittNavKontor: `${navUrl}/person/personopplysninger#ditt-nav-kontor`,
     finnDinHjelpemiddelsentral: `${navUrl}/no/person/hjelpemidler/tjenester-og-produkter/hjelpemidler/kontakt-hjelpemiddelsentralen`,
-    finnDittNavKontorUinnlogget: `${baseAppPath}/finnkontor`,
     navKontorUrlPrefix: `https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/`,
   },
   tolkeTjenesten: {
     tolketjenesten: `${navUrl}/no/person/hjelpemidler/tjenester-og-produkter/tolketjenesten`,
-    spraktolk: `${navUrl}/no/person/arbeid/oppfolging-og-tiltak-for-a-komme-i-jobb/oppfolging-fra-nav/trenger-du-språktolk`,
+    spraktolk: {
+      nb: `${navUrl}/no/person/arbeid/oppfolging-og-tiltak-for-a-komme-i-jobb/oppfolging-fra-nav/trenger-du-språktolk`,
+      en: `${navUrl}/en/home/benefits-and-services/relatert-informasjon/do-you-need-an-interpreter`
+    },
   },
   tilbakemeldinger: {
-    forside: `${baseAppPath}/tilbakemeldinger`,
-    klagepavedtak: `${navUrl}/soknader/nb/klage`,
-    klagerettigheter: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
+    klagepavedtak: {
+      nb: `${navUrl}/soknader/nb/klage`,
+      en: `${navUrl}/soknader/en/klage/person`
+    },
+    klagerettigheter: {
+      nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
+      en: `${navUrl}/en/home/rules-and-regulations/appeals`
+    },
     serviceklage: {
-      form: `${baseAppPath}/tilbakemeldinger/serviceklage`,
-      login: `${baseAppPath}/tilbakemeldinger/serviceklage/login`,
+      dittNav: `${navUrl}/person/dittnav`,
       fullmaktskjema: `${navUrl}/soknader/nb/person/diverse/fullmaktskjema`,
       saksbehandlingstider: `${navUrl}/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav`,
-      saksoversikt: `${tjenesteUrl}/saksoversikt/`
+      saksoversikt: {
+        nb: `${tjenesteUrl}/saksoversikt/?lang=nb`,
+        en: `${tjenesteUrl}/saksoversikt/?lang=en`
+      }
     },
-    feilogmangler: `${baseAppPath}/tilbakemeldinger/feil-og-mangler`,
-    rostilnav: `${baseAppPath}/tilbakemeldinger/ros-til-nav`
   },
   samegiella: {
-    base: `${baseAppPath}/samegiella`,
     redirect: `${navUrl}/se/Samegiella`,
-    samtale: `${baseAppPath}/samegiella/bestilling-av-samtale`
   },
   tekniskBrukerstotte: {
     selvhjelp: `${navUrl}/no/nav-og-samfunn/kontakt-nav/teknisk-brukerstotte/hjelp-til-personbruker`,
@@ -103,7 +164,10 @@ export const urls = {
   // Midlertidige url'er
   //
   koronaVarsel: `${navUrl}/person/koronaveiviser`,
-  koronaVarselDialog: `${navUrl}/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset`
+  koronaVarselDialog: {
+    nb: `${navUrl}/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset`,
+    en: `${navUrl}/en/home/useful-information/contacting-nav-about-the-coronavirus-covid-19`
+}
 };
 
 export const vars = {
@@ -114,6 +178,8 @@ export const vars = {
 
 export default {
   urls,
+  paths,
   vars,
-  forsidePath
+  forsidePath,
+  useLocalePaths
 };

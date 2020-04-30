@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Knapp } from "nav-frontend-knapper";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { postSamiskBestillSamtale } from "clients/apiClient";
 import { HTTPError } from "components/error/Error";
 import { AlertStripeFeil } from "nav-frontend-alertstriper";
@@ -15,10 +15,10 @@ import { sjekkForFeil } from "utils/validators";
 import { FormattedMessage } from "react-intl";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import VeilederIcon from "assets/Veileder.svg";
-import BreadcrumbsWrapper from "../../../components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "../../../components/topp-linje/ToppLinje";
 import { useStore } from "../../../providers/Provider";
 
-type TIDSROM = "FORMIDDAG" | "FORMIDDAG" | "BEGGE";
+type TIDSROM = "FORMIDDAG" | "ETTERMIDDAG" | "BEGGE";
 export interface OutboundBestillingAvSamtale {
   fornavn: string;
   etternavn: string;
@@ -26,7 +26,7 @@ export interface OutboundBestillingAvSamtale {
   tidsrom: TIDSROM;
 }
 
-const BAS = (props: RouteComponentProps) => {
+const BAS = () => {
   document.title = "Bestilling av samtale - www.nav.no";
   const [{ kontaktInfo }] = useStore();
   const [loading, settLoading] = useState(false);
@@ -91,7 +91,7 @@ const BAS = (props: RouteComponentProps) => {
 
   return (
     <div className="pagecontent">
-      <BreadcrumbsWrapper />
+      <Topplinje />
       <div className="bestilling-av-samtale__header">
         <div className="bestilling-av-samtale__tittel">
           <Sidetittel>

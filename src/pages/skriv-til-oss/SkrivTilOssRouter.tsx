@@ -1,28 +1,33 @@
 import React from "react";
 import { Route, Switch } from "react-router";
-import { urls } from "../../Config";
+import { paths } from "../../Config";
 
 import SkrivTilOssForside from "./sider/SkrivTilOssForside";
 import TemaHjelpemidler from "./sider/TemaHjelpemidler";
 import NotFound from "../404/404";
+import { localePath, validLocales } from "../../utils/locale";
 
 const SkrivTilOssRouter = () => {
   return (
     <Switch>
-      <Route
-        exact={true}
-        path={urls.skrivTilOss.forside}
-      >
-        <SkrivTilOssForside />
-      </Route>
-      <Route
-        exact={true}
-        path={urls.skrivTilOss.hjelpemidler}
-      >
-        <TemaHjelpemidler />
-      </Route>
+      {validLocales.flatMap(locale => [
+        (
+          <Route
+            exact={true}
+            path={localePath(paths.skrivTilOss.forside, locale)}
+            component={SkrivTilOssForside}
+          />
+        ),
+        (
+          <Route
+            exact={true}
+            path={localePath(paths.skrivTilOss.hjelpemidler, locale)}
+            component={TemaHjelpemidler}
+          />
+        )
+      ])}
       <Route>
-        <NotFound/>
+        <NotFound />
       </Route>
     </Switch>
   );

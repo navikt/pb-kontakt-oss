@@ -1,0 +1,32 @@
+
+.sprakvelger {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap;
+
+  &__select {
+    width: 200px;
+  }
+
+  &__placeholder {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__chevron {
+    margin-right: 0.5rem;
+  }
+
+  &__ikon {
+    width: 20px;
+    height: 20px;
+    filter: invert(50%);
+    margin-right: 0.5em;
+  }
+
+  @media (max-width: @screen-tablet) {
+    margin-top: 1rem;
+  }
+}

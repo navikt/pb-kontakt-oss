@@ -1,7 +1,7 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 
-import { urls } from "../../../Config";
+import { useLocalePaths, urls } from "../../../Config";
 import IkonPanel from "../../../components/ikonpanel/IkonPanel";
 import RouterLenke from "../../../components/routerlenke/RouterLenkeMedChevron";
 
@@ -18,7 +18,7 @@ const FeilOgMangler = () => {
         <FormattedMessage id={"kontaktoss.tekniskfeil.link.losselv"} />
       </RouterLenke>
       <RouterLenke
-        href={urls.tilbakemeldinger.feilogmangler}
+        href={useLocalePaths().tilbakemeldinger.feilogmangler}
         className={"lenke__avstand-under"}
       >
         <FormattedMessage id={"kontaktoss.tekniskfeil.link.meldifra"} />

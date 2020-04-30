@@ -1,5 +1,5 @@
-import { LenkePanel, LocaleBlock, Page } from "../serializers";
 import { ChatTema, STOTema } from "../../../types/kanaler";
+import { LocaleBlock, LocaleString, Page } from "../common-types";
 
 export type ThemeProps = {
   _id?: string;
@@ -17,6 +17,11 @@ export type Themes = {
 };
 
 export type ThemeList = { [key in ChatTema | STOTema]: ThemeProps };
+
+type LenkePanel = {
+  description: LocaleBlock;
+  title: LocaleString;
+};
 
 export const temaToSanityId = {
   [ChatTema.Arbeidsgiver]: "chat-med-oss-arbeidsgiver",

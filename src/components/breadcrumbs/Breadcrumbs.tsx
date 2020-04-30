@@ -1,16 +1,15 @@
 import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Link } from "react-router-dom";
-
 import { HoyreChevron } from "nav-frontend-chevron";
 import { Normaltekst } from "nav-frontend-typografi";
 import Lenke from "nav-frontend-lenker";
+import HjemIkon from "assets/icons/line/home-1-line.svg";
 
 type BreadcrumbsProps = {
   currentPath: string;
   basePath: string;
   baseLenker?: Array<BreadcrumbLenke>;
-  ikonUrl?: string;
 };
 
 type SegmentProps = {
@@ -67,12 +66,12 @@ const SegmentNode = ({lenke, isCurrentPath}: SegmentProps) => {
   );
 };
 
-const Breadcrumbs = ({currentPath, basePath, baseLenker = [], ikonUrl}: BreadcrumbsProps) => {
+const Breadcrumbs = ({currentPath, basePath, baseLenker = []}: BreadcrumbsProps) => {
   const lenker = baseLenker.concat(getSegmentLenker(currentPath, basePath));
 
   return (
     <div className={cssPrefix}>
-      {ikonUrl && <img src={ikonUrl} alt="" className={`${cssPrefix}__ikon`} />}
+      <img src={HjemIkon} alt="" className={`${cssPrefix}__ikon`} />
       {lenker.map((lenke: BreadcrumbLenke, index: number) => (
         <SegmentNode
           lenke={lenke}

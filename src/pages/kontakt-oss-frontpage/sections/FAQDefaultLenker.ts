@@ -1,36 +1,34 @@
 import { urls } from "../../../Config";
-import { FAQLenke } from "../../../utils/sanity/endpoints/faq";
-import { Language } from "../../../utils/sanity/serializers";
 
-export const lenkerFAQDefault: FAQLenke[] = [
+export const lenkerFAQDefault = [
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.utbetalingsoversikt},
-    tittel: {[Language.Bokmaal]: "faq.utbetalingsoversikt"},
+    lenke: urls.faqDefault.utbetalingsoversikt,
+    tekst: "faq.utbetalingsoversikt",
     priority: 0
   },
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.saksoversikt},
-    tittel: {[Language.Bokmaal]: "faq.saksoversikt"},
+    lenke: urls.faqDefault.saksoversikt,
+    tekst: "faq.saksoversikt",
     priority: 0
   },
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.utbetalinger},
-    tittel: {[Language.Bokmaal]: "faq.nesteutbetaling"},
+    lenke: urls.faqDefault.utbetalinger,
+    tekst: "faq.nesteutbetaling",
     priority: 0
   },
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.saksbehandlingstider},
-    tittel: {[Language.Bokmaal]: "faq.saksbehandlingstider"},
+    lenke: urls.faqDefault.saksbehandlingstider,
+    tekst: "faq.saksbehandlingstider",
     priority: 0
   },
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.endreKontonummer},
-    tittel: {[Language.Bokmaal]: "faq.endrekontonummer"},
+    lenke: urls.faqDefault.endreKontonummer,
+    tekst: "faq.endrekontonummer",
     priority: 0
   },
   {
-    lenke: {[Language.Bokmaal]: urls.faqDefault.postTilAnnenAdresse},
-    tittel: {[Language.Bokmaal]: "faq.posttilannenadresse"},
+    lenke: urls.faqDefault.postTilAnnenAdresse,
+    tekst: "faq.posttilannenadresse",
     priority: 0
-  },
+  }
 ];

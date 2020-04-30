@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Sidetittel } from "nav-frontend-typografi";
-import { FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import TemaLenkepanel from "../../components/lenkepanel/TemaLenkepanel";
-import BreadcrumbsWrapper from "../../components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "../../components/topp-linje/ToppLinje";
 import { Kanal, TemaLenke } from "../../types/kanaler";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
 import { useStore } from "../../providers/Provider";
-import { SanityVarsel } from "../../components/varsler/SanityVarsel";
+import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
+import { Varsel } from "../../components/varsler/Varsel";
 
 const cssPrefix = "skriv-til-oss";
 
@@ -18,13 +19,6 @@ type Props = {
 };
 
 const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
-  const documentTitle = `${useIntl().formatMessage({
-    id: tittelId
-  })} - www.nav.no`;
-  useEffect(() => {
-    document.title = documentTitle;
-  }, [documentTitle]);
-
   const [{ channels }] = useStore();
   const stoProps = channels.props[Kanal.SkrivTilOss];
   const isClosed = stoProps.status && stoProps.status.closed;
@@ -32,7 +26,7 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
-      <BreadcrumbsWrapper />
+      <Topplinje />
       <div className={`${cssPrefix}__header`}>
         <Sidetittel>
           <FormattedMessage id={tittelId} />
@@ -43,7 +37,13 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
           <div className={`${cssPrefix}__ingress`}>
             {children}
             <VarselVisning kanal={Kanal.SkrivTilOss}>
-              {isClosed && closedMsg ? <SanityVarsel localeBlock={closedMsg} type={"info"}/> : undefined}
+              <>
+                {isClosed && (
+                  <Varsel type={"info"}>
+                    <LocaleBlockContent localeBlock={closedMsg}/>
+                  </Varsel>
+                )}
+              </>
             </VarselVisning>
           </div>
           {!isClosed && (

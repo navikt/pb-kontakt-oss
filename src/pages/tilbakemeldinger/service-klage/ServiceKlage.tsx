@@ -16,11 +16,10 @@ import {
   OutboundServiceKlageExtend
 } from "types/serviceklage";
 import Header from "components/header/Header";
-import { urls } from "Config";
+import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import { Checkbox, Radio, SkjemaGruppe } from "nav-frontend-skjema";
 import { FormattedHTMLMessage, FormattedMessage, useIntl } from "react-intl";
-import MetaTags from "react-meta-tags";
 import ServiceKlagePrivatperson from "./ServiceKlagePrivatperson";
 import ServiceKlageForAnnenPerson from "./ServiceKlageAnnenPerson";
 import ServiceKlageForBedrift from "./ServiceKlageBedrift";
@@ -29,8 +28,9 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
 import ServiceKlageOnskerAaKontaktes from "./ServiceKlageOnskerAaKontaktes";
-import BreadcrumbsWrapper from "../../../components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "../../../components/topp-linje/ToppLinje";
 import ServiceKlageTypeUtdypning from "./ServiceKlageTypeUtdypning";
+import { MetaTags } from "../../../components/metatags/MetaTags";
 
 export type OutboundServiceKlage = OutboundServiceKlageBase &
   OutboundServiceKlageExtend;
@@ -41,6 +41,7 @@ const ServiceKlage = () => {
   const [success, settSuccess] = useState(false);
   const [error, settError] = useState();
   const intl = useIntl();
+  const paths = useLocalePaths();
 
   const baseFormConfig = {
     klagetyper: {
@@ -145,19 +146,17 @@ const ServiceKlage = () => {
   };
 
   const tilbakeTil = auth.authenticated
-    ? urls.tilbakemeldinger.forside
-    : urls.tilbakemeldinger.serviceklage.login;
+    ? paths.tilbakemeldinger.forside
+    : paths.tilbakemeldinger.serviceklage.login;
 
   return (
     <div className="pagecontent">
-      <BreadcrumbsWrapper />
-      <MetaTags>
-        <title>{intl.messages["seo.klagepaservice.tittel"]}</title>
-        <meta
-          name="description"
-          content={intl.messages["seo.klagepaservice.description"] as string}
-        />
-      </MetaTags>
+      <Topplinje />
+      <MetaTags
+        titleId={"tilbakemeldinger.serviceklage.form.tittel"}
+        descriptionId={"seo.klagepaservice.description"}
+        path={paths.tilbakemeldinger.serviceklage.form}
+      />
       <Header
         title={intl.formatMessage({
           id: "tilbakemeldinger.serviceklage.form.tittel"

@@ -11,16 +11,16 @@ import NavFrontendSpinner from "nav-frontend-spinner";
 import { FormContext, Form, Validation } from "calidation";
 import { ValueType } from "react-select/src/types";
 import Header from "components/header/Header";
-import { urls } from "Config";
+import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import { Radio, SkjemaGruppe } from "nav-frontend-skjema";
-import MetaTags from "react-meta-tags";
 import { FormattedHTMLMessage, FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
-import BreadcrumbsWrapper from "components/breadcrumbs/BreadcrumbsWrapper";
+import Topplinje from "components/topp-linje/ToppLinje";
 import SelectEnhet from "components/input-fields/SelectEnhet";
+import { MetaTags } from "../../../components/metatags/MetaTags";
 
 type HVEM_ROSES = "NAV_KONTAKTSENTER" | "NAV_DIGITALE_TJENESTER" | "NAV_KONTOR";
 
@@ -39,6 +39,7 @@ const Ros = () => {
   const [success, settSuccess] = useState(false);
   const [error, settError] = useState();
   const intl = useIntl();
+  const paths = useLocalePaths();
 
   const formConfig = {
     navn: {},
@@ -108,14 +109,12 @@ const Ros = () => {
   };
   return (
     <div className="pagecontent">
-      <BreadcrumbsWrapper />
-      <MetaTags>
-        <title>{intl.messages["seo.rostilnav.tittel"]}</title>
-        <meta
-          name="description"
-          content={intl.messages["seo.rostilnav.description"] as string}
-        />
-      </MetaTags>
+      <Topplinje />
+      <MetaTags
+        titleId={"tilbakemeldinger.ros.tittel"}
+        descriptionId={"seo.rostilnav.description"}
+        path={paths.tilbakemeldinger.rostilnav}
+      />
       <Header
         title={intl.formatMessage({ id: "tilbakemeldinger.ros.form.tittel" })}
       />
@@ -221,7 +220,7 @@ const Ros = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link to={urls.tilbakemeldinger.forside}>
+                        <Link to={paths.tilbakemeldinger.forside}>
                           <Knapp type={"flat"}>
                             <FormattedMessage id={"felter.tilbake"} />
                           </Knapp>

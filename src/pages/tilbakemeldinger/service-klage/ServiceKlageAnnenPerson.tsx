@@ -6,6 +6,7 @@ import InputField from "components/input-fields/InputField";
 import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import { sjekkForFeil } from "utils/validators";
 import { Radio, SkjemaGruppe } from "nav-frontend-skjema";
+import { urls } from "../../../Config";
 
 const ServiceKlageForAnnenPerson = () => {
   const intl = useIntl();
@@ -100,7 +101,12 @@ const ServiceKlageForAnnenPerson = () => {
               />
               {fields.innmelderHarFullmakt === false && (
                 <AlertStripeAdvarsel>
-                  <FormattedHTMLMessage id={"felter.fullmakt.advarsel"} />
+                  <FormattedHTMLMessage
+                    id={"felter.fullmakt.advarsel"}
+                    values={
+                      { fullmaktskjema: urls.tilbakemeldinger.serviceklage.fullmaktskjema }
+                    }
+                  />
                 </AlertStripeAdvarsel>
               )}
             </SkjemaGruppe>

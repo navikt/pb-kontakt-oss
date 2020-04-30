@@ -1,5 +1,6 @@
 import { forsidePath } from "../Config";
 import { Action } from "../providers/Store";
+import { logEvent } from "./logger";
 
 export type Locale = "nb" | "en";
 export const validLocales: Locale[] = ["nb", "en"];  // :(
@@ -28,6 +29,7 @@ export const setLocaleFromUrl = (dispatch: (action: Action) => void) => {
     .split("/")[1];
 
   if (isLocale(localeFromUrl)) {
+    logEvent({ event: `pageview-${localeFromUrl}` });
     dispatch({ type: "SETT_LOCALE", payload: localeFromUrl });
   }
 };

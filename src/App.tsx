@@ -34,14 +34,11 @@ import { Alert } from "./utils/sanity/endpoints/alert";
 import { ChannelList, ChannelProps, createCompleteChannelList } from "./utils/sanity/endpoints/channels";
 import { createCompleteThemeList, ThemeList, ThemeProps } from "./utils/sanity/endpoints/themes";
 import { defaultLocale, localePath, validLocales } from "./utils/locale";
-import { logEvent } from "./utils/logger";
 
 const App = () => {
-  const [{ auth, locale }, dispatch] = useStore();
+  const [{ auth }, dispatch] = useStore();
 
   useEffect(() => {
-    logEvent({ event: `pageview-${locale}` });
-
     if (!auth.authenticated) {
       fetchAuthInfo()
         .then((authInfo: AuthInfo) => {

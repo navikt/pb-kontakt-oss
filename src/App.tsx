@@ -1,13 +1,19 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Tilbakemeldinger from "./pages/tilbakemeldinger/Tilbakemeldinger";
 import Ros from "./pages/tilbakemeldinger/ros-til-nav/Ros";
 import PageNotFound from "./pages/404/404";
 import FeilOgMangler from "./pages/tilbakemeldinger/feil-og-mangler/FeilOgMangler";
 import {
+  fetchAlerts,
   fetchAuthInfo,
+  fetchChannelInfo,
+  fetchFaq,
+  fetchFodselsnr,
   fetchKontaktInfo,
-  fetchFodselsnr, fetchAlerts, fetchFaq, fetchChannelInfo, timeoutPromise, fetchThemes, fetchTimeoutMs
+  fetchThemes,
+  fetchTimeoutMs,
+  timeoutPromise
 } from "./clients/apiClient";
 import { useStore } from "./providers/Provider";
 import { AuthInfo } from "./types/authInfo";
@@ -20,19 +26,22 @@ import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import KontaktOssFrontpage from "./pages/kontakt-oss-frontpage/KontaktOss";
 import SkrivTilOssRouter from "./pages/skriv-til-oss/SkrivTilOssRouter";
 import BestillingAvSamtale from "./pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
-import { forsidePath, urls, paths } from "./Config";
+import { forsidePath, paths, urls } from "./Config";
 import ChatRouter from "./pages/chat/ChatRouter";
 import FinnNavKontorPage from "./pages/finn-nav-kontor/FinnNavKontorPage";
 import { FAQLenke } from "./utils/sanity/endpoints/faq";
 import { Alert } from "./utils/sanity/endpoints/alert";
-import { ChannelProps, ChannelList, createCompleteChannelList } from "./utils/sanity/endpoints/channels";
+import { ChannelList, ChannelProps, createCompleteChannelList } from "./utils/sanity/endpoints/channels";
 import { createCompleteThemeList, ThemeList, ThemeProps } from "./utils/sanity/endpoints/themes";
 import { defaultLocale, localePath, validLocales } from "./utils/locale";
+import { logEvent } from "./utils/logger";
 
 const App = () => {
-  const [{ auth }, dispatch] = useStore();
+  const [{ auth, locale }, dispatch] = useStore();
 
   useEffect(() => {
+    logEvent({ event: `pageview-${locale}` });
+
     if (!auth.authenticated) {
       fetchAuthInfo()
         .then((authInfo: AuthInfo) => {

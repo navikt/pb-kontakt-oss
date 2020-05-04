@@ -9,174 +9,28 @@ const avvikAlle: AvviksPeriode = {
   }
 };
 
+const apningstiderHverdag = {
+  start: "09.00",
+  end: "14.30"
+};
+
+const apningstiderDefault = new ApningsTider({
+  [Ukedag.Mandag]: apningstiderHverdag,
+  [Ukedag.Tirsdag]: apningstiderHverdag,
+  [Ukedag.Onsdag]: apningstiderHverdag,
+  [Ukedag.Torsdag]: apningstiderHverdag,
+  [Ukedag.Fredag]: apningstiderHverdag,
+  [Ukedag.Lordag]: null,
+  [Ukedag.Sondag]: null
+}, [avvikAlle]);
+
 export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
-  [ChatTema.Arbeidsgiver]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Jobbsoker]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Syk]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Familie]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Ufor]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Sosial]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Onsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Torsdag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "09.00",
-      end: "14.30"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
-  [ChatTema.Okonomi]: new ApningsTider({
-    [Ukedag.Mandag]: {
-      start: "10.00",
-      end: "15.00"
-    },
-    [Ukedag.Tirsdag]: {
-      start: "10.00",
-      end: "15.00"
-    },
-    [Ukedag.Onsdag]: {
-      start: "10.00",
-      end: "15.00"
-    },
-    [Ukedag.Torsdag]: {
-      start: "10.00",
-      end: "14.30"
-    },
-    [Ukedag.Fredag]: {
-      start: "10.00",
-      end: "15.00"
-    },
-    [Ukedag.Lordag]: null,
-    [Ukedag.Sondag]: null
-  }, [avvikAlle]),
+  [ChatTema.Arbeidsgiver]: apningstiderDefault,
+  [ChatTema.Jobbsoker]: apningstiderDefault,
+  [ChatTema.Syk]: apningstiderDefault,
+  [ChatTema.Familie]: apningstiderDefault,
+  [ChatTema.Ufor]: apningstiderDefault,
+  [ChatTema.Sosial]: apningstiderDefault,
+  [ChatTema.Okonomi]: apningstiderDefault,
   [ChatTema.EURES]: null
 };

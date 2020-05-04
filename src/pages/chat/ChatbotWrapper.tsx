@@ -10,10 +10,6 @@ type Props = {
 
 const ChatbotWrapper = ({config, openChatTimestamp}: Props) => {
   useEffect(() => {
-    chatbotUtils.clearSessionData();
-  }, []);
-
-  useEffect(() => {
     if (openChatTimestamp) {
       chatbotUtils.apneChatbot();
     }

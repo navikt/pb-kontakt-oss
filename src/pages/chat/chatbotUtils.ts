@@ -1,8 +1,19 @@
-const openButtonClassname = "sc-eqIVtm";
+import { chatConfig } from "./data/chatConfig";
+
+const storageKeys = {
+  ...chatConfig.storageKeys,
+  temp: "temp-storage",
+};
+
+// TODO: finn denne ut fra styled-components algoritme som genererer classnames
+const getApneKnappClassName = () => {
+  return "sc-eqIVtm";
+};
 
 const getButtonFromClassname = (className: string, index = 0) => {
   const buttons = document.getElementsByClassName(className);
   const button = (buttons && buttons.length > index) && (buttons[index] as HTMLElement);
+
   return button;
 };
 
@@ -16,17 +27,28 @@ const getClickFunc = (className: string, index = 0) => {
   return null;
 };
 
-const apneChatbot = async () => {
-  const openFunc = getClickFunc(openButtonClassname);
+const getApneFunc = () => {
+  return getClickFunc(getApneKnappClassName());
+};
 
-  if (!openFunc) {
+const apneChatbot = async () => {
+  const apneFunc = getApneFunc();
+
+  if (!apneFunc) {
     return false;
   }
 
-  await openFunc();
+  await apneFunc();
   return true;
+};
+
+const clearSessionData = () => {
+  Object.entries(storageKeys).forEach(
+    ([_, storageKey]) => sessionStorage.removeItem(storageKey)
+  );
 };
 
 export default {
   apneChatbot,
+  clearSessionData,
 };

@@ -1,4 +1,5 @@
 import { ChatTema } from "../../../types/kanaler";
+import { gjeldChatbotLansert, uforChatbotLansert } from "./chatConfig";
 
 type ChatTemasideData = {
   [key in ChatTema]: {
@@ -32,7 +33,7 @@ export const chatTemaSideData: ChatTemasideData = {
     tittelId: "chat.ufor.tittel",
     metaTittelId: "chat.ufor.metatittel",
     grafanaId: "chat.start.ufor",
-    harChatbot: false
+    harChatbot: uforChatbotLansert
   },
   [ChatTema.Syk]: {
     tittelId: "chat.syk.tittel",
@@ -50,7 +51,7 @@ export const chatTemaSideData: ChatTemasideData = {
     tittelId: "chat.okonomi.tittel",
     metaTittelId: "chat.okonomi.metatittel",
     grafanaId: "chat.start.okonomi",
-    harChatbot: false
+    harChatbot: gjeldChatbotLansert
   },
   [ChatTema.EURES]: {
     tittelId: "chat.eures.tittel",

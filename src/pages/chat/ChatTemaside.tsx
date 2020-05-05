@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Systemtittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
-import ChatbotWrapper from "./ChatbotWrapper";
+import ChatbotTrigger from "./ChatbotTrigger";
 import { Hovedknapp } from "nav-frontend-knapper";
 import Config from "../../Config";
 import PanelBase from "nav-frontend-paneler";
@@ -121,7 +121,7 @@ const ChatTemaside = ({ chatTema, path }: Props) => {
         </PanelBase>
       </div>
       {chatClientConfig && (
-        <ChatbotWrapper
+        <ChatbotTrigger
           config={chatClientConfig}
           openChatTimestamp={chatButtonClickedTimestamp}
         />

@@ -7,11 +7,8 @@ export type ChatTemaConfig = {
   queueKey: string,
 };
 
-export const gjeldChatbotLansert = moment().isAfter(
-  moment("09:00 05-05-2020").format(vars.defaultDatoTidFormat));
-
 export const uforChatbotLansert = moment().isAfter(
-  moment("09:00 12-05-2020").format(vars.defaultDatoTidFormat));
+  moment("09:00 12-05-2020", vars.defaultDatoTidFormat));
 
 export const chatConfig = {
   customerKey: "41155",
@@ -52,14 +49,9 @@ export const chatConfig = {
       configId: "6564b567-b70b-48e1-b2c5-957c0bc624de",
       queueKey: "Q_CHAT_BOT"
     },
-    [ChatTema.Okonomi]: gjeldChatbotLansert
-      ? {
+    [ChatTema.Okonomi]: {
         configId: "599f9e7c-7f6b-4569-81a1-27202c419953",
         queueKey: "Q_CHAT_BOT"
-      }
-      : {
-        configId: "599f9e7c-7f6b-4569-81a1-27202c419953",
-        queueKey: "Q_CHAT_GJELDSRADGIVNING"
       },
     [ChatTema.EURES]: null
   }

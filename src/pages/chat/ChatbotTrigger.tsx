@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import NAVChatBot from "@navikt/nav-chatbot";
 import chatbotUtils from "./chatbotUtils";
 import { chatConfig, ChatTemaConfig } from "./data/chatConfig";
+import { ChatbotWrapper } from "../../components/chatbot-wrapper/ChatbotWrapper";
 
 type Props = {
   config: ChatTemaConfig;
   openChatTimestamp: number;
 };
 
-const ChatbotWrapper = ({config, openChatTimestamp}: Props) => {
+const ChatbotTrigger = ({config, openChatTimestamp}: Props) => {
   useEffect(() => {
     chatbotUtils.clearSessionData();
   }, []);
@@ -22,7 +22,7 @@ const ChatbotWrapper = ({config, openChatTimestamp}: Props) => {
   return (
     openChatTimestamp ?
     (
-      <NAVChatBot
+      <ChatbotWrapper
         configId={config.configId}
         queueKey={config.queueKey}
         customerKey={chatConfig.customerKey}
@@ -31,4 +31,4 @@ const ChatbotWrapper = ({config, openChatTimestamp}: Props) => {
   );
 };
 
-export default ChatbotWrapper;
+export default ChatbotTrigger;

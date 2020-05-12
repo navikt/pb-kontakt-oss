@@ -74,10 +74,10 @@ export default {
     "'Write to us' is a secure alternative to email.",
   "kontaktoss.skrivtiloss.knapp": "Write to us (login)",
 
-  "kontaktoss.kontaktveileder.tittel": "Contact your counsellor",
+  "kontaktoss.kontaktveileder.tittel": "Dialogue with your counsellor",
   "kontaktoss.kontaktveileder.beskrivelse":
     "You must be registered as a jobseeker to contact your counsellor.",
-  "kontaktoss.kontaktveileder.knapp": "Contact your counsellor (login)",
+  "kontaktoss.kontaktveileder.knapp": "Dialogue with your counsellor (login)",
 
   "kontaktoss.facebook.tittel": "Ask us on Facebook",
   "kontaktoss.facebook.foreldrepenger": "Parental benefit on Facebook (text in Norwegian)",

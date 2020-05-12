@@ -74,10 +74,10 @@ export default {
     "Send oss spørsmål eller nye opplysninger i saken din. 'Skriv til oss' er et sikkert alternativ til e-post.",
   "kontaktoss.skrivtiloss.knapp": "Skriv til oss (innlogget)",
 
-  "kontaktoss.kontaktveileder.tittel": "Kontakt din veileder",
+  "kontaktoss.kontaktveileder.tittel": "Dialog med veilederen din",
   "kontaktoss.kontaktveileder.beskrivelse":
     "Du må være registrert som arbeidssøker for å kontakte veilederen din.",
-  "kontaktoss.kontaktveileder.knapp": "Kontakt din veileder (innlogget)",
+  "kontaktoss.kontaktveileder.knapp": "Dialog med veilederen din (innlogget)",
 
   "kontaktoss.facebook.tittel": "Spør oss på Facebook",
   "kontaktoss.facebook.foreldrepenger": "Foreldrepenger på Facebook",

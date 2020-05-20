@@ -5,7 +5,6 @@ const storageKeys = {
   temp: "temp-storage",
 };
 
-// TODO: finn denne ut fra styled-components algoritme som genererer classnames
 const getApneKnappClassName = () => {
   return "sc-eqIVtm";
 };

@@ -1,6 +1,6 @@
 
 // Obs: Dette classname'et genereres av styledcomponents i chatbot'en
-// Denne er gyldig for chatbot v.1.2.1
+// Denne er gyldig for chatbot v.1.2.2
 const openButtonClassname = "sc-eqIVtm";
 
 const getButtonFromClassname = (className: string, index = 0) => {

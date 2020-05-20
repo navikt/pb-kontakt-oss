@@ -1,6 +1,6 @@
 {
   "name": "pb-kontakt-oss",
-  "version": "3.0.6",
+  "version": "3.0.9",
   "private": true,
   "author": "NAV",
   "license": "MIT",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
-    "@navikt/nav-chatbot": "^1.2.1",
+    "@navikt/nav-chatbot": "^1.2.2",
     "@sanity/block-content-to-react": "^2.0.7",
     "axios": "^0.19.0",
     "babel-polyfill": "^6.26.0",

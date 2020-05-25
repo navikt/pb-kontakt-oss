@@ -55,17 +55,17 @@ export const skrivTilOssLenkepaneler: TemaLenke[] = [
     externalUrl: true
   },
   {
-    tema: STOTema.Pensjon,
-    fallbackTittelId: "skrivtiloss.pensjonist.lenke.tittel",
-    grafanaId: "skrivtiloss.pensjonist",
-    url: urls.skrivTilOss.pensjonist,
-    externalUrl: true
-  },
-  {
     tema: STOTema.Sosial,
     fallbackTittelId: "skrivtiloss.sosial.lenke.tittel",
     grafanaId: "skrivtiloss.sosial",
     url: urls.skrivTilOss.sosialhjelp,
+    externalUrl: true
+  },
+  {
+    tema: STOTema.Pensjon,
+    fallbackTittelId: "skrivtiloss.pensjonist.lenke.tittel",
+    grafanaId: "skrivtiloss.pensjonist",
+    url: urls.skrivTilOss.pensjonist,
     externalUrl: true
   },
   {

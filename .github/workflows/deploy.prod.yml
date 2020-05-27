@@ -1,16 +1,20 @@
 name: Deploy-to-prod
 on:
   push:
-    branches:
-      - master
     tags:
-      - "v*"
-      - "!v*-test*"
+#      - "v*"
+      - "v*-test*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - run: git fetch --prune --unshallow
+      - name: Check if tag exists on master
+        run: |
+          if git branch -r --contains ${GITHUB_REF##*/} | grep master>/dev/null 2>&1
+          then echo "Tag ${GITHUB_REF##*/} verified on master";
+          else echo "Tag ${GITHUB_REF##*/} not found on master"; exit 1; fi
       - name: Define build environment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

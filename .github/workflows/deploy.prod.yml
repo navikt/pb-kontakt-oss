@@ -2,8 +2,8 @@ name: Deploy-to-prod
 on:
   push:
     tags:
-#      - "v*"
-      - "v*-test*"
+      - "v*"
+      - "!v*-test*"
 jobs:
   deploy:
     runs-on: ubuntu-latest

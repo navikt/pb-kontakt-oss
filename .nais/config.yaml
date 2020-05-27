@@ -2,23 +2,23 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: {{reponame}}
-  namespace: default
+  name: pb-kontakt-oss
+  namespace: {{namespace}}
   labels:
-    team: {{team}}
+    team: personbruker
 spec:
-  image: navikt/{{reponame}}:{{version}}
-  team: {{team}}
+  image: {{image}}:{{version}}
+  team: personbruker
   port: 8080
   ingresses:
-  {{#each ingresses }}
-    - {{ this }}
+  {{#each ingresses as |url|}}
+     - {{url}}
   {{/each}}
   liveness:
-    path: {{baseurl}}/internal/isAlive
+    path: /person/kontakt-oss/internal/isAlive
     initialDelay: 10
   readiness:
-    path: {{baseurl}}/internal/isReady
+    path: /person/kontakt-oss/internal/isReady
     initialDelay: 10
   replicas:
     min: 2

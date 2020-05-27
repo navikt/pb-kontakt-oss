@@ -2,7 +2,7 @@ name: Deploy-to-q6
 on:
   push:
     tags:
-      - "v*-test"
+      - "v*-test*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - name: Generate nais variables
         run: |
           cat > .nais/vars.yaml <<EOF
-          namespace: q1
+          namespace: q6
           ingresses:
             - https://kontakt-oss.nais.oera-q.local
             - https://www-q6.nav.no/person/kontakt-oss

@@ -8,7 +8,7 @@ export default {
     "Be aware that several NAV offices still have shorter opening hours due to the corona situation. You will find " +
     "information regarding this in the search result for your office. If you are in an emergency situation, you may " +
     "call and get an appointment at the NAV office. You may always contact NAV through digital channels.",
-  "varsel.koronavirus.navkontor.lenke": "Coronavirus - dialogue with NAV",
+  "varsel.koronavirus.navkontor.lenke": "Contacting NAV",
 
   //
   // Språk

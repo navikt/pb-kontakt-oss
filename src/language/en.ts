@@ -5,9 +5,9 @@ export default {
   "varsel.teknisk.feil": "We are currently experiencing technical difficulties with our back-end systems. This could result in some information missing from these pages.",
   "varsel.koronavirus": "Coronavirus - what applies in my situation",
   "varsel.koronavirus.navkontor":
-    "To prevent spread of the coronavirus, visits to NAV offices \n" +
-    "have been replaced with contact through digital channels. \n" +
-    "If you are in an emergency situation, you may call and get an appointment at the NAV office.",
+    "Be aware that several NAV offices still have shorter opening hours due to the corona situation. You will find " +
+    "information regarding this in the search result for your office. If you are in an emergency situation, you may " +
+    "call and get an appointment at the NAV office. You may always contact NAV through digital channels.",
   "varsel.koronavirus.navkontor.lenke": "Coronavirus - dialogue with NAV",
 
   //

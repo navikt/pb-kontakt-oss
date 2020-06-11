@@ -5,9 +5,9 @@ export default {
   "varsel.teknisk.feil": "Det er for øyeblikket tekniske problemer med baksystemene våre. Dette kan føre til at noe informasjon mangler fra sidene.",
   "varsel.koronavirus": "Koronavirus - hva gjelder i min situasjon",
   "varsel.koronavirus.navkontor":
-    "For å forhindre spredning av koronaviruset er besøk på\n" +
-    "NAV-kontoret nå erstattet med at du kan ta kontakt i digitale\n" +
-    "kanaler. Hvis du er i en krisesituasjon, kan du ringe og få en time hos NAV-kontoret.",
+    "Vær oppmerksom på at mange NAV-kontor fortsatt har redusert åpningstid på grunn av koronasituasjonen. " +
+    "Når du søker opp kontoret ditt finner du informasjon. Er du i en krisesituasjon, kan du ringe og få en time på " +
+    "NAV-kontoret. Du kan alltid ta kontakt med NAV i digitale kanaler.",
   "varsel.koronavirus.navkontor.lenke": "Koronavirus - dialog med NAV",
 
   //

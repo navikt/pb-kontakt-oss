@@ -44,9 +44,7 @@ const FinnNavKontorPage = () => {
       </div>
 
       <div className={"koronavarsel__container"}>
-        <Varsel
-          type={"advarsel"}
-        >
+        <Varsel type={"advarsel"}>
           <>
             <div className={"koronavarsel__description"}>
               <Normaltekst>

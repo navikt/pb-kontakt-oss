@@ -3,7 +3,7 @@ import RouterLenkeMedChevron from "../../../components/routerlenke/RouterLenkeMe
 import React from "react";
 
 const cssPrefix = "finn-kontor";
-const enhetsnrTilEnhetsinfo = require("../data/enhetsnr-til-enhetsinfo.json");
+export const enhetsnrTilEnhetsinfo = require("../data/enhetsnr-til-enhetsinfo.json") as EnhetsInfo[];
 
 type EnhetsInfo = {
   navn: string,
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const KontorLenke = ({enhetsnr, id}: Props) => {
-  const enhetsInfo = enhetsnrTilEnhetsinfo[enhetsnr] as EnhetsInfo;
+  const enhetsInfo = enhetsnrTilEnhetsinfo[enhetsnr];
   const url = `${urls.finnNavKontor.navKontorUrlPrefix}${enhetsInfo.url}`;
 
   return (

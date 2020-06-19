@@ -12,7 +12,8 @@ export enum SokeStatus {
   PostnrTreff,
   IngenTreff,
   QueryFeil,
-  UgyldigPostnr
+  UgyldigPostnr,
+  VisAlle
 }
 
 export type SokeTreff = {
@@ -102,7 +103,7 @@ export const kjorSokOgReturnerResultat = (query: string): SokeResultat => {
         enhetsnrArray: Object.keys(enhetsnrTilEnhetsinfo).map(Number),
         treffString: "Alle kontorer", treffIndex: 0
       }],
-      query: "Alle kontorer", status: SokeStatus.StedsnavnTreff
+      query: "Alle kontorer", status: SokeStatus.VisAlle
     };
   }
 

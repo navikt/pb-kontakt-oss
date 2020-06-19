@@ -21,12 +21,13 @@ export const ResultatvisningVedSubmit = ({resultat}: ResultProps) => {
     );
   }
 
-  if (resultat.status === SokeStatus.StedsnavnTreff) {
+  if (resultat.status === SokeStatus.StedsnavnTreff || resultat.status === SokeStatus.VisAlle) {
     const resultatListe = resultat.treffArray.map(treff => (
       <TreffStedsnavn
         treff={treff}
         query={resultat.query}
         key={treff.treffString}
+        sortByName={resultat.status === SokeStatus.VisAlle}
       />
     ));
 

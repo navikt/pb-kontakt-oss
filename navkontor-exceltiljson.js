@@ -30,11 +30,12 @@ const urlifyKontorNavn = navn => sanitizeString(navn)
   .replace("balsfjord-og-storfjord", "balsfjord-storfjord")
   .replace("bo-(nordland)", "bo")
   .replace(/^nav-nes$/, "nav-nes-i-akershus")
-  .replace("vannylven", "vanylven")
   .replace("karmoy-og-bokn", "karmoy-bokn")
   .replace("vindafjord-etne", "vindafjord")
   .replace(/^nav-fjord$/, "nav-alesund")
-  .replace(/^nav-eigersund$/, "nav-eigersund-bjerkreim");
+  .replace(/^nav-eigersund$/, "nav-eigersund-bjerkreim")
+  .replace(/^nav-odal$/, "nav-sor-odal")
+  .replace(/^nav-indre-namdal$/, "nav-grong");
 
 const sorterEnheterPaaKontornavnOgFjernDuplikater = (enhetsnrArray, enhetsnrTilKontor) => !enhetsnrArray ? [] : enhetsnrArray
   .filter(enhetsnr => {

@@ -30,18 +30,14 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
       setCallbackOnChatbotOpen(() => setChatbotOpened(true));
     }
 
-    const chatbotElement = chatbotRef.current;
-    if (!chatbotElement) {
-      return;
-    }
-
-    const footerBottom =
-      document.getElementsByClassName("menylinje-bottom")[0] as HTMLElement;
-    if (!footerBottom) {
-      return;
-    }
-
     const preventFooterOverlap = () => {
+      const chatbotElement = chatbotRef.current;
+      const footerBottom =
+        document.getElementsByClassName("menylinje-bottom")[0] as HTMLElement;
+      if (!chatbotElement || !footerBottom) {
+        return;
+      }
+
       const scrollOffsetBottom = window.pageYOffset + window.innerHeight - chatbotElement.scrollHeight;
       const footerOffset = getElementTopPosition(footerBottom);
       if (scrollOffsetBottom > footerOffset) {

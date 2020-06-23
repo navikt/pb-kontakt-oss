@@ -1079,6 +1079,10 @@
         "_type": "localeString",
         "nb": "Økonomisk sosialhjelp og andre sosiale tjenester"
       }
+    },
+    "status": {
+      "_type": "status",
+      "closed": true
     }
   },
   {

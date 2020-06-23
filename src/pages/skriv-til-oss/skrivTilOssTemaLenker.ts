@@ -55,13 +55,6 @@ export const skrivTilOssLenkepaneler: TemaLenke[] = [
     externalUrl: true
   },
   {
-    tema: STOTema.Sosial,
-    fallbackTittelId: "skrivtiloss.sosial.lenke.tittel",
-    grafanaId: "skrivtiloss.sosial",
-    url: urls.skrivTilOss.sosialhjelp,
-    externalUrl: true
-  },
-  {
     tema: STOTema.Pensjon,
     fallbackTittelId: "skrivtiloss.pensjonist.lenke.tittel",
     grafanaId: "skrivtiloss.pensjonist",
@@ -73,5 +66,12 @@ export const skrivTilOssLenkepaneler: TemaLenke[] = [
     fallbackTittelId: "skrivtiloss.hjelpemidler.lenke.tittel",
     grafanaId: "skrivtiloss.hjelpemidler",
     url: urls.skrivTilOss.hjelpemidler,
+  },
+  {
+    tema: STOTema.Sosial,
+    fallbackTittelId: "skrivtiloss.sosial.lenke.tittel",
+    grafanaId: "skrivtiloss.sosial",
+    url: urls.skrivTilOss.sosialhjelp,
+    externalUrl: true
   }
 ];

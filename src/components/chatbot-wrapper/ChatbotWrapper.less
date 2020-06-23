@@ -12,17 +12,23 @@
   @text-height: 48px;
   @text-offset: (@icon-size - @text-height) / 2;
 
+  position: fixed;
+  bottom: @offset-desktop;
+  right: @offset-desktop;
+  z-index: 9998;
   cursor: pointer;
 
+  @media (max-width: @mobil-max-width) {
+    bottom: @offset-mobil;
+    right: @offset-mobil;
+  }
+
   .@{chatbot-classname} {
-    bottom: @offset-desktop;
-    right: @offset-desktop;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: @icon-size;
     height: @icon-size;
-    @media (max-width: @mobil-max-width) {
-      bottom: @offset-mobil;
-      right: @offset-mobil;
-    }
   }
 
   &:hover {
@@ -40,10 +46,8 @@
   }
 
   &__visual {
-    position: fixed;
-    z-index: 9998;
-    bottom: @offset-desktop + @text-offset;
-    right: @offset-desktop;
+    position: relative;
+    bottom: @text-offset;
 
     width: @icon-size + @text-width;
     height: @text-height;
@@ -63,11 +67,6 @@
     transition-property: width, padding, box-shadow;
     transition-duration: 0.5s;
     transition-timing-function: ease-in;
-
-    @media (max-width: @mobil-max-width) {
-      bottom: @offset-mobil + @text-offset;
-      right: @offset-mobil;
-    }
 
     &--open {
       width: 0;

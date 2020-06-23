@@ -13,7 +13,7 @@ type Props = {
 const cssPrefix = "chatbot-wrapper";
 
 const getElementTopPosition = (element: HTMLElement) => {
-  return element.getBoundingClientRect().bottom + window.pageYOffset || 0;
+  return element.getBoundingClientRect().top + window.pageYOffset;
 };
 
 export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Props) => {
@@ -31,55 +31,56 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
     }
 
     const chatbotElement = chatbotRef.current;
-
     if (!chatbotElement) {
-      return;
-    }
-
-    const element = document.getElementsByClassName("chatbot-wrapper")[0] as HTMLElement;
-
-    if (!element) {
       return;
     }
 
     const footerBottom =
       document.getElementsByClassName("menylinje-bottom")[0] as HTMLElement;
-
     if (!footerBottom) {
       return;
     }
 
-    const scrollHandler = () => {
-      const scrollOffsetBottom = window.pageYOffset + window.innerHeight;
-      const chatbotOffset = getElementTopPosition(chatbotElement);
+    const preventFooterOverlap = () => {
+      const scrollOffsetBottom = window.pageYOffset + window.innerHeight - chatbotElement.scrollHeight;
       const footerOffset = getElementTopPosition(footerBottom);
       if (scrollOffsetBottom > footerOffset) {
-
+        const bottomOffset = document.body.offsetHeight - scrollOffsetBottom;
+        chatbotElement.style.bottom = `${footerBottom.scrollHeight - bottomOffset}px`;
       } else {
+        chatbotElement.removeAttribute("style");
       }
     };
 
-    document.addEventListener("scroll", scrollHandler);
-    return () => document.removeEventListener("scroll", scrollHandler);
+    document.addEventListener("scroll", preventFooterOverlap);
+    document.addEventListener("resize", preventFooterOverlap);
+    return () => {
+      document.removeEventListener("scroll", preventFooterOverlap);
+      document.removeEventListener("resize", preventFooterOverlap);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chatbotOpened]);
 
   return (
     <div
       className={cssPrefix}
-      onClick={() => openChatbot(setChatbotOpened)}
       ref={chatbotRef}
     >
-      <div className={`${cssPrefix}__visual ${chatbotOpened ? `${cssPrefix}__visual--open` : ""}`}>
-        <Normaltekst className={`${cssPrefix}__text`}>
-          {"Chatbot Frida"}
-        </Normaltekst>
+      <div
+        className={`${cssPrefix}__innhold`}
+        onClick={() => openChatbot(setChatbotOpened)}
+      >
+        <div className={`${cssPrefix}__visual ${chatbotOpened ? `${cssPrefix}__visual--open` : ""}`}>
+          <Normaltekst className={`${cssPrefix}__text`}>
+            {"Chatbot Frida"}
+          </Normaltekst>
+        </div>
+        <NavChatbot
+          customerKey={customerKey}
+          queueKey={queueKey}
+          configId={configId}
+        />
       </div>
-      <NavChatbot
-        customerKey={customerKey}
-        queueKey={queueKey}
-        configId={configId}
-      />
     </div>
   );
 };

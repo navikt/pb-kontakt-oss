@@ -13,14 +13,24 @@
   @text-offset: (@icon-size - @text-height) / 2;
 
   position: fixed;
-  bottom: @offset-desktop;
-  right: @offset-desktop;
+  bottom: 0;
+  right: 0;
   z-index: 9998;
-  cursor: pointer;
+  padding-bottom: @offset-desktop;
+  padding-right: @offset-desktop;
+  padding-top: 8px;
 
   @media (max-width: @mobil-max-width) {
-    bottom: @offset-mobil;
-    right: @offset-mobil;
+    padding-bottom: @offset-mobil;
+    padding-right: @offset-mobil;
+  }
+
+  &__innhold {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: @icon-size;
   }
 
   .@{chatbot-classname} {
@@ -47,7 +57,6 @@
 
   &__visual {
     position: relative;
-    bottom: @text-offset;
 
     width: @icon-size + @text-width;
     height: @text-height;

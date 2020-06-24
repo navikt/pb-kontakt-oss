@@ -29,7 +29,10 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
     } else {
       setCallbackOnChatbotOpen(() => setChatbotOpened(true));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chatbotOpened]);
 
+  useEffect(() => {
     const preventFooterOverlap = () => {
       const chatbotElement = chatbotRef.current;
       const footerBottom =
@@ -54,8 +57,7 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
       document.removeEventListener("scroll", preventFooterOverlap);
       document.removeEventListener("resize", preventFooterOverlap);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chatbotOpened]);
+  }, []);
 
   return (
     <div

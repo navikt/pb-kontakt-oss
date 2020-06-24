@@ -20,6 +20,7 @@
   padding-bottom: @offset-desktop;
   padding-right: @offset-desktop;
   padding-top: 8px;
+  pointer-events: none;
 
   @media (max-width: @mobil-max-width) {
     padding-bottom: @offset-mobil;
@@ -32,9 +33,10 @@
     display: flex;
     align-items: center;
     height: @icon-size;
+    pointer-events: auto;
 
     &:hover {
-      .chatbot-wrapper__visual {
+      .chatbot-wrapper__text-panel {
         background-color: @navDypBla;
       }
 

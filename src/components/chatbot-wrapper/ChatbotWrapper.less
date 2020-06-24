@@ -16,6 +16,7 @@
   bottom: 0;
   right: 0;
   z-index: 9998;
+  height: @icon-size;
   padding-bottom: @offset-desktop;
   padding-right: @offset-desktop;
   padding-top: 8px;
@@ -25,12 +26,26 @@
     padding-right: @offset-mobil;
   }
 
-  &__innhold {
+  &__visual {
     position: relative;
     cursor: pointer;
     display: flex;
     align-items: center;
     height: @icon-size;
+
+    &:hover {
+      .chatbot-wrapper__visual {
+        background-color: @navDypBla;
+      }
+
+      .chatbot-wrapper__text {
+        color: @white;
+      }
+
+      .@{chatbot-classname} {
+        transform: scale(1.25);
+      }
+    }
   }
 
   .@{chatbot-classname} {
@@ -41,21 +56,7 @@
     height: @icon-size;
   }
 
-  &:hover {
-    .chatbot-wrapper__visual {
-      background-color: @navDypBla;
-    }
-
-    .chatbot-wrapper__text {
-      color: @white;
-    }
-
-    .@{chatbot-classname} {
-      transform: scale(1.25);
-    }
-  }
-
-  &__visual {
+  &__text-panel {
     position: relative;
 
     width: @icon-size + @text-width;

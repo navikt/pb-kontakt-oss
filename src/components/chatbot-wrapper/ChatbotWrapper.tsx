@@ -21,6 +21,24 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
   const [chatbotOpened, setChatbotOpened] = useState(isOpenFromStorage === "true");
   const chatbotRef = useRef<HTMLDivElement>(null);
 
+  const preventFooterOverlap = () => {
+    const chatbotElement = chatbotRef.current;
+    const footerBottom =
+      document.getElementsByClassName("menylinje-bottom")[0] as HTMLElement;
+    if (!chatbotElement || !footerBottom) {
+      return;
+    }
+
+    const scrollOffsetBottom = window.pageYOffset + window.innerHeight;
+    const footerOffset = getElementTopPosition(footerBottom);
+    if (scrollOffsetBottom - chatbotElement.scrollHeight > footerOffset) {
+      chatbotElement.style.top = `${footerOffset}px`;
+      chatbotElement.style.position = "absolute";
+    } else {
+      chatbotElement.removeAttribute("style");
+    }
+  };
+
   useEffect(() => {
     if (chatbotOpened) {
       if (onOpen) {
@@ -33,29 +51,13 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
   }, [chatbotOpened]);
 
   useEffect(() => {
-    const preventFooterOverlap = () => {
-      const chatbotElement = chatbotRef.current;
-      const footerBottom =
-        document.getElementsByClassName("menylinje-bottom")[0] as HTMLElement;
-      if (!chatbotElement || !footerBottom) {
-        return;
-      }
+    preventFooterOverlap();
 
-      const scrollOffsetBottom = window.pageYOffset + window.innerHeight - chatbotElement.scrollHeight;
-      const footerOffset = getElementTopPosition(footerBottom);
-      if (scrollOffsetBottom > footerOffset) {
-        const bottomOffset = document.body.offsetHeight - scrollOffsetBottom;
-        chatbotElement.style.bottom = `${footerBottom.scrollHeight - bottomOffset}px`;
-      } else {
-        chatbotElement.removeAttribute("style");
-      }
-    };
-
-    document.addEventListener("scroll", preventFooterOverlap);
-    document.addEventListener("resize", preventFooterOverlap);
+    window.addEventListener("scroll", preventFooterOverlap);
+    window.addEventListener("resize", preventFooterOverlap);
     return () => {
-      document.removeEventListener("scroll", preventFooterOverlap);
-      document.removeEventListener("resize", preventFooterOverlap);
+      window.removeEventListener("scroll", preventFooterOverlap);
+      window.removeEventListener("resize", preventFooterOverlap);
     };
   }, []);
 
@@ -65,10 +67,10 @@ export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Prop
       ref={chatbotRef}
     >
       <div
-        className={`${cssPrefix}__innhold`}
+        className={`${cssPrefix}__visual`}
         onClick={() => openChatbot(setChatbotOpened)}
       >
-        <div className={`${cssPrefix}__visual ${chatbotOpened ? `${cssPrefix}__visual--open` : ""}`}>
+        <div className={`${cssPrefix}__text-panel ${chatbotOpened ? `${cssPrefix}__text-panel--open` : ""}`}>
           <Normaltekst className={`${cssPrefix}__text`}>
             {"Chatbot Frida"}
           </Normaltekst>

@@ -315,7 +315,7 @@ export default {
   "felter.typefeil.uu":
     "Error when using screen readers or other accessibility devices",
   "felter.melding.tittel": "Your feedback",
-  "felter.melding.beskrivelse": `Avoid sending sensitive personal information about your health condition or diagnoses. You can’t ask about the status of your application here. Login to <DittNavLenke>Ditt NAV</DittNavLenke> (text in Norwegian) and go to <SaksoversiktLenke>Dine saker</SaksoversiktLenke> for this information. If you don’t find the answer there you can check <BehandlingstiderLenke>case processing times</BehandlingstiderLenke> (text in Norwegian) or <SkrivTilOssLenke>write to us</SkrivTilOssLenke>.`,
+  "felter.melding.beskrivelse": `Avoid sending sensitive personal information about your health condition or diagnoses. You can’t ask about the status of your application here. Login to <DittNavLenke>Ditt NAV</DittNavLenke> (text in Norwegian) and go to <DineSakerLenke>Dine saker</DineSakerLenke> for this information. If you don’t find the answer there you can check <SaksbehandlingstiderLenke>case processing times</SaksbehandlingstiderLenke> (text in Norwegian) or <SkrivTilOssLenke>write to us</SkrivTilOssLenke>.`,
   "felter.noegikkgalt": "Oops! Something went wrong:",
   "felter.send": "Send",
   "felter.tilbake": "Back",

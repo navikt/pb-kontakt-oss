@@ -14,7 +14,7 @@ import Header from "components/header/Header";
 import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import { Radio, SkjemaGruppe } from "nav-frontend-skjema";
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
@@ -24,20 +24,29 @@ import { MetaTags } from "../../../components/metatags/MetaTags";
 
 type HVEM_ROSES = "NAV_KONTAKTSENTER" | "NAV_DIGITALE_TJENESTER" | "NAV_KONTOR";
 
-type OutboundRosTilNavBase = {
+interface Fields {
+  navn?: string;
   melding: string;
-};
+  hvemRoses: HVEM_ROSES;
+  navKontor: {
+    label: string;
+    value: string;
+  };
+}
 
-type OutboundRosTilNavExtend =
+export type OutboundRosTilNav = {
+  navn?: string;
+  melding: string;
+} & (
   | { hvemRoses: "NAV_KONTAKTSENTER" }
   | { hvemRoses: "NAV_DIGITALE_TJENESTER" }
-  | { hvemRoses: "NAV_KONTOR"; navKontor: string };
+  | { hvemRoses: "NAV_KONTOR"; navKontor: string }
+);
 
-export type OutboundRosTilNav = OutboundRosTilNavBase & OutboundRosTilNavExtend;
 const Ros = () => {
   const [loading, settLoading] = useState(false);
   const [success, settSuccess] = useState(false);
-  const [error, settError] = useState();
+  const [error, settError] = useState<string | undefined>();
   const intl = useIntl();
   const paths = useLocalePaths();
 
@@ -45,53 +54,43 @@ const Ros = () => {
     navn: {},
     hvemRoses: {
       isRequired: intl.formatMessage({
-        id: "validering.hvemroses.pakrevd"
-      })
+        id: "validering.hvemroses.pakrevd",
+      }),
     },
     melding: {
       isRequired: intl.formatMessage({
-        id: "validering.melding.pakrevd"
+        id: "validering.melding.pakrevd",
       }),
-      isValidMelding: intl.formatMessage({ id: "validering.melding.tegn" })
-    }
+      isValidMelding: intl.formatMessage({ id: "validering.melding.tegn" }),
+    },
   };
+
+  const initialValues = {} as any;
 
   const navKontorConfig = {
     navKontor: {
       isRequired: intl.formatMessage({
-        id: "validering.navkontor.pakrevd"
-      })
-    }
+        id: "validering.navkontor.pakrevd",
+      }),
+    },
   };
 
-  const send = (e: FormContext) => {
+  const send = (e: FormContext<Fields>) => {
     const { isValid, fields } = e;
     const { navn, melding } = fields;
     const hvemRoses: HVEM_ROSES = fields.hvemRoses;
 
     if (isValid) {
-      const outboundBase = {
-        ...(navn && {
-          navn
-        }),
-        melding
-      };
-
-      const outboundExtend: {
-        [key in HVEM_ROSES]: OutboundRosTilNavExtend;
-      } = {
-        NAV_KONTAKTSENTER: { hvemRoses: "NAV_KONTAKTSENTER" },
-        NAV_DIGITALE_TJENESTER: { hvemRoses: "NAV_DIGITALE_TJENESTER" },
-        NAV_KONTOR: {
-          hvemRoses: "NAV_KONTOR",
-          navKontor: fields.navKontor ? fields.navKontor.label : undefined
-        }
-      };
-
       const outbound = {
-        ...outboundBase,
-        ...outboundExtend[hvemRoses]
-      };
+        ...(navn && {
+          navn,
+        }),
+        melding,
+        hvemRoses,
+        ...(fields.hvemRoses === "NAV_KONTOR" && {
+          navKontor: fields.navKontor ? fields.navKontor.label : undefined,
+        }),
+      } as OutboundRosTilNav;
 
       settLoading(true);
       postRosTilNav(outbound)
@@ -125,7 +124,7 @@ const Ros = () => {
           kompakt={true}
         >
           <div className={"tb__veileder-container"}>
-            <FormattedHTMLMessage id={"tilbakemeldinger.ros.form.veileder"} />
+            <FormattedMessage id={"tilbakemeldinger.ros.form.veileder"} />
           </div>
         </Veilederpanel>
       </div>
@@ -134,19 +133,19 @@ const Ros = () => {
           <Takk />
         ) : (
           <Form onSubmit={send}>
-            <Validation config={formConfig}>
+            <Validation config={formConfig} initialValues={initialValues}>
               {({ errors, fields, submitted, setField, isValid }) => {
                 return (
                   <div className={"skjema__content"}>
                     <SkjemaGruppe
                       legend={intl.formatMessage({
-                        id: "felter.hvemroses.tittel"
+                        id: "felter.hvemroses.tittel",
                       })}
                       feil={sjekkForFeil(submitted, errors.hvemRoses)}
                     >
                       <Radio
                         label={intl.formatMessage({
-                          id: "felter.hvemroses.navkontaktsenter"
+                          id: "felter.hvemroses.navkontaktsenter",
                         })}
                         name={"NAV_KONTAKTSENTER"}
                         checked={fields.hvemRoses === "NAV_KONTAKTSENTER"}
@@ -156,7 +155,7 @@ const Ros = () => {
                       />
                       <Radio
                         label={intl.formatMessage({
-                          id: "felter.hvemroses.digitaletjenester"
+                          id: "felter.hvemroses.digitaletjenester",
                         })}
                         name={"NAV_DIGITALE_TJENESTER"}
                         checked={fields.hvemRoses === "NAV_DIGITALE_TJENESTER"}
@@ -166,7 +165,7 @@ const Ros = () => {
                       />
                       <Radio
                         label={intl.formatMessage({
-                          id: "felter.hvemroses.navkontor"
+                          id: "felter.hvemroses.navkontor",
                         })}
                         name={"NAV_KONTOR"}
                         checked={fields.hvemRoses === "NAV_KONTOR"}
@@ -193,12 +192,12 @@ const Ros = () => {
                     </SkjemaGruppe>
                     <InputMelding
                       label={intl.formatMessage({
-                        id: "felter.melding.tittel"
+                        id: "felter.melding.tittel",
                       })}
                       submitted={submitted}
                       value={fields.melding}
                       error={errors.melding}
-                      onChange={v => setField({ melding: v })}
+                      onChange={(v) => setField({ melding: v })}
                     />
                     {error && (
                       <AlertStripeFeil className={"felter__melding-advarsel"}>

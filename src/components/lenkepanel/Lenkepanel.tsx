@@ -2,7 +2,7 @@ import React from "react";
 import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { Link } from "react-router-dom";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
-import { FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 
 export interface Props {
   id: string;
@@ -20,7 +20,7 @@ const TilpassetLenkepanel = (props: Props) => {
       href={props.to}
       border={true}
       className="linkbox__container"
-      linkCreator={p => {
+      linkCreator={(p) => {
         return props.external ? (
           <a href={props.to} {...p}>
             {p.children}
@@ -49,7 +49,7 @@ const TilpassetLenkepanel = (props: Props) => {
           {props.beskrivelse && (
             <div className="linkbox__beskrivelse">
               <Normaltekst>
-                <FormattedHTMLMessage id={props.beskrivelse} />
+                <FormattedMessage id={props.beskrivelse} />
               </Normaltekst>
             </div>
           )}

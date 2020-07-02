@@ -6,24 +6,29 @@ import InputFodselsnr from "components/input-fields/InputFodselsnr";
 
 const ServiceKlagePrivatperson = () => {
   const intl = useIntl();
+  const initialValues = {} as any;
 
   const privPersFormConfig = {
     innmelderNavn: {
-      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" })
+      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" }),
     },
     innmelderFnr: {
       isRequired: intl.formatMessage({ id: "validering.fodselsnr.pakrevd" }),
       isNumber: intl.formatMessage({ id: "validering.fodselsnr.siffer" }),
       isExactLength: {
         message: intl.formatMessage({
-          id: "validering.fodselsnr.korrektsiffer"
+          id: "validering.fodselsnr.korrektsiffer",
         }),
-        length: 11
-      }
-    }
+        length: 11,
+      },
+    },
   };
   return (
-    <Validation key={"privPers"} config={privPersFormConfig}>
+    <Validation
+      key={"privPers"}
+      config={privPersFormConfig}
+      initialValues={initialValues}
+    >
       {({ errors, fields, submitted, setField }) => {
         return (
           <div className="serviceKlage__ekspandert">
@@ -33,7 +38,7 @@ const ServiceKlagePrivatperson = () => {
               submitted={submitted}
               value={fields.innmelderNavn}
               error={errors.innmelderNavn}
-              onChange={v => setField({ innmelderNavn: v })}
+              onChange={(v) => setField({ innmelderNavn: v })}
             />
             <InputFodselsnr
               bredde={"M"}
@@ -41,7 +46,7 @@ const ServiceKlagePrivatperson = () => {
               submitted={submitted}
               error={errors.innmelderFnr}
               value={fields.innmelderFnr}
-              onChange={v => setField({ innmelderFnr: v })}
+              onChange={(v) => setField({ innmelderFnr: v })}
             />
           </div>
         );

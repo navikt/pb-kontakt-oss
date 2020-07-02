@@ -22,33 +22,42 @@ import { useLocaleString } from "../../utils/sanity/useLocaleString";
 import { MetaTags } from "../../components/metatags/MetaTags";
 
 type Props = {
-  chatTema: ChatTema,
-  path: string
+  chatTema: ChatTema;
+  path: string;
 };
 
 const cssPrefix = "chat-tema";
 
 const ChatTemaside = ({ chatTema, path }: Props) => {
-  const [chatButtonClickedTimestamp, setChatButtonClickedTimestamp] = useState();
   const [serverTidOffset, setServerTidOffset] = useState(0);
   const [{ themes, channels }] = useStore();
   const localeString = useLocaleString();
+  const [chatButtonClickedTimestamp, setChatButtonClickedTimestamp] = useState<
+    number
+  >();
 
-  const startChat = chatTema === ChatTema.EURES
-    ? () => window.location.assign(Config.urls.chatEures)
-    : () => setChatButtonClickedTimestamp(Date.now());
+  const startChat =
+    chatTema === ChatTema.EURES
+      ? () => window.location.assign(Config.urls.chatEures)
+      : () => setChatButtonClickedTimestamp(Date.now());
 
-  const { harChatbot, tittelId, metaTittelId, grafanaId } = chatTemaSideData[chatTema];
+  const { harChatbot, tittelId, metaTittelId, grafanaId } = chatTemaSideData[
+    chatTema
+  ];
   const temaProps = themes.props[chatTema];
   const channelProps = channels.props[Kanal.Chat];
   const isLoaded = themes.isLoaded && channels.isLoaded;
-  const isClosed = (channelProps.status && channelProps.status.closed)
-    || (temaProps.status && temaProps.status.closed);
-  const closedMsg = (temaProps.status && temaProps.status.message)
-    || (channelProps.status && channelProps.status.message);
+  const isClosed =
+    (channelProps.status && channelProps.status.closed) ||
+    (temaProps.status && temaProps.status.closed);
+  const closedMsg =
+    (temaProps.status && temaProps.status.message) ||
+    (channelProps.status && channelProps.status.message);
 
   const text = temaProps.page;
-  const tittel = (text && localeString(text.title)) || <FormattedMessage id={tittelId} />;
+  const tittel = (text && localeString(text.title)) || (
+    <FormattedMessage id={tittelId} />
+  );
   const ingress = text && <LocaleBlockContent localeBlock={text.content} />;
 
   useEffect(() => {
@@ -60,7 +69,8 @@ const ChatTemaside = ({ chatTema, path }: Props) => {
     : true;
   const chatErNormaltApen = chatErIApningstid || harChatbot;
   const chatVeilederStengtAvAdmin = isClosed && chatErIApningstid;
-  const chatErApen = (chatErNormaltApen && !chatVeilederStengtAvAdmin) || harChatbot;
+  const chatErApen =
+    (chatErNormaltApen && !chatVeilederStengtAvAdmin) || harChatbot;
 
   const chatClientConfig = chatConfig.tema[chatTema];
 
@@ -76,20 +86,17 @@ const ChatTemaside = ({ chatTema, path }: Props) => {
     <>
       <div className={`pagecontent`}>
         <Topplinje />
-        <MetaTags
-          titleId={metaTittelId}
-          path={path}
-        />
+        <MetaTags titleId={metaTittelId} path={path} />
         <PanelBase className={cssPrefix}>
           <div className={`${cssPrefix}__header`}>
-            <Systemtittel>
-              {tittel}
-            </Systemtittel>
+            <Systemtittel>{tittel}</Systemtittel>
           </div>
           <div className={`${cssPrefix}__panel-ingress`}>
             <VarselVisning kanal={Kanal.Chat}>
               <>
-                {!chatErNormaltApen && <Varsel tekstId={"chat.stengt.info"} type={"info"} />}
+                {!chatErNormaltApen && (
+                  <Varsel tekstId={"chat.stengt.info"} type={"info"} />
+                )}
                 {chatVeilederStengtAvAdmin && (
                   <Varsel type={"info"}>
                     <LocaleBlockContent localeBlock={closedMsg} />
@@ -97,8 +104,7 @@ const ChatTemaside = ({ chatTema, path }: Props) => {
                 )}
               </>
             </VarselVisning>
-            {(isLoaded) ? ingress
-              : <NavContentLoader lines={5} />}
+            {isLoaded ? ingress : <NavContentLoader lines={5} />}
           </div>
           {apningsTider && (
             <ApningstiderAvvik
@@ -115,7 +121,9 @@ const ChatTemaside = ({ chatTema, path }: Props) => {
               }}
               disabled={!chatErApen || !isLoaded}
             >
-              <FormattedMessage id={chatErApen ? "chat.knapp.start" : "chat.knapp.stengt"} />
+              <FormattedMessage
+                id={chatErApen ? "chat.knapp.start" : "chat.knapp.stengt"}
+              />
             </Hovedknapp>
           </div>
         </PanelBase>

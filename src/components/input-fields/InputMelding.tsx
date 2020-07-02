@@ -1,10 +1,12 @@
 import { TextareaControlled, TextareaProps } from "nav-frontend-skjema";
 import React, { KeyboardEvent, useState } from "react";
-import { FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
 import { paths, urls, vars } from "../../Config";
 import { Varsel } from "../varsler/Varsel";
 import { useStore } from "../../providers/Provider";
 import { localePath } from "../../utils/locale";
+import { Link } from "react-router-dom";
+import Lenke from "nav-frontend-lenker";
 
 interface Props extends Omit<TextareaProps, "onChange"> {
   onChange: (value: string) => void;
@@ -23,16 +25,45 @@ const InputMelding = (props: Props) => {
       <div className={"skjemagruppe__legend"}>{label}</div>
       <div className={"felter__melding-advarsel"}>
         <Varsel type={"advarsel"}>
-          <FormattedHTMLMessage
+          <FormattedMessage
             id={"felter.melding.beskrivelse"}
-            values={
-              {
-                dittnav: urls.tilbakemeldinger.serviceklage.dittNav,
-                saksoversikt: urls.tilbakemeldinger.serviceklage.saksoversikt[locale],
-                saksbehandlingstider: urls.tilbakemeldinger.serviceklage.saksbehandlingstider,
-                skrivtiloss: localePath(paths.skrivTilOss.forside, locale)
-              }
-            }
+            values={{
+              DineSakerLenke: (text: string) => (
+                <Lenke
+                  href={urls.tilbakemeldinger.serviceklage.saksoversikt[locale]}
+                >
+                  {text}
+                </Lenke>
+              ),
+              DittNavLenke: (text: string) => (
+                <Lenke
+                  href={urls.tilbakemeldinger.serviceklage.saksoversikt[locale]}
+                >
+                  {text}
+                </Lenke>
+              ),
+              SaksbehandlingstiderLenke: (text: string) => (
+                <Lenke
+                  href={urls.tilbakemeldinger.serviceklage.saksbehandlingstider}
+                >
+                  {text}
+                </Lenke>
+              ),
+              SkrivTilOssLenke: (text: string) => (
+                <Link
+                  className={"lenke"}
+                  to={localePath(paths.skrivTilOss.forside, locale)}
+                >
+                  {text}
+                </Link>
+              ),
+              dittnav: urls.tilbakemeldinger.serviceklage.dittNav,
+              saksoversikt:
+                urls.tilbakemeldinger.serviceklage.saksoversikt[locale],
+              saksbehandlingstider:
+                urls.tilbakemeldinger.serviceklage.saksbehandlingstider,
+              skrivtiloss: localePath(paths.skrivTilOss.forside, locale),
+            }}
           />
         </Varsel>
       </div>

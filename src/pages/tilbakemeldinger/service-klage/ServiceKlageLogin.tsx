@@ -6,7 +6,7 @@ import Environment from "Environments";
 import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import Header from "components/header/Header";
-import { FormattedHTMLMessage, FormattedMessage, useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import Topplinje from "../../../components/topp-linje/ToppLinje";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 
@@ -30,18 +30,19 @@ const ServiceKlageLogin = () => {
       />
       <Header
         title={intl.formatMessage({
-          id: "tilbakemeldinger.serviceklage.login.tittel"
+          id: "tilbakemeldinger.serviceklage.login.tittel",
         })}
       />
       <Box
         tittel={intl.formatMessage({
-          id: "tilbakemeldinger.serviceklage.login.overskrift"
+          id: "tilbakemeldinger.serviceklage.login.overskrift",
         })}
         containerClassName={"serviceKlage__login-container"}
       >
         <div className="serviceKlage__login-info">
-          <FormattedHTMLMessage
+          <FormattedMessage
             id={"tilbakemeldinger.serviceklage.login.beskrivelse"}
+            values={{ br: () => <br /> }}
           />
         </div>
         <div className="tb__knapper">

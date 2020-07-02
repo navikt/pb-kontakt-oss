@@ -36,9 +36,7 @@ const InputMelding = (props: Props) => {
                 </Lenke>
               ),
               DittNavLenke: (text: string) => (
-                <Lenke
-                  href={urls.tilbakemeldinger.serviceklage.saksoversikt[locale]}
-                >
+                <Lenke href={urls.tilbakemeldinger.serviceklage.dittNav}>
                   {text}
                 </Lenke>
               ),

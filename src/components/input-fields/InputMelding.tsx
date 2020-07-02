@@ -57,12 +57,6 @@ const InputMelding = (props: Props) => {
                   {text}
                 </Link>
               ),
-              dittnav: urls.tilbakemeldinger.serviceklage.dittNav,
-              saksoversikt:
-                urls.tilbakemeldinger.serviceklage.saksoversikt[locale],
-              saksbehandlingstider:
-                urls.tilbakemeldinger.serviceklage.saksbehandlingstider,
-              skrivtiloss: localePath(paths.skrivTilOss.forside, locale),
             }}
           />
         </Varsel>

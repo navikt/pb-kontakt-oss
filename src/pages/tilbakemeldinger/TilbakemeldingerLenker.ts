@@ -14,14 +14,11 @@ export interface Lenke {
   external?: boolean;
 }
 
-export const lenker = (locale: Locale, formatMessage: Function): Lenke[] => [
+export const lenker = (locale: Locale): Lenke[] => [
   {
     icon: paperIcon,
     tittel: "tilbakemeldinger.klageanke.tittel",
-    beskrivelse: formatMessage(
-      { id: "tilbakemeldinger.klageanke.beskrivelse" },
-      { klagerettigheter: urls.tilbakemeldinger.klagerettigheter[locale] }
-    ),
+    beskrivelse: "tilbakemeldinger.klageanke.beskrivelse",
     lenke: urls.tilbakemeldinger.klagepavedtak[locale],
     lenkeTekst: "tilbakemeldinger.klageanke.link",
     external: true,

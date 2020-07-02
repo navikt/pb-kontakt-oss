@@ -3,6 +3,8 @@ import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { Link } from "react-router-dom";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
 import { FormattedMessage } from "react-intl";
+import { urls } from "../../Config";
+import { useStore } from "../../providers/Provider";
 
 export interface Props {
   id: string;
@@ -15,6 +17,7 @@ export interface Props {
 }
 
 const TilpassetLenkepanel = (props: Props) => {
+  const [{ locale }] = useStore();
   return (
     <LenkepanelBase
       href={props.to}
@@ -49,7 +52,19 @@ const TilpassetLenkepanel = (props: Props) => {
           {props.beskrivelse && (
             <div className="linkbox__beskrivelse">
               <Normaltekst>
-                <FormattedMessage id={props.beskrivelse} />
+                <FormattedMessage
+                  id={props.beskrivelse}
+                  values={{
+                    KlagerettigheterLenke: (text: string) => (
+                      <a
+                        className={"lenke"}
+                        href={urls.tilbakemeldinger.klagerettigheter[locale]}
+                      >
+                        {text}
+                      </a>
+                    ),
+                  }}
+                />
               </Normaltekst>
             </div>
           )}

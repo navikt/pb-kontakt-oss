@@ -7,6 +7,7 @@ import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import { sjekkForFeil } from "utils/validators";
 import { Radio, SkjemaGruppe } from "nav-frontend-skjema";
 import { urls } from "../../../Config";
+import Lenke from "nav-frontend-lenker";
 
 interface Fields {
   innmelderNavn: string;
@@ -124,7 +125,7 @@ const ServiceKlageForAnnenPerson = () => {
                     id={"felter.fullmakt.advarsel"}
                     values={{
                       FullmaktskjemaLenke: (text: string) => (
-                        <a
+                        <Lenke
                           href={
                             urls.tilbakemeldinger.serviceklage.fullmaktskjema
                           }
@@ -132,7 +133,7 @@ const ServiceKlageForAnnenPerson = () => {
                           target="_blank"
                         >
                           {text}
-                        </a>
+                        </Lenke>
                       ),
                     }}
                   />

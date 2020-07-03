@@ -335,7 +335,7 @@ export default {
   "felter.fullmakt": "Har du fullmakt?",
   "felter.fullmakt.ja": "Ja, jeg har fullmakt",
   "felter.fullmakt.nei": "Nei, jeg har ikke fullmakt",
-  "felter.fullmakt.advarsel": `Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder. <a href="{fullmaktskjema}" target="_blank">Gå til fullmaktskjema</a>.`,
+  "felter.fullmakt.advarsel": `Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder. <FullmaktskjemaLenke>Gå til fullmaktskjema</FullmaktskjemaLenke>.`,
   "felter.orgnavn": "Organisasjonsnavn",
   "felter.orgnr": "Organisasjonsnummer (til din lokale enhet)",
   "felter.postadr": "Bedriftens postadresse",

@@ -351,7 +351,7 @@ export default {
   "felter.fullmakt": "Do you have an authorisation?",
   "felter.fullmakt.ja": "Yes, I have an authorisation",
   "felter.fullmakt.nei": "No, I don't have an authorisation",
-  "felter.fullmakt.advarsel": `We cannot contact you unless we have received an authorisation from the person in question.<a href="{fullmaktskjema}" target="_blank">Go to the authorisation form</a>.`,
+  "felter.fullmakt.advarsel": `We cannot contact you unless we have received an authorisation from the person in question.<FullmaktskjemaLenke>Go to the authorisation form</FullmaktskjemaLenke>.`,
   "felter.orgnavn": "Organisation name",
   "felter.orgnr": "Organisation number (for your local department)",
   "felter.postadr": "Company postal address",

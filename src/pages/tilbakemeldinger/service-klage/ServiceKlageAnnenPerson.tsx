@@ -123,8 +123,17 @@ const ServiceKlageForAnnenPerson = () => {
                   <FormattedMessage
                     id={"felter.fullmakt.advarsel"}
                     values={{
-                      fullmaktskjema:
-                        urls.tilbakemeldinger.serviceklage.fullmaktskjema,
+                      FullmaktskjemaLenke: (text: string) => (
+                        <a
+                          href={
+                            urls.tilbakemeldinger.serviceklage.fullmaktskjema
+                          }
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          {text}
+                        </a>
+                      ),
                     }}
                   />
                 </AlertStripeAdvarsel>

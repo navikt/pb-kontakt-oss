@@ -8,14 +8,7 @@ export enum Kanal {
 
 // OBS: denne og STOTema må ikke ha overlappende verdier!
 export enum ChatTema {
-  Arbeidsgiver = "chat-arbeidsgiver",
-  Jobbsoker = "chat-jobbsoker",
-  Syk = "chat-syk",
-  Familie = "chat-familie",
-  Ufor = "chat-ufør",
-  Sosial = "chat-sosial",
-  Okonomi = "chat-okonomi",
-  EURES = "chat-eures",
+  EURES = "chat-eures"
 }
 
 // OBS: denne og ChatTema må ikke ha overlappende verdier!

@@ -14,7 +14,7 @@ const apningstiderHverdag = {
   end: "14.30"
 };
 
-const apningstiderDefault = new ApningsTider({
+export const apningstiderDefault = new ApningsTider({
   [Ukedag.Mandag]: apningstiderHverdag,
   [Ukedag.Tirsdag]: apningstiderHverdag,
   [Ukedag.Onsdag]: apningstiderHverdag,
@@ -25,12 +25,5 @@ const apningstiderDefault = new ApningsTider({
 }, [avvikAlle]);
 
 export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
-  [ChatTema.Arbeidsgiver]: apningstiderDefault,
-  [ChatTema.Jobbsoker]: apningstiderDefault,
-  [ChatTema.Syk]: apningstiderDefault,
-  [ChatTema.Familie]: apningstiderDefault,
-  [ChatTema.Ufor]: apningstiderDefault,
-  [ChatTema.Sosial]: apningstiderDefault,
-  [ChatTema.Okonomi]: apningstiderDefault,
   [ChatTema.EURES]: null
 };

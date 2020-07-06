@@ -26,7 +26,6 @@ export const useLocalePaths = () => {
       arbeidsgiver: locPath(paths.chat.arbeidsgiver),
       jobbsoker: locPath(paths.chat.jobbsoker),
       syk: locPath(paths.chat.syk),
-      familie: locPath(paths.chat.familie),
       ufor: locPath(paths.chat.ufor),
       sosialhjelp: locPath(paths.chat.sosialhjelp),
       okonomi: locPath(paths.chat.okonomi),

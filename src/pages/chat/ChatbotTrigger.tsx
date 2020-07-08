@@ -5,10 +5,10 @@ import { ChatbotWrapper } from "../../components/chatbot-wrapper/ChatbotWrapper"
 
 type Props = {
   config: ChatTemaConfig;
-  openChatTimestamp: number;
+  openChatTimestamp?: number;
 };
 
-const ChatbotTrigger = ({config, openChatTimestamp}: Props) => {
+const ChatbotTrigger = ({ config, openChatTimestamp }: Props) => {
   useEffect(() => {
     chatbotUtils.clearSessionData();
   }, []);
@@ -19,16 +19,13 @@ const ChatbotTrigger = ({config, openChatTimestamp}: Props) => {
     }
   }, [openChatTimestamp]);
 
-  return (
-    openChatTimestamp ?
-    (
-      <ChatbotWrapper
-        configId={config.configId}
-        queueKey={config.queueKey}
-        customerKey={chatConfig.customerKey}
-      />
-    ) : null
-  );
+  return openChatTimestamp ? (
+    <ChatbotWrapper
+      configId={config.configId}
+      queueKey={config.queueKey}
+      customerKey={chatConfig.customerKey}
+    />
+  ) : null;
 };
 
 export default ChatbotTrigger;

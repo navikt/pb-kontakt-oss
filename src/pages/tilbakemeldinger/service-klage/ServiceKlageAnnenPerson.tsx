@@ -1,5 +1,5 @@
 import React from "react";
-import { FormattedHTMLMessage, useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { Validation } from "calidation";
 import InputNavn from "components/input-fields/InputNavn";
 import InputField from "components/input-fields/InputField";
@@ -7,36 +7,56 @@ import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import { sjekkForFeil } from "utils/validators";
 import { Radio, SkjemaGruppe } from "nav-frontend-skjema";
 import { urls } from "../../../Config";
+import Lenke from "nav-frontend-lenker";
+
+interface Fields {
+  innmelderNavn: string;
+  paaVegneAvNavn: string;
+  paaVegneAvFodselsnr: string;
+  innmelderHarFullmakt?: boolean;
+  innmelderRolle: string;
+}
 
 const ServiceKlageForAnnenPerson = () => {
   const intl = useIntl();
   const annenPersFormConfig = {
     innmelderNavn: {
-      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" })
+      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" }),
     },
     paaVegneAvNavn: {
-      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" })
+      isRequired: intl.formatMessage({ id: "validering.navn.pakrevd" }),
     },
     paaVegneAvFodselsnr: {
       isRequired: intl.formatMessage({ id: "validering.fodselsnr.pakrevd" }),
       isNumber: intl.formatMessage({ id: "validering.fodselsnr.siffer" }),
       isExactLength: {
         message: intl.formatMessage({
-          id: "validering.fodselsnr.korrektsiffer"
+          id: "validering.fodselsnr.korrektsiffer",
         }),
-        length: 11
-      }
+        length: 11,
+      },
     },
     innmelderHarFullmakt: {
-      isRequired: intl.formatMessage({ id: "validering.fullmakt.pakrevd" })
+      isRequired: intl.formatMessage({ id: "validering.fullmakt.pakrevd" }),
     },
     innmelderRolle: {
-      isRequired: intl.formatMessage({ id: "validering.rolle.pakrevd" })
-    }
+      isRequired: intl.formatMessage({ id: "validering.rolle.pakrevd" }),
+    },
+  };
+
+  const initialValues: Fields = {
+    innmelderNavn: "",
+    paaVegneAvNavn: "",
+    paaVegneAvFodselsnr: "",
+    innmelderRolle: "",
   };
 
   return (
-    <Validation key={"annenPers"} config={annenPersFormConfig}>
+    <Validation
+      key={"annenPers"}
+      config={annenPersFormConfig}
+      initialValues={initialValues}
+    >
       {({ errors, fields, submitted, setField }) => {
         return (
           <div className="serviceKlage__ekspandert">
@@ -46,7 +66,7 @@ const ServiceKlageForAnnenPerson = () => {
               submitted={submitted}
               value={fields.innmelderNavn}
               error={errors.innmelderNavn}
-              onChange={v => setField({ innmelderNavn: v })}
+              onChange={(v) => setField({ innmelderNavn: v })}
             />
             <InputField
               bredde={"M"}
@@ -55,7 +75,7 @@ const ServiceKlageForAnnenPerson = () => {
               required={true}
               value={fields.innmelderRolle}
               error={errors.innmelderRolle}
-              onChange={v => setField({ innmelderRolle: v })}
+              onChange={(v) => setField({ innmelderRolle: v })}
             />
             <InputField
               bredde={"L"}
@@ -63,7 +83,7 @@ const ServiceKlageForAnnenPerson = () => {
               submitted={submitted}
               value={fields.paaVegneAvNavn}
               error={errors.paaVegneAvNavn}
-              onChange={v => setField({ paaVegneAvNavn: v })}
+              onChange={(v) => setField({ paaVegneAvNavn: v })}
             />
             <InputField
               bredde={"S"}
@@ -71,41 +91,51 @@ const ServiceKlageForAnnenPerson = () => {
               submitted={submitted}
               value={fields.paaVegneAvFodselsnr}
               error={errors.paaVegneAvFodselsnr}
-              onChange={v => setField({ paaVegneAvFodselsnr: v })}
+              onChange={(v) => setField({ paaVegneAvFodselsnr: v })}
             />
             <SkjemaGruppe
               legend={intl.formatMessage({
-                id: "felter.fullmakt"
+                id: "felter.fullmakt",
               })}
               feil={sjekkForFeil(submitted, errors.innmelderHarFullmakt)}
             >
               <Radio
                 label={intl.formatMessage({
-                  id: "felter.fullmakt.ja"
+                  id: "felter.fullmakt.ja",
                 })}
                 name={intl.formatMessage({
-                  id: "felter.fullmakt.ja"
+                  id: "felter.fullmakt.ja",
                 })}
                 checked={fields.innmelderHarFullmakt === true}
                 onChange={() => setField({ innmelderHarFullmakt: true })}
               />
               <Radio
                 label={intl.formatMessage({
-                  id: "felter.fullmakt.nei"
+                  id: "felter.fullmakt.nei",
                 })}
                 name={intl.formatMessage({
-                  id: "felter.fullmakt.nei"
+                  id: "felter.fullmakt.nei",
                 })}
                 checked={fields.innmelderHarFullmakt === false}
                 onChange={() => setField({ innmelderHarFullmakt: false })}
               />
               {fields.innmelderHarFullmakt === false && (
                 <AlertStripeAdvarsel>
-                  <FormattedHTMLMessage
+                  <FormattedMessage
                     id={"felter.fullmakt.advarsel"}
-                    values={
-                      { fullmaktskjema: urls.tilbakemeldinger.serviceklage.fullmaktskjema }
-                    }
+                    values={{
+                      FullmaktskjemaLenke: (text: string) => (
+                        <Lenke
+                          href={
+                            urls.tilbakemeldinger.serviceklage.fullmaktskjema
+                          }
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >
+                          {text}
+                        </Lenke>
+                      ),
+                    }}
                   />
                 </AlertStripeAdvarsel>
               )}

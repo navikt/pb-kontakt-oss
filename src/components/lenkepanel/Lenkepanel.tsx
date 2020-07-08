@@ -2,7 +2,9 @@ import React from "react";
 import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 import { Link } from "react-router-dom";
 import { LenkepanelBase } from "nav-frontend-lenkepanel";
-import { FormattedHTMLMessage } from "react-intl";
+import { FormattedMessage } from "react-intl";
+import { urls } from "../../Config";
+import { useStore } from "../../providers/Provider";
 
 export interface Props {
   id: string;
@@ -15,12 +17,13 @@ export interface Props {
 }
 
 const TilpassetLenkepanel = (props: Props) => {
+  const [{ locale }] = useStore();
   return (
     <LenkepanelBase
       href={props.to}
       border={true}
       className="linkbox__container"
-      linkCreator={p => {
+      linkCreator={(p) => {
         return props.external ? (
           <a href={props.to} {...p}>
             {p.children}
@@ -49,7 +52,19 @@ const TilpassetLenkepanel = (props: Props) => {
           {props.beskrivelse && (
             <div className="linkbox__beskrivelse">
               <Normaltekst>
-                <FormattedHTMLMessage id={props.beskrivelse} />
+                <FormattedMessage
+                  id={props.beskrivelse}
+                  values={{
+                    KlagerettigheterLenke: (text: string) => (
+                      <a
+                        className={"lenke"}
+                        href={urls.tilbakemeldinger.klagerettigheter[locale]}
+                      >
+                        {text}
+                      </a>
+                    ),
+                  }}
+                />
               </Normaltekst>
             </div>
           )}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Systemtittel } from "nav-frontend-typografi";
-import { Panel } from "nav-frontend-paneler";
+import Panel from "nav-frontend-paneler";
 
 type Props = {
   ikon?: string;
@@ -13,13 +13,16 @@ type Props = {
 
 const cssPrefix = "ikonpanel";
 
-const IkonPanel = ({ikon, tittel, children, className, id}: Props) => {
+const IkonPanel = ({ ikon, tittel, children, className, id }: Props) => {
   return (
-    <Panel className={`${cssPrefix}${className ? ` ${className}` : ""}`} id={id}>
+    <Panel
+      className={`${cssPrefix}${className ? ` ${className}` : ""}`}
+      id={id}
+    >
       <div>
         {ikon && (
           <div className={`${cssPrefix}__ikon-container`}>
-            <img src={ikon} alt="" className={`${cssPrefix}__ikon`}/>
+            <img src={ikon} alt="" className={`${cssPrefix}__ikon`} />
           </div>
         )}
       </div>

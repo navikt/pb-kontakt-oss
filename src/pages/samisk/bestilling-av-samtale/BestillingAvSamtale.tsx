@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Knapp } from "nav-frontend-knapper";
-import { withRouter } from "react-router-dom";
 import { postSamiskBestillSamtale } from "clients/apiClient";
 import { HTTPError } from "components/error/Error";
 import { AlertStripeFeil } from "nav-frontend-alertstriper";
@@ -18,12 +17,25 @@ import VeilederIcon from "assets/Veileder.svg";
 import Topplinje from "../../../components/topp-linje/ToppLinje";
 import { useStore } from "../../../providers/Provider";
 
-type TIDSROM = "FORMIDDAG" | "ETTERMIDDAG" | "BEGGE";
+type OutboundTidsrom = "FORMIDDAG" | "ETTERMIDDAG" | "BEGGE";
+type Tidsrom = {
+  [key: string]: boolean;
+  FORMIDDAG: boolean;
+  ETTERMIDDAG: boolean;
+};
+
+interface FormFields {
+  fornavn: string;
+  etternavn: string;
+  telefonnummer: string;
+  tidsrom: Tidsrom;
+}
+
 export interface OutboundBestillingAvSamtale {
   fornavn: string;
   etternavn: string;
   telefonnummer: string;
-  tidsrom: TIDSROM;
+  tidsrom: OutboundTidsrom;
 }
 
 const BAS = () => {
@@ -31,35 +43,35 @@ const BAS = () => {
   const [{ kontaktInfo }] = useStore();
   const [loading, settLoading] = useState(false);
   const [success, settSuccess] = useState(false);
-  const [error, settError] = useState();
+  const [error, settError] = useState<string | undefined>();
 
   const formConfig = {
     fornavn: {
-      isRequired: "Čále ovdanama"
+      isRequired: "Čále ovdanama",
     },
     etternavn: {
-      isRequired: "Čále goarggu"
+      isRequired: "Čále goarggu",
     },
     telefonnummer: {
-      isRequired: "Čále telefon-nummara"
+      isRequired: "Čále telefon-nummara",
     },
     tidsrom: {
       isRequired: "Vállje áiggi goas heive",
-      isValidTidsrom: "Vállje áiggi goas heive"
-    }
+      isValidTidsrom: "Vállje áiggi goas heive",
+    },
   };
 
   const initialValues = {
-    ...(kontaktInfo.mobiltelefonnummer && {
-      telefonnummer: kontaktInfo.mobiltelefonnummer
-    }),
+    fornavn: "",
+    etternavn: "",
+    telefonnummer: kontaktInfo.mobiltelefonnummer || "",
     tidsrom: {
       FORMIDDAG: false,
-      ETTERMIDDAG: false
-    }
+      ETTERMIDDAG: false,
+    },
   };
 
-  const send = (e: FormContext) => {
+  const send = (e: FormContext<FormFields>) => {
     const { isValid, fields } = e;
     const { fornavn, etternavn, telefonnummer, tidsrom } = fields;
 
@@ -72,7 +84,7 @@ const BAS = () => {
           ? "BEGGE"
           : tidsrom.FORMIDDAG
           ? "FORMIDDAG"
-          : "ETTERMIDDAG") as TIDSROM
+          : "ETTERMIDDAG") as OutboundTidsrom,
       };
 
       settLoading(true);
@@ -141,7 +153,7 @@ const BAS = () => {
                     label={"Ovdanamma"}
                     value={fields.fornavn}
                     error={errors.fornavn}
-                    onChange={v => setField({ fornavn: v })}
+                    onChange={(v) => setField({ fornavn: v })}
                     submitted={submitted}
                   />
                   <InputField
@@ -149,7 +161,7 @@ const BAS = () => {
                     label={"Goargu"}
                     value={fields.etternavn}
                     error={errors.etternavn}
-                    onChange={v => setField({ etternavn: v })}
+                    onChange={(v) => setField({ etternavn: v })}
                     submitted={submitted}
                   />
                   <InputField
@@ -157,7 +169,7 @@ const BAS = () => {
                     label={"Telefovdna*"}
                     value={fields.telefonnummer}
                     error={errors.telefonnummer}
-                    onChange={v => setField({ telefonnummer: v })}
+                    onChange={(v) => setField({ telefonnummer: v })}
                     submitted={submitted}
                   />
                 </div>
@@ -169,26 +181,28 @@ const BAS = () => {
                     <Checkbox
                       label={"08.00-10.00"}
                       value={"FORMIDDAG"}
-                      onChange={e => {
+                      onChange={(e) => {
                         const value = e.target.value;
                         setField({
                           tidsrom: {
                             ...fields.tidsrom,
-                            [value]: !fields.tidsrom[value]
-                          }
+                            // @ts-ignore
+                            [value]: !fields.tidsrom[value],
+                          },
                         });
                       }}
                     />
                     <Checkbox
                       label={"13.30-15.30"}
                       value={"ETTERMIDDAG"}
-                      onChange={e => {
+                      onChange={(e) => {
                         const value = e.target.value;
                         setField({
                           tidsrom: {
                             ...fields.tidsrom,
-                            [value]: !fields.tidsrom[value]
-                          }
+                            // @ts-ignore
+                            [value]: !fields.tidsrom[value],
+                          },
                         });
                       }}
                     />
@@ -224,4 +238,5 @@ const BAS = () => {
     </div>
   );
 };
-export default withRouter(BAS);
+
+export default BAS;

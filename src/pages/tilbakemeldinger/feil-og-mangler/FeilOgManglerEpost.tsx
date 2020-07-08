@@ -10,20 +10,18 @@ const FeilOgManglerEpost = () => {
   const [{ kontaktInfo }] = useStore();
 
   const initialValues = {
-    ...(kontaktInfo.epostadresse && {
-      epost: kontaktInfo.epostadresse
-    })
+    epost: kontaktInfo.epostadresse || "",
   };
 
   const epostConfig = {
     epost: {
       isRequired: intl.formatMessage({
-        id: "validering.epost.pakrevd"
+        id: "validering.epost.pakrevd",
       }),
       isEmail: intl.formatMessage({
-        id: "validering.epost.gyldig"
-      })
-    }
+        id: "validering.epost.gyldig",
+      }),
+    },
   };
 
   return (
@@ -40,7 +38,7 @@ const FeilOgManglerEpost = () => {
               label={intl.formatMessage({ id: "felter.epost.tittel" })}
               value={fields.epost}
               error={errors.epost}
-              onChange={v => setField({ epost: v })}
+              onChange={(v) => setField({ epost: v })}
               submitted={submitted}
             />
             <div className="tilbakemeldinger__svartid">

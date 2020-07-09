@@ -1,6 +1,5 @@
 import ApningsTider from "../../../utils/apningstider";
 import { AvviksPeriode, Ukedag } from "../../../types/datotid";
-import { ChatTema } from "../../../types/kanaler";
 
 const avvikAlle: AvviksPeriode = {
   visFraDato: "09:00 29-04-2020",
@@ -23,7 +22,3 @@ export const apningstiderDefault = new ApningsTider({
   [Ukedag.Lordag]: null,
   [Ukedag.Sondag]: null
 }, [avvikAlle]);
-
-export const chatApningstider: { [key in ChatTema]: ApningsTider | null } = {
-  [ChatTema.EURES]: null
-};

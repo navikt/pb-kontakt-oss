@@ -1,5 +1,3 @@
-import { ChatTema } from "../../../types/kanaler";
-
 export type ChatTemaConfig = {
   configId: string,
   queueKey: string,
@@ -17,8 +15,5 @@ export const chatConfig = {
   config : {
     configId: "599f9e7c-7f6b-4569-81a1-27202c419953",
     queueKey: "Q_CHAT_BOT"
-  },
-  tema: {
-    [ChatTema.EURES]: null
   }
 };

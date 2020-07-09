@@ -56,8 +56,6 @@ export default {
   "kontaktoss.tittel": "Contact us",
 
   "kontaktoss.chat.tittel": "Chat with us",
-  "kontaktoss.chat.ingress":
-    "Chat is not logged in. You can remain anonymous and we can't see any information about you.",
   "kontaktoss.chat.beskrivelse":
     "We can't answer your case on chat, but we're happy to help you with general questions.",
   "kontaktoss.chat.knapp": "Chat with us",
@@ -116,7 +114,6 @@ export default {
   // Chat
   //
   "chat.forside.tittel": "Chat with us",
-  "chat.forside.ingress": "We don't answer questions about your case in chat.",
 
   "chat.knapp.start": "Start chat",
   "chat.knapp.paagaar": "Chat in progress",
@@ -124,23 +121,6 @@ export default {
 
   "chat.stengt.info": "Chat is closed, see opening hours below.",
   "chat.admin-stengt.veileder": "Chat with a counsellor is currently unavailable.",
-
-  "chat.arbeidsgiver.tittel": "Employers, public and private partners",
-  "chat.arbeidsgiver.metatittel": "Chat with us - Employers, public and private partners",
-  "chat.jobbsoker.tittel": "Jobseeker",
-  "chat.jobbsoker.metatittel": "Chat with us - Jobseeker",
-  "chat.syk.tittel": "Illness",
-  "chat.syk.metatittel": "Chat with us - Illness",
-  "chat.familie.tittel": "Parents, children and family",
-  "chat.familie.metatittel": "Chat with us - Parents, children and family",
-  "chat.ufor.tittel": "Disabled",
-  "chat.ufor.metatittel": "Chat with us - Disabled",
-  "chat.sosialhjelp.tittel": "Social services and financial assistance",
-  "chat.sosialhjelp.metatittel": "Chat with us - Social services and financial assistance",
-  "chat.okonomi.tittel": "Financial advice and debt counselling",
-  "chat.okonomi.metatittel": "Chat with us - Financial advice and debt counselling",
-  "chat.eures.tittel": "Ask EURES about jobs and recruitment in the EEA",
-  "chat.eures.metatittel": "Chat with EURES about jobs and recruitment in the EEA",
 
   "apningstid.avvik": "<p>Special opening hours:</p>",
   "apningstid.avvik.chatbot":

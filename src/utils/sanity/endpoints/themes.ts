@@ -1,4 +1,4 @@
-import { ChatTema, STOTema } from "../../../types/kanaler";
+import { STOTema } from "../../../types/kanaler";
 import { LocaleBlock, LocaleString, Page } from "../common-types";
 
 export type ThemeProps = {
@@ -16,7 +16,7 @@ export type Themes = {
   props: ThemeList;
 };
 
-export type ThemeList = { [key in ChatTema | STOTema]: ThemeProps };
+export type ThemeList = { [key in STOTema]: ThemeProps };
 
 type LenkePanel = {
   description: LocaleBlock;
@@ -24,7 +24,6 @@ type LenkePanel = {
 };
 
 export const temaToSanityId = {
-  [ChatTema.EURES]: "chat-med-oss-eures",
   [STOTema.Familie]: "skriv-til-oss-familie",
   [STOTema.Jobbsoker]: "skriv-til-oss-jobbsoker",
   [STOTema.Pensjon]: "skriv-til-oss-pensjonist",

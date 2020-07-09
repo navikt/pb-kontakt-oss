@@ -56,8 +56,6 @@ export default {
   "kontaktoss.tittel": "Kontakt oss",
 
   "kontaktoss.chat.tittel": "Chat med oss",
-  "kontaktoss.chat.ingress":
-    "Chatten er ikke innlogget. Du kan være anonym, og vi ser ikke informasjon om deg.",
   "kontaktoss.chat.beskrivelse":
     "På chat kan vi ikke svare på saken din, men vi hjelper deg gjerne med generelle spørsmål.",
   "kontaktoss.chat.knapp": "Chat med oss",
@@ -116,7 +114,6 @@ export default {
   // Chat
   //
   "chat.forside.tittel": "Chat med oss",
-  "chat.forside.ingress": "På chat svarer vi ikke på spørsmål om saken din.",
 
   "chat.knapp.start": "Start chat",
   "chat.knapp.paagaar": "Chat pågår",
@@ -124,23 +121,6 @@ export default {
 
   "chat.stengt.info": "Chatten er stengt, se åpningstider under.",
   "chat.admin-stengt.veileder": "Chat med veileder er for øyeblikket utilgjengelig.",
-
-  "chat.arbeidsgiver.tittel": "Arbeidsgiver og samhandler",
-  "chat.arbeidsgiver.metatittel": "Chat med oss - Arbeidsgiver og samhandler",
-  "chat.jobbsoker.tittel": "Jobbsøker",
-  "chat.jobbsoker.metatittel": "Chat med oss - Jobbsøker",
-  "chat.syk.tittel": "Syk",
-  "chat.syk.metatittel": "Chat med oss - Syk",
-  "chat.familie.tittel": "Foreldre, barn og familie",
-  "chat.familie.metatittel": "Chat med oss - Foreldre, barn og familie",
-  "chat.ufor.tittel": "Ufør",
-  "chat.ufor.metatittel": "Chat med oss - Ufør",
-  "chat.sosialhjelp.tittel": "Sosiale tjenester og økonomisk sosialhjelp",
-  "chat.sosialhjelp.metatittel": "Chat med oss - Sosiale tjenester og økonomisk sosialhjelp",
-  "chat.okonomi.tittel": "Økonomi og gjeldsrådgivning",
-  "chat.okonomi.metatittel": "Chat med oss - Økonomi og gjeldsrådgivning",
-  "chat.eures.tittel": "Spør EURES om jobb og rekruttering i i EØS-området",
-  "chat.eures.metatittel": "Chat med EURES om jobb og rekruttering i i EØS-området",
 
   "apningstid.avvik": "<p>Spesielle åpningstider:</p>",
   "apningstid.avvik.chatbot":

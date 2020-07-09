@@ -61,8 +61,7 @@ const ChatForside = () => {
   }, []);
 
   return (
-    <>
-      <div className={`${cssPrefix} pagecontent`}>
+    <div className={`${cssPrefix} pagecontent`}>
         <Topplinje />
         <MetaTags
           titleId={"chat.forside.tittel"}
@@ -75,8 +74,7 @@ const ChatForside = () => {
           </Sidetittel>
         </div>
         <>
-          <div className={`pagecontent`}>
-            <PanelBase className={cssPrefix}>
+          <PanelBase className={`${cssPrefix}__panel`}>
               <div className={`${cssPrefix}__panel-ingress`}>
                 <VarselVisning kanal={Kanal.Chat}>
                   <>
@@ -109,7 +107,6 @@ const ChatForside = () => {
                 </Hovedknapp>
               </div>
             </PanelBase>
-          </div>
           {chatClientConfig && (
             <ChatbotTrigger
               config={chatClientConfig}
@@ -118,7 +115,6 @@ const ChatForside = () => {
           )}
         </>
       </div>
-    </>
   );
 };
 

@@ -14,37 +14,34 @@ export interface Lenke {
   external?: boolean;
 }
 
-export const lenker = (locale: Locale, formatHTMLMessage: Function): Lenke[] => [
+export const lenker = (locale: Locale): Lenke[] => [
   {
     icon: paperIcon,
     tittel: "tilbakemeldinger.klageanke.tittel",
-    beskrivelse: formatHTMLMessage(
-      { id: "tilbakemeldinger.klageanke.beskrivelse" },
-      { klagerettigheter: urls.tilbakemeldinger.klagerettigheter[locale] }
-    ),
+    beskrivelse: "tilbakemeldinger.klageanke.beskrivelse",
     lenke: urls.tilbakemeldinger.klagepavedtak[locale],
     lenkeTekst: "tilbakemeldinger.klageanke.link",
-    external: true
+    external: true,
   },
   {
     icon: complaintIcon,
     tittel: "tilbakemeldinger.serviceklage.tittel",
     beskrivelse: "tilbakemeldinger.serviceklage.beskrivelse",
     lenke: localePath(paths.tilbakemeldinger.serviceklage.login, locale),
-    lenkeTekst: "tilbakemeldinger.serviceklage.link"
+    lenkeTekst: "tilbakemeldinger.serviceklage.link",
   },
   {
     icon: wrenchIcon,
     tittel: "tilbakemeldinger.feilogmangler.tittel",
     beskrivelse: "tilbakemeldinger.feilogmangler.beskrivelse",
     lenke: localePath(paths.tilbakemeldinger.feilogmangler, locale),
-    lenkeTekst: "tilbakemeldinger.feilogmangler.link"
+    lenkeTekst: "tilbakemeldinger.feilogmangler.link",
   },
   {
     icon: heartIcon,
     tittel: "tilbakemeldinger.ros.tittel",
     beskrivelse: "tilbakemeldinger.ros.beskrivelse",
     lenke: localePath(paths.tilbakemeldinger.rostilnav, locale),
-    lenkeTekst: "tilbakemeldinger.ros.link"
-  }
+    lenkeTekst: "tilbakemeldinger.ros.link",
+  },
 ];

@@ -9,15 +9,13 @@ const ServiceKlageTelefon = () => {
   const [{ kontaktInfo }] = useStore();
 
   const initialValues = {
-    ...(kontaktInfo.mobiltelefonnummer && {
-      innmelderTlfnr: kontaktInfo.mobiltelefonnummer
-    })
+    innmelderTlfnr: kontaktInfo.mobiltelefonnummer || "",
   };
 
   const tlfFormConfig = {
     innmelderTlfnr: {
-      isRequired: intl.formatMessage({ id: "validering.tlf.pakrevd" })
-    }
+      isRequired: intl.formatMessage({ id: "validering.tlf.pakrevd" }),
+    },
   };
 
   return (
@@ -34,7 +32,7 @@ const ServiceKlageTelefon = () => {
               label={intl.formatMessage({ id: "felter.tlf.tittel" })}
               value={fields.innmelderTlfnr}
               error={errors.innmelderTlfnr}
-              onChange={v => setField({ innmelderTlfnr: v })}
+              onChange={(v) => setField({ innmelderTlfnr: v })}
               submitted={submitted}
             />
           </div>

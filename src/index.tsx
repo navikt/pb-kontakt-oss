@@ -17,7 +17,7 @@ import { initialState, reducer } from "./providers/Store";
 import msgsNb from "./language/nb";
 import msgsEn from "./language/en";
 import { ValidatorsProvider } from "calidation";
-import { extraValidators, SimpleValidators } from "./utils/validators";
+import { extraValidators } from "./utils/validators";
 import { Locale, setLocaleFromUrl } from "./utils/locale";
 
 // If you want your app to work offline and load faster, you can change
@@ -61,11 +61,12 @@ const init = async () => {
     document.body.appendChild(script);
   }
 
-  ReactDOM.render((
+  ReactDOM.render(
     <StoreProvider initialState={initialState} reducer={reducer}>
       <RenderApp />
-    </StoreProvider>
-  ), document.getElementById("app"));
+    </StoreProvider>,
+    document.getElementById("app")
+  );
   serviceWorker.unregister();
 };
 
@@ -78,7 +79,7 @@ const RenderApp = () => {
   }, []);
 
   return (
-    <ValidatorsProvider validators={extraValidators as SimpleValidators}>
+    <ValidatorsProvider validators={extraValidators}>
       <IntlProvider locale={locale} messages={messages[locale]}>
         <App />
       </IntlProvider>

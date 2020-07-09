@@ -2,7 +2,8 @@ export default {
   //
   // Varsler
   //
-  "varsel.teknisk.feil": "Det er for øyeblikket tekniske problemer med baksystemene våre. Dette kan føre til at noe informasjon mangler fra sidene.",
+  "varsel.teknisk.feil":
+    "Det er for øyeblikket tekniske problemer med baksystemene våre. Dette kan føre til at noe informasjon mangler fra sidene.",
   "varsel.koronavirus": "Koronavirus - hva gjelder i min situasjon",
   "varsel.koronavirus.navkontor":
     "Vær oppmerksom på at mange NAV-kontor fortsatt har redusert åpningstid på grunn av koronasituasjonen. " +
@@ -120,7 +121,8 @@ export default {
   "chat.knapp.stengt": "Chatten er stengt",
 
   "chat.stengt.info": "Chatten er stengt, se åpningstider under.",
-  "chat.admin-stengt.veileder": "Chat med veileder er for øyeblikket utilgjengelig.",
+  "chat.admin-stengt.veileder":
+    "Chat med veileder er for øyeblikket utilgjengelig.",
 
   "apningstid.avvik": "<p>Spesielle åpningstider:</p>",
   "apningstid.avvik.chatbot":
@@ -151,11 +153,14 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Foreldre, barn og familie",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensjonist",
   "skrivtiloss.ufor.lenke.tittel": "Ufør",
-  "skrivtiloss.sosial.lenke.tittel": "Økonomisk sosialhjelp og andre sosiale tjenester",
+  "skrivtiloss.sosial.lenke.tittel":
+    "Økonomisk sosialhjelp og andre sosiale tjenester",
   "skrivtiloss.hjelpemidler.lenke.tittel": "Hjelpemidler",
   "skrivtiloss.hjelpemidler.generelt.lenke.tittel": "Generelle spørsmål",
-  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel": "Ortopediske hjelpemidler",
-  "skrivtiloss.hjelpemidler.bil.lenke.tittel": "Spørsmål om bil og spesialutstyr til bil",
+  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel":
+    "Ortopediske hjelpemidler",
+  "skrivtiloss.hjelpemidler.bil.lenke.tittel":
+    "Spørsmål om bil og spesialutstyr til bil",
 
   "skrivtiloss.hjelpemidler.mellomside.tittel": "Skriv til oss om hjelpemidler",
   "skrivtiloss.hjelpemidler.description":
@@ -171,14 +176,13 @@ export default {
     "Da kan du søke opp NAV-kontor ved hjelp av postnummer eller sted/by.",
   "finnkontor.sok.knapp": "Søk",
   "finnkontor.sok.label": "Skriv inn et postnummer eller sted/by",
-  "finnkontor.ugyldig.postnr":
-    "Fant ingen NAV-kontor tilknyttet \"{nummer}\". Postnummeret kan være ugyldig.",
+  "finnkontor.ugyldig.postnr": `Fant ingen NAV-kontor tilknyttet "{nummer}". Postnummeret kan være ugyldig.`,
   "finnkontor.query.feil":
     "Skriv inn minst {min} bokstaver eller et gyldig postnummer.",
   "finnkontor.query.feil.kort": "Skriv minst {min} bokstaver eller et postnr.",
-  "finnkontor.ingen.treff": "Ingen resultater for \"{query}\"",
+  "finnkontor.ingen.treff": `Ingen resultater for "{query}"`,
   "finnkontor.flere.treff": "Vis alle treff ({antall})",
-  "finnkontor.resultat.stedsnavn": "Søkeresultat for \"{query}\" ({antall}):",
+  "finnkontor.resultat.stedsnavn": `Søkeresultat for "{query}" ({antall}):`,
   "finnkontor.resultat.postnr": "NAV-kontor for ",
 
   //
@@ -187,10 +191,7 @@ export default {
   //
   "tilbakemeldinger.sidetittel": "Klage og tilbakemelding",
   "tilbakemeldinger.klageanke.tittel": "Klage eller anke på vedtak",
-  "tilbakemeldinger.klageanke.beskrivelse":
-    "Har du fått helt eller delvis avslag på søknaden din, kan du klage på avslaget. " +
-    "Får du ikke medhold i klagen din i NAV, kan du med noen unntak anke til Trygderetten. " +
-    "Les mer om dine <a href=\"{klagerettigheter}\" class=\"lenke\">klagerettigheter</a>.",
+  "tilbakemeldinger.klageanke.beskrivelse": `Har du fått helt eller delvis avslag på søknaden din, kan du klage på avslaget. Får du ikke medhold i klagen din i NAV, kan du med noen unntak anke til Trygderetten. Les mer om dine <KlagerettigheterLenke>klagerettigheter</KlagerettigheterLenke>.`,
   "tilbakemeldinger.klageanke.link": "Send klage eller anke på vedtak",
 
   "tilbakemeldinger.serviceklage.tittel": "Klage på service",
@@ -199,7 +200,7 @@ export default {
   "tilbakemeldinger.serviceklage.login.tittel": "Klage på service",
   "tilbakemeldinger.serviceklage.login.overskrift": "Ønsker du å logge inn?",
   "tilbakemeldinger.serviceklage.login.beskrivelse":
-    "Vi anbefaler at du logger inn, så slipper du å fylle inn all informasjonen om deg selv.<br />" +
+    "Vi anbefaler at du logger inn, så slipper du å fylle inn all informasjonen om deg selv.<br></br>" +
     "Du må opppgi hvem du er uansett om du logger inn eller ikke.",
   "tilbakemeldinger.serviceklage.login.knapp": "Logg inn",
   "tilbakemeldinger.serviceklage.login.knapp.fortsettuten":
@@ -274,14 +275,10 @@ export default {
   "felter.typefeil.tittel": "Hva slags feil eller mangel fant du?",
   "felter.typefeil.tekniskfeil": "Teknisk feil",
   "felter.typefeil.feilinformasjon": "Feil informasjon",
-  "felter.typefeil.uu": "Feil på siden ved bruk av skjermleser eller annet hjelpemiddel",
+  "felter.typefeil.uu":
+    "Feil på siden ved bruk av skjermleser eller annet hjelpemiddel",
   "felter.melding.tittel": "Din tilbakemelding",
-  "felter.melding.beskrivelse":
-    "Unngå sensitive personopplysninger, som for eksempel opplysninger om helseforhold eller diagnoser. " +
-    "Du kan ikke spørre om status i saken din, da må du logge inn og sjekke på Ditt NAV under " +
-    "<a href=\"{saksoversikt}\" class=\"lenke\">Dine saker</a>. " +
-    "Finner du ikke svaret, kan du sjekke <a href=\"{saksbehandlingstider}\" class=\"lenke\">saksbehandlingstider</a> " +
-    "eller ta kontakt i <a href=\"{skrivtiloss}\" class=\"lenke\">Skriv til oss</a>.",
+  "felter.melding.beskrivelse": `Unngå sensitive personopplysninger, som for eksempel opplysninger om helseforhold eller diagnoser. Du kan ikke spørre om status i saken din, da må du logge inn og sjekke på Ditt NAV under <DineSakerLenke>Dine saker</DineSakerLenke>. Finner du ikke svaret, kan du sjekke <SaksbehandlingstiderLenke>saksbehandlingstider</SaksbehandlingstiderLenke> eller ta kontakt i <SkrivTilOssLenke>Skriv til oss</SkrivTilOssLenke>.`,
   "felter.noegikkgalt": "Oi! Noe gikk galt:",
   "felter.send": "Send",
   "felter.tilbake": "Tilbake",
@@ -316,9 +313,7 @@ export default {
   "felter.fullmakt": "Har du fullmakt?",
   "felter.fullmakt.ja": "Ja, jeg har fullmakt",
   "felter.fullmakt.nei": "Nei, jeg har ikke fullmakt",
-  "felter.fullmakt.advarsel":
-    "Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder. " +
-    "<a href=\"{fullmaktskjema}\" target=\"_blank\">Gå til fullmaktskjema</a>.",
+  "felter.fullmakt.advarsel": `Vi kan ikke kontakte deg med mindre vi har mottatt en fullmakt fra personen det gjelder. <FullmaktskjemaLenke>Gå til fullmaktskjema</FullmaktskjemaLenke>.`,
   "felter.orgnavn": "Organisasjonsnavn",
   "felter.orgnr": "Organisasjonsnummer (til din lokale enhet)",
   "felter.postadr": "Bedriftens postadresse",

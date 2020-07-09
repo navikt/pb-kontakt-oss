@@ -24,7 +24,7 @@ const Tilbakemeldinger = () => {
             title={intl.formatMessage({ id: "tilbakemeldinger.sidetittel" })}
           />
         </div>
-        {lenker(locale, intl.formatHTMLMessage).map(lenke => (
+        {lenker(locale).map((lenke) => (
           <TilpassetLenkepanel
             icon={lenke.icon}
             key={lenke.tittel}

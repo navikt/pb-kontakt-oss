@@ -2,7 +2,8 @@ export default {
   //
   // Varsler
   //
-  "varsel.teknisk.feil": "We are currently experiencing technical difficulties with our back-end systems. This could result in some information missing from these pages.",
+  "varsel.teknisk.feil":
+    "We are currently experiencing technical difficulties with our back-end systems. This could result in some information missing from these pages.",
   "varsel.koronavirus": "Coronavirus - what applies in my situation",
   "varsel.koronavirus.navkontor":
     "Be aware that several NAV offices still have shorter opening hours due to the corona situation. You will find " +
@@ -78,13 +79,15 @@ export default {
   "kontaktoss.kontaktveileder.knapp": "Dialogue with your counsellor (login)",
 
   "kontaktoss.facebook.tittel": "Ask us on Facebook",
-  "kontaktoss.facebook.foreldrepenger": "Parental benefit on Facebook (text in Norwegian)",
+  "kontaktoss.facebook.foreldrepenger":
+    "Parental benefit on Facebook (text in Norwegian)",
   "kontaktoss.facebook.jobblyst": "Jobseeker on Facebook (text in Norwegian)",
 
   "kontaktoss.navkontor.tittel": "Find NAV offices",
   "kontaktoss.navkontor.innlogget.lenke": "Find your local NAV office (login)",
   "kontaktoss.navkontor.uinnlogget.lenke": "Find a NAV office",
-  "kontaktoss.hjelpemiddelsentral.lenke": "Find a NAV Assistive Technology Centre (text in Norwegian)",
+  "kontaktoss.hjelpemiddelsentral.lenke":
+    "Find a NAV Assistive Technology Centre (text in Norwegian)",
 
   "kontaktoss.tolketjenesten.tittel": "Interpreter services",
   "kontaktoss.tolketjenesten.link":
@@ -96,19 +99,22 @@ export default {
   "kontaktoss.klage.beskrivelse":
     "You can submit a complaint if your application has been rejected in whole or in part and if you have had a negative" +
     " experience in your contact with NAV",
-  "kontaktoss.klage.knapp":
-    "How to submit a complaint or feedback to NAV",
+  "kontaktoss.klage.knapp": "How to submit a complaint or feedback to NAV",
 
   "kontaktoss.tekniskfeil.tittel": "Technical errors on nav.no",
-  "kontaktoss.tekniskfeil.link.losselv": "Options to try solving the problem yourself  (text in Norwegian)",
-  "kontaktoss.tekniskfeil.link.meldifra": "Report errors and wrong or missing information",
-  "kontaktoss.tekniskfeil.link.ring": "Call technical support (text in Norwegian)",
+  "kontaktoss.tekniskfeil.link.losselv":
+    "Options to try solving the problem yourself  (text in Norwegian)",
+  "kontaktoss.tekniskfeil.link.meldifra":
+    "Report errors and wrong or missing information",
+  "kontaktoss.tekniskfeil.link.ring":
+    "Call technical support (text in Norwegian)",
 
   "kontaktoss.presse.tittel": "Public Relations",
   "kontaktoss.presse.link": "Contact Public Relations (text in Norwegian)",
 
   "kontaktoss.sosialemedier.tittel": "NAV on social media",
-  "kontaktoss.sosialemedier.link": "NAV social media accounts and pages (text in Norwegian)",
+  "kontaktoss.sosialemedier.link":
+    "NAV social media accounts and pages (text in Norwegian)",
 
   //
   // Chat
@@ -120,7 +126,8 @@ export default {
   "chat.knapp.stengt": "Chat is closed",
 
   "chat.stengt.info": "Chat is closed, see opening hours below.",
-  "chat.admin-stengt.veileder": "Chat with a counsellor is currently unavailable.",
+  "chat.admin-stengt.veileder":
+    "Chat with a counsellor is currently unavailable.",
 
   "apningstid.avvik": "<p>Special opening hours:</p>",
   "apningstid.avvik.chatbot":
@@ -151,13 +158,17 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Parents, children and family",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensioner",
   "skrivtiloss.ufor.lenke.tittel": "Disabled",
-  "skrivtiloss.sosial.lenke.tittel": "Financial social assistance and other social assistance services",
+  "skrivtiloss.sosial.lenke.tittel":
+    "Financial social assistance and other social assistance services",
   "skrivtiloss.hjelpemidler.lenke.tittel": "Assistive devices and technology",
   "skrivtiloss.hjelpemidler.generelt.lenke.tittel": "General questions",
-  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel": "Orthopaedic assistive devices",
-  "skrivtiloss.hjelpemidler.bil.lenke.tittel": "Questions about cars and special equipment for cars",
+  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel":
+    "Orthopaedic assistive devices",
+  "skrivtiloss.hjelpemidler.bil.lenke.tittel":
+    "Questions about cars and special equipment for cars",
 
-  "skrivtiloss.hjelpemidler.mellomside.tittel": "Write to us about assistive technology",
+  "skrivtiloss.hjelpemidler.mellomside.tittel":
+    "Write to us about assistive technology",
   "skrivtiloss.hjelpemidler.description":
     "Send questions or information about assistive technology, orthopaedic assistive technology, car allowance, interpreters," +
     " facilitation and adaptation.",
@@ -171,14 +182,12 @@ export default {
     "If so, you can find a NAV office using a post code or town/city.",
   "finnkontor.sok.knapp": "Search",
   "finnkontor.sok.label": "Enter a post code or town/city",
-  "finnkontor.ugyldig.postnr":
-    "No NAV office associated with \"{nummer}\"was found. The post code may be invalid.",
-  "finnkontor.query.feil":
-    "Enter at least {min} letters or a valid post code.",
+  "finnkontor.ugyldig.postnr": `No NAV office associated with "{nummer}"was found. The post code may be invalid.`,
+  "finnkontor.query.feil": "Enter at least {min} letters or a valid post code.",
   "finnkontor.query.feil.kort": "Enter at least {min} letters or a post code.",
-  "finnkontor.ingen.treff": "No results for \"{query}\"",
+  "finnkontor.ingen.treff": `No results for "{query}"`,
   "finnkontor.flere.treff": "Show all results ({antall})",
-  "finnkontor.resultat.stedsnavn": "Search results for \"{query}\" ({antall}):",
+  "finnkontor.resultat.stedsnavn": `Search results for "{query}" ({antall}):`,
   "finnkontor.resultat.postnr": "NAV office for ",
 
   //
@@ -187,10 +196,7 @@ export default {
   //
   "tilbakemeldinger.sidetittel": "Complaints and feedback",
   "tilbakemeldinger.klageanke.tittel": "Complain or appeal a decision",
-  "tilbakemeldinger.klageanke.beskrivelse":
-  "You can send us a complaint if your application is completely or partially rejected (helt eller delvis avslag). " +
-    "If your complaint is not supported by NAV you can in some cases appeal to the National Insurance Court (Trygderetten). " +
-    "Read more about your <a href=\"{klagerettigheter}\" class=\"lenke\">right to appeal</a> a decision. ",
+  "tilbakemeldinger.klageanke.beskrivelse": `You can send us a complaint if your application is completely or partially rejected (helt eller delvis avslag). If your complaint is not supported by NAV you can in some cases appeal to the National Insurance Court (Trygderetten). Read more about your <KlagerettigheterLenke>right to appeal</KlagerettigheterLenke> a decision. `,
   "tilbakemeldinger.klageanke.link": "Send a complaint or appeal a decision",
 
   "tilbakemeldinger.serviceklage.tittel": "Complaints about service",
@@ -208,14 +214,17 @@ export default {
   "tilbakemeldinger.serviceklage.form.veileder":
     "Here you can complain about the service you have received. You will receive an answer within 3 weeks.",
   "tilbakemeldinger.serviceklage.form.tittel": "Complaints about service",
-  "tilbakemeldinger.serviceklage.form.overskrift": "Submit a complaint about service",
+  "tilbakemeldinger.serviceklage.form.overskrift":
+    "Submit a complaint about service",
   "tilbakemeldinger.serviceklage.form.onskersvar":
     "Do you want us to contact you?",
-  "tilbakemeldinger.serviceklage.form.onskersvar.ja": "Yes, I would like to be contacted",
+  "tilbakemeldinger.serviceklage.form.onskersvar.ja":
+    "Yes, I would like to be contacted",
   "tilbakemeldinger.serviceklage.form.onskersvar.nei":
     "No, I just wanted to inform you",
 
-  "tilbakemeldinger.feilogmangler.tittel": "Errors and wrong or missing information",
+  "tilbakemeldinger.feilogmangler.tittel":
+    "Errors and wrong or missing information",
   "tilbakemeldinger.feilogmangler.beskrivelse":
     "Have you found an error on nav.no? Is it a technical error, wrong or missing information, or an accessibility " +
     "issue? We would like to hear from you about these cases.",
@@ -242,7 +251,8 @@ export default {
   "validering.epost.pakrevd": "Email is required",
   "validering.epost.gyldig": "Must be a valid email address",
   "validering.tlf.pakrevd": "Phone number is required",
-  "validering.klagetype.utdypning.pakrevd": "You must provide more information about what the appeal concerns",
+  "validering.klagetype.utdypning.pakrevd":
+    "You must provide more information about what the appeal concerns",
   "validering.feiltype.pakrevd":
     "You must select the type of error or omission you discovered",
   "validering.melding.pakrevd": "Message is required",
@@ -256,8 +266,10 @@ export default {
   "validering.onskerkontakt.pakrevd":
     "You must select whether you want us to contact you",
   "validering.fodselsnr.pakrevd": "National identity number is required",
-  "validering.fodselsnr.siffer": "National identity number can only consist of digits",
-  "validering.fodselsnr.korrektsiffer": "National identity number must be 11 digits",
+  "validering.fodselsnr.siffer":
+    "National identity number can only consist of digits",
+  "validering.fodselsnr.korrektsiffer":
+    "National identity number must be 11 digits",
   "validering.fullmakt.pakrevd": "Authorisation is required",
   "validering.rolle.pakrevd": "Role is required",
   "validering.orgnavn.pakrevd": "Organisation name is required",
@@ -272,19 +284,14 @@ export default {
   "felter.navn.tittel.valgfritt": "Name (optional)",
   "felter.epost.tittel": "Email",
   "felter.tlf.tittel": "Telephone",
-  "felter.typefeil.tittel": "What kind of error or wrong information did you find?",
+  "felter.typefeil.tittel":
+    "What kind of error or wrong information did you find?",
   "felter.typefeil.tekniskfeil": "Technical error",
   "felter.typefeil.feilinformasjon": "Wrong information",
-  "felter.typefeil.uu": "Error when using screen readers or other accessibility devices",
+  "felter.typefeil.uu":
+    "Error when using screen readers or other accessibility devices",
   "felter.melding.tittel": "Your feedback",
-  "felter.melding.beskrivelse":
-    "Avoid sending sensitive personal information about your health condition or diagnoses. " +
-    "You can’t ask about the status of your application here. Login to " +
-    "<a href=\"{dittnav}\" class=\"lenke\">Ditt NAV</a> (text in Norwegian) and go to " +
-    "<a href=\"{saksoversikt}\" class=\"lenke\">Dine saker</a> for this information. " +
-    "If you don’t find the answer there you can check " +
-    "<a href=\"{saksbehandlingstider}\" class=\"lenke\">case processing times</a> (text in Norwegian) " +
-    "or <a href=\"{skrivtiloss}\" class=\"lenke\">write to us</a>.",
+  "felter.melding.beskrivelse": `Avoid sending sensitive personal information about your health condition or diagnoses. You can’t ask about the status of your application here. Login to <DittNavLenke>Ditt NAV</DittNavLenke> (text in Norwegian) and go to <DineSakerLenke>Dine saker</DineSakerLenke> for this information. If you don’t find the answer there you can check <SaksbehandlingstiderLenke>case processing times</SaksbehandlingstiderLenke> (text in Norwegian) or <SkrivTilOssLenke>write to us</SkrivTilOssLenke>.`,
   "felter.noegikkgalt": "Oops! Something went wrong:",
   "felter.send": "Send",
   "felter.tilbake": "Back",
@@ -293,7 +300,8 @@ export default {
   "felter.hvemroses.digitaletjenester": "NAVs digital services",
   "felter.hvemroses.navkontor": "NAV office",
   "felter.hvemroses.navkontor.velg": "Choose NAV unit",
-  "felter.klagerpa.navkontor.velg": "Which NAV department does the complaint relate to?",
+  "felter.klagerpa.navkontor.velg":
+    "Which NAV department does the complaint relate to?",
   "felter.hvemroses.navkontor.skrivinn": "Search or select using arrow keys",
   "felter.klagetyper": "What is the feedback about?",
   "felter.klagetyper.info":
@@ -319,9 +327,7 @@ export default {
   "felter.fullmakt": "Do you have an authorisation?",
   "felter.fullmakt.ja": "Yes, I have an authorisation",
   "felter.fullmakt.nei": "No, I don't have an authorisation",
-  "felter.fullmakt.advarsel":
-    "We cannot contact you unless we have received an authorisation from the person in question." +
-    "<a href=\"{fullmaktskjema}\" target=\"_blank\">Go to the authorisation form</a>.",
+  "felter.fullmakt.advarsel": `We cannot contact you unless we have received an authorisation from the person in question.<FullmaktskjemaLenke>Go to the authorisation form</FullmaktskjemaLenke>.`,
   "felter.orgnavn": "Organisation name",
   "felter.orgnr": "Organisation number (for your local department)",
   "felter.postadr": "Company postal address",

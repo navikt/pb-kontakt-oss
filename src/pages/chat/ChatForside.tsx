@@ -24,7 +24,7 @@ const sideTittelId = "chat.forside.tittel";
 
 const ChatForside = () => {
 
-  const [chatButtonClickedTimestamp, setChatButtonClickedTimestamp] = useState();
+  const [chatButtonClickedTimestamp, setChatButtonClickedTimestamp] = useState<number>();
   const [serverTidOffset, setServerTidOffset] = useState(0);
   const [{ themes, channels }] = useStore();
   const chatProps = channels.props[Kanal.Chat];
@@ -49,7 +49,6 @@ const ChatForside = () => {
     ? apningsTider.isOpenNow(serverTidOffset)
     : true;
   const chatVeilederStengtAvAdmin = isClosed && chatErIApningstid;
-
   const chatClientConfig = chatConfig.config;
 
   useEffect(() => {

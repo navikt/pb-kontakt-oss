@@ -7,7 +7,7 @@ import { paths } from "../../Config";
 
 const ChatRouter = () => {
   // Deprecated, should be removed when links in XP are updated
-  const themeRoutes = `(/arbeidsgiver|/jobbsoker|/syk|/familie|/ufor|/sosialhjelp|/okonomi|/eures)?`;
+  const themeRoutes = `(/arbeidsgiver|/jobbsoker|/syk|/familie|/ufor|/sosialhjelp|/okonomi|/eures|/aap)?`;
   return (
     <Switch>
       {validLocales.flatMap((locale) => [

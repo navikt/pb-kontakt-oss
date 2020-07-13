@@ -6,17 +6,16 @@ import { localePath, validLocales } from "../../utils/locale";
 import { paths } from "../../Config";
 
 const ChatRouter = () => {
+  const themeRoutes = `(/arbeidsgiver|/jobbsoker|/syk|/familie|/ufor|/sosialhjelp|/okonomi|/eures)?`;
   return (
     <Switch>
-      {validLocales.flatMap(locale => [
-        (
-          <Route
-            exact={true}
-            path={localePath(paths.chat.forside, locale)}
-            component={ChatForside}
-            key={locale}
-          />
-        )
+      {validLocales.flatMap((locale) => [
+        <Route
+          exact={true}
+          path={`${localePath(paths.chat.forside, locale)}${themeRoutes}`}
+          component={ChatForside}
+          key={locale}
+        />,
       ])}
       <Route>
         <NotFound />

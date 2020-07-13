@@ -1,4 +1,4 @@
-import { ChatTema, STOTema } from "../../../types/kanaler";
+import { STOTema } from "../../../types/kanaler";
 import { LocaleBlock, LocaleString, Page } from "../common-types";
 
 export type ThemeProps = {
@@ -16,7 +16,7 @@ export type Themes = {
   props: ThemeList;
 };
 
-export type ThemeList = { [key in ChatTema | STOTema]: ThemeProps };
+export type ThemeList = { [key in STOTema]: ThemeProps };
 
 type LenkePanel = {
   description: LocaleBlock;
@@ -24,14 +24,6 @@ type LenkePanel = {
 };
 
 export const temaToSanityId = {
-  [ChatTema.Arbeidsgiver]: "chat-med-oss-arbeidsgiver",
-  [ChatTema.EURES]: "chat-med-oss-eures",
-  [ChatTema.Familie]: "chat-med-oss-familie",
-  [ChatTema.Jobbsoker]: "chat-med-oss-jobbsoker",
-  [ChatTema.Okonomi]: "chat-med-oss-okonomi",
-  [ChatTema.Sosial]: "chat-med-oss-sosialhjelp",
-  [ChatTema.Syk]: "chat-med-oss-syk",
-  [ChatTema.Ufor]: "chat-med-oss-ufor",
   [STOTema.Familie]: "skriv-til-oss-familie",
   [STOTema.Jobbsoker]: "skriv-til-oss-jobbsoker",
   [STOTema.Pensjon]: "skriv-til-oss-pensjonist",

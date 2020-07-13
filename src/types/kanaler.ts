@@ -6,19 +6,6 @@ export enum Kanal {
   KontaktVeileder = "kontakt-veileder"
 }
 
-// OBS: denne og STOTema må ikke ha overlappende verdier!
-export enum ChatTema {
-  Arbeidsgiver = "chat-arbeidsgiver",
-  Jobbsoker = "chat-jobbsoker",
-  Syk = "chat-syk",
-  Familie = "chat-familie",
-  Ufor = "chat-ufør",
-  Sosial = "chat-sosial",
-  Okonomi = "chat-okonomi",
-  EURES = "chat-eures",
-}
-
-// OBS: denne og ChatTema må ikke ha overlappende verdier!
 export enum STOTema {
   Jobbsoker = "sto-jobbsoker",
   Syk = "sto-syk",
@@ -33,7 +20,7 @@ export enum STOTema {
 }
 
 export type TemaLenke = {
-  tema: ChatTema | STOTema;
+  tema: STOTema;
   url: string;
   fallbackTittelId: string;
   grafanaId: string;

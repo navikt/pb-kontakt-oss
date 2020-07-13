@@ -23,14 +23,6 @@ export const useLocalePaths = () => {
     baseAppPath: `${paths.baseAppPath}/${locale}`,
     chat: {
       forside: locPath(paths.chat.forside),
-      arbeidsgiver: locPath(paths.chat.arbeidsgiver),
-      jobbsoker: locPath(paths.chat.jobbsoker),
-      syk: locPath(paths.chat.syk),
-      familie: locPath(paths.chat.familie),
-      ufor: locPath(paths.chat.ufor),
-      sosialhjelp: locPath(paths.chat.sosialhjelp),
-      okonomi: locPath(paths.chat.okonomi),
-      eures: locPath(paths.chat.eures),
     },
     skrivTilOss: {
       forside: locPath(paths.skrivTilOss.forside),
@@ -57,14 +49,6 @@ export const paths = {
   baseAppPath: baseAppPath,
   chat: {
     forside: "/chat",
-    arbeidsgiver: "/chat/arbeidsgiver",
-    jobbsoker: "/chat/jobbsoker",
-    syk: "/chat/syk",
-    familie: "/chat/familie",
-    ufor: "/chat/ufor",
-    sosialhjelp: "/chat/sosialhjelp",
-    okonomi: "/chat/okonomi",
-    eures: "/chat/eures"
   },
   skrivTilOss: {
     forside: "/skriv-til-oss",

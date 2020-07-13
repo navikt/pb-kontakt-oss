@@ -1,46 +1,5 @@
 [
   {
-    "_createdAt": "2020-03-17T12:07:05Z",
-    "_id": "chat",
-    "_rev": "qcX24G56U0OlNpp3hJ78Kl",
-    "_type": "channel",
-    "_updatedAt": "2020-03-19T15:34:00Z",
-    "themes": [
-      {
-        "_key": "arbeidsgiver",
-        "_type": "theme"
-      },
-      {
-        "_key": "jobbsoker",
-        "_type": "theme"
-      },
-      {
-        "_key": "syk",
-        "_type": "theme"
-      },
-      {
-        "_key": "familie",
-        "_type": "theme"
-      },
-      {
-        "_key": "ufor",
-        "_type": "theme"
-      },
-      {
-        "_key": "sosialhjelp",
-        "_type": "theme"
-      },
-      {
-        "_key": "okonomi",
-        "_type": "theme"
-      },
-      {
-        "_key": "eures",
-        "_type": "theme"
-      }
-    ]
-  },
-  {
     "_createdAt": "2020-03-17T11:35:23Z",
     "_id": "chat-med-oss",
     "_rev": "VdTcsTJkAuZveXGf2hWQqI",
@@ -85,14 +44,100 @@
       "_type": "localeBlock",
       "nb": [
         {
-          "_key": "3b2730fe0af0",
+          "_key": "4a1b0b85a6a6",
           "_type": "block",
           "children": [
             {
-              "_key": "3b2730fe0af00",
+              "_key": "4a1b0b85a6a60",
               "_type": "span",
               "marks": [],
-              "text": "Chatten er ikke innlogget. Du kan være anonym, og vi ser ikke informasjon om deg"
+              "text": "Du møter først en chatbot, men kan bli satt videre til chat med en veileder (hverdager 09.00–14.30)."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "a5005a4f9c3a",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "a5005a4f9c3a0",
+              "_type": "span",
+              "marks": [],
+              "text": "Alle samtaler blir lagret anonymt i 6 måneder for statistikk og læring.Chatten er ikke innlogget. "
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "071365f459f8",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "071365f459f80",
+              "_type": "span",
+              "marks": [],
+              "text": "Du kan være anonym, og vi ser ikke informasjon om deg."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "4084485b6a1c",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "4084485b6a1c0",
+              "_type": "span",
+              "marks": [],
+              "text": "På chat svarer vi ikke på spørsmål om saken din."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ],
+      "en": [
+        {
+          "_key": "ad443a56fee4",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "ad443a56fee40",
+              "_type": "span",
+              "marks": [],
+              "text": "You will meet a chatbot at first but you can be directed to a counsellor (veileder) on weekdays between 09.00-14.30."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "6f9d7a3816ca",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "6f9d7a3816ca0",
+              "_type": "span",
+              "marks": [],
+              "text": "All conversations are stored for 6 months for the purpose of gathering statistics and improving our services."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "01932c0b942d",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "01932c0b942d0",
+              "_type": "span",
+              "marks": [],
+              "text": "The chat is anonymous and we can’t see any personal information about you.\n\nWe don't answer questions about your case in chat."
             }
           ],
           "markDefs": [],

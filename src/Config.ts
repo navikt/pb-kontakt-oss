@@ -36,12 +36,12 @@ export const useLocalePaths = () => {
         login: locPath(paths.tilbakemeldinger.serviceklage.login),
       },
       feilogmangler: locPath(paths.tilbakemeldinger.feilogmangler),
-      rostilnav: locPath(paths.tilbakemeldinger.rostilnav)
+      rostilnav: locPath(paths.tilbakemeldinger.rostilnav),
     },
     samegiella: {
       base: locPath(paths.samegiella.base),
-      samtale: locPath(paths.samegiella.samtale)
-    }
+      samtale: locPath(paths.samegiella.samtale),
+    },
   };
 };
 
@@ -62,19 +62,20 @@ export const paths = {
       login: "/tilbakemeldinger/serviceklage/login",
     },
     feilogmangler: "/tilbakemeldinger/feil-og-mangler",
-    rostilnav: "/tilbakemeldinger/ros-til-nav"
+    rostilnav: "/tilbakemeldinger/ros-til-nav",
   },
   samegiella: {
     base: "/samegiella",
-    samtale: "/samegiella/bestilling-av-samtale"
-  }
+    samtale: "/samegiella/bestilling-av-samtale",
+  },
 };
 
 export const urls = {
-  chatEures: "https://ec.europa.eu/eures/main.jsp?acro=eures&lang=no&catId=10821&parentCategory=10821",
+  chatEures:
+    "https://ec.europa.eu/eures/main.jsp?acro=eures&lang=no&catId=10821&parentCategory=10821",
   ringOss: {
     nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/kontakt-nav-pa-telefon2`,
-    en: `${navUrl}/en/home/about-nav/contact-us`
+    en: `${navUrl}/en/home/about-nav/contact-us`,
   },
   faqDefault: {
     utbetalingsoversikt: `${tjenesteUrl}/utbetalingsoversikt/`,
@@ -96,12 +97,12 @@ export const urls = {
     temaHjelpemidler: {
       generelt: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HJLPM`,
       ortopediske: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ORT_HJE`,
-      bil: `${tjenesteUrl}/mininnboks/sporsmal/skriv/BIL`
-    }
+      bil: `${tjenesteUrl}/mininnboks/sporsmal/skriv/BIL`,
+    },
   },
   facebook: {
     foreldrepenger: "https://www.facebook.com/navforeldrepenger",
-    jobblyst: "https://www.facebook.com/navjobblyst"
+    jobblyst: "https://www.facebook.com/navjobblyst",
   },
   finnNavKontor: {
     finnDittNavKontor: `${navUrl}/person/personopplysninger#ditt-nav-kontor`,
@@ -112,17 +113,17 @@ export const urls = {
     tolketjenesten: `${navUrl}/no/person/hjelpemidler/tjenester-og-produkter/tolketjenesten`,
     spraktolk: {
       nb: `${navUrl}/no/person/arbeid/oppfolging-og-tiltak-for-a-komme-i-jobb/oppfolging-fra-nav/trenger-du-språktolk`,
-      en: `${navUrl}/en/home/benefits-and-services/relatert-informasjon/do-you-need-an-interpreter`
+      en: `${navUrl}/en/home/benefits-and-services/relatert-informasjon/do-you-need-an-interpreter`,
     },
   },
   tilbakemeldinger: {
     klagepavedtak: {
       nb: `${navUrl}/soknader/nb/klage`,
-      en: `${navUrl}/soknader/en/klage/person`
+      en: `${navUrl}/soknader/en/klage/person`,
     },
     klagerettigheter: {
       nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
-      en: `${navUrl}/en/home/rules-and-regulations/appeals`
+      en: `${navUrl}/en/home/rules-and-regulations/appeals`,
     },
     serviceklage: {
       dittNav: `${navUrl}/person/dittnav`,
@@ -130,8 +131,8 @@ export const urls = {
       saksbehandlingstider: `${navUrl}/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav`,
       saksoversikt: {
         nb: `${tjenesteUrl}/saksoversikt/?lang=nb`,
-        en: `${tjenesteUrl}/saksoversikt/?lang=en`
-      }
+        en: `${tjenesteUrl}/saksoversikt/?lang=en`,
+      },
     },
   },
   samegiella: {
@@ -139,7 +140,7 @@ export const urls = {
   },
   tekniskBrukerstotte: {
     selvhjelp: `${navUrl}/no/nav-og-samfunn/kontakt-nav/teknisk-brukerstotte/hjelp-til-personbruker`,
-    ring: `${navUrl}/no/nav-og-samfunn/kontakt-nav/teknisk-brukerstotte/kontakt-teknisk-brukerstotte-nav.no`
+    ring: `${navUrl}/no/nav-og-samfunn/kontakt-nav/teknisk-brukerstotte/kontakt-teknisk-brukerstotte-nav.no`,
   },
   presseKontakt: `${navUrl}/no/nav-og-samfunn/kontakt-nav/presse/pressekontakt`,
   sosialeMedier: `${navUrl}/no/nav-og-samfunn/kontakt-nav/kontakt-nav-pa-facebook-eller-twitter`,
@@ -150,8 +151,8 @@ export const urls = {
   koronaVarsel: `${navUrl}/person/koronaveiviser`,
   koronaVarselDialog: {
     nb: `${navUrl}/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset`,
-    en: `${navUrl}/en/home/useful-information/contacting-nav-about-the-coronavirus-covid-19`
-}
+    en: `${navUrl}/en/home/useful-information/contacting-nav-about-the-coronavirus-covid-19`,
+  },
 };
 
 export const vars = {
@@ -165,5 +166,5 @@ export default {
   paths,
   vars,
   forsidePath,
-  useLocalePaths
+  useLocalePaths,
 };

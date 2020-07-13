@@ -6,17 +6,17 @@ import { localePath, validLocales } from "../../utils/locale";
 import { paths } from "../../Config";
 
 const ChatRouter = () => {
+  // Deprecated, should be removed when links in XP are updated
+  const themeRoutes = `(/arbeidsgiver|/jobbsoker|/syk|/familie|/ufor|/sosialhjelp|/okonomi|/eures)?`;
   return (
     <Switch>
-      {validLocales.flatMap(locale => [
-        (
-          <Route
-            exact={true}
-            path={localePath(paths.chat.forside, locale)}
-            component={ChatForside}
-            key={locale}
-          />
-        )
+      {validLocales.flatMap((locale) => [
+        <Route
+          exact={true}
+          path={`${localePath(paths.chat.forside, locale)}${themeRoutes}`}
+          component={ChatForside}
+          key={locale}
+        />,
       ])}
       <Route>
         <NotFound />

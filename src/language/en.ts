@@ -39,6 +39,7 @@ export default {
   "breadcrumb.sosialhjelp": "Social services",
   "breadcrumb.okonomi": "Financial advice",
   "breadcrumb.eures": "EURES",
+  "breadcrumb.aap": "AAP",
 
   "breadcrumb.finnkontor": "Find a NAV office",
 

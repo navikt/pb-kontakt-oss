@@ -1,7 +1,7 @@
 import NavChatbot from "@navikt/nav-chatbot";
 import React, { useEffect, useRef, useState } from "react";
 import { Normaltekst } from "nav-frontend-typografi";
-import { openChatbot, setCallbackOnChatbotOpen } from "./ChatbotUtils";
+import { chatStorageKeys, openChatbot, setCallbackOnChatbotOpen } from "./ChatbotUtils";
 
 type Props = {
   customerKey: string;
@@ -17,7 +17,7 @@ const getElementTopPosition = (element: HTMLElement) => {
 };
 
 export const ChatbotWrapper = ({ customerKey, queueKey, configId, onOpen }: Props) => {
-  const isOpenFromStorage = sessionStorage.getItem("chatbot-frida_apen");
+  const isOpenFromStorage = sessionStorage.getItem(chatStorageKeys.apen);
   const [chatbotOpened, setChatbotOpened] = useState(isOpenFromStorage === "true");
   const chatbotRef = useRef<HTMLDivElement>(null);
 

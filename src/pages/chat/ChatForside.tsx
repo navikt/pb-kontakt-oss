@@ -14,7 +14,7 @@ import { Hovedknapp } from "nav-frontend-knapper";
 import PanelBase from "nav-frontend-paneler";
 import { logEvent } from "../../utils/logger";
 import { ChatbotWrapper } from "../../components/chatbot-wrapper/ChatbotWrapper";
-import { openChatbot } from "../../components/chatbot-wrapper/ChatbotUtils";
+import { chatStorageKeys, openChatbot } from "../../components/chatbot-wrapper/ChatbotUtils";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
@@ -35,7 +35,7 @@ const ChatForside = () => {
 
   useEffect(() => {
     const chatActiveFromParameter = window.location.search.includes("start");
-    const chatActiveFromStorage = !!sessionStorage.getItem("chatbot-frida_config");
+    const chatActiveFromStorage = !!sessionStorage.getItem(chatStorageKeys.config);
     if (chatActiveFromParameter || chatActiveFromStorage) {
       setChatActive(true);
     }
@@ -45,12 +45,15 @@ const ChatForside = () => {
   useEffect(() => {
     if (buttonClickedTimestamp) {
       setChatActive(true);
-      openChatbot(() => null);
+      openChatbot();
     }
   }, [buttonClickedTimestamp]);
 
   useEffect(() => {
-    openChatbot(() => null);
+    const chatMinimizedFromStorage = sessionStorage.getItem(chatStorageKeys.apen) === "false";
+    if (!chatMinimizedFromStorage) {
+      openChatbot();
+    }
   }, [chatActive]);
 
   return (

@@ -3,6 +3,11 @@
 // Denne er gyldig for chatbot v.1.2.2
 const openButtonClassname = "sc-eqIVtm";
 
+export const chatStorageKeys = {
+  apen: "chatbot-frida_apen",
+  config: "chatbot-frida_config"
+};
+
 const getButtonFromClassname = (className: string, index = 0) => {
   const buttons = document.getElementsByClassName(className);
   const button = (buttons && buttons.length > index) && (buttons[index] as HTMLElement);
@@ -19,16 +24,16 @@ const getClickFunc = (className: string, index = 0) => {
   return null;
 };
 
-export const openChatbot = async (callback: (isOpen: boolean) => void) => {
+export const openChatbot = async (callback?: (isOpen: boolean) => void) => {
   const openFunc = getClickFunc(openButtonClassname);
 
   if (!openFunc) {
-    callback(false);
+    callback && callback(false);
     return;
   }
 
   await openFunc();
-  callback(true);
+  callback && callback(true);
 };
 
 export const setCallbackOnChatbotOpen = (callback: () => void) => {

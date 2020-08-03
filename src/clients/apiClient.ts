@@ -49,22 +49,6 @@ export const fetchChannelInfo = () => hentJson(`${apiUrl}/channels`);
 
 export const fetchThemes = () => hentJson(`${apiUrl}/themes`);
 
-export const fetchServerTidOffset = (callback: Function) => {
-  fetch(baseUrl, { method: "HEAD" })
-    .then(res => {
-      const date = res.headers.get("date");
-      if (!date) {
-        console.log("Couldn't fetch server time!");
-        callback(0);
-        return;
-      }
-      callback(Date.parse(date) - Date.now());
-    })
-    .catch(() => {
-      callback(0);
-    });
-};
-
 /*
     POST
  */

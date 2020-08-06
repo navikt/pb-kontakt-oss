@@ -13,12 +13,16 @@ import { Hovedknapp } from "nav-frontend-knapper";
 import PanelBase from "nav-frontend-paneler";
 import { logEvent } from "../../utils/logger";
 import Snakkeboble from "nav-frontend-snakkeboble";
+import { Varsel } from "../../components/varsler/Varsel";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
 
+const fridaKnappId = "chatbot-frida-knapp";
+
 const ChatForside = () => {
   const [showHelper, setShowHelper] = useState(false);
+  const [chatError, setChatError] = useState(false);
   const [{ themes, channels }] = useStore();
   const placeholderRef = useRef<HTMLDivElement>(null);
   const snakkebobleRef = useRef<HTMLDivElement>(null);
@@ -31,8 +35,9 @@ const ChatForside = () => {
 
   useEffect(() => {
     const chatbotElement =
-      document.getElementById("chatbot-frida-knapp") as HTMLDivElement;
+      document.getElementById(fridaKnappId) as HTMLDivElement;
     if (!chatbotElement) {
+      setChatError(true);
       return;
     }
 
@@ -41,6 +46,7 @@ const ChatForside = () => {
       const snakkebobleElement = snakkebobleRef.current;
       const chatbotParentElement = chatbotElement.parentElement;
       if (!placeholderElement || !snakkebobleElement || !chatbotParentElement) {
+
         return;
       }
       const pRect = placeholderElement.getBoundingClientRect();
@@ -77,11 +83,15 @@ const ChatForside = () => {
         </div>
         <PanelBase className={`${cssPrefix}__panel`}>
           <div className={`${cssPrefix}__panel-ingress`}>
-            <VarselVisning kanal={Kanal.Chat} />
+            <VarselVisning kanal={Kanal.Chat} >
+              <>
+                {chatError && <Varsel type={"feil"} tekstId={"varsel.teknisk.feil.chat"} />}
+              </>
+            </VarselVisning>
             {(isLoaded) ? ingress : <NavContentLoader lines={5} />}
           </div>
           <div className={`${cssPrefix}__panel-start-knapp`}>
-            {showHelper ? (
+            {showHelper && !chatError ? (
               <div className={`${cssPrefix}__panel-chat-container`} ref={placeholderRef}>
                 <div ref={snakkebobleRef}>
                   <Snakkeboble ikonClass={""}>
@@ -98,7 +108,7 @@ const ChatForside = () => {
                   logEvent({ event: grafanaId });
                   setShowHelper(true);
                 }}
-                disabled={!isLoaded}
+                disabled={!isLoaded || chatError}
               >
                 <FormattedMessage id="chat.knapp.start" />
               </Hovedknapp>

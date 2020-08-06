@@ -10,6 +10,7 @@ export default {
     "Når du søker opp kontoret ditt finner du informasjon. Er du i en krisesituasjon, kan du ringe og få en time på " +
     "NAV-kontoret. Du kan alltid ta kontakt med NAV i digitale kanaler.",
   "varsel.koronavirus.navkontor.lenke": "Kontakt med NAV",
+  "varsel.teknisk.feil.chat": "Det er for øyeblikket tekniske problemer med chat-tjenesten vår. Forsøk å laste inn siden på nytt dersom chatten ikke starter.",
 
   //
   // Språk

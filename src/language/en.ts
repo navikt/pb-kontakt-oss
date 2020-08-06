@@ -130,11 +130,7 @@ export default {
   "chat.admin-stengt.veileder":
     "Chat with a counsellor is currently unavailable.",
 
-  "apningstid.avvik": "<p>Special opening hours:</p>",
-  "apningstid.avvik.chatbot":
-    "<p>Special opening hours for chat with a counsellor:</p>",
-  "apningstid.avvik.stengt": "<p>{dato} - Closed</p>",
-  "apningstid.avvik.apent": "<p>{dato} - {start}–{end}</p>",
+  "chat.helper": "Start chat on nav.no by clicking on the Chatbot-icon",
 
   //
   // Default FAQs

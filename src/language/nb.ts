@@ -125,11 +125,7 @@ export default {
   "chat.admin-stengt.veileder":
     "Chat med veileder er for øyeblikket utilgjengelig.",
 
-  "apningstid.avvik": "<p>Spesielle åpningstider:</p>",
-  "apningstid.avvik.chatbot":
-    "<p>Spesielle åpningstider for chat med veileder:</p>",
-  "apningstid.avvik.stengt": "<p>{dato} - Stengt</p>",
-  "apningstid.avvik.apent": "<p>{dato} - kl. {start}–{end}</p>",
+  "chat.helper": "Start chat på nav.no ved å trykke på Chatbot-ikonet",
 
   //
   // Default FAQs

@@ -1,60 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Sidetittel } from "nav-frontend-typografi";
+import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
 import { Kanal } from "../../types/kanaler";
 import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../../components/content-loader/NavContentLoader";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { Varsel } from "../../components/varsler/Varsel";
 import { MetaTags } from "../../components/metatags/MetaTags";
-import Config, { paths } from "../../Config";
+import { paths } from "../../Config";
 import { Hovedknapp } from "nav-frontend-knapper";
 import PanelBase from "nav-frontend-paneler";
 import { logEvent } from "../../utils/logger";
-import { ChatbotWrapper } from "../../components/chatbot-wrapper/ChatbotWrapper";
-import { chatStorageKeys, openChatbot } from "../../components/chatbot-wrapper/ChatbotUtils";
+import Snakkeboble from "nav-frontend-snakkeboble";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
 
 const ChatForside = () => {
-  const [chatActive, setChatActive] = useState(false);
-  const [buttonClickedTimestamp, setButtonClickedTimestamp] = useState(0);
-
+  const [showHelper, setShowHelper] = useState(false);
   const [{ themes, channels }] = useStore();
+  const placeholderRef = useRef<HTMLDivElement>(null);
+  const snakkebobleRef = useRef<HTMLDivElement>(null);
+
   const chatProps = channels.props[Kanal.Chat];
-  const isClosed = chatProps?.status?.closed;
-  const closedMsg = chatProps?.status?.message;
   const isLoaded = themes.isLoaded && channels.isLoaded;
   const text = chatProps.preamble;
   const ingress = text && <LocaleBlockContent localeBlock={text} />;
-
   const grafanaId = "chat.start";
 
   useEffect(() => {
-    const chatActiveFromParameter = window.location.search.includes("start");
-    const chatActiveFromStorage = !!sessionStorage.getItem(chatStorageKeys.config);
-    if (chatActiveFromParameter || chatActiveFromStorage) {
-      setChatActive(true);
+    const chatbotContainerElement =
+      document.getElementsByClassName("chatbot-container")[0] as HTMLDivElement;
+    if (!chatbotContainerElement) {
+      return;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  useEffect(() => {
-    if (buttonClickedTimestamp) {
-      setChatActive(true);
-      openChatbot();
+    if (showHelper) {
+      const placeholderElement = placeholderRef.current;
+      const snakkebobleElement = snakkebobleRef.current;
+      if (!placeholderElement || !snakkebobleElement) {
+        return;
+      }
+      console.log(placeholderElement.getBoundingClientRect());
+      const pRect = placeholderElement.getBoundingClientRect();
+      const cRect = chatbotContainerElement.getBoundingClientRect();
+      const x = pRect.left - cRect.left;
+      const y = pRect.top - cRect.top;
+      chatbotContainerElement.style.transition = "transform 750ms ease-in-out";
+      chatbotContainerElement.style.transform = `translate(${x}px, ${y}px)`;
+      snakkebobleElement.style.marginLeft = `${cRect.width}px`;
+      setTimeout(() => {
+        placeholderElement.prepend(chatbotContainerElement);
+        chatbotContainerElement.removeAttribute("style");
+        snakkebobleElement.removeAttribute("style");
+      }, 750);
     }
-  }, [buttonClickedTimestamp]);
-
-  useEffect(() => {
-    const chatMinimizedFromStorage = sessionStorage.getItem(chatStorageKeys.apen) === "false";
-    if (!chatMinimizedFromStorage) {
-      openChatbot();
-    }
-  }, [chatActive]);
+  }, [showHelper]);
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
@@ -71,36 +73,34 @@ const ChatForside = () => {
         </div>
         <PanelBase className={`${cssPrefix}__panel`}>
           <div className={`${cssPrefix}__panel-ingress`}>
-            <VarselVisning kanal={Kanal.Chat}>
-              <>
-                {isClosed && (
-                  <Varsel type={"info"}>
-                    <LocaleBlockContent localeBlock={closedMsg} />
-                  </Varsel>
-                )}
-              </>
-            </VarselVisning>
+            <VarselVisning kanal={Kanal.Chat} />
             {(isLoaded) ? ingress : <NavContentLoader lines={5} />}
           </div>
           <div className={`${cssPrefix}__panel-start-knapp`}>
-            <Hovedknapp
-              htmlType={"button"}
-              onClick={() => {
-                logEvent({ event: grafanaId });
-                setButtonClickedTimestamp(Date.now());
-              }}
-              disabled={!isLoaded}
-            >
-              <FormattedMessage id="chat.knapp.start" />
-            </Hovedknapp>
+            {showHelper ? (
+              <div className={`${cssPrefix}__panel-chat-container`} ref={placeholderRef}>
+                <div ref={snakkebobleRef}>
+                  <Snakkeboble ikonClass={""}>
+                    <Normaltekst>
+                      <FormattedMessage id={"chat.helper"}/>
+                    </Normaltekst>
+                  </Snakkeboble>
+                </div>
+              </div>
+            ) : (
+              <Hovedknapp
+                htmlType={"button"}
+                onClick={() => {
+                  logEvent({ event: grafanaId });
+                  setShowHelper(true);
+                }}
+                disabled={!isLoaded}
+              >
+                <FormattedMessage id="chat.knapp.start" />
+              </Hovedknapp>
+            )}
           </div>
         </PanelBase>
-        {chatActive && (
-          <ChatbotWrapper
-            configId={Config.vars.chat.configId}
-            customerKey={Config.vars.chat.customerKey}
-            queueKey={Config.vars.chat.queueKey}
-          />)}
       </div>
   );
 };

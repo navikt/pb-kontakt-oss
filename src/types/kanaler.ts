@@ -21,7 +21,7 @@ export enum STOTema {
 
 export type TemaLenke = {
   tema: STOTema;
-  url: string;
+  url?: string;
   fallbackTittelId: string;
   grafanaId: string;
   externalUrl?: boolean;

@@ -39,7 +39,8 @@ const ChatForside = () => {
     if (showHelper) {
       const placeholderElement = placeholderRef.current;
       const snakkebobleElement = snakkebobleRef.current;
-      if (!placeholderElement || !snakkebobleElement) {
+      const chatbotParentElement = chatbotElement.parentElement;
+      if (!placeholderElement || !snakkebobleElement || !chatbotParentElement) {
         return;
       }
       const pRect = placeholderElement.getBoundingClientRect();
@@ -52,10 +53,12 @@ const ChatForside = () => {
       setTimeout(() => {
         chatbotElement.removeAttribute("style");
         snakkebobleElement.removeAttribute("style");
-        const clone = chatbotElement.cloneNode(true) as HTMLDivElement;
-        clone.removeAttribute("id");
-        placeholderElement.prepend(clone);
+        placeholderElement.prepend(chatbotElement);
       }, 750);
+
+      return () => {
+        chatbotParentElement.append(chatbotElement);
+      };
     }
   }, [showHelper]);
 

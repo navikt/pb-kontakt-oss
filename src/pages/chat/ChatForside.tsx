@@ -30,9 +30,9 @@ const ChatForside = () => {
   const grafanaId = "chat.start";
 
   useEffect(() => {
-    const chatbotContainerElement =
-      document.getElementsByClassName("chatbot-container")[0] as HTMLDivElement;
-    if (!chatbotContainerElement) {
+    const chatbotElement =
+      document.getElementById("chatbot-frida-knapp") as HTMLDivElement;
+    if (!chatbotElement) {
       return;
     }
 
@@ -42,18 +42,19 @@ const ChatForside = () => {
       if (!placeholderElement || !snakkebobleElement) {
         return;
       }
-      console.log(placeholderElement.getBoundingClientRect());
       const pRect = placeholderElement.getBoundingClientRect();
-      const cRect = chatbotContainerElement.getBoundingClientRect();
+      const cRect = chatbotElement.getBoundingClientRect();
       const x = pRect.left - cRect.left;
       const y = pRect.top - cRect.top;
-      chatbotContainerElement.style.transition = "transform 750ms ease-in-out";
-      chatbotContainerElement.style.transform = `translate(${x}px, ${y}px)`;
+      chatbotElement.style.transition = "transform 750ms ease-in-out";
+      chatbotElement.style.transform = `translate(${x}px, ${y}px)`;
       snakkebobleElement.style.marginLeft = `${cRect.width}px`;
       setTimeout(() => {
-        placeholderElement.prepend(chatbotContainerElement);
-        chatbotContainerElement.removeAttribute("style");
+        chatbotElement.removeAttribute("style");
         snakkebobleElement.removeAttribute("style");
+        const clone = chatbotElement.cloneNode(true) as HTMLDivElement;
+        clone.removeAttribute("id");
+        placeholderElement.prepend(clone);
       }, 750);
     }
   }, [showHelper]);

@@ -10,6 +10,7 @@ import { LocaleBlockContent } from "../sanity-blocks/LocaleBlockContent";
 import { NavContentLoader } from "../content-loader/NavContentLoader";
 import { useLocaleString } from "../../utils/sanity/useLocaleString";
 import { localePath } from "../../utils/locale";
+import Panel from "nav-frontend-paneler";
 
 type Props = {
   lenkepanelData: TemaLenke;
@@ -35,7 +36,28 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
   const tittel = link && link.title;
   const ingress = link && link.description;
 
-  return (
+  const url = lenkepanelData.url;
+
+  const innhold = (
+    <div>
+      {lenkepanelData.ikon && <div>{lenkepanelData.ikon}</div>}
+      <div>
+        <Undertittel className={`${cssPrefix}__temalenke-header lenkepanel__heading`}>
+          {tittel
+            ? localeString(tittel)
+            : <FormattedMessage id={lenkepanelData.fallbackTittelId} />}
+        </Undertittel>
+        <div className={`${cssPrefix}__lenkepanel-ingress`}>
+          {themes.isLoaded
+            ? <LocaleBlockContent localeBlock={ingress} />
+            : <NavContentLoader lines={2} lineHeight={6} />}
+        </div>
+        {isDisabled && <LocaleBlockContent localeBlock={closedMsg} />}
+      </div>
+    </div>
+  );
+
+  return url ? (
     <LenkepanelBase
       border={true}
       className={`${cssPrefix}__temalenke linkbox__container ${isDisabled
@@ -44,7 +66,7 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
       linkCreator={!isDisabled ? (props => {
         return lenkepanelData.externalUrl ? (
           <a
-            href={lenkepanelData.url}
+            href={url}
             className={props.className}
             onClick={onClick}
           >
@@ -52,7 +74,7 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
           </a>
         ) : (
           <Link
-            to={localePath(lenkepanelData.url, locale)}
+            to={localePath(url, locale)}
             className={props.className}
             onClick={onClick}
           >
@@ -61,23 +83,15 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
         );
       }) : undefined}
     >
-      <div>
-        {lenkepanelData.ikon && <div>{lenkepanelData.ikon}</div>}
-        <div>
-          <Undertittel className={`${cssPrefix}__temalenke-header lenkepanel__heading`}>
-            {tittel
-              ? localeString(tittel)
-              : <FormattedMessage id={lenkepanelData.fallbackTittelId} />}
-          </Undertittel>
-          <div className={`${cssPrefix}__lenkepanel-ingress`}>
-            {themes.isLoaded
-              ? <LocaleBlockContent localeBlock={ingress} />
-              : <NavContentLoader lines={2} lineHeight={6} />}
-          </div>
-          {isDisabled && <LocaleBlockContent localeBlock={closedMsg} />}
-        </div>
-      </div>
+      {innhold}
     </LenkepanelBase>
+  ) : (
+    <Panel
+      border={true}
+      className={"linkbox__container"}
+    >
+      {innhold}
+    </Panel>
   );
 };
 

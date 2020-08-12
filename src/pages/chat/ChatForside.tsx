@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormattedMessage } from "react-intl";
-import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
+import { Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
 import { Kanal } from "../../types/kanaler";
@@ -12,20 +12,20 @@ import { paths } from "../../Config";
 import { Hovedknapp } from "nav-frontend-knapper";
 import PanelBase from "nav-frontend-paneler";
 import { logEvent } from "../../utils/logger";
-import Snakkeboble from "nav-frontend-snakkeboble";
 import { Varsel } from "../../components/varsler/Varsel";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
-
 const fridaKnappId = "chatbot-frida-knapp";
 
+const openChatbot = () => {
+  const chatButton = document.getElementById(fridaKnappId);
+  chatButton?.click();
+};
+
 const ChatForside = () => {
-  const [showHelper, setShowHelper] = useState(false);
   const [chatError, setChatError] = useState(false);
   const [{ themes, channels }] = useStore();
-  const placeholderRef = useRef<HTMLDivElement>(null);
-  const snakkebobleRef = useRef<HTMLDivElement>(null);
 
   const chatProps = channels.props[Kanal.Chat];
   const isLoaded = themes.isLoaded && channels.isLoaded;
@@ -34,39 +34,12 @@ const ChatForside = () => {
   const grafanaId = "chat.start";
 
   useEffect(() => {
-    const chatbotElement =
-      document.getElementById(fridaKnappId) as HTMLDivElement;
+    const chatbotElement = document.getElementById(fridaKnappId);
     if (!chatbotElement) {
       setChatError(true);
       return;
     }
-
-    if (showHelper) {
-      const placeholderElement = placeholderRef.current;
-      const snakkebobleElement = snakkebobleRef.current;
-      const chatbotParentElement = chatbotElement.parentElement;
-      if (!placeholderElement || !snakkebobleElement || !chatbotParentElement) {
-
-        return;
-      }
-      const pRect = placeholderElement.getBoundingClientRect();
-      const cRect = chatbotElement.getBoundingClientRect();
-      const x = pRect.left - cRect.left;
-      const y = pRect.top - cRect.top;
-      chatbotElement.style.transition = "transform 750ms ease-in-out";
-      chatbotElement.style.transform = `translate(${x}px, ${y}px)`;
-      snakkebobleElement.style.marginLeft = `${cRect.width}px`;
-      setTimeout(() => {
-        chatbotElement.removeAttribute("style");
-        snakkebobleElement.removeAttribute("style");
-        placeholderElement.prepend(chatbotElement);
-      }, 750);
-
-      return () => {
-        chatbotParentElement.append(chatbotElement);
-      };
-    }
-  }, [showHelper]);
+  }, []);
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
@@ -91,28 +64,16 @@ const ChatForside = () => {
             {(isLoaded) ? ingress : <NavContentLoader lines={5} />}
           </div>
           <div className={`${cssPrefix}__panel-start-knapp`}>
-            {showHelper && !chatError ? (
-              <div className={`${cssPrefix}__panel-chat-container`} ref={placeholderRef}>
-                <div ref={snakkebobleRef}>
-                  <Snakkeboble ikonClass={""}>
-                    <Normaltekst>
-                      <FormattedMessage id={"chat.helper"}/>
-                    </Normaltekst>
-                  </Snakkeboble>
-                </div>
-              </div>
-            ) : (
-              <Hovedknapp
-                htmlType={"button"}
-                onClick={() => {
-                  logEvent({ event: grafanaId });
-                  setShowHelper(true);
-                }}
-                disabled={!isLoaded || chatError}
-              >
-                <FormattedMessage id="chat.knapp.start" />
-              </Hovedknapp>
-            )}
+            <Hovedknapp
+              htmlType={"button"}
+              onClick={() => {
+                logEvent({ event: grafanaId });
+                openChatbot();
+              }}
+              disabled={!isLoaded || chatError}
+            >
+              <FormattedMessage id="chat.knapp.start" />
+            </Hovedknapp>
           </div>
         </PanelBase>
       </div>

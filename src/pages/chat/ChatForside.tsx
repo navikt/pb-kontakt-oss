@@ -16,11 +16,15 @@ import { Varsel } from "../../components/varsler/Varsel";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
+const grafanaId = "chat.start";
 const fridaKnappId = "chatbot-frida-knapp";
 
 const openChatbot = () => {
   const chatButton = document.getElementById(fridaKnappId);
-  chatButton?.click();
+  if (chatButton) {
+    chatButton.click();
+    logEvent({ event: grafanaId });
+  }
 };
 
 const ChatForside = () => {
@@ -31,7 +35,6 @@ const ChatForside = () => {
   const isLoaded = themes.isLoaded && channels.isLoaded;
   const text = chatProps.preamble;
   const ingress = text && <LocaleBlockContent localeBlock={text} />;
-  const grafanaId = "chat.start";
 
   useEffect(() => {
     const chatbotElement = document.getElementById(fridaKnappId);
@@ -56,7 +59,7 @@ const ChatForside = () => {
         </div>
         <PanelBase className={`${cssPrefix}__panel`}>
           <div className={`${cssPrefix}__panel-ingress`}>
-            <VarselVisning kanal={Kanal.Chat} >
+            <VarselVisning kanal={Kanal.Chat}>
               <>
                 {chatError && <Varsel type={"feil"} tekstId={"varsel.teknisk.feil.chat"} />}
               </>
@@ -66,10 +69,7 @@ const ChatForside = () => {
           <div className={`${cssPrefix}__panel-start-knapp`}>
             <Hovedknapp
               htmlType={"button"}
-              onClick={() => {
-                logEvent({ event: grafanaId });
-                openChatbot();
-              }}
+              onClick={openChatbot}
               disabled={!isLoaded || chatError}
             >
               <FormattedMessage id="chat.knapp.start" />

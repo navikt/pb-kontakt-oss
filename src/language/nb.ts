@@ -119,14 +119,7 @@ export default {
   "chat.forside.tittel": "Chat med oss",
 
   "chat.knapp.start": "Start chat",
-  "chat.knapp.paagaar": "Chat pågår",
   "chat.knapp.stengt": "Chatten er stengt",
-
-  "chat.stengt.info": "Chatten er stengt, se åpningstider under.",
-  "chat.admin-stengt.veileder":
-    "Chat med veileder er for øyeblikket utilgjengelig.",
-
-  "chat.helper": "Start chat på nav.no ved å trykke på Chatbot-ikonet",
 
   //
   // Default FAQs

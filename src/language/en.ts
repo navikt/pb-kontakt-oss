@@ -124,14 +124,7 @@ export default {
   "chat.forside.tittel": "Chat with us",
 
   "chat.knapp.start": "Start chat",
-  "chat.knapp.paagaar": "Chat in progress",
   "chat.knapp.stengt": "Chat is closed",
-
-  "chat.stengt.info": "Chat is closed, see opening hours below.",
-  "chat.admin-stengt.veileder":
-    "Chat with a counsellor is currently unavailable.",
-
-  "chat.helper": "Start chat on nav.no by clicking on the Chatbot-icon",
 
   //
   // Default FAQs

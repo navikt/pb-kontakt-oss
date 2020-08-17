@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FormattedMessage } from "react-intl";
 import { Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
@@ -12,7 +12,6 @@ import { paths } from "../../Config";
 import { Hovedknapp } from "nav-frontend-knapper";
 import PanelBase from "nav-frontend-paneler";
 import { logEvent } from "../../utils/logger";
-import { Varsel } from "../../components/varsler/Varsel";
 
 const cssPrefix = "chat-med-oss";
 const sideTittelId = "chat.forside.tittel";
@@ -20,9 +19,7 @@ const grafanaId = "chat.start";
 const fridaKnappId = "chatbot-frida-knapp";
 
 const ChatForside = () => {
-  const [chatError, setChatError] = useState(false);
   const [{ themes, channels }] = useStore();
-
   const chatProps = channels.props[Kanal.Chat];
   const isLoaded = themes.isLoaded && channels.isLoaded;
   const text = chatProps.preamble;
@@ -33,9 +30,6 @@ const ChatForside = () => {
     if (chatButton) {
       chatButton.click();
       logEvent({ event: grafanaId });
-    } else {
-      setChatError(true);
-      console.error("Chat-client not found!");
     }
   };
 
@@ -54,11 +48,7 @@ const ChatForside = () => {
         </div>
         <PanelBase className={`${cssPrefix}__panel`}>
           <div className={`${cssPrefix}__panel-ingress`}>
-            <VarselVisning kanal={Kanal.Chat}>
-              <>
-                {chatError && <Varsel type={"feil"} tekstId={"varsel.teknisk.feil.chat"} />}
-              </>
-            </VarselVisning>
+            <VarselVisning kanal={Kanal.Chat} />
             {(isLoaded) ? ingress : <NavContentLoader lines={5} />}
           </div>
           <div className={`${cssPrefix}__panel-start-knapp`}>

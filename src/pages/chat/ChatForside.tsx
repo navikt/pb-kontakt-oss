@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
@@ -19,14 +19,6 @@ const sideTittelId = "chat.forside.tittel";
 const grafanaId = "chat.start";
 const fridaKnappId = "chatbot-frida-knapp";
 
-const openChatbot = () => {
-  const chatButton = document.getElementById(fridaKnappId);
-  if (chatButton) {
-    chatButton.click();
-    logEvent({ event: grafanaId });
-  }
-};
-
 const ChatForside = () => {
   const [chatError, setChatError] = useState(false);
   const [{ themes, channels }] = useStore();
@@ -36,13 +28,15 @@ const ChatForside = () => {
   const text = chatProps.preamble;
   const ingress = text && <LocaleBlockContent localeBlock={text} />;
 
-  useEffect(() => {
-    const chatbotElement = document.getElementById(fridaKnappId);
-    if (!chatbotElement) {
+  const openChatbot = () => {
+    const chatButton = document.getElementById(fridaKnappId);
+    if (chatButton) {
+      chatButton.click();
+      logEvent({ event: grafanaId });
+    } else {
       setChatError(true);
-      return;
     }
-  }, []);
+  };
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
@@ -70,7 +64,7 @@ const ChatForside = () => {
             <Hovedknapp
               htmlType={"button"}
               onClick={openChatbot}
-              disabled={!isLoaded || chatError}
+              disabled={!isLoaded}
             >
               <FormattedMessage id="chat.knapp.start" />
             </Hovedknapp>

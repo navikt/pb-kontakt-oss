@@ -35,6 +35,7 @@ const ChatForside = () => {
       logEvent({ event: grafanaId });
     } else {
       setChatError(true);
+      console.error("Chat-client not found!");
     }
   };
 

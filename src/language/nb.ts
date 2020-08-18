@@ -10,6 +10,7 @@ export default {
     "Når du søker opp kontoret ditt finner du informasjon. Er du i en krisesituasjon, kan du ringe og få en time på " +
     "NAV-kontoret. Du kan alltid ta kontakt med NAV i digitale kanaler.",
   "varsel.koronavirus.navkontor.lenke": "Kontakt med NAV",
+  "varsel.teknisk.feil.chat": "Det er for øyeblikket tekniske problemer med chat-tjenesten vår. Forsøk å laste inn siden på nytt dersom chatten ikke starter.",
 
   //
   // Språk
@@ -118,18 +119,7 @@ export default {
   "chat.forside.tittel": "Chat med oss",
 
   "chat.knapp.start": "Start chat",
-  "chat.knapp.paagaar": "Chat pågår",
   "chat.knapp.stengt": "Chatten er stengt",
-
-  "chat.stengt.info": "Chatten er stengt, se åpningstider under.",
-  "chat.admin-stengt.veileder":
-    "Chat med veileder er for øyeblikket utilgjengelig.",
-
-  "apningstid.avvik": "<p>Spesielle åpningstider:</p>",
-  "apningstid.avvik.chatbot":
-    "<p>Spesielle åpningstider for chat med veileder:</p>",
-  "apningstid.avvik.stengt": "<p>{dato} - Stengt</p>",
-  "apningstid.avvik.apent": "<p>{dato} - kl. {start}–{end}</p>",
 
   //
   // Default FAQs

@@ -158,12 +158,7 @@ export const urls = {
 export const vars = {
   defaultDatoTidFormat: "HH:mm DD-MM-YYYY",
   defaultDatoFormat: "DD-MM-YYYY",
-  maksLengdeMelding: 10000,
-  chat: {
-    customerKey: "41155",
-    configId: "599f9e7c-7f6b-4569-81a1-27202c419953",
-    queueKey: "Q_CHAT_BOT"
-  }
+  maksLengdeMelding: 10000
 };
 
 export default {

@@ -10,6 +10,7 @@ export default {
     "information regarding this in the search result for your office. If you are in an emergency situation, you may " +
     "call and get an appointment at the NAV office. You may always contact NAV through digital channels.",
   "varsel.koronavirus.navkontor.lenke": "Contacting NAV",
+  "varsel.teknisk.feil.chat": "We are currently experiencing technical difficulties with our chat service. Try reloading the page if the chat fails to start.",
 
   //
   // Språk
@@ -123,18 +124,7 @@ export default {
   "chat.forside.tittel": "Chat with us",
 
   "chat.knapp.start": "Start chat",
-  "chat.knapp.paagaar": "Chat in progress",
   "chat.knapp.stengt": "Chat is closed",
-
-  "chat.stengt.info": "Chat is closed, see opening hours below.",
-  "chat.admin-stengt.veileder":
-    "Chat with a counsellor is currently unavailable.",
-
-  "apningstid.avvik": "<p>Special opening hours:</p>",
-  "apningstid.avvik.chatbot":
-    "<p>Special opening hours for chat with a counsellor:</p>",
-  "apningstid.avvik.stengt": "<p>{dato} - Closed</p>",
-  "apningstid.avvik.apent": "<p>{dato} - {start}–{end}</p>",
 
   //
   // Default FAQs

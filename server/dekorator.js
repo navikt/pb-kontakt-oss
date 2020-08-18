@@ -16,10 +16,10 @@ const cache = new NodeCache({
 const getUrl = (namespace, language) => {
   if (namespace !== "p") {
     // Q0, Q1, Q6 etc ..
-    return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}`;
+    return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}&chatbot=true`;
   } else {
     // Produksjon
-    return `https://www.nav.no/dekoratoren/?language=${language}`;
+    return `https://www.nav.no/dekoratoren/?language=${language}&chatbot=true`;
   }
 };
 

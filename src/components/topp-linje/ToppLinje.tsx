@@ -5,13 +5,7 @@ import Environment from "../../Environments";
 import { SprakVelger } from "../sprakvelger/SprakVelger";
 import { useLocalePaths } from "../../Config";
 
-const baseLenker: Array<BreadcrumbLenke> = [
-  {
-    url: Environment().baseUrl,
-    lenketekstId: "breadcrumb.nav-no",
-    isExternal: true
-  }
-];
+const baseLenker: Array<BreadcrumbLenke> = [];
 
 export const ToppLinje = () => {
   return (
@@ -21,7 +15,6 @@ export const ToppLinje = () => {
         basePath={useLocalePaths().baseAppPath}
         baseLenker={baseLenker}
       />
-      <SprakVelger />
     </div>
   );
 };

@@ -10,7 +10,8 @@ export default {
     "information regarding this in the search result for your office. If you are in an emergency situation, you may " +
     "call and get an appointment at the NAV office. You may always contact NAV through digital channels.",
   "varsel.koronavirus.navkontor.lenke": "Contacting NAV",
-  "varsel.teknisk.feil.chat": "We are currently experiencing technical difficulties with our chat service. Try reloading the page if the chat fails to start.",
+  "varsel.teknisk.feil.chat":
+    "We are currently experiencing technical difficulties with our chat service. Try reloading the page if the chat fails to start.",
 
   //
   // Språk

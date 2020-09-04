@@ -8,11 +8,6 @@ type BreadcrumbsProps = {
   baseLenker?: Array<BreadcrumbLenke>;
 };
 
-type SegmentProps = {
-  lenke: BreadcrumbLenke;
-  isCurrentPath: boolean;
-};
-
 export type BreadcrumbLenke = {
   url: string;
   lenketekstId: string;
@@ -57,7 +52,7 @@ const Breadcrumbs = ({
       url: lenke.url,
     }));
     setBreadcrumbs(breadcrumbs);
-  }, [lenker]);
+  }, [formatMessage, lenker]);
 
   return <></>;
 };

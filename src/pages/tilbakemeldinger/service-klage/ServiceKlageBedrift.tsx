@@ -3,16 +3,15 @@ import { useIntl } from "react-intl";
 import { Validation } from "calidation";
 import InputField from "components/input-fields/InputField";
 import SelectEnhet from "../../../components/input-fields/SelectEnhet";
-import { ValueType } from "react-select/src/types";
 
 interface Fields {
   innmelderRolle: string;
   orgNavn: string;
   orgNummer: string;
-  enhetsnummerPaaklaget?: ValueType<{
+  enhetsnummerPaaklaget?: {
     value: string;
     label: string;
-  }>;
+  };
 }
 
 const ServiceKlageForBedrift = () => {
@@ -83,10 +82,10 @@ const ServiceKlageForBedrift = () => {
               submitted={submitted}
               value={fields.enhetsnummerPaaklaget}
               onChange={(
-                v: ValueType<{
+                v?: {
                   value: string;
                   label: string;
-                }>
+                }
               ) => setField({ enhetsnummerPaaklaget: v })}
             />
           </div>

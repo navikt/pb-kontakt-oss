@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
 import { useIntl } from "react-intl";
+import { onBreadcrumbClick } from "@navikt/nav-dekoratoren-moduler/dist";
+import { useHistory } from "react-router-dom";
 
 type BreadcrumbsProps = {
   currentPath: string;
@@ -43,12 +45,20 @@ const Breadcrumbs = ({
   baseLenker = [],
 }: BreadcrumbsProps) => {
   const { formatMessage } = useIntl();
+  const history = useHistory();
   const lenker = baseLenker.concat(getSegmentLenker(currentPath, basePath));
+
+  useEffect(() => {
+    onBreadcrumbClick((breadcrumb) => {
+      history.push(breadcrumb.url);
+    });
+  }, [history]);
 
   // Set breadcrumbs in decorator
   useEffect(() => {
     const breadcrumbs = lenker.map((lenke) => ({
-      name: formatMessage({ id: lenke.lenketekstId }),
+      title: formatMessage({ id: lenke.lenketekstId }),
+      handleInApp: lenke.url.startsWith("/"),
       url: lenke.url,
     }));
     setBreadcrumbs(breadcrumbs);

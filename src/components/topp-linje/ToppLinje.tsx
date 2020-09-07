@@ -3,12 +3,24 @@ import React, { useEffect } from "react";
 import Breadcrumbs, { BreadcrumbLenke } from "../breadcrumbs/Breadcrumbs";
 import { forsidePath, useLocalePaths } from "Config";
 import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
-import { useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
+import { useStore } from "providers/Provider";
+import { setLocaleFromUrl } from "utils/locale";
 
 const baseLenker: Array<BreadcrumbLenke> = [];
 
 export const ToppLinje = () => {
   const location = useLocation();
+  const history = useHistory();
+  const [, dispatch] = useStore();
+
+  useEffect(() => {
+    onLanguageSelect((breadcrumb) => {
+      history.push(breadcrumb.url);
+      setLocaleFromUrl(dispatch);
+    });
+  }, [dispatch, history]);
 
   useEffect(() => {
     const subSegments = location.pathname
@@ -21,10 +33,12 @@ export const ToppLinje = () => {
       {
         locale: "nb",
         url: `${forsidePath}/nb/${subSegments}`,
+        handleInApp: true,
       },
       {
         locale: "en",
         url: `${forsidePath}/en/${subSegments}`,
+        handleInApp: true,
       },
     ];
 

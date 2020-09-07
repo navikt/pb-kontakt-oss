@@ -47,12 +47,10 @@ const ServiceKlageLogin = () => {
         </div>
         <div className="tb__knapper">
           <div className={"tb__knapp"}>
-            <a href={`${loginUrl}?redirect=${window.location.href}`}>
-              <Hovedknapp>
+            <a className="lenkeknapp knapp knapp--hoved" href={`${loginUrl}?redirect=${window.location.href}`}>
                 <FormattedMessage
                   id={"tilbakemeldinger.serviceklage.login.knapp"}
                 />
-              </Hovedknapp>
             </a>
           </div>
           <div className={"tb__knapp serviceKlage__login-lenke"}>

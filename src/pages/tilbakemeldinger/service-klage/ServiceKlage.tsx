@@ -331,10 +331,8 @@ const ServiceKlage = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link to={tilbakeTil}>
-                          <Knapp type={"flat"}>
-                            <FormattedMessage id={"felter.tilbake"} />
-                          </Knapp>
+                        <Link className="lenkeknapp knapp knapp--flat" to={tilbakeTil}>
+                          <FormattedMessage id={"felter.tilbake"} />
                         </Link>
                       </div>
                     </div>

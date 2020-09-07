@@ -219,10 +219,8 @@ const Ros = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link to={paths.tilbakemeldinger.forside}>
-                          <Knapp type={"flat"}>
+                        <Link className="lenkeknapp knapp knapp--flat" to={paths.tilbakemeldinger.forside}>
                             <FormattedMessage id={"felter.tilbake"} />
-                          </Knapp>
                         </Link>
                       </div>
                     </div>

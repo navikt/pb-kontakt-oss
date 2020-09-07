@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useStore } from "../../providers/Provider";
 import { Element } from "nav-frontend-typografi";
 import { FormattedMessage, useIntl } from "react-intl";

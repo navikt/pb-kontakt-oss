@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import Breadcrumbs, { BreadcrumbLenke } from "../breadcrumbs/Breadcrumbs";
-import { forsidePath, useLocalePaths } from "Config";
+import { forsidePath } from "Config";
 import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
 import { useHistory, useLocation } from "react-router-dom";
 import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
@@ -45,11 +45,7 @@ export const ToppLinje = () => {
 
   return (
     <div className={"kontakt-oss-topplinje"}>
-      <Breadcrumbs
-        currentPath={window.location.pathname}
-        basePath={useLocalePaths().baseAppPath}
-        baseLenker={baseLenker}
-      />
+      <Breadcrumbs baseLenker={baseLenker} />
     </div>
   );
 };

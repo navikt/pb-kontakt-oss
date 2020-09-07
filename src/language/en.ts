@@ -24,7 +24,6 @@ export default {
   //
   // Breadcrumbs
   //
-  "breadcrumb.nav-no": "nav.no",
   "breadcrumb.en": "Contact us",
 
   "breadcrumb.skriv-til-oss": "Write to us",

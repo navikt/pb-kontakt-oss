@@ -24,7 +24,6 @@ export default {
   //
   // Breadcrumbs
   //
-  "breadcrumb.nav-no": "nav.no",
   "breadcrumb.nb": "Kontakt oss",
 
   "breadcrumb.skriv-til-oss": "Skriv til oss",

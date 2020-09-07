@@ -3,10 +3,9 @@ import { setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
 import { useIntl } from "react-intl";
 import { onBreadcrumbClick } from "@navikt/nav-dekoratoren-moduler/dist";
 import { useHistory } from "react-router-dom";
+import Environment from "../../Environments";
 
 type BreadcrumbsProps = {
-  currentPath: string;
-  basePath: string;
   baseLenker?: Array<BreadcrumbLenke>;
 };
 
@@ -16,11 +15,9 @@ export type BreadcrumbLenke = {
   isExternal?: boolean;
 };
 
-const getSegmentLenker = (
-  currentPath: string,
-  basePath: string
-): Array<BreadcrumbLenke> => {
-  const pathSegments = currentPath
+const getSegmentLenker = (): Array<BreadcrumbLenke> => {
+  const { baseAppPath } = Environment();
+  const pathSegments = window.location.pathname
     .replace(/\/person\/kontakt-oss\/*/, "")
     .split("/");
 
@@ -35,20 +32,16 @@ const getSegmentLenker = (
       combinedSegments.length === 1 ? "" : combinedSegments.join("/");
 
     return {
-      url: `${basePath}${segmentPath}`,
+      url: `${baseAppPath}/${segmentPath}`,
       lenketekstId: `breadcrumb.${segment}`,
     };
   });
 };
 
-const Breadcrumbs = ({
-  currentPath,
-  basePath,
-  baseLenker = [],
-}: BreadcrumbsProps) => {
+const Breadcrumbs = ({ baseLenker = [] }: BreadcrumbsProps) => {
   const { formatMessage } = useIntl();
   const history = useHistory();
-  const lenker = baseLenker.concat(getSegmentLenker(currentPath, basePath));
+  const lenker = baseLenker.concat(getSegmentLenker());
 
   onBreadcrumbClick((breadcrumb) => {
     history.push(breadcrumb.url);

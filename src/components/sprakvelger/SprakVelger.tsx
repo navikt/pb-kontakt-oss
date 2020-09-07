@@ -38,7 +38,7 @@ const selectedOption = (text: string, screenReaderText: string) => (
 );
 
 export const SprakVelger = () => {
-  const [, dispatch] = useStore();
+  const [{ locale }, dispatch] = useStore();
   const { formatMessage } = useIntl();
 
   const selectionHandler = (selected: ValueType<LocaleOption>) => {
@@ -75,7 +75,8 @@ export const SprakVelger = () => {
       if (changes.isOpen) {
         return logEvent({ event: "sprakvelger-clicked" });
       }
-    }
+    },
+    defaultSelectedItem: options.find((option: LocaleOption) => option.value === locale)
 } );
 
   return (

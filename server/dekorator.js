@@ -10,13 +10,13 @@ const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
 // Refresh cache every hour
 const cache = new NodeCache({
   stdTTL: SECONDS_PER_HOUR,
-  checkperiod: SECONDS_PER_MINUTE
+  checkperiod: SECONDS_PER_MINUTE,
 });
 
 const getUrl = (namespace, language) => {
   if (namespace !== "p") {
     // Q0, Q1, Q6 etc ..
-    return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}&chatbot=true`;
+    return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}&chatbot=true&availableLanguages=[{"locale":"nb","url":"https://www-${namespace}.nav.no/person/kontakt-oss/nb/"},{"locale":"en","url":"https://www-${namespace}.nav.no/person/kontakt-oss/en/"}]`;
   } else {
     // Produksjon
     return `https://www.nav.no/dekoratoren/?language=${language}&chatbot=true`;
@@ -41,7 +41,7 @@ const getDecorator = (namespace, language) =>
             NAV_FOOTER: document.getElementById("footer-withmenu")[prop],
             MEGAMENU_RESOURCES: document.getElementById("megamenu-resources")[
               prop
-            ]
+            ],
           };
           cache.set(`${namespace}-${language}`, data);
           logger.info(`${namespace}-${language}: Creating cache`);

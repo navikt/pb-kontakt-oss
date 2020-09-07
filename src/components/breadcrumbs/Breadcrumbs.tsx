@@ -21,7 +21,7 @@ const getSegmentLenker = (
   basePath: string
 ): Array<BreadcrumbLenke> => {
   const pathSegments = currentPath
-    .replace(/\/person\/kontakt-oss(\/|nb|en)*/, "")
+    .replace(/\/person\/kontakt-oss\/*/, "")
     .split("/");
 
   // fjerner tomt segment ved trailing slash

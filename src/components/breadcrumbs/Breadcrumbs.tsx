@@ -20,7 +20,9 @@ const getSegmentLenker = (
   currentPath: string,
   basePath: string
 ): Array<BreadcrumbLenke> => {
-  const pathSegments = currentPath.replace(basePath, "").split("/");
+  const pathSegments = currentPath
+    .replace(/\/person\/kontakt-oss(\/|nb|en)*/, "")
+    .split("/");
 
   // fjerner tomt segment ved trailing slash
   if (pathSegments.length > 1 && pathSegments[pathSegments.length - 1] === "") {
@@ -48,11 +50,9 @@ const Breadcrumbs = ({
   const history = useHistory();
   const lenker = baseLenker.concat(getSegmentLenker(currentPath, basePath));
 
-  useEffect(() => {
-    onBreadcrumbClick((breadcrumb) => {
-      history.push(breadcrumb.url);
-    });
-  }, [history]);
+  onBreadcrumbClick((breadcrumb) => {
+    history.push(breadcrumb.url);
+  });
 
   // Set breadcrumbs in decorator
   useEffect(() => {

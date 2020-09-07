@@ -6,7 +6,7 @@ import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
 import { useHistory, useLocation } from "react-router-dom";
 import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
 import { useStore } from "providers/Provider";
-import { setLocaleFromUrl } from "utils/locale";
+import { Locale } from "utils/locale";
 
 const baseLenker: Array<BreadcrumbLenke> = [];
 
@@ -15,12 +15,10 @@ export const ToppLinje = () => {
   const history = useHistory();
   const [, dispatch] = useStore();
 
-  useEffect(() => {
-    onLanguageSelect((breadcrumb) => {
-      history.push(breadcrumb.url);
-      setLocaleFromUrl(dispatch);
-    });
-  }, [dispatch, history]);
+  onLanguageSelect((breadcrumb) => {
+    dispatch({ type: "SETT_LOCALE", payload: breadcrumb.locale as Locale });
+    history.push(breadcrumb.url);
+  });
 
   useEffect(() => {
     const subSegments = location.pathname

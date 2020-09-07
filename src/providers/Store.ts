@@ -1,19 +1,16 @@
 import { AuthInfo } from "../types/authInfo";
 import { KontaktInfo } from "../types/kontaktInfo";
-import sprak from "../language/provider";
 import { Enheter, FetchEnheter } from "../types/enheter";
 import { HTTPError } from "../components/error/Error";
 import { Alert, Alerts, initialAlerts } from "../utils/sanity/endpoints/alert";
 import { FAQ, FAQLenke, initialFAQ } from "../utils/sanity/endpoints/faq";
 import { Channels, ChannelList, initialChannels } from "../utils/sanity/endpoints/channels";
 import { initialThemes, ThemeList, Themes } from "../utils/sanity/endpoints/themes";
-import { defaultLocale, Locale } from "../utils/locale";
-import { Sprak } from "../types/sprak";
+import { defaultLocale, getLocaleFromUrl, Locale } from "../utils/locale";
 
 export const initialState = {
   fodselsnr: "",
-  language: sprak,
-  locale: defaultLocale,
+  locale: getLocaleFromUrl() || defaultLocale,
   enheter: { status: "LOADING" } as FetchEnheter,
   auth: { authenticated: false } as AuthInfo,
   kontaktInfo: { mobiltelefonnummer: "" },
@@ -26,7 +23,6 @@ export const initialState = {
 
 export interface Store {
   fodselsnr: string;
-  language: Sprak;
   locale: Locale;
   enheter: FetchEnheter;
   auth: AuthInfo;

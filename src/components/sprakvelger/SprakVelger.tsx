@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { useStore } from "../../providers/Provider";
 import { Locale, setNewLocale } from "../../utils/locale";
 import GlobeIkon from "assets/icons/filled/globe-1-filled.svg";
 import { Normaltekst } from "nav-frontend-typografi";
 import { NedChevron } from "nav-frontend-chevron";
-import { ValueType } from "react-select/src/types";
 import { logEvent } from "../../utils/logger";
 import { useSelect } from "downshift";
 const cssPrefix = "sprakvelger";
@@ -40,17 +39,18 @@ const selectedOption = (text: string, screenReaderText: string) => (
 export const SprakVelger = () => {
   const [{ locale }, dispatch] = useStore();
   const { formatMessage } = useIntl();
-
-  const selectionHandler = (selected: ValueType<LocaleOption>) => {
-    const value = (selected as LocaleOption).value;
-    logEvent({ event: `sprakvelger-valgt-${value}` });
-    selected && setNewLocale(value, dispatch);
-  };
-
   const options: LocaleOption[] = [
     { value: "nb", label: (formatMessage({ id: "sprak.nb" })) },
     { value: "en", label: (formatMessage({ id: "sprak.en" })) }
   ];
+  const [selectedItem, setSelectedItem] = useState(() => options.find((option: LocaleOption) => option.value === locale));
+
+  const selectionHandler = (selected: LocaleOption) => {
+    setSelectedItem(selected);
+    const value = (selected as LocaleOption).value;
+    logEvent({ event: `sprakvelger-valgt-${value}` });
+    selected && setNewLocale(value, dispatch);
+  };
 
   const knappeInnhold = (
     <span className={`${cssPrefix}__knapp-tekst`}>
@@ -61,7 +61,6 @@ export const SprakVelger = () => {
 
   const {
     isOpen,
-    selectedItem,
     getToggleButtonProps,
     getLabelProps,
     getMenuProps,
@@ -69,14 +68,14 @@ export const SprakVelger = () => {
     getItemProps,
   } = useSelect({
     items: options,
-    itemToString: (item) => item ? item.value : "",
-    onSelectedItemChange: (changes) => selectionHandler(changes.selectedItem),
+    selectedItem,
+    itemToString: (item: LocaleOption | null ) => item ? item.value : "",
+    onSelectedItemChange: (changes) => changes.selectedItem && selectionHandler(changes.selectedItem),
     onIsOpenChange: (changes) => {
       if (changes.isOpen) {
         return logEvent({ event: "sprakvelger-clicked" });
       }
-    },
-    defaultSelectedItem: options.find((option: LocaleOption) => option.value === locale)
+    }
 } );
 
   return (

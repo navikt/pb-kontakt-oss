@@ -23,13 +23,17 @@ export const setNewLocale = (locale: Locale, dispatch: (action: Action) => void)
   dispatch({ type: "SETT_LOCALE", payload: locale });
 };
 
-export const setLocaleFromUrl = (dispatch: (action: Action) => void) => {
-  const localeFromUrl = window.location.pathname
-    .split(forsidePath)[1]
-    .split("/")[1];
+export const getLocaleFromUrl = () => {
+  const locale = window.location.pathname
+      .split(forsidePath)[1]
+      .split("/")[1];
 
-  if (isLocale(localeFromUrl)) {
-    logEvent({ event: `pageview-${localeFromUrl}` });
-    dispatch({ type: "SETT_LOCALE", payload: localeFromUrl });
-  }
+  return isLocale(locale) ? locale : defaultLocale;
+};
+
+export const setLocaleFromUrl = (dispatch: (action: Action) => void) => {
+  const localeFromUrl = getLocaleFromUrl();
+
+  logEvent({ event: `pageview-${localeFromUrl}` });
+  dispatch({ type: "SETT_LOCALE", payload: localeFromUrl });
 };

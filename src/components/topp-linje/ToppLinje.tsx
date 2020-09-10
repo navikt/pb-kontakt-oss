@@ -9,8 +9,8 @@ const baseLenker: Array<BreadcrumbLenke> = [
   {
     url: Environment().baseUrl,
     lenketekstId: "breadcrumb.nav-no",
-    isExternal: true
-  }
+    isExternal: true,
+  },
 ];
 
 export const ToppLinje = () => {

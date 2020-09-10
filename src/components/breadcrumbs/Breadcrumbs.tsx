@@ -25,7 +25,10 @@ export type BreadcrumbLenke = {
 
 const cssPrefix = "breadcrumbs";
 
-const getSegmentLenker = (currentPath: string, basePath: string): Array<BreadcrumbLenke> => {
+const getSegmentLenker = (
+  currentPath: string,
+  basePath: string
+): Array<BreadcrumbLenke> => {
   const pathSegments = currentPath.replace(basePath, "").split("/");
 
   // fjerner tomt segment ved trailing slash
@@ -35,7 +38,8 @@ const getSegmentLenker = (currentPath: string, basePath: string): Array<Breadcru
 
   return pathSegments.map((segment, index) => {
     const combinedSegments = pathSegments.slice(0, index + 1);
-    const segmentPath = combinedSegments.length === 1 ? "" : combinedSegments.join("/");
+    const segmentPath =
+      combinedSegments.length === 1 ? "" : combinedSegments.join("/");
 
     return {
       url: `${basePath}${segmentPath}`,
@@ -44,29 +48,36 @@ const getSegmentLenker = (currentPath: string, basePath: string): Array<Breadcru
   });
 };
 
-const SegmentNode = ({lenke, isCurrentPath}: SegmentProps) => {
+const SegmentNode = ({ lenke, isCurrentPath }: SegmentProps) => {
   const lenketekst = <FormattedMessage id={lenke.lenketekstId} />;
 
   return (
     <Normaltekst className={`${cssPrefix}__segment`}>
-      { isCurrentPath
-        ? lenketekst
-        : (
-          <>
-            {
-              lenke.isExternal
-              ? <Lenke href={lenke.url} className="lenke">{lenketekst}</Lenke>
-              : <Link to={lenke.url} className="lenke">{lenketekst}</Link>
-            }
-            <HoyreChevron className={`${cssPrefix}__chevron`} />
-          </>
-        )
-      }
+      {isCurrentPath ? (
+        lenketekst
+      ) : (
+        <>
+          {lenke.isExternal ? (
+            <Lenke href={lenke.url} className="lenke">
+              {lenketekst}
+            </Lenke>
+          ) : (
+            <Link to={lenke.url} className="lenke">
+              {lenketekst}
+            </Link>
+          )}
+          <HoyreChevron className={`${cssPrefix}__chevron`} />
+        </>
+      )}
     </Normaltekst>
   );
 };
 
-const Breadcrumbs = ({currentPath, basePath, baseLenker = []}: BreadcrumbsProps) => {
+const Breadcrumbs = ({
+  currentPath,
+  basePath,
+  baseLenker = [],
+}: BreadcrumbsProps) => {
   const lenker = baseLenker.concat(getSegmentLenker(currentPath, basePath));
 
   return (

@@ -10,7 +10,7 @@ const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
 // Refresh cache every hour
 const cache = new NodeCache({
   stdTTL: SECONDS_PER_HOUR,
-  checkperiod: SECONDS_PER_MINUTE
+  checkperiod: SECONDS_PER_MINUTE,
 });
 
 const getUrl = (namespace, language) => {
@@ -41,7 +41,7 @@ const getDecorator = (namespace, language) =>
             NAV_FOOTER: document.getElementById("footer-withmenu")[prop],
             MEGAMENU_RESOURCES: document.getElementById("megamenu-resources")[
               prop
-            ]
+            ],
           };
           cache.set(`${namespace}-${language}`, data);
           logger.info(`${namespace}-${language}: Creating cache`);

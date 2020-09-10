@@ -19,7 +19,7 @@ const getUrl = (namespace, language) => {
     return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}&chatbot=true`;
   } else {
     // Produksjon
-    return `https://www.nav.no/dekoratoren/?language=${language}&chatbot=true`;
+    return `https://www.nav.no/dekoratoren/?chatbot=true`;
   }
 };
 

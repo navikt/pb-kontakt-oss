@@ -1,2 +1,2 @@
 /*tslint:disable*/
-export default '<section id="decorator-header" class="navno-dekorator" role="main"></section>';
+export default '<section id="decorator-header"></section>';

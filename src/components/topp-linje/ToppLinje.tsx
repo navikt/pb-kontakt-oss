@@ -1,27 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Breadcrumbs, { BreadcrumbLenke } from "../breadcrumbs/Breadcrumbs";
-import Environment from "../../Environments";
-import { SprakVelger } from "../sprakvelger/SprakVelger";
-import { useLocalePaths } from "../../Config";
+import { forsidePath } from "Config";
+import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
+import { useLocation } from "react-router-dom";
+import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
+import { Locale, setNewLocale } from "utils/locale";
+import { useStore } from "providers/Provider";
 
-const baseLenker: Array<BreadcrumbLenke> = [
-  {
-    url: Environment().baseUrl,
-    lenketekstId: "breadcrumb.nav-no",
-    isExternal: true,
-  },
-];
+const baseLenker: Array<BreadcrumbLenke> = [];
 
 export const ToppLinje = () => {
+  const location = useLocation();
+  const [, dispatch] = useStore();
+
+  onLanguageSelect((breadcrumb) => {
+    setNewLocale(breadcrumb.locale as Locale, dispatch);
+  });
+
+  useEffect(() => {
+    const subSegments = location.pathname
+      .split(forsidePath)[1]
+      .split("/")
+      .slice(2)
+      .join("/");
+
+    const languages = [
+      {
+        locale: "nb",
+        url: `${forsidePath}/nb/${subSegments}`,
+        handleInApp: true,
+      },
+      {
+        locale: "en",
+        url: `${forsidePath}/en/${subSegments}`,
+        handleInApp: true,
+      },
+    ];
+
+    setAvailableLanguages(languages);
+  }, [location.pathname]);
+
   return (
     <div className={"kontakt-oss-topplinje"}>
-      <Breadcrumbs
-        currentPath={window.location.pathname}
-        basePath={useLocalePaths().baseAppPath}
-        baseLenker={baseLenker}
-      />
-      <SprakVelger />
+      <Breadcrumbs baseLenker={baseLenker} />
     </div>
   );
 };

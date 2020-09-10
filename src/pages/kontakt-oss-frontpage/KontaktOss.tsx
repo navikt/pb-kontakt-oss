@@ -22,16 +22,27 @@ import { MetaTags } from "../../components/metatags/MetaTags";
 const KontaktOssFrontpage = () => {
   const [{ locale }] = useStore();
 
+  // Add schema from assets
   useEffect(() => {
-    /*
-      Add schema from assets
-    */
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.innerHTML = JSON.stringify(Schema);
     document.body.appendChild(script);
     return () => {
       document.body.removeChild(script);
+    };
+  }, []);
+
+  // Bugfix for background color on frontpage
+  useEffect(() => {
+    const head = document.querySelector("head");
+    if (head) {
+      head.innerHTML += `<style>.decorator-utils-container{background-color: white !important}</style>`;
+    }
+    return () => {
+      if (head) {
+        head.innerHTML += `<style>.decorator-utils-container{background-color: #efefef !important}</style>`;
+      }
     };
   }, []);
 

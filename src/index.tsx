@@ -6,10 +6,8 @@ import { IntlProvider } from "react-intl";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import withMenu from "./clients/apiMock/decorator/decorator-header-withmenu";
-import megamenu from "./clients/apiMock/decorator/decorator-megamenu";
 import footer from "./clients/apiMock/decorator/decorator-footer";
 import scripts from "./clients/apiMock/decorator/decorator-scripts";
-import skiplinks from "./clients/apiMock/decorator/decorator-skiplinks";
 import styles from "./clients/apiMock/decorator/decorator-styles";
 import { StoreProvider, useStore } from "./providers/Provider";
 import { initialState, reducer } from "./providers/Store";
@@ -45,14 +43,6 @@ const init = async () => {
     document.body.innerHTML = document.body.innerHTML.replace(
       "{{{NAV_SCRIPTS}}}",
       scripts
-    );
-    document.body.innerHTML = document.body.innerHTML.replace(
-      "{{{NAV_SKIPLINKS}}}",
-      skiplinks
-    );
-    document.body.innerHTML = document.body.innerHTML.replace(
-      "{{{MEGAMENU_RESOURCES}}}",
-      megamenu
     );
 
     // Execute client.js

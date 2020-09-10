@@ -158,7 +158,7 @@ export const urls = {
 export const vars = {
   defaultDatoTidFormat: "HH:mm DD-MM-YYYY",
   defaultDatoFormat: "DD-MM-YYYY",
-  maksLengdeMelding: 10000
+  maksLengdeMelding: 10000,
 };
 
 export default {

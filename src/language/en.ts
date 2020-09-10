@@ -16,7 +16,8 @@ export default {
   //
   // Språk
   //
-  "sprak.velg": "Språk/language",
+  "sprak.velg": "Språk/Language",
+  "sprak.valgt": "(selected)",
   "sprak.nb": "Norsk",
   "sprak.en": "English",
   "sprak.lenke.norsk": " (in Norwegian)",
@@ -291,6 +292,7 @@ export default {
   "felter.hvemroses.digitaletjenester": "NAVs digital services",
   "felter.hvemroses.navkontor": "NAV office",
   "felter.hvemroses.navkontor.velg": "Choose NAV unit",
+  "felter.combobox.knapp.beskrivelse": "Open list",
   "felter.klagerpa.navkontor.velg":
     "Which NAV department does the complaint relate to?",
   "felter.hvemroses.navkontor.skrivinn": "Search or select using arrow keys",

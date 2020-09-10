@@ -22,7 +22,7 @@ const InputMelding = (props: Props) => {
 
   return (
     <div>
-      <div className={"skjemagruppe__legend"}>{label}</div>
+      <label className={"skjemagruppe__legend"} htmlFor="InputMelding-textarea">{label}</label>
       <div className={"felter__melding-advarsel"}>
         <Varsel type={"advarsel"}>
           <FormattedMessage
@@ -60,6 +60,7 @@ const InputMelding = (props: Props) => {
         </Varsel>
       </div>
       <TextareaControlled
+        id="InputMelding-textarea"
         label={""}
         required={true}
         value={value}

@@ -29,14 +29,14 @@ server.get(`${baseUrl}/internal/isAlive|isReady`, (req, res) =>
 
 // Match everything except internal og static
 server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) => {
-  const language = req.originalUrl.indexOf("/en") !== -1 ? "engelsk" : "norsk";
+  const language = req.originalUrl.indexOf("/en") !== -1 ? "en" : "nb";
   const subdomain = req.headers.host.split(".")[0];
   const namespace = subdomain !== "www" ? subdomain.split("-")[1] : "p";
   getDecorator(namespace, language)
-    .then(fragments => {
+    .then((fragments) => {
       res.render("index.html", fragments);
     })
-    .catch(e => {
+    .catch((e) => {
       const error = `Failed to get decorator: ${e}`;
       logger.error(error);
       res.status(500).send(error);

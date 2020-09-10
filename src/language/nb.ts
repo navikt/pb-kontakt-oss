@@ -16,7 +16,8 @@ export default {
   //
   // Språk
   //
-  "sprak.velg": "Språk/language",
+  "sprak.velg": "Språk/Language",
+  "sprak.valgt": "(valgt)",
   "sprak.nb": "Norsk",
   "sprak.en": "English",
   "sprak.lenke.norsk": "",
@@ -280,6 +281,7 @@ export default {
   "felter.hvemroses.navkontor.velg": "Velg NAV-enhet",
   "felter.klagerpa.navkontor.velg": "Hvilken enhet i NAV gjelder klagen?",
   "felter.hvemroses.navkontor.skrivinn": "Søk eller velg med piltast",
+  "felter.combobox.knapp.beskrivelse": "Åpne lista",
   "felter.klagetyper": "Hva gjelder tilbakemeldingen?",
   "felter.klagetyper.info":
     "Velg det alternativet som passer best. Du har mulighet til å velge flere kategorier.",

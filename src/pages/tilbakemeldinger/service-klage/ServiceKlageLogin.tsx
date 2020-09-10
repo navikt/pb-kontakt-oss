@@ -1,6 +1,5 @@
 import React from "react";
 import { useStore } from "providers/Provider";
-import { Hovedknapp } from "nav-frontend-knapper";
 import { Link, Redirect } from "react-router-dom";
 import Environment from "Environments";
 import { useLocalePaths } from "Config";
@@ -47,12 +46,13 @@ const ServiceKlageLogin = () => {
         </div>
         <div className="tb__knapper">
           <div className={"tb__knapp"}>
-            <a href={`${loginUrl}?redirect=${window.location.href}`}>
-              <Hovedknapp>
-                <FormattedMessage
-                  id={"tilbakemeldinger.serviceklage.login.knapp"}
-                />
-              </Hovedknapp>
+            <a
+              className="lenkeknapp knapp knapp--hoved"
+              href={`${loginUrl}?redirect=${window.location.href}`}
+            >
+              <FormattedMessage
+                id={"tilbakemeldinger.serviceklage.login.knapp"}
+              />
             </a>
           </div>
           <div className={"tb__knapp serviceKlage__login-lenke"}>

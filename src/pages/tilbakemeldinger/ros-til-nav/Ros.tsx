@@ -178,12 +178,10 @@ const Ros = () => {
                               error={errors.navKontor}
                               submitted={submitted}
                               value={fields.navKontor}
-                              onChange={(
-                                v?: {
-                                  value: string;
-                                  label: string;
-                                }
-                              ) => setField({ navKontor: v })}
+                              onChange={(v?: {
+                                value: string;
+                                label: string;
+                              }) => setField({ navKontor: v })}
                             />
                           )}
                         </Validation>
@@ -218,10 +216,11 @@ const Ros = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link to={paths.tilbakemeldinger.forside}>
-                          <Knapp type={"flat"}>
-                            <FormattedMessage id={"felter.tilbake"} />
-                          </Knapp>
+                        <Link
+                          className="lenkeknapp knapp knapp--flat"
+                          to={paths.tilbakemeldinger.forside}
+                        >
+                          <FormattedMessage id={"felter.tilbake"} />
                         </Link>
                       </div>
                     </div>

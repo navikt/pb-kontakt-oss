@@ -42,39 +42,39 @@ const SelectEnhet = (props: Props) => {
 
   const comboBoxLabel = () => (
     <div className={`${cssPrefix}__label`}>
-        <Element>
-          <FormattedMessage id={label} />
-          <span className={`${cssPrefix}__hjelpetekst`}>{
-            `- ${ intl.formatMessage({ id: "felter.hvemroses.navkontor.skrivinn"})}`}
-          </span>
+      <Element>
+        <FormattedMessage id={label} />
+        <span className={`${cssPrefix}__hjelpetekst`}>
+          {`- ${intl.formatMessage({
+            id: "felter.hvemroses.navkontor.skrivinn",
+          })}`}
+        </span>
       </Element>
     </div>
-    );
+  );
 
   return (
     <div className={`${cssPrefix}__navkontor`}>
       {enheter.status === "RESULT" ? (
-          <Combobox
-            harFeil={!!(submitted && error)}
-            label={comboBoxLabel()}
-            onChange={onChange}
-            value={value}
-            data={enheter.data
-              .sort((a, b) => (a.enhetsnavn < b.enhetsnavn ? -1 : 1))
-              .map(enhet => ({
-                value: enhet.enhetsnummer,
-                label: `${enhet.enhetsnavn} -  ${enhet.enhetsnummer}`
-              }))}
-          />
+        <Combobox
+          harFeil={!!(submitted && error)}
+          label={comboBoxLabel()}
+          onChange={onChange}
+          value={value}
+          data={enheter.data
+            .sort((a, b) => (a.enhetsnavn < b.enhetsnavn ? -1 : 1))
+            .map((enhet) => ({
+              value: enhet.enhetsnummer,
+              label: `${enhet.enhetsnavn} -  ${enhet.enhetsnummer}`,
+            }))}
+        />
       ) : (
         <div className={`${cssPrefix}__spinner`}>
           <NavFrontendSpinner />
         </div>
       )}
       {submitted && error && (
-        <SkjemaelementFeilmelding>
-          {error}
-        </SkjemaelementFeilmelding>
+        <SkjemaelementFeilmelding>{error}</SkjemaelementFeilmelding>
       )}
     </div>
   );

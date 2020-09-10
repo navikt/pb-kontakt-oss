@@ -14,13 +14,27 @@ const cache = new NodeCache({
 });
 
 const getUrl = (namespace, language) => {
-  if (namespace !== "p") {
-    // Q0, Q1, Q6 etc ..
-    return `https://www-${namespace}.nav.no/dekoratoren/?language=${language}&chatbot=true&availableLanguages=[{"locale":"nb","url":"https://www-${namespace}.nav.no/person/kontakt-oss/nb/"},{"locale":"en","url":"https://www-${namespace}.nav.no/person/kontakt-oss/en/"}]`;
-  } else {
-    // Produksjon
-    return `https://www.nav.no/dekoratoren/?language=${language}&chatbot=true`;
-  }
+  const basePath =
+    namespace !== "p"
+      ? `https://www-${namespace}.nav.no`
+      : `https://www.nav.no`;
+
+  const availableLanguages = [
+    {
+      locale: "nb",
+      url: `${basePath}/person/kontakt-oss/nb/`,
+    },
+    {
+      locale: "en",
+      url: `${basePath}/person/kontakt-oss/en/`,
+    },
+  ];
+
+  const params = `?language=${language}&chatbot=true&availableLanguages=${JSON.stringify(
+    availableLanguages
+  )}`;
+
+  return `${basePath}/dekoratoren/${params}`;
 };
 
 const getDecorator = (namespace, language) =>

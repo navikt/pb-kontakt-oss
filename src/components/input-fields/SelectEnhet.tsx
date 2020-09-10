@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import { useStore } from "../../providers/Provider";
 import { Element } from "nav-frontend-typografi";
 import { FormattedMessage, useIntl } from "react-intl";
-import Select from "react-select";
-import { ValueType } from "react-select/src/types";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { fetchEnheter } from "../../clients/apiClient";
 import { Enheter } from "../../types/enheter";
 import { HTTPError } from "../error/Error";
+import { SkjemaelementFeilmelding } from "nav-frontend-skjema";
+import Combobox from "./EnhetCombobox";
+const cssPrefix = "selectEnhet";
 
 interface Option {
   value: string;
@@ -15,18 +16,18 @@ interface Option {
 }
 
 interface Props {
-  onChange: (value: ValueType<Option>) => void;
+  onChange: (value: Option | undefined) => void;
   error: string | null;
   label: string;
   submitted: boolean;
   bredde?: "fullbredde" | "XXL" | "XL" | "L" | "M" | "S" | "XS" | "XXS";
-  value: ValueType<Option>;
+  value?: Option;
 }
 
 const SelectEnhet = (props: Props) => {
   const [{ enheter }, dispatch] = useStore();
   const intl = useIntl();
-  const { submitted, value, onChange, error, label } = props;
+  const { submitted, error, label, onChange, value } = props;
 
   useEffect(() => {
     fetchEnheter()
@@ -39,39 +40,41 @@ const SelectEnhet = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
-    <div className="ros-til-nav__navkontor">
-      <div className="ros-til-nav__label">
+  const comboBoxLabel = () => (
+    <div className={`${cssPrefix}__label`}>
         <Element>
           <FormattedMessage id={label} />
-        </Element>
-      </div>
+          <span className={`${cssPrefix}__hjelpetekst`}>{
+            `- ${ intl.formatMessage({ id: "felter.hvemroses.navkontor.skrivinn"})}`}
+          </span>
+      </Element>
+    </div>
+    );
+
+  return (
+    <div className={`${cssPrefix}__navkontor`}>
       {enheter.status === "RESULT" ? (
-        <Select
-          placeholder={intl.formatMessage({
-            id: "felter.hvemroses.navkontor.skrivinn"
-          })}
-          classNamePrefix={
-            submitted && error ? "ros-til-nav-feil" : "ros-til-nav"
-          }
-          value={value}
-          onChange={onChange}
-          options={enheter.data
-            .sort((a, b) => (a.enhetsnavn < b.enhetsnavn ? -1 : 1))
-            .map(enhet => ({
-              value: enhet.enhetsnummer,
-              label: `${enhet.enhetsnavn} -  ${enhet.enhetsnummer}`
-            }))}
-        />
+          <Combobox
+            harFeil={!!(submitted && error)}
+            label={comboBoxLabel()}
+            onChange={onChange}
+            value={value}
+            data={enheter.data
+              .sort((a, b) => (a.enhetsnavn < b.enhetsnavn ? -1 : 1))
+              .map(enhet => ({
+                value: enhet.enhetsnummer,
+                label: `${enhet.enhetsnavn} -  ${enhet.enhetsnummer}`
+              }))}
+          />
       ) : (
-        <div className="ros-til-nav__spinner">
+        <div className={`${cssPrefix}__spinner`}>
           <NavFrontendSpinner />
         </div>
       )}
       {submitted && error && (
-        <div role="alert" aria-live="assertive">
-          <div className="skjemaelement__feilmelding">{error}</div>
-        </div>
+        <SkjemaelementFeilmelding>
+          {error}
+        </SkjemaelementFeilmelding>
       )}
     </div>
   );

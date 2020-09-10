@@ -9,7 +9,6 @@ import { HTTPError } from "components/error/Error";
 import { AlertStripeFeil } from "nav-frontend-alertstriper";
 import NavFrontendSpinner from "nav-frontend-spinner";
 import { FormContext, Form, Validation } from "calidation";
-import { ValueType } from "react-select/src/types";
 import Header from "components/header/Header";
 import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
@@ -180,10 +179,10 @@ const Ros = () => {
                               submitted={submitted}
                               value={fields.navKontor}
                               onChange={(
-                                v: ValueType<{
+                                v?: {
                                   value: string;
                                   label: string;
-                                }>
+                                }
                               ) => setField({ navKontor: v })}
                             />
                           )}

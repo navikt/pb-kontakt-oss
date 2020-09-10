@@ -1,99 +1,128 @@
-import React from "react";
+import React, { useState } from "react";
 import { useIntl } from "react-intl";
 import { useStore } from "../../providers/Provider";
 import { Locale, setNewLocale } from "../../utils/locale";
 import GlobeIkon from "assets/icons/filled/globe-1-filled.svg";
-import Select from "react-select";
 import { Normaltekst } from "nav-frontend-typografi";
-import { HoyreChevron } from "nav-frontend-chevron";
-import { Styles } from "react-select/src/styles";
-import { ValueType } from "react-select/src/types";
+import { NedChevron } from "nav-frontend-chevron";
 import { logEvent } from "../../utils/logger";
-
+import { useSelect } from "downshift";
 const cssPrefix = "sprakvelger";
 
 const farger = {
-  navGra60: "#78706A",
-  navBla: "#0067C5",
-  navBlaDarken60: "#254b6d"
+  navGra20: "#C6C2BF",
+  navBla: "#0067C5"
 };
 
 type LocaleOption = {
   value: Locale;
-  label: JSX.Element;
+  label: string;
 };
 
 const option = (text: string) => (
-  <Normaltekst>
-    <HoyreChevron className={`${cssPrefix}__chevron`} />
-    {text}
+  <Normaltekst className={`${cssPrefix}__option`}>
+      <span className="not-selected">
+        {text}
+      </span>
+  </Normaltekst>
+);
+
+const selectedOption = (text: string, screenReaderText: string) => (
+  <Normaltekst className={`${cssPrefix}__option`}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50%" cy="50%" r="4" fill="black"  />
+      </svg>
+      {text} <span className="sr-only">{screenReaderText}</span>
   </Normaltekst>
 );
 
 export const SprakVelger = () => {
-  const [, dispatch] = useStore();
+  const [{ locale }, dispatch] = useStore();
   const { formatMessage } = useIntl();
+  const options: LocaleOption[] = [
+    { value: "nb", label: (formatMessage({ id: "sprak.nb" })) },
+    { value: "en", label: (formatMessage({ id: "sprak.en" })) }
+  ];
+  const [selectedItem, setSelectedItem] = useState(() => options.find((option: LocaleOption) => option.value === locale));
 
-  const selectionHandler = (selected: ValueType<LocaleOption>) => {
+  const selectionHandler = (selected: LocaleOption) => {
+    setSelectedItem(selected);
     const value = (selected as LocaleOption).value;
     logEvent({ event: `sprakvelger-valgt-${value}` });
     selected && setNewLocale(value, dispatch);
   };
 
-  const options: LocaleOption[] = [
-    { value: "nb", label: option(formatMessage({ id: "sprak.nb" })) },
-    { value: "en", label: option(formatMessage({ id: "sprak.en" })) }
-  ];
-
-  const placeholder = (
-    <span className={`${cssPrefix}__placeholder`}>
+  const knappeInnhold = (
+    <span className={`${cssPrefix}__knapp-tekst`}>
       <img src={GlobeIkon} alt="" className={`${cssPrefix}__ikon`} />
       <Normaltekst>{formatMessage({ id: "sprak.velg" })}</Normaltekst>
     </span>
   );
 
-  const styles: Styles = {
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused
-        ? farger.navBla
-        : "white",
-      color: state.isFocused
-        ? "white"
-        : "black"
-    }),
-    control: (provided, state) => ({
-      ...provided,
-      boxShadow: state.isFocused
-        ? `0 0 0 3px ${farger.navBlaDarken60}`
-        : provided.boxShadow,
-      borderColor: farger.navGra60,
-      "&:hover": { borderColor: farger.navBla }
-    }),
-    menu: (provided) => ({
-      ...provided,
-      marginTop: "3px",
-      paddingTop: "1px",
-      borderTopLeftRadius: "0",
-      borderTopRightRadius: "0"
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: "black"
-    })
-  };
+  const {
+    isOpen,
+    getToggleButtonProps,
+    getLabelProps,
+    getMenuProps,
+    highlightedIndex,
+    getItemProps,
+  } = useSelect({
+    items: options,
+    selectedItem,
+    itemToString: (item: LocaleOption | null ) => item ? item.value : "",
+    onSelectedItemChange: (changes) => changes.selectedItem && selectionHandler(changes.selectedItem),
+    onIsOpenChange: (changes) => {
+      if (changes.isOpen) {
+        return logEvent({ event: "sprakvelger-clicked" });
+      }
+    }
+} );
 
   return (
     <div className={cssPrefix}>
-      <Select
-        onChange={selectionHandler}
-        className={`${cssPrefix}__select`}
-        options={options}
-        isSearchable={false}
-        placeholder={placeholder}
-        styles={styles}
-        onMenuOpen={() => logEvent({ event: "sprakvelger-clicked" })}
-      />
+        <label className="sr-only" {...getLabelProps()}>{formatMessage({ id: "sprak.velg" })}</label>
+        <button
+          {...getToggleButtonProps()}
+          className={`${cssPrefix}__knapp skjemaelement__input`}
+          type="button"
+        >
+          {knappeInnhold}
+          <NedChevron />
+        </button>
+
+      <ul {...getMenuProps()}
+          className={`${cssPrefix}__menu`}
+          style={isOpen ? {
+            boxShadow: "0 0.05rem 0.25rem 0.125rem rgba(0, 0, 0, 0.08)",
+            border: "1px solid",
+            borderRadius: "0 0 4px 4px",
+            outline: "none",
+            borderColor: farger.navGra20,
+            borderTop: "none"} : {border: "none"}}
+      >
+          {isOpen &&
+          options.map((item, index) => (
+            <li
+              style={
+                highlightedIndex === index ? {
+                  backgroundColor: farger.navBla,
+                  color: "white"
+                } : {
+                  backgroundColor: "white",
+                  color: "black"
+                }
+              }
+              className="menuList"
+              key={`${item.value}${index}`}
+              {...getItemProps({item, index})}
+            >
+              {selectedItem?.label === item.label ? selectedOption(item.label, formatMessage({ id: "sprak.valgt" }))
+                : option(item.label)
+              }
+            </li>
+          ))}
+        </ul>
     </div>
+
   );
 };

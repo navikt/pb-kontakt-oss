@@ -3,21 +3,19 @@ import React, { useEffect } from "react";
 import Breadcrumbs, { BreadcrumbLenke } from "../breadcrumbs/Breadcrumbs";
 import { forsidePath } from "Config";
 import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
+import { Locale, setNewLocale } from "utils/locale";
 import { useStore } from "providers/Provider";
-import { Locale } from "utils/locale";
 
 const baseLenker: Array<BreadcrumbLenke> = [];
 
 export const ToppLinje = () => {
   const location = useLocation();
-  const history = useHistory();
   const [, dispatch] = useStore();
 
   onLanguageSelect((breadcrumb) => {
-    dispatch({ type: "SETT_LOCALE", payload: breadcrumb.locale as Locale });
-    history.push(breadcrumb.url);
+    setNewLocale(breadcrumb.locale as Locale, dispatch);
   });
 
   useEffect(() => {
@@ -41,7 +39,7 @@ export const ToppLinje = () => {
     ];
 
     setAvailableLanguages(languages);
-  }, [location]);
+  }, [location.pathname]);
 
   return (
     <div className={"kontakt-oss-topplinje"}>

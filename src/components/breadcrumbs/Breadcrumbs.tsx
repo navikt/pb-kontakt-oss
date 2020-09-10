@@ -15,7 +15,7 @@ export type BreadcrumbLenke = {
   isExternal?: boolean;
 };
 
-const getSegmentLenker = (): Array<BreadcrumbLenke> => {
+const getSegmentLenker = (locale: string): Array<BreadcrumbLenke> => {
   const { baseAppPath } = Environment();
   const pathSegments = window.location.pathname
     .replace(/\/person\/kontakt-oss\/*/, "")
@@ -31,17 +31,17 @@ const getSegmentLenker = (): Array<BreadcrumbLenke> => {
     const segmentPath =
       combinedSegments.length === 1 ? "" : combinedSegments.join("/");
 
+    const url = `${baseAppPath}/${segmentPath}`;
     return {
-      url: `${baseAppPath}/${segmentPath}`,
+      url: !url.includes(`${locale}`) ? `${url}${locale}` : url,
       lenketekstId: `breadcrumb.${segment}`,
     };
   });
 };
 
 const Breadcrumbs = ({ baseLenker = [] }: BreadcrumbsProps) => {
-  const { formatMessage } = useIntl();
+  const { formatMessage, locale } = useIntl();
   const history = useHistory();
-  const lenker = baseLenker.concat(getSegmentLenker());
 
   onBreadcrumbClick((breadcrumb) => {
     history.push(breadcrumb.url);
@@ -49,13 +49,14 @@ const Breadcrumbs = ({ baseLenker = [] }: BreadcrumbsProps) => {
 
   // Set breadcrumbs in decorator
   useEffect(() => {
+    const lenker = baseLenker.concat(getSegmentLenker(locale));
     const breadcrumbs = lenker.map((lenke) => ({
       title: formatMessage({ id: lenke.lenketekstId }),
       handleInApp: lenke.url.startsWith("/"),
       url: lenke.url,
     }));
     setBreadcrumbs(breadcrumbs);
-  }, [formatMessage, lenker]);
+  }, [baseLenker, formatMessage, locale]);
 
   return <></>;
 };

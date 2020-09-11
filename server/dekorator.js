@@ -19,6 +19,14 @@ const getUrl = (namespace, language) => {
       ? `https://www-${namespace}.nav.no`
       : `https://www.nav.no`;
 
+  const breadcrumbs = [
+    {
+      url: `${basePath}/person/kontakt-oss/${language}`,
+      title: language === "nb" ? "Kontakt oss" : "Contact us",
+      handleInApp: true,
+    },
+  ];
+
   const availableLanguages = [
     {
       locale: "nb",
@@ -32,7 +40,7 @@ const getUrl = (namespace, language) => {
 
   const params = `?language=${language}&chatbot=true&availableLanguages=${JSON.stringify(
     availableLanguages
-  )}`;
+  )}&breadcrumbs=${JSON.stringify(breadcrumbs)}`;
 
   return `${basePath}/dekoratoren/${params}`;
 };

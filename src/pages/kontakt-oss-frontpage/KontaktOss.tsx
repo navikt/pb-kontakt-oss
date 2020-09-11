@@ -35,13 +35,15 @@ const KontaktOssFrontpage = () => {
 
   // Bugfix for background color on frontpage
   useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = ".decorator-utils-container{background-color: white !important}";
     const head = document.querySelector("head");
     if (head) {
-      head.innerHTML += `<style>.decorator-utils-container{background-color: white !important}</style>`;
+      head.appendChild(style);
     }
     return () => {
       if (head) {
-        head.innerHTML += `<style>.decorator-utils-container{background-color: #efefef !important}</style>`;
+        head.removeChild(style);
       }
     };
   }, []);

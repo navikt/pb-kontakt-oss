@@ -21,8 +21,9 @@ const getUrl = (namespace, language) => {
 
   const breadcrumbs = [
     {
-      locale: "nb",
       url: `${basePath}/person/kontakt-oss/${language}`,
+      title: language === "nb" ? "Kontakt oss" : "Contact us",
+      handleInApp: true,
     },
   ];
 

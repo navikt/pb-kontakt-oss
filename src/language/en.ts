@@ -1,5 +1,11 @@
 export default {
   //
+  // Feilside
+  //
+  "feil.404": "Error code 404 - Page not found",
+  "feil.lenke": "To the contact us frontpage",
+
+  //
   // Varsler
   //
   "varsel.teknisk.feil":

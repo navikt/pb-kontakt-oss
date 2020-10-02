@@ -1,5 +1,11 @@
 export default {
   //
+  // Feilside
+  //
+  "feil.404": "Feilkode 404 - Siden ble ikke funnet",
+  "feil.lenke": "Til kontakt oss forside",
+
+  //
   // Varsler
   //
   "varsel.teknisk.feil":

@@ -96,7 +96,7 @@ export const urls = {
     hjelpemidler: "/skriv-til-oss/hjelpemidler",
     temaHjelpemidler: {
       generelt: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HJLPM`,
-      ortopediske: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ORT_HJE`,
+      ortopediske: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HELSE`,
       bil: `${tjenesteUrl}/mininnboks/sporsmal/skriv/BIL`,
     },
   },

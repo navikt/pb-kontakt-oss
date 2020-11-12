@@ -88,7 +88,7 @@ export const urls = {
   kontaktVeileder: `${navUrl}/arbeid/dialog`,
   skrivTilOss: {
     jobbsoker: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ARBD`,
-    syk: `${tjenesteUrl}/mininnboks/sporsmal/skriv/ARBD`,
+    syk: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HELSE`,
     familieogbarn: `${tjenesteUrl}/mininnboks/sporsmal/skriv/FMLI`,
     ufor: `${tjenesteUrl}/mininnboks/sporsmal/skriv/UFRT`,
     pensjonist: `${tjenesteUrl}/mininnboks/sporsmal/skriv/PENS`,

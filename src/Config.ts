@@ -117,10 +117,7 @@ export const urls = {
     },
   },
   tilbakemeldinger: {
-    klagepavedtak: {
-      nb: `${navUrl}/soknader/nb/klage`,
-      en: `${navUrl}/soknader/en/klage/person`,
-    },
+    klagepavedtak: "https://klage-dittnav.nav.no",
     klagerettigheter: {
       nb: `${navUrl}/no/nav-og-samfunn/kontakt-nav/klage-ris-og-ros/klagerettigheter`,
       en: `${navUrl}/en/home/rules-and-regulations/appeals`,

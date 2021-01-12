@@ -9,7 +9,7 @@ import channels from "./data/channels.json";
 import themes from "./data/themes.json";
 import Environment from "../../Environments";
 
-const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { apiUrl, personInfoApiUrl, authUrl } = Environment();
 fetchMock.config.fallbackToNetwork = true;
 
 const mockAuthInfo = true;
@@ -24,30 +24,48 @@ const mockThemes = true;
 export const setUpMock = async () => {
   mockAuthInfo &&
     fetchMock.get(
-      `${baseUrl}/innloggingslinje-api/auth`,
+      `${authUrl}`,
       delay(10, 50).then(() => authInfo)
     );
   mockEnheter &&
-    fetchMock.get(`${apiUrl}/enheter`, delay(5000, 6000).then(() => enheter));
+    fetchMock.get(
+      `${apiUrl}/enheter`,
+      delay(5000, 6000).then(() => enheter)
+    );
   mockFodselsnr &&
-    fetchMock.get(`${apiUrl}/fodselsnr`, delay(10, 50).then(() => fodselsnr));
+    fetchMock.get(
+      `${apiUrl}/fodselsnr`,
+      delay(10, 50).then(() => fodselsnr)
+    );
   mockKontaktInfo &&
     fetchMock.get(
       `${personInfoApiUrl}/kontaktinformasjon`,
       delay(10, 50).then(() => kontaktInfo)
     );
   mockAlerts &&
-    fetchMock.get(`${apiUrl}/alerts`, delay(1000, 1500).then(() => alerts));
+    fetchMock.get(
+      `${apiUrl}/alerts`,
+      delay(1000, 1500).then(() => alerts)
+    );
   mockFaq &&
-    fetchMock.get(`${apiUrl}/faq`, delay(1000, 1500).then(() => faq));
+    fetchMock.get(
+      `${apiUrl}/faq`,
+      delay(1000, 1500).then(() => faq)
+    );
   mockChannels &&
-    fetchMock.get(`${apiUrl}/channels`, delay(1000, 1500).then(() => channels));
+    fetchMock.get(
+      `${apiUrl}/channels`,
+      delay(1000, 1500).then(() => channels)
+    );
   mockThemes &&
-    fetchMock.get(`${apiUrl}/themes`, delay(1000, 1500).then(() => themes));
+    fetchMock.get(
+      `${apiUrl}/themes`,
+      delay(1000, 1500).then(() => themes)
+    );
 };
 
 const delay = (min: number, max: number) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(resolve, Math.random() * (max - min) + min);
   });
 };

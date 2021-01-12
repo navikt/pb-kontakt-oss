@@ -6,7 +6,7 @@ import { OutboundFeilOgMangler } from "../pages/tilbakemeldinger/feil-og-mangler
 import { OutboundServiceKlage } from "../pages/tilbakemeldinger/service-klage/ServiceKlage";
 import { OutboundBestillingAvSamtale } from "../pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
 import { BadRequest } from "../types/errors";
-const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { apiUrl, personInfoApiUrl, authUrl } = Environment();
 
 export const fetchTimeoutMs = 3000;
 
@@ -18,14 +18,14 @@ const hentJson = (url: string) =>
   fetch(url, {
     method: "GET",
     headers: { "Content-Type": "application/json;charset=UTF-8" },
-    credentials: "include"
+    credentials: "include",
   })
-    .then(response => sjekkForFeil(url, response))
+    .then((response) => sjekkForFeil(url, response))
     .then(parseJson)
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
-        text: err.text || err
+        text: err.text || err,
       };
       logApiError(url, error);
       throw error;
@@ -35,8 +35,7 @@ export const fetchEnheter = () => hentJson(`${apiUrl}/enheter`);
 
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
-export const fetchAuthInfo = () =>
-  hentJson(`${baseUrl}/innloggingslinje-api/auth`);
+export const fetchAuthInfo = () => hentJson(`${authUrl}`);
 
 export const fetchKontaktInfo = () =>
   hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
@@ -65,14 +64,14 @@ const sendJson = (url: string, data: Outbound) => {
   return fetch(url, {
     method: "POST",
     body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json;charset=UTF-8" }
+    headers: { "Content-Type": "application/json;charset=UTF-8" },
   })
-    .then(response => sjekkForFeil(url, response))
+    .then((response) => sjekkForFeil(url, response))
     .then(parseJson)
     .catch((err: string & HTTPError) => {
       const error = {
         code: err.code || 404,
-        text: err.text || err
+        text: err.text || err,
       };
       logApiError(url, error);
       throw error;
@@ -105,7 +104,7 @@ const sjekkForFeil = async (url: string, response: Response) => {
       text:
         response.status === 400
           ? await parseJson(response).then((data: BadRequest) => data.message)
-          : response.statusText
+          : response.statusText,
     };
     throw error;
   }

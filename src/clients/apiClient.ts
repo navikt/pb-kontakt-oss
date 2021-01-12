@@ -6,7 +6,7 @@ import { OutboundFeilOgMangler } from "../pages/tilbakemeldinger/feil-og-mangler
 import { OutboundServiceKlage } from "../pages/tilbakemeldinger/service-klage/ServiceKlage";
 import { OutboundBestillingAvSamtale } from "../pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
 import { BadRequest } from "../types/errors";
-const { baseUrl, apiUrl, personInfoApiUrl } = Environment();
+const { apiUrl, personInfoApiUrl, authUrl } = Environment();
 
 export const fetchTimeoutMs = 3000;
 
@@ -35,8 +35,7 @@ export const fetchEnheter = () => hentJson(`${apiUrl}/enheter`);
 
 export const fetchFodselsnr = () => hentJson(`${apiUrl}/fodselsnr`);
 
-export const fetchAuthInfo = () =>
-  hentJson(`${baseUrl}/person/innloggingsstatus/auth`);
+export const fetchAuthInfo = () => hentJson(`${authUrl}`);
 
 export const fetchKontaktInfo = () =>
   hentJson(`${personInfoApiUrl}/kontaktinformasjon`);

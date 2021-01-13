@@ -10,15 +10,6 @@ export const useLocalePaths = () => {
   const [{ locale }] = useStore();
   const locPath = (path: string) => localePath(path, locale);
 
-  // TODO: få dette til å virke med type-checks
-  // type ObjType = {[key: string]: object | string};
-  //
-  // const setLocalePaths = (paths: ObjType): ObjType =>
-  //   Object.entries(paths).reduce((acc, [key, value]) =>
-  //     ({...acc, key: typeof value === "object" ? setLocalePaths(value as ObjType) : locPath(value)}), {});
-  //
-  // return setLocalePaths(paths);
-
   return {
     baseAppPath: `${paths.baseAppPath}/${locale}`,
     chat: {
@@ -106,11 +97,11 @@ export const urls = {
   },
   finnNavKontor: {
     finnDittNavKontor: `${navUrl}/person/personopplysninger#ditt-nav-kontor`,
-    finnDinHjelpemiddelsentral: `${navUrl}/no/person/hjelpemidler/tjenester-og-produkter/hjelpemidler/kontakt-hjelpemiddelsentralen`,
+    finnDinHjelpemiddelsentral: `${navUrl}/no/person/hjelpemidler/hjelpemidler-og-tilrettelegging/kontakt-nav-hjelpemiddelsentral`,
     navKontorUrlPrefix: `https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/`,
   },
   tolkeTjenesten: {
-    tolketjenesten: `${navUrl}/no/person/hjelpemidler/tjenester-og-produkter/tolketjenesten`,
+    tolketjenesten: `${navUrl}/no/person/hjelpemidler/hjelpemidler-og-tilrettelegging/tolketjenesten`,
     spraktolk: {
       nb: `${navUrl}/no/person/arbeid/oppfolging-og-tiltak-for-a-komme-i-jobb/oppfolging-fra-nav/trenger-du-språktolk`,
       en: `${navUrl}/en/home/benefits-and-services/relatert-informasjon/do-you-need-an-interpreter`,

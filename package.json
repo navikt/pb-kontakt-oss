@@ -1,6 +1,6 @@
 {
   "name": "pb-kontakt-oss",
-  "version": "3.5.10",
+  "version": "3.5.11-test",
   "private": true,
   "author": "NAV",
   "license": "MIT",
@@ -42,7 +42,7 @@
     "nav-frontend-alertstriper-style": "^2.0.16",
     "nav-frontend-chevron": "^1.0.10",
     "nav-frontend-chevron-style": "^0.3.5",
-    "nav-frontend-core": "^5.0.1",
+    "nav-frontend-core": "^5.0.11",
     "nav-frontend-ikoner-assets": "^2.0.1",
     "nav-frontend-js-utils": "^1.0.9",
     "nav-frontend-knapper": "^2.0.4",

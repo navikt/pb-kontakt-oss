@@ -38,7 +38,7 @@ const getUrl = (namespace, language) => {
     },
   ];
 
-  const params = `?language=${language}&chatbot=true&availableLanguages=${JSON.stringify(
+  const params = `?language=${language}&feedback=true&chatbot=true&availableLanguages=${JSON.stringify(
     availableLanguages
   )}&breadcrumbs=${JSON.stringify(breadcrumbs)}`;
 

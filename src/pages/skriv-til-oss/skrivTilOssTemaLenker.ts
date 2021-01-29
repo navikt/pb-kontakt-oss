@@ -7,22 +7,22 @@ export const hjelpemidlerLenkepaneler: TemaLenke[] = [
     grafanaId: "hjelpemidler.generelt",
     fallbackTittelId: "skrivtiloss.hjelpemidler.generelt.lenke.tittel",
     url: urls.skrivTilOss.temaHjelpemidler.generelt,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.HjelpemidlerOrtopedisk,
     grafanaId: "hjelpemidler.ortopediske",
     fallbackTittelId: "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel",
     url: urls.skrivTilOss.temaHjelpemidler.ortopediske,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.HjelpemidlerBil,
     grafanaId: "hjelpemidler.bil",
     fallbackTittelId: "skrivtiloss.hjelpemidler.bil.lenke.tittel",
     url: urls.skrivTilOss.temaHjelpemidler.bil,
-    externalUrl: true
-  }
+    externalUrl: true,
+  },
 ];
 
 export const skrivTilOssLenkepaneler: TemaLenke[] = [
@@ -31,35 +31,35 @@ export const skrivTilOssLenkepaneler: TemaLenke[] = [
     fallbackTittelId: "skrivtiloss.arbeidssoker.lenke.tittel",
     grafanaId: "skrivtiloss.arbeidssoker",
     url: urls.skrivTilOss.jobbsoker,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.Syk,
     fallbackTittelId: "skrivtiloss.syk.lenke.tittel",
     grafanaId: "skrivtiloss.syk",
     url: urls.skrivTilOss.syk,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.Familie,
     fallbackTittelId: "skrivtiloss.familieogbarn.lenke.tittel",
     grafanaId: "skrivtiloss.familieogbarn",
     url: urls.skrivTilOss.familieogbarn,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.Ufor,
     fallbackTittelId: "skrivtiloss.ufor.lenke.tittel",
     grafanaId: "skrivtiloss.ufor",
     url: urls.skrivTilOss.ufor,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.Pensjon,
     fallbackTittelId: "skrivtiloss.pensjonist.lenke.tittel",
     grafanaId: "skrivtiloss.pensjonist",
     url: urls.skrivTilOss.pensjonist,
-    externalUrl: true
+    externalUrl: true,
   },
   {
     tema: STOTema.Hjelpemidler,
@@ -71,6 +71,6 @@ export const skrivTilOssLenkepaneler: TemaLenke[] = [
     tema: STOTema.Sosial,
     fallbackTittelId: "skrivtiloss.sosial.lenke.tittel",
     grafanaId: "skrivtiloss.sosial",
-    externalUrl: true
-  }
+    externalUrl: true,
+  },
 ];

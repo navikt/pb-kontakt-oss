@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidetittel } from "nav-frontend-typografi";
+import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import { FormattedMessage } from "react-intl";
 import TemaLenkepanel from "../../components/lenkepanel/TemaLenkepanel";
 import Topplinje from "../../components/topp-linje/ToppLinje";
@@ -17,6 +17,27 @@ type Props = {
   lenkepanelData?: TemaLenke[];
   children: JSX.Element;
 };
+
+const CantTravelLink = () => (
+  <a
+    href="http://mininnboks.nav.no/sporsmal/skriv/OVRG"
+    className="lenkepanel skriv-til-oss__temalenke linkbox__container  lenkepanel--border"
+  >
+    <div>
+      <div>
+        <h2 className="typo-undertittel skriv-til-oss__temalenke-header lenkepanel__heading">
+          <FormattedMessage id={"skrivtiloss.reise.lenke.tittel"} />
+        </h2>
+        <div className="skriv-til-oss__lenkepanel-ingress">
+          <Normaltekst>
+            <FormattedMessage id={"skrivtiloss.reise.lenke.description"} />
+          </Normaltekst>
+        </div>
+      </div>
+    </div>
+    <span className="lenkepanel__indikator" />
+  </a>
+);
 
 const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
   const [{ channels }] = useStore();
@@ -40,7 +61,7 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
               <>
                 {isClosed && (
                   <Varsel type={"info"}>
-                    <LocaleBlockContent localeBlock={closedMsg}/>
+                    <LocaleBlockContent localeBlock={closedMsg} />
                   </Varsel>
                 )}
               </>
@@ -48,18 +69,27 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
           </div>
           {!isClosed && (
             <div className={`${cssPrefix}__lenke-seksjon`}>
-              {lenkepanelData && lenkepanelData.map(lenke => (
-                <TemaLenkepanel
-                  lenkepanelData={lenke}
-                  cssPrefix={cssPrefix}
-                  disableIfClosed={true}
-                  key={lenke.tema}
-                />
-              ))}
+              {lenkepanelData &&
+                lenkepanelData.map((lenke, i) => (
+                  <>
+                    {
+                      /* Temporary channel - TODO: Remove the code */
+                      i === 6 && <CantTravelLink />
+                    }
+                    <TemaLenkepanel
+                      lenkepanelData={lenke}
+                      cssPrefix={cssPrefix}
+                      disableIfClosed={true}
+                      key={lenke.tema}
+                    />
+                  </>
+                ))}
             </div>
           )}
         </>
-      ) : <NavFrontendSpinner />}
+      ) : (
+        <NavFrontendSpinner />
+      )}
     </div>
   );
 };

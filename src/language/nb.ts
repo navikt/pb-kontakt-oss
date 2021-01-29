@@ -151,6 +151,9 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Foreldre, barn og familie",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensjonist",
   "skrivtiloss.ufor.lenke.tittel": "Ufør",
+  "skrivtiloss.reise.lenke.tittel": "Får ikke reist til Norge",
+  "skrivtiloss.reise.lenke.description":
+    "Spørsmål til hvordan innreisereglene påvirker dine rettigheter eller ytelser hos NAV.",
   "skrivtiloss.sosial.lenke.tittel":
     "Økonomisk sosialhjelp og andre sosiale tjenester",
   "skrivtiloss.hjelpemidler.lenke.tittel": "Hjelpemidler",

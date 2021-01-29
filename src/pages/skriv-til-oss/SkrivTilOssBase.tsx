@@ -71,20 +71,20 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
           {!isClosed && (
             <div className={`${cssPrefix}__lenke-seksjon`}>
               {lenkepanelData &&
-                lenkepanelData.map((lenke, i) => {
-                  return (
-                    <>
-                      {/* Temporary channel - TODO: Remove the code */}
-                      {i === 6 && <CantTravelLink />}
-                      <TemaLenkepanel
-                        lenkepanelData={lenke}
-                        cssPrefix={cssPrefix}
-                        disableIfClosed={true}
-                        key={lenke.tema}
-                      />
-                    </>
-                  );
-                })}
+                lenkepanelData.map((lenke, i) => (
+                  <>
+                    {
+                      /* Temporary channel - TODO: Remove the code */
+                      i === 6 && <CantTravelLink />
+                    }
+                    <TemaLenkepanel
+                      lenkepanelData={lenke}
+                      cssPrefix={cssPrefix}
+                      disableIfClosed={true}
+                      key={lenke.tema}
+                    />
+                  </>
+                ))}
             </div>
           )}
         </>

@@ -9,7 +9,6 @@ import { VarselVisning } from "../../components/varsler/VarselVisning";
 import { useStore } from "../../providers/Provider";
 import { LocaleBlockContent } from "../../components/sanity-blocks/LocaleBlockContent";
 import { Varsel } from "../../components/varsler/Varsel";
-import { useLocaleString } from "../../utils/sanity/useLocaleString";
 
 const cssPrefix = "skriv-til-oss";
 

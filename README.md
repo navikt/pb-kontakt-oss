@@ -1,5 +1,7 @@
 # Kontakt oss
 
+![Deploy-to-prod](https://github.com/navikt/pb-kontakt-oss/workflows/Deploy-to-prod/badge.svg) | ![Deploy-to-dev](https://github.com/navikt/pb-kontakt-oss/workflows/Deploy-to-dev/badge.svg)
+
 Chat, telefon, skriv til oss, klage og tilbakemelding, sosiale medier, m.m.
 
 ## Komme i gang
@@ -22,13 +24,11 @@ Start applikasjonen lokalt:
 npm start
 ```
 
-
 ## Deployering
 
 Deploy skjer gjennom Github Actions.<br><br>
-Deployes til test-miljøer (q1/q6) for versjoner med tag-suffix <b>-test*</b> (f.eks. <b>v.1.0.0-test-rc1</b>).<br>
-Deployes til prod og q0 for versjoner i master med øvrige tags (f.eks. <b>v.1.0.0</b>).<br><br>
-For å lansere applikasjonen til produksjon / https://www.nav.no/person/kontakt-oss, benytt [npm version](https://docs.npmjs.com/cli/version) til å oppdatere package.json og lage samsvarende Git-tag. Eks:
+Deployes til dev for versjoner med tag-suffix <b>-dev\*</b> (f.eks. <b>v.1.0.0-dev</b>).<br>
+Deployes til prod for versjoner med tag-suffix <b>-prod\*</b> (f.eks. <b>v.1.0.0-prod</b>).<br><br>
 
 ```
 npm version patch -m "Din melding"

@@ -31,7 +31,7 @@ Deployes til dev for versjoner med tag-suffix <b>-dev\*</b> (f.eks. <b>v.1.0.0-d
 Deployes til prod for versjoner med tag-suffix <b>-prod\*</b> (f.eks. <b>v.1.0.0-prod</b>).<br><br>
 
 ```
-npm version patch -m "Din melding"
+npm version v.1.0.0-dev -m "Din melding"
 ```
 
 Push deretter den nye versjonen til GitHub og merge til master.

@@ -1,21 +1,14 @@
-name: Deploy-to-prod
+name: Deploy-to-dev
 on:
   push:
     tags:
-      - "v*"
-      - "!v*-dev*"
-      - "!v*-test*"
+      - "v*-test*"
+      - "v*-dev*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: git fetch --prune --unshallow
-      - name: Check if tag exists on master
-        run: |
-          if git branch -r --contains ${GITHUB_REF##*/} | grep master>/dev/null 2>&1
-          then echo "Tag ${GITHUB_REF##*/} verified on master";
-          else echo "Tag ${GITHUB_REF##*/} not found on master"; exit 1; fi
+      - uses: actions/checkout@v1
       - name: Define build environment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,21 +29,20 @@ jobs:
       - name: Docker build and push
         run: |
           echo $GITHUB_TOKEN | docker login $IMAGE_REGISTRY -u ${GITHUB_REPOSITORY} --password-stdin
-          docker build -t $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_VERSION -t $IMAGE_REGISTRY/$IMAGE_NAME:latest .
-          docker push $IMAGE_REGISTRY/$IMAGE_NAME
+          docker build -t $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_VERSION .
+          docker push $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_VERSION
       - name: Generate nais variables
         run: |
           cat > .nais/vars.yaml <<EOF
-          namespace: default
+          namespace: personbruker
           ingresses:
-            - https://kontakt-oss.nais.oera.no
-            - https://www.nav.no/person/kontakt-oss
+            - https://www.dev.nav.no/person/kontakt-oss
           image: $IMAGE_REGISTRY/$IMAGE_NAME
           version: $IMAGE_VERSION
           EOF
       - uses: nais/deploy/actions/deploy@master
         env:
-          CLUSTER: prod-sbs
+          CLUSTER: dev-sbs
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           RESOURCE: .nais/config.yaml
           VARS: .nais/vars.yaml

@@ -2,9 +2,10 @@ import { forsidePath } from "./Config";
 
 const Environment = () => {
   const host = window.location.host;
-  const subdomain = host.split(`.`)[0];
+  const isDev = host.split(`.`)[1] === "dev";
   const baseAppPath = `${forsidePath}`;
 
+  // Localhost
   if (process.env.NODE_ENV === `development`) {
     return {
       miljo: `LOCAL`,
@@ -19,18 +20,18 @@ const Environment = () => {
       logoutUrl: `#`,
     };
   }
-  if (subdomain !== `www`) {
-    // Preprod - Q0, Q1 etc
-    const env = subdomain.split(`-`)[1];
+
+  // NAIS dev
+  if (isDev) {
     return {
       miljo: `DEV`,
-      baseUrl: `https://www-${env}.nav.no`,
+      baseUrl: `https://www.dev.nav.no`,
       baseAppPath: baseAppPath,
-      appUrl: `https://www-${env}.nav.no${baseAppPath}`,
-      apiUrl: `https://www-${env}.nav.no/person/pb-kontakt-oss-api`,
+      appUrl: `https://www.dev.nav.no${baseAppPath}`,
+      apiUrl: `https://www.dev.nav.no/person/pb-kontakt-oss-api`,
       authUrl: `https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth`,
-      personInfoApiUrl: `https://www-${env}.nav.no/person/personopplysninger-api`,
-      tjenesteUrl: `https://tjenester-${env}.nav.no`,
+      personInfoApiUrl: `https://www.dev.nav.no/person/personopplysninger-api`,
+      tjenesteUrl: `https://tjenester-q1.nav.no`,
       loginUrl: `https://loginservice-q.nav.no/login`,
       logoutUrl: `https://loginservice-q.nav.no/slo`,
     };

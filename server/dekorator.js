@@ -13,45 +13,44 @@ const cache = new NodeCache({
   checkperiod: SECONDS_PER_MINUTE,
 });
 
-const getUrl = (namespace, language) => {
+const getUrl = (devOrProd, language) => {
+  const decoratorUrl =
+    devOrProd === "dev"
+      ? `https://dekoratoren.dev.nav.no`
+      : `https://www.nav.no/dekoratoren`;
+
   const basePath =
-    namespace !== "p"
-      ? `https://www-${namespace}.nav.no`
-      : `https://www.nav.no`;
+    devOrProd === "dev"
+      ? `https://www.dev.nav.no/person/kontakt-oss/`
+      : `https://www.nav.no/person/kontakt-oss/`;
 
   const breadcrumbs = [
     {
-      url: `${basePath}/person/kontakt-oss/${language}`,
+      url: `${basePath}/${language}`,
       title: language === "nb" ? "Kontakt oss" : "Contact us",
       handleInApp: true,
     },
   ];
 
   const availableLanguages = [
-    {
-      locale: "nb",
-      url: `${basePath}/person/kontakt-oss/nb/`,
-    },
-    {
-      locale: "en",
-      url: `${basePath}/person/kontakt-oss/en/`,
-    },
+    { locale: "nb", url: `${basePath}/nb/` },
+    { locale: "en", url: `${basePath}//en/` },
   ];
 
   const params = `?language=${language}&feedback=true&chatbot=true&availableLanguages=${JSON.stringify(
     availableLanguages
   )}&breadcrumbs=${JSON.stringify(breadcrumbs)}`;
 
-  return `${basePath}/dekoratoren/${params}`;
+  return `${decoratorUrl}/${params}`;
 };
 
-const getDecorator = (namespace, language) =>
+const getDecorator = (devOrProd, language) =>
   new Promise((resolve, reject) => {
-    const decorator = cache.get(`${namespace}-${language}`);
+    const decorator = cache.get(`${devOrProd}-${language}`);
     if (decorator) {
       resolve(decorator);
     } else {
-      request(getUrl(namespace, language), (error, response, body) => {
+      request(getUrl(devOrProd, language), (error, response, body) => {
         if (!error && response.statusCode >= 200 && response.statusCode < 400) {
           const { document } = new JSDOM(body).window;
           const prop = "innerHTML";
@@ -65,8 +64,8 @@ const getDecorator = (namespace, language) =>
               prop
             ],
           };
-          cache.set(`${namespace}-${language}`, data);
-          logger.info(`${namespace}-${language}: Creating cache`);
+          cache.set(`${devOrProd}-${language}`, data);
+          logger.info(`${devOrProd}-${language}: Creating cache`);
           resolve(data);
         } else {
           reject(new Error(error));

@@ -70,7 +70,7 @@ export const urls = {
   },
   faqDefault: {
     utbetalingsoversikt: `${tjenesteUrl}/utbetalingsoversikt/`,
-    saksoversikt: `${tjenesteUrl}/saksoversikt/`,
+    saksoversikt: `${navUrl}/saksoversikt/`,
     utbetalinger: `${navUrl}/no/nav-og-samfunn/kontakt-nav/utbetalinger`,
     saksbehandlingstider: `${navUrl}/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav`,
     endreKontonummer: `${navUrl}/person/personopplysninger#utbetaling`,

@@ -30,9 +30,8 @@ server.get(`${baseUrl}/internal/isAlive|isReady`, (req, res) =>
 // Match everything except internal og static
 server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) => {
   const language = req.originalUrl.indexOf("/en") !== -1 ? "en" : "nb";
-  const subdomain = req.headers.host.split(".")[0];
-  const namespace = subdomain !== "www" ? subdomain.split("-")[1] : "p";
-  getDecorator(namespace, language)
+  const devOrProd = req.headers.host.split(".")[1] === "dev" ? "dev" : "prod";
+  getDecorator(devOrProd, language)
     .then((fragments) => {
       res.render("index.html", fragments);
     })

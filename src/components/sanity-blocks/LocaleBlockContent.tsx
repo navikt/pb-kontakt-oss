@@ -6,7 +6,7 @@ import { LocaleBlock } from "../../utils/sanity/common-types";
 import { defaultLocale } from "../../utils/locale";
 
 type Props = {
-  localeBlock: LocaleBlock | undefined
+  localeBlock: LocaleBlock | undefined;
 };
 
 export const LocaleBlockContent = ({ localeBlock }: Props) => {
@@ -17,8 +17,7 @@ export const LocaleBlockContent = ({ localeBlock }: Props) => {
 
   const blocks = localeBlock[locale] || localeBlock[defaultLocale];
 
-  return (blocks
-      ? <BlockContent blocks={blocks} serializers={serializers} />
-      : null
-  );
+  return blocks ? (
+    <BlockContent blocks={blocks} serializers={serializers} />
+  ) : null;
 };

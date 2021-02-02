@@ -1,8 +1,8 @@
-name: Deploy-to-q1
+name: Deploy-to-dev
 on:
   push:
     tags:
-      - "v*-test*"
+      - "v*-dev*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -33,10 +33,9 @@ jobs:
       - name: Generate nais variables
         run: |
           cat > .nais/vars.yaml <<EOF
-          namespace: q1
+          namespace: personbruker
           ingresses:
-            - https://kontakt-oss.nais.oera-q.local
-            - https://www-q1.nav.no/person/kontakt-oss
+            - https://www.dev.nav.no/person/kontakt-oss
           image: $IMAGE_REGISTRY/$IMAGE_NAME
           version: $IMAGE_VERSION
           EOF

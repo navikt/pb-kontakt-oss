@@ -26,6 +26,8 @@ export const kanalToSanityId = {
   [Kanal.SkrivTilOss]: "skriv-til-oss",
   [Kanal.Chat]: "chat-med-oss",
   [Kanal.KontaktVeileder]: "kontakt-din-veileder",
+  [Kanal.Tilbakemelding]: "tilbakemelding",
+  [Kanal.FinnKontor]: "finn-kontor"
 };
 
 const initialProps = Object.keys(kanalToSanityId).reduce((acc, kanal) =>

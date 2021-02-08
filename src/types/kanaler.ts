@@ -3,6 +3,8 @@ export enum Kanal {
   SkrivTilOss = "skriv-til-oss",
   Chat = "chat-med-oss",
   KontaktVeileder = "kontakt-veileder",
+  Tilbakemelding = "tilbakemelding",
+  FinnKontor = "finn-kontor"
 }
 
 export enum STOTema {

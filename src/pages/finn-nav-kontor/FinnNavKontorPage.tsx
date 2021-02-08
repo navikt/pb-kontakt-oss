@@ -13,6 +13,8 @@ import Config, { paths } from "../../Config";
 import { Varsel } from "../../components/varsler/Varsel";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { useStore } from "../../providers/Provider";
+import { VarselVisning } from "../../components/varsler/VarselVisning";
+import { Kanal } from "../../types/kanaler";
 
 const cssPrefix = "finn-kontor";
 
@@ -42,6 +44,8 @@ const FinnNavKontorPage = () => {
           <FormattedMessage id={"finnkontor.ingress"} />
         </Normaltekst>
       </div>
+
+      <VarselVisning kanal={Kanal.FinnKontor} visKoronaVarsel={false} />
 
       <div className={"koronavarsel__container"}>
         <Varsel type={"advarsel"}>

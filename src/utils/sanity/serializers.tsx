@@ -31,12 +31,12 @@ const blockSerializer = (block: TextBlock) => {
 };
 
 const linkSerializer = (link: any) => {
-  return link?.mark?.href && link.children ?
+  return link?.mark?.href ?
     (
       <Lenke href={link.mark.href}>
         {link.children}
       </Lenke>
-    ) : null;
+    ) : link.children;
 };
 
 export const serializers = {

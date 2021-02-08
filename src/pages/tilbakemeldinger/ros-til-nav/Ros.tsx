@@ -20,6 +20,8 @@ import { triggerHotjar } from "utils/hotjar";
 import Topplinje from "components/topp-linje/ToppLinje";
 import SelectEnhet from "components/input-fields/SelectEnhet";
 import { MetaTags } from "../../../components/metatags/MetaTags";
+import { VarselVisning } from "../../../components/varsler/VarselVisning";
+import { Kanal } from "../../../types/kanaler";
 
 type HVEM_ROSES = "NAV_KONTAKTSENTER" | "NAV_DIGITALE_TJENESTER" | "NAV_KONTOR";
 
@@ -116,6 +118,7 @@ const Ros = () => {
       <Header
         title={intl.formatMessage({ id: "tilbakemeldinger.ros.form.tittel" })}
       />
+      <VarselVisning kanal={Kanal.Ros} visKoronaVarsel={false} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}

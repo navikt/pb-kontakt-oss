@@ -1,30 +1,139 @@
 [
   {
-    "_createdAt": "2020-03-19T08:27:18Z",
-    "_id": "add967c7-eb37-45b3-aaac-e99dd1364e27",
-    "_rev": "ssUhVIC0YlcCKh06IroMxz",
+    "_createdAt": "2021-02-08T15:03:36Z",
+    "_id": "0f5bf78f-91d7-47e0-9c5a-e00d73fa7530",
+    "_rev": "xbchpXbFe07Cgtkdyn9TtC",
     "_type": "alert",
-    "_updatedAt": "2020-03-25T09:54:29Z",
+    "_updatedAt": "2021-02-08T15:03:36Z",
     "description": {
       "_type": "localeBlock",
       "nb": [
         {
-          "_key": "551ea32cd162",
+          "_key": "bf14c5262cab",
           "_type": "block",
           "children": [
             {
-              "_key": "551ea32cd1620",
+              "_key": "bf14c5262cab0",
               "_type": "span",
               "marks": [],
-              "text": "Det er for tiden mange som kontakter oss. Hvis henvendelsen din ikke haster, ber vi deg ta kontakt senere. "
+              "text": "Vær oppmerksom på at mange NAV-kontor fortsatt har redusert åpningstid på grunn av koronasituasjonen. Når du søker opp kontoret ditt finner du informasjon. Er du i en krisesituasjon, kan du ringe og få en time på NAV-kontoret. Du kan alltid ta kontakt med NAV i digitale kanaler."
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        },
+        {
+          "_key": "c2c684035f77",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "c2c684035f770",
+              "_type": "span",
+              "marks": [],
+              "text": ""
             },
             {
-              "_key": "551ea32cd1621",
+              "_key": "c2c684035f771",
               "_type": "span",
               "marks": [
-                "strong"
+                "ed8ffda1788e"
               ],
-              "text": "Vi ber deg være tålmodig og vente på svar."
+              "text": "Kontakt med NAV"
+            },
+            {
+              "_key": "c2c684035f772",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "ed8ffda1788e",
+              "_type": "link",
+              "href": "https://www.dev.nav.no/no/person/innhold-til-person-forside/nyttig-a-vite/koronavirus--informasjon-fra-nav/dialog-med-nav-i-forbindelse-med-koronaviruset"
+            }
+          ],
+          "style": "normal"
+        }
+      ]
+    },
+    "displayOnAllPages": false,
+    "displayOnSpesificPages": [
+      "finn-kontor"
+    ],
+    "type": "advarsel"
+  },
+  {
+    "_createdAt": "2020-08-24T11:39:27Z",
+    "_id": "380ca798-1587-449f-b901-1b6dd680ffc6",
+    "_rev": "vVw806KKcxnkk5ess0EzLh",
+    "_type": "alert",
+    "_updatedAt": "2020-09-21T09:20:54Z",
+    "description": {
+      "_type": "localeBlock",
+      "nb": [
+        {
+          "_key": "d04b2d0f40b3",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "d04b2d0f40b30",
+              "_type": "span",
+              "marks": [],
+              "text": "Har du fått trekk i dagpengene dine? "
+            },
+            {
+              "_key": "d04b2d0f40b31",
+              "_type": "span",
+              "marks": [
+                "66ab259fab9c"
+              ],
+              "text": "Les om tilbakebetaling og trekk av forskudd på dagpenger"
+            },
+            {
+              "_key": "d04b2d0f40b32",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "66ab259fab9c",
+              "_type": "link",
+              "href": "https://www.nav.no/no/person/innhold-til-person-forside/nyttig-a-vite/kampanje-korona/tilbakebetaling-og-trekk-av-forskudd-pa-dagpenger"
+            }
+          ],
+          "style": "normal"
+        }
+      ]
+    },
+    "displayOnAllPages": false,
+    "displayOnSpesificPages": [
+      "skriv-til-oss",
+      "forsiden"
+    ],
+    "type": "info"
+  },
+  {
+    "_createdAt": "2021-02-08T15:00:46Z",
+    "_id": "91e0474f-6412-42cb-859c-54a9c8aed78b",
+    "_rev": "xbchpXbFe07Cgtkdyn9swx",
+    "_type": "alert",
+    "_updatedAt": "2021-02-08T15:06:44Z",
+    "description": {
+      "_type": "localeBlock",
+      "nb": [
+        {
+          "_key": "2013966b61f1",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "2013966b61f10",
+              "_type": "span",
+              "marks": [],
+              "text": "Tilbakemeldinger test"
             }
           ],
           "markDefs": [],
@@ -32,7 +141,77 @@
         }
       ]
     },
-    "displayOnAllPages": true,
-    "type": "advarsel"
+    "displayOnAllPages": false,
+    "displayOnSpesificPages": [
+      "tilbakemelding"
+    ],
+    "type": "feil"
+  },
+  {
+    "_createdAt": "2020-03-19T08:27:18Z",
+    "_id": "add967c7-eb37-45b3-aaac-e99dd1364e27",
+    "_rev": "omBrpy3jOASonSTtNKZCx9",
+    "_type": "alert",
+    "_updatedAt": "2020-05-12T07:46:27Z",
+    "description": {
+      "_type": "localeBlock",
+      "en": [
+        {
+          "_key": "1357b323964f",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "1357b323964f0",
+              "_type": "span",
+              "marks": [],
+              "text": "Many are trying to reach us now. If your request isn’t urgent we ask that you contact us later. Please be patient and wait for our response"
+            }
+          ],
+          "markDefs": [],
+          "style": "normal"
+        }
+      ],
+      "nb": [
+        {
+          "_key": "86d90d9febe0",
+          "_type": "block",
+          "children": [
+            {
+              "_key": "86d90d9febe00",
+              "_type": "span",
+              "marks": [],
+              "text": "Spørsmål om saksbehandlingstid eller utbetalingsdato? Kontakt oss på "
+            },
+            {
+              "_key": "86d90d9febe01",
+              "_type": "span",
+              "marks": [
+                "5d71573f98ef"
+              ],
+              "text": "chat"
+            },
+            {
+              "_key": "86d90d9febe02",
+              "_type": "span",
+              "marks": [],
+              "text": ""
+            }
+          ],
+          "markDefs": [
+            {
+              "_key": "5d71573f98ef",
+              "_type": "link",
+              "href": "https://www-q1.nav.no/person/kontakt-oss/nb/chat"
+            }
+          ],
+          "style": "normal"
+        }
+      ]
+    },
+    "displayOnAllPages": false,
+    "displayOnSpesificPages": [
+      "skriv-til-oss"
+    ],
+    "type": "info"
   }
 ]

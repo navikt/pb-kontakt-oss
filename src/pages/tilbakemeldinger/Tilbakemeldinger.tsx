@@ -6,6 +6,8 @@ import { useIntl } from "react-intl";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
+import { VarselVisning } from "../../components/varsler/VarselVisning";
+import { Kanal } from "../../types/kanaler";
 
 const Tilbakemeldinger = () => {
   const intl = useIntl();
@@ -24,6 +26,7 @@ const Tilbakemeldinger = () => {
             title={intl.formatMessage({ id: "tilbakemeldinger.sidetittel" })}
           />
         </div>
+        <VarselVisning kanal={Kanal.Tilbakemelding} visKoronaVarsel={false} />
         {lenker(locale).map((lenke) => (
           <TilpassetLenkepanel
             icon={lenke.icon}

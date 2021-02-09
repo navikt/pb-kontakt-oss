@@ -9,6 +9,7 @@ import {
 } from "nav-frontend-typografi";
 import React from "react";
 import { TextBlock, TypoStyle } from "./common-types";
+import Lenke from "nav-frontend-lenker";
 
 const typoComponents = {
   [TypoStyle.H1]: Sidetittel,
@@ -29,8 +30,20 @@ const blockSerializer = (block: TextBlock) => {
   );
 };
 
+const linkSerializer = (link: any) => {
+  return link?.mark?.href ?
+    (
+      <Lenke href={link.mark.href}>
+        {link.children}
+      </Lenke>
+    ) : link.children;
+};
+
 export const serializers = {
   types: {
     block: blockSerializer,
+  },
+  marks: {
+    link: linkSerializer
   }
 };

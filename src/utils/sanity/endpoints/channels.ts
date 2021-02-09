@@ -21,14 +21,7 @@ export type ChannelList = { [key in Kanal]: ChannelProps };
 
 export const forsideSanityId = "forsiden";
 
-export const kanalToSanityId = {
-  [Kanal.RingOss]: "ring-oss",
-  [Kanal.SkrivTilOss]: "skriv-til-oss",
-  [Kanal.Chat]: "chat-med-oss",
-  [Kanal.KontaktVeileder]: "kontakt-din-veileder",
-};
-
-const initialProps = Object.keys(kanalToSanityId).reduce((acc, kanal) =>
+const initialProps = Object.values(Kanal).reduce((acc, kanal) =>
   ({ ...acc, [kanal]: {} }), {});
 
 export const initialChannels = {
@@ -37,5 +30,5 @@ export const initialChannels = {
 };
 
 export const createCompleteChannelList = (channelProps: ChannelProps[]) =>
-  Object.entries(kanalToSanityId).reduce((acc, [kanalId, sanityId]) =>
-    ({...acc, [kanalId]: channelProps.find(cp => cp._id === sanityId) || {}}), {});
+  Object.values(Kanal).reduce((acc, kanalId) =>
+    ({...acc, [kanalId]: channelProps.find(cp => cp._id === kanalId) || {}}), {});

@@ -2,7 +2,12 @@ export enum Kanal {
   RingOss = "ring-oss",
   SkrivTilOss = "skriv-til-oss",
   Chat = "chat-med-oss",
-  KontaktVeileder = "kontakt-veileder",
+  KontaktVeileder = "kontakt-din-veileder",
+  Tilbakemelding = "tilbakemelding",
+  Serviceklage = "serviceklage",
+  FeilOgMangler = "feil-og-mangler",
+  Ros = "ros-til-nav",
+  FinnKontor = "finn-kontor",
 }
 
 export enum STOTema {

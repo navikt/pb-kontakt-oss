@@ -32,8 +32,8 @@ const Environment = () => {
       authUrl: `https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth`,
       personInfoApiUrl: `https://www.dev.nav.no/person/personopplysninger-api`,
       tjenesteUrl: `https://tjenester-q1.nav.no`,
-      loginUrl: `https://loginservice-q.nav.no/login`,
-      logoutUrl: `https://loginservice-q.nav.no/slo`,
+      loginUrl: `https://loginservice.dev.nav.no/login`,
+      logoutUrl: `https://loginservice.dev.nav.no/slo`,
     };
   }
 

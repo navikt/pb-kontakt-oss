@@ -156,9 +156,9 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Parents, children and family",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensioner",
   "skrivtiloss.ufor.lenke.tittel": "Disabled",
-  "skrivtiloss.reise.lenke.tittel": "Can't travel to Norway",
+  "skrivtiloss.reise.lenke.tittel": "CV on arbeidsplassen.no",
   "skrivtiloss.reise.lenke.description":
-    "Questions about how the travel restrictions affect your rights or benefits at NAV. The form is in Norwegian.",
+    "Questions about access for employers to the CV base on arbeidplassen.no. The form is in Norwegian.",
   "skrivtiloss.sosial.lenke.tittel":
     "Financial social assistance and other social assistance services",
   "skrivtiloss.hjelpemidler.lenke.tittel": "Assistive devices and technology",

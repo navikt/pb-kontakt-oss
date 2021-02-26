@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { forsidePath } from "Config";
-import { onBreadcrumbClick, setAvailableLanguages, setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
+import { setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
+import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
+import { onBreadcrumbClick } from "@navikt/nav-dekoratoren-moduler";
 import { useHistory, useLocation } from "react-router-dom";
-import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler/dist";
+import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
 import { Locale, setNewLocale } from "utils/locale";
 import { useStore } from "providers/Provider";
 import Environment from "../../Environments";
@@ -17,8 +19,8 @@ type BreadcrumbLenke = {
 const getSegmentLenker = (locale: string): Array<BreadcrumbLenke> => {
   const { baseAppPath } = Environment();
   const pathSegments = window.location.pathname
-      .replace(/\/person\/kontakt-oss\/*/, "")
-      .split("/");
+    .replace(/\/person\/kontakt-oss\/*/, "")
+    .split("/");
 
   // fjerner tomt segment ved trailing slash
   if (pathSegments.length > 1 && pathSegments[pathSegments.length - 1] === "") {
@@ -28,7 +30,7 @@ const getSegmentLenker = (locale: string): Array<BreadcrumbLenke> => {
   return pathSegments.map((segment, index) => {
     const combinedSegments = pathSegments.slice(0, index + 1);
     const segmentPath =
-        combinedSegments.length === 1 ? "" : combinedSegments.join("/");
+      combinedSegments.length === 1 ? "" : combinedSegments.join("/");
 
     const url = `${baseAppPath}/${segmentPath}`;
     return {

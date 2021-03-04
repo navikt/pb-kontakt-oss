@@ -52,7 +52,7 @@ const officeUrlCheck = async () => {
 };
 
 // Schedule a daily job at the specified hour to check if office urls are valid
-schedule.scheduleJob({second: 9}, officeUrlCheck);
+schedule.scheduleJob({ hour: 9 }, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());

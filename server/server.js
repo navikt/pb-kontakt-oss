@@ -2,10 +2,41 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const getHtmlWithDecorator = require("./dekorator");
+const logger = require("./logger");
+const fetch = require('node-fetch');
+const schedule = require('node-schedule');
+
+const server = express();
+
 const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
-const logger = require("./logger");
-const server = express();
+const officeInfo = require(`../src/pages/finn-nav-kontor/data/enhetsnr-til-enhetsinfo.json`);
+const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/"
+const officeCheckStaggerPeriod = 100;
+
+// Runs a periodic check to see if
+schedule.scheduleJob({second: 0}, () => {
+  console.log("Running scheduled office url check")
+
+  if (!officeInfo) {
+    logger.error('Office data not found on server!');
+    return;
+  }
+
+  Object.values(officeInfo).forEach((enhet, index) => {
+    const url = `${officeBaseUrl}${enhet.url}`;
+
+    setTimeout(() => fetch(url, {
+        method: 'HEAD',
+        timeout: 10000
+      }).then((res) => {
+        if (!res.ok) {
+          logger.error(`Error response from office url ${url} - ${res.status}`);
+        }
+      }).catch((e) => logger.error(`Error while fetching office url ${url} - ${e}`))
+      , index * officeCheckStaggerPeriod);
+  });
+});
 
 // Parse application/json
 server.use(express.json());

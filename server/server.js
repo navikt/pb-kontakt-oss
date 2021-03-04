@@ -16,7 +16,22 @@ const baseUrl = "/person/kontakt-oss";
 const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/";
 const officeCheckStaggerPeriodMs = 100;
 
-const officeUrlCheck = () => {
+const officeUrlCheck = async () => {
+  console.log(process.env.ELECTOR_PATH)
+  const isLeader = await fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
+    if (res.ok) {
+      return res.json();
+    }
+  }).then(json => {
+    console.log(json.name, os.hostname());
+    return json.name === os.hostname();
+  }).catch(console.error);
+
+  if (!isLeader) {
+    console.log(`I am not leader, aborting :( ${os.hostname()}`)
+    return;
+  }
+
   console.log("Running office url check");
 
   if (!officeInfo) {
@@ -40,18 +55,7 @@ const officeUrlCheck = () => {
 };
 
 // Schedule a daily job at the specified hour to check if office urls are valid
-// (only runs on leader pod)
-console.log(process.env.ELECTOR_PATH)
-fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
-  if (res.ok) {
-    return res.json();
-  }
-}).then(json => {
-  console.log(json.name, os.hostname());
-  if (json.name === os.hostname()) {
-    schedule.scheduleJob({second: 9}, officeUrlCheck);
-  }
-});
+schedule.scheduleJob({second: 9}, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());

@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const os = require("os");
 const getHtmlWithDecorator = require("./dekorator");
 const logger = require("./logger");
 const fetch = require('node-fetch');
@@ -39,11 +40,21 @@ const officeUrlCheck = () => {
 };
 
 // Schedule a daily job at the specified hour to check if office urls are valid
-schedule.scheduleJob({hour: 9}, officeUrlCheck);
+// (only runs on leader pod)
+fetch(process.env.ELECTOR_PATH).then(res => {
+  if (res.ok) {
+    return res.json();
+  }
+}).then(json => {
+  console.log(json.name, os.hostname());
+  if (json.name === os.hostname()) {
+    schedule.scheduleJob({second: 9}, officeUrlCheck);
+  }
+});
 
 // Parse application/json
 server.use(express.json());
-server.use(baseUrl, express.static(buildPath, { index: false }));
+server.use(baseUrl, express.static(buildPath, {index: false}));
 server.get(`${baseUrl}/internal/isAlive|isReady`, (req, res) =>
   res.sendStatus(200)
 );

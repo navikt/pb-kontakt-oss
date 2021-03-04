@@ -29,6 +29,7 @@ spec:
       external:
         - host: nav.no
         - host: dekoratoren.dev.nav.no
+  leaderElection: true
   resources:
     limits:
       cpu: '3'

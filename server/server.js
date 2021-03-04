@@ -12,15 +12,14 @@ const server = express();
 const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
 
-const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/"
-const officeCheckStaggerPeriod = 100;
+const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/";
+const officeCheckStaggerPeriodMs = 100;
 
-// Runs a periodic check to see if office urls are valid
-schedule.scheduleJob({second: 0}, () => {
-  console.log("Running scheduled office url check")
+const officeUrlCheck = () => {
+  console.log("Running office url check");
 
   if (!officeInfo) {
-    logger.error('Office data not found on server!');
+    logger.error('Office url error: office info not found on server!');
     return;
   }
 
@@ -32,12 +31,15 @@ schedule.scheduleJob({second: 0}, () => {
         timeout: 10000
       }).then((res) => {
         if (!res.ok) {
-          logger.error(`Error response from office url ${url} - ${res.status}`);
+          logger.error(`Office url error: bad response from ${url} - ${res.status}`);
         }
-      }).catch((e) => logger.error(`Error while fetching office url ${url} - ${e}`))
-      , index * officeCheckStaggerPeriod);
+      }).catch((e) => logger.error(`Office url error: error while fetching ${url} - ${e}`))
+      , index * officeCheckStaggerPeriodMs);
   });
-});
+};
+
+// Schedule a daily job at the specified hour to check if office urls are valid
+schedule.scheduleJob({hour: 9}, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());

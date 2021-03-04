@@ -56,7 +56,7 @@ schedule.scheduleJob({ hour: 9 }, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());
-server.use(baseUrl, express.static(buildPath, {index: false}));
+server.use(baseUrl, express.static(buildPath, { index: false }));
 server.get(`${baseUrl}/internal/isAlive|isReady`, (req, res) =>
   res.sendStatus(200)
 );

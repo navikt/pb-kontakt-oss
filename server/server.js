@@ -23,13 +23,13 @@ const officeUrlCheck = async () => {
     }
   }).then(json => {
     return json.name === os.hostname();
-  }).catch(logger.error);
+  }).catch((e) => logger.error(`Error while determining leader pod - ${e}`));
 
   if (!isLeader) {
     return;
   }
 
-  console.log("Running office url check");
+  logger.info('Running scheduled office url check');
 
   if (!officeInfo) {
     logger.error('Office url error: office info not found on server!');

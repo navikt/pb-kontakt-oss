@@ -17,18 +17,15 @@ const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer
 const officeCheckStaggerPeriodMs = 100;
 
 const officeUrlCheck = async () => {
-  console.log(process.env.ELECTOR_PATH)
   const isLeader = await fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
     if (res.ok) {
       return res.json();
     }
   }).then(json => {
-    console.log(json.name, os.hostname());
     return json.name === os.hostname();
-  }).catch(console.error);
+  }).catch(logger.error);
 
   if (!isLeader) {
-    console.log(`I am not leader, aborting :( ${os.hostname()}`)
     return;
   }
 

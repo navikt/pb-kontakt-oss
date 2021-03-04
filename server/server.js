@@ -42,7 +42,7 @@ const officeUrlCheck = () => {
 // Schedule a daily job at the specified hour to check if office urls are valid
 // (only runs on leader pod)
 console.log(process.env.ELECTOR_PATH)
-fetch(process.env.ELECTOR_PATH).then(res => {
+fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
   if (res.ok) {
     return res.json();
   }

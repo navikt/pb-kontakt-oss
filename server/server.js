@@ -5,16 +5,17 @@ const getHtmlWithDecorator = require("./dekorator");
 const logger = require("./logger");
 const fetch = require('node-fetch');
 const schedule = require('node-schedule');
+const officeInfo = require('./enhetsnr-til-enhetsinfo.json');
 
 const server = express();
 
 const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
-const officeInfo = require(`../src/pages/finn-nav-kontor/data/enhetsnr-til-enhetsinfo.json`);
+
 const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/"
 const officeCheckStaggerPeriod = 100;
 
-// Runs a periodic check to see if
+// Runs a periodic check to see if office urls are valid
 schedule.scheduleJob({second: 0}, () => {
   console.log("Running scheduled office url check")
 

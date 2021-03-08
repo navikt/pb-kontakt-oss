@@ -29,3 +29,4 @@ yarn-error.log*
 /src/pages/finn-nav-kontor/data/*.json
 /~$navkontor.xlsx
 /tilbakemeldinger.iml
+/server/enhetsnr-til-enhetsinfo.json

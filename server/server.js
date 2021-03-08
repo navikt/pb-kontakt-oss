@@ -14,7 +14,6 @@ const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
 
 const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/";
-const officeCheckStaggerPeriodMs = 500;
 
 // Checks if the urls in the office lookup table are valid
 // Only runs on the leader pod
@@ -25,7 +24,11 @@ const officeUrlCheck = async () => {
     }
   }).then(json => {
     return json.name === os.hostname();
-  }).catch((e) => logger.error(`Error while determining leader pod - ${e}`));
+  }).catch((e) => {
+    logger.error(`Error while determining leader pod - ${e}`);
+    logger.error("Proceeding as if pod is leader");
+    return true;
+  });
 
   logger.info(`Running office url check if leader - ${isLeader}`);
 
@@ -38,18 +41,17 @@ const officeUrlCheck = async () => {
     return;
   }
 
-  Object.values(officeInfo).forEach((enhet, index) => {
+  Object.values(officeInfo).forEach(async (enhet) => {
     const url = `${officeBaseUrl}${enhet.url}`;
 
-    setTimeout(() => fetch(url, {
-        method: 'HEAD',
-        timeout: 10000
-      }).then((res) => {
-        if (!res.ok) {
-          logger.error(`Office url error: bad response from ${url} - ${res.status}`);
-        }
-      }).catch((e) => logger.error(`Office url error: error while fetching ${url} - ${e}`))
-      , index * officeCheckStaggerPeriodMs);
+    await fetch(url, {
+      method: 'HEAD',
+      timeout: 5000
+    }).then((res) => {
+      if (!res.ok) {
+        logger.error(`Office url error: bad response from ${url} - ${res.status}`);
+      }
+    }).catch((e) => logger.error(`Office url error: error while fetching ${url} - ${e}`))
   });
 };
 

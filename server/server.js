@@ -55,6 +55,10 @@ const officeUrlCheck = async () => {
   });
 };
 
+// Run the office url check, and schedule it as a daily job
+officeUrlCheck();
+schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
+
 // Parse application/json
 server.use(express.json());
 server.use(baseUrl, express.static(buildPath, { index: false }));
@@ -77,10 +81,4 @@ server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) => {
 });
 
 const port = process.env.PORT || 8080;
-server.listen(port, () => {
-  logger.info(`App listening on port: ${port}`);
-
-  // Run the office url check, and schedule it as a daily job
-  officeUrlCheck();
-  schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
-});
+server.listen(port, () => logger.info(`App listening on port: ${port}`));

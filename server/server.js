@@ -27,12 +27,11 @@ const officeUrlCheck = async () => {
     return json.name === os.hostname();
   }).catch((e) => logger.error(`Error while determining leader pod - ${e}`));
 
-  logger.info(`Running office check if leader ${isLeader}`);
+  logger.info(`Running office url check if leader - ${isLeader}`);
+
   if (!isLeader) {
     return;
   }
-
-  logger.info('Running office url check');
 
   if (!officeInfo) {
     logger.error('Office url error: office info not found on server!');
@@ -79,7 +78,7 @@ const port = process.env.PORT || 8080;
 server.listen(port, () => {
   logger.info(`App listening on port: ${port}`);
 
-  // Runs the office url check, and schedule it as a daily job
+  // Run the office url check, and schedule it as a daily job
   officeUrlCheck();
-  schedule.scheduleJob({ hour: 13, minute: 55, second: 0 }, officeUrlCheck);
+  schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 });

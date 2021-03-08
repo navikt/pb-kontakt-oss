@@ -14,7 +14,7 @@ const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
 
 const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/";
-const officeCheckStaggerPeriodMs = 100;
+const officeCheckStaggerPeriodMs = 500;
 
 const officeUrlCheck = async () => {
   const isLeader = await fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
@@ -52,7 +52,7 @@ const officeUrlCheck = async () => {
 };
 
 // Schedule a daily job at the specified hour to check if office urls are valid
-schedule.scheduleJob({ hour: 9 }, officeUrlCheck);
+schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());

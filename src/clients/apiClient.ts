@@ -65,6 +65,7 @@ const sendJson = (url: string, data: Outbound) => {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-Type": "application/json;charset=UTF-8" },
+    credentials: "include",
   })
     .then((response) => sjekkForFeil(url, response))
     .then(parseJson)

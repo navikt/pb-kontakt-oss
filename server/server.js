@@ -41,8 +41,8 @@ const officeUrlCheck = async () => {
     return;
   }
 
-  Object.values(officeInfo).forEach(async (enhet) => {
-    const url = `${officeBaseUrl}${enhet.url}`;
+  Object.values(officeInfo).forEach(async (office) => {
+    const url = `${officeBaseUrl}${office.url}`;
 
     await fetch(url, {
       method: 'HEAD',

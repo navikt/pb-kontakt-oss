@@ -25,8 +25,7 @@ const officeUrlCheck = async () => {
   }).then(json => {
     return json.name === os.hostname();
   }).catch((e) => {
-    logger.error(`Error while determining leader pod - ${e}`);
-    logger.error("Proceeding as if pod is leader");
+    logger.error(`Error while determining leader pod, proceeding as if pod is leader - ${e}`);
     return true;
   });
 
@@ -55,8 +54,7 @@ const officeUrlCheck = async () => {
   });
 };
 
-// Run the office url check, and schedule it as a daily job
-officeUrlCheck();
+// Schedule a daily job to check for invalid office urls
 schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 
 // Parse application/json

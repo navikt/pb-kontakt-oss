@@ -5,6 +5,7 @@ const sourceFile = "navkontor.xlsx";
 const destDir = "./src/pages/finn-nav-kontor/data";
 
 const enhetsnrTilEnhetsinfoFile = `${destDir}/enhetsnr-til-enhetsinfo.json`;
+const enhetsnrTilEnhetsinfoFileServer = './server/enhetsnr-til-enhetsinfo.json';
 const postnrTilStedOgEnhetsnrFile = `${destDir}/postnr-til-enhetsnr-og-poststed.json`;
 const stedsnavnTilEnhetsnrFile = `${destDir}/stedsnavn-til-enhetsnr.json`;
 
@@ -149,4 +150,5 @@ if (!fs.existsSync(destDir)) {
 
 jsonToFile(makeStedsnavnTilEnhetsnr(kontorInfoJson), stedsnavnTilEnhetsnrFile);
 jsonToFile(enhetsnrTilEnhetsInfo, enhetsnrTilEnhetsinfoFile);
+jsonToFile(enhetsnrTilEnhetsInfo, enhetsnrTilEnhetsinfoFileServer);
 jsonToFile(postnrTilStedOgEnhetsnr, postnrTilStedOgEnhetsnrFile);

@@ -15,6 +15,7 @@
     "jsdom": "^15.2.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.1",
+    "node-schedule": "^2.0.0",
     "react": "^17.0.1",
     "winston": "^3.3.3"
   },

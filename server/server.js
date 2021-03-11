@@ -43,7 +43,6 @@ const officeUrlCheck = async () => {
 
   for (const office of Object.values(officeInfo)) {
     const url = `${officeBaseUrl}${office.url}`;
-    logger.info(`Checking url ${url}`);
 
     await fetch(url, {
       method: 'HEAD',
@@ -57,7 +56,7 @@ const officeUrlCheck = async () => {
 };
 
 // Schedule a daily job to check for invalid office urls
-schedule.scheduleJob({ second: 0 }, officeUrlCheck);
+schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 
 // Parse application/json
 server.use(express.json());

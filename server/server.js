@@ -41,7 +41,7 @@ const officeUrlCheck = async () => {
     return;
   }
 
-  Object.values(officeInfo).forEach(async (office) => {
+  for (const office of Object.values(officeInfo)) {
     const url = `${officeBaseUrl}${office.url}`;
     logger.info(`Checking url ${url}`);
 
@@ -53,7 +53,7 @@ const officeUrlCheck = async () => {
         logger.error(`Office url error: bad response from ${url} - ${res.status}`);
       }
     }).catch((e) => logger.error(`Office url error: error while fetching ${url} - ${e}`))
-  });
+  }
 };
 
 // Schedule a daily job to check for invalid office urls

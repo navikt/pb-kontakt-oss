@@ -28,8 +28,10 @@ spec:
     outbound:
       external:
         - host: nav.no
-        - host: dekoratoren.dev.nav.no
   leaderElection: true
+  env:
+    - name: ENV
+      value: prod
   resources:
     limits:
       cpu: '3'

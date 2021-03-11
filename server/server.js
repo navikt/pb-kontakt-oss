@@ -13,7 +13,8 @@ const server = express();
 const buildPath = path.resolve(__dirname, "../build");
 const baseUrl = "/person/kontakt-oss";
 
-const officeBaseUrl = "https://www.nav.no/no/nav-og-samfunn/kontakt-nav/kontorer/";
+const xpHostname = process.env.ENV === 'dev' ? 'https://www.dev.nav.no' : 'https://www.nav.no';
+const officeBaseUrl = `${xpHostname}/no/nav-og-samfunn/kontakt-nav/kontorer/`;
 
 // Checks if the urls in the office lookup table are valid
 // Only runs on the leader pod
@@ -29,7 +30,7 @@ const officeUrlCheck = async () => {
     return true;
   });
 
-  logger.info(`Running office url check if leader - ${isLeader}`);
+  logger.info(`Running office url check if pod is leader - (${isLeader})`);
 
   if (!isLeader) {
     return;

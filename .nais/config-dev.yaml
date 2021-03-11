@@ -1,0 +1,40 @@
+---
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: pb-kontakt-oss
+  namespace: {{namespace}}
+  labels:
+    team: personbruker
+spec:
+  image: {{image}}:{{version}}
+  team: personbruker
+  port: 8080
+  ingresses:
+  {{#each ingresses as |url|}}
+     - {{url}}
+  {{/each}}
+  liveness:
+    path: /person/kontakt-oss/internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /person/kontakt-oss/internal/isReady
+    initialDelay: 10
+  replicas:
+    min: 2
+    max: 4
+  webproxy: true
+  accessPolicy:
+    outbound:
+      external:
+        - host: dekoratoren.dev.nav.no
+  leaderElection: true
+  env:
+    - name: ENV
+      value: dev
+  resources:
+    limits:
+      cpu: '3'
+      memory: 768Mi
+    requests:
+      memory: 512Mi

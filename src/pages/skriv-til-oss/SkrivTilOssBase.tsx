@@ -74,7 +74,7 @@ const SkrivTilOssBase = ({ tittelId, lenkepanelData, children }: Props) => {
                   <>
                     {
                       /* Temporary channel - TODO: Remove the code */
-                      i === 0 && <CantTravelLink />
+                      i === 6 && <CantTravelLink />
                     }
                     <TemaLenkepanel
                       lenkepanelData={lenke}

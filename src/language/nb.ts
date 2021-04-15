@@ -151,8 +151,8 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Foreldre, barn og familie",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensjonist",
   "skrivtiloss.ufor.lenke.tittel": "Ufør",
-  "skrivtiloss.reise.lenke.tittel": "Bor og/eller jobber i utlandet",
-  "skrivtiloss.reise.lenke.description":
+  "skrivtiloss.ovrig.lenke.tittel": "Bor og/eller jobber i utlandet",
+  "skrivtiloss.ovrig.lenke.description":
     "Spør om medlemskap i folketrygden under opphold i Norge eller utlandet, trygdeavgift og unntak fra norsk folketrygd, barnebidrag og anerkjennelse av farskap som er fastsatt i utlandet.",
   "skrivtiloss.sosial.lenke.tittel":
     "Økonomisk sosialhjelp og andre sosiale tjenester",

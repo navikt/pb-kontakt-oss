@@ -84,6 +84,7 @@ export const urls = {
     ufor: `${tjenesteUrl}/mininnboks/sporsmal/skriv/UFRT`,
     pensjonist: `${tjenesteUrl}/mininnboks/sporsmal/skriv/PENS`,
     sosialhjelp: `${tjenesteUrl}/mininnboks/sporsmal/skriv/OKSOS`,
+    ovrig: `${tjenesteUrl}/mininnboks/sporsmal/skriv/OVRG`,
     hjelpemidler: "/skriv-til-oss/hjelpemidler",
     temaHjelpemidler: {
       generelt: `${tjenesteUrl}/mininnboks/sporsmal/skriv/HJLPM`,

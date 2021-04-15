@@ -156,8 +156,8 @@ export default {
   "skrivtiloss.familieogbarn.lenke.tittel": "Parents, children and family",
   "skrivtiloss.pensjonist.lenke.tittel": "Pensioner",
   "skrivtiloss.ufor.lenke.tittel": "Disabled",
-  "skrivtiloss.reise.lenke.tittel": "Living and/or working abroad",
-  "skrivtiloss.reise.lenke.description":
+  "skrivtiloss.ovrig.lenke.tittel": "Living and/or working abroad",
+  "skrivtiloss.ovrig.lenke.description":
     "Write to us about membership in the National Insurance Scheme (folketrygden) during a stay in Norway or abroad, National Insurance contribution (trygdeavgift) and exemptions from the Norwegian National Insurance Scheme, child allowance (barnebidrag) and recognition of paternity (farskap) determined abroad. The form is in Norwegian.",
   "skrivtiloss.sosial.lenke.tittel":
     "Financial social assistance and other social assistance services",

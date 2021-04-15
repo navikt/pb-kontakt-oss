@@ -17,6 +17,7 @@ export enum STOTema {
   Ufor = "sto-ufor",
   Sosial = "sto-sosial",
   Pensjon = "sto-pensjon",
+  Ovrig = "sto-ovrig",
   Hjelpemidler = "sto-hjelpemidler",
   HjelpemidlerGenerelt = "sto-hjelpemidler-generelt",
   HjelpemidlerOrtopedisk = "sto-hjelpemidler-ortopedisk",

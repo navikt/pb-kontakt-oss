@@ -1,7 +1,7 @@
 import React from "react";
 import { lenker } from "./TilbakemeldingerLenker";
 import Header from "../../components/header/Header";
-import TilpassetLenkepanel from "../../components/lenkepanel/Lenkepanel";
+import TilbakemeldingLenkepanel from "../../components/lenkepanel/TilbakemeldingLenkepanel";
 import { useIntl } from "react-intl";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
@@ -28,7 +28,7 @@ const Tilbakemeldinger = () => {
         </div>
         <VarselVisning kanal={Kanal.Tilbakemelding} visKoronaVarsel={false} />
         {lenker(locale).map((lenke) => (
-          <TilpassetLenkepanel
+          <TilbakemeldingLenkepanel
             icon={lenke.icon}
             key={lenke.tittel}
             id={lenke.tittel}

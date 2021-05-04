@@ -1,6 +1,7 @@
 import React from "react";
 import { NedChevron, OppChevron } from "nav-frontend-chevron";
 import { FormattedMessage } from "react-intl";
+import { logAmplitudeEvent } from "../../../utils/amplitude";
 
 interface Props {
   visFlere: boolean;
@@ -8,7 +9,13 @@ interface Props {
 }
 const VisMer = (props: Props) => {
   return (
-    <button onClick={props.onClick} className={"faq__vismer lenke"}>
+    <button
+      onClick={() => {
+        logAmplitudeEvent("FAQ vis flere");
+        props.onClick?.();
+      }}
+      className={"faq__vismer lenke"}
+    >
       {props.visFlere ? (
         <div className={"faq__vismer-content"}>
           <FormattedMessage id="faq.visfaerre" />

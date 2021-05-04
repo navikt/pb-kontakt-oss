@@ -5,6 +5,7 @@ import { LenkepanelBase } from "nav-frontend-lenkepanel";
 import { FormattedMessage } from "react-intl";
 import { urls } from "../../Config";
 import { useStore } from "../../providers/Provider";
+import { logLinkClick } from "../../utils/amplitude";
 
 export interface Props {
   id: string;
@@ -16,7 +17,7 @@ export interface Props {
   icon?: string;
 }
 
-const TilpassetLenkepanel = (props: Props) => {
+const TilbakemeldingLenkepanel = (props: Props) => {
   const [{ locale }] = useStore();
   return (
     <LenkepanelBase
@@ -34,6 +35,7 @@ const TilpassetLenkepanel = (props: Props) => {
           </Link>
         );
       }}
+      onClick={() => logLinkClick(props.to, props.tittel)}
     >
       <div className={"linkbox__row"}>
         {props.icon && (
@@ -74,4 +76,4 @@ const TilpassetLenkepanel = (props: Props) => {
   );
 };
 
-export default TilpassetLenkepanel;
+export default TilbakemeldingLenkepanel;

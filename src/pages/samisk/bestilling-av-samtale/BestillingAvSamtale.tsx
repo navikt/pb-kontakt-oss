@@ -16,6 +16,7 @@ import Veilederpanel from "nav-frontend-veilederpanel";
 import VeilederIcon from "assets/Veileder.svg";
 import Topplinje from "../../../components/topp-linje/ToppLinje";
 import { useStore } from "../../../providers/Provider";
+import { logAmplitudeEvent } from "../../../utils/amplitude";
 
 type OutboundTidsrom = "FORMIDDAG" | "ETTERMIDDAG" | "BEGGE";
 type Tidsrom = {
@@ -76,6 +77,8 @@ const BAS = () => {
     const { fornavn, etternavn, telefonnummer, tidsrom } = fields;
 
     if (isValid) {
+      logAmplitudeEvent("Bestill samtale samisk");
+
       const outbound = {
         fornavn,
         etternavn,

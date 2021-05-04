@@ -14,6 +14,7 @@ import { ValidatorsProvider } from "calidation";
 import { extraValidators } from "./utils/validators";
 import { Locale, setLocaleFromUrl } from "./utils/locale";
 import { injectDecoratorClientSide } from "@navikt/nav-dekoratoren-moduler";
+import { initAmplitude } from "./utils/amplitude";
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -29,6 +30,8 @@ const init = async () => {
       env: "localhost",
       port: 8100,
     });
+  } else {
+    initAmplitude();
   }
 
   ReactDOM.render(

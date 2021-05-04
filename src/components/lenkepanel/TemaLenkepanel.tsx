@@ -1,7 +1,7 @@
 import { LenkepanelBase } from "nav-frontend-lenkepanel/lib";
 import { Link } from "react-router-dom";
 import { Undertittel } from "nav-frontend-typografi";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import React from "react";
 import { logEvent } from "../../utils/logger";
 import { useStore } from "../../providers/Provider";
@@ -11,6 +11,7 @@ import { NavContentLoader } from "../content-loader/NavContentLoader";
 import { useLocaleString } from "../../utils/sanity/useLocaleString";
 import { localePath } from "../../utils/locale";
 import Panel from "nav-frontend-paneler";
+import { logLinkClick } from "../../utils/amplitude";
 
 type Props = {
   lenkepanelData: TemaLenke;
@@ -18,16 +19,24 @@ type Props = {
   disableIfClosed?: boolean;
 };
 
-const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) => {
+const TemaLenkepanel = ({
+  lenkepanelData,
+  cssPrefix,
+  disableIfClosed,
+}: Props) => {
   const onClick = () => {
     logEvent({ event: lenkepanelData.grafanaId });
+    if (url) {
+      logLinkClick(url, formatMessage({ id: lenkepanelData.fallbackTittelId }));
+    }
   };
 
   const [{ themes, locale }] = useStore();
   const localeString = useLocaleString();
+  const { formatMessage } = useIntl();
 
   const tema = lenkepanelData.tema;
-  const {status, link} = themes.props[tema];
+  const { status, link } = themes.props[tema];
 
   const closed = status && status.closed;
   const closedMsg = status && status.message;
@@ -42,15 +51,21 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
     <div>
       {lenkepanelData.ikon && <div>{lenkepanelData.ikon}</div>}
       <div>
-        <Undertittel className={`${cssPrefix}__temalenke-header lenkepanel__heading`}>
-          {tittel
-            ? localeString(tittel)
-            : <FormattedMessage id={lenkepanelData.fallbackTittelId} />}
+        <Undertittel
+          className={`${cssPrefix}__temalenke-header lenkepanel__heading`}
+        >
+          {tittel ? (
+            localeString(tittel)
+          ) : (
+            <FormattedMessage id={lenkepanelData.fallbackTittelId} />
+          )}
         </Undertittel>
         <div className={`${cssPrefix}__lenkepanel-ingress`}>
-          {themes.isLoaded
-            ? <LocaleBlockContent localeBlock={ingress} />
-            : <NavContentLoader lines={2} lineHeight={6} />}
+          {themes.isLoaded ? (
+            <LocaleBlockContent localeBlock={ingress} />
+          ) : (
+            <NavContentLoader lines={2} lineHeight={6} />
+          )}
         </div>
         {isDisabled && <LocaleBlockContent localeBlock={closedMsg} />}
       </div>
@@ -60,36 +75,34 @@ const TemaLenkepanel = ({ lenkepanelData, cssPrefix, disableIfClosed }: Props) =
   return url ? (
     <LenkepanelBase
       border={true}
-      className={`${cssPrefix}__temalenke linkbox__container ${isDisabled
-        ? ` ${cssPrefix}__lenkepanel-disabled` : ""}`}
+      className={`${cssPrefix}__temalenke linkbox__container ${
+        isDisabled ? ` ${cssPrefix}__lenkepanel-disabled` : ""
+      }`}
       href={""}
-      linkCreator={!isDisabled ? (props => {
-        return lenkepanelData.externalUrl ? (
-          <a
-            href={url}
-            className={props.className}
-            onClick={onClick}
-          >
-            {props.children}
-          </a>
-        ) : (
-          <Link
-            to={localePath(url, locale)}
-            className={props.className}
-            onClick={onClick}
-          >
-            {props.children}
-          </Link>
-        );
-      }) : undefined}
+      linkCreator={
+        !isDisabled
+          ? (props) => {
+              return lenkepanelData.externalUrl ? (
+                <a href={url} className={props.className} onClick={onClick}>
+                  {props.children}
+                </a>
+              ) : (
+                <Link
+                  to={localePath(url, locale)}
+                  className={props.className}
+                  onClick={onClick}
+                >
+                  {props.children}
+                </Link>
+              );
+            }
+          : undefined
+      }
     >
       {innhold}
     </LenkepanelBase>
   ) : (
-    <Panel
-      border={true}
-      className={"linkbox__container"}
-    >
+    <Panel border={true} className={"linkbox__container"}>
       {innhold}
     </Panel>
   );

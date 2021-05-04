@@ -3,18 +3,19 @@ import React from "react";
 import { Normaltekst, Undertekst, Undertittel } from "nav-frontend-typografi";
 import { LenkepanelBase } from "nav-frontend-lenkepanel/lib";
 import { FormattedMessage } from "react-intl";
+import { logLinkClick } from "../../../utils/amplitude";
 
 const className = "korona-varsel";
 
 export type KoronaVirusVarselInnhold = {
-  tittelId: string,
-  ingress?: JSX.Element,
-  datoTid?: string,
-  href: string,
+  tittelId: string;
+  ingress?: JSX.Element;
+  datoTid?: string;
+  href: string;
 };
 
 type Props = {
-  innhold?: KoronaVirusVarselInnhold
+  innhold?: KoronaVirusVarselInnhold;
 };
 
 const defaultInnhold: KoronaVirusVarselInnhold = {
@@ -23,7 +24,12 @@ const defaultInnhold: KoronaVirusVarselInnhold = {
 };
 
 export const KoronaVirusVarsel = ({ innhold = defaultInnhold }: Props) => (
-  <LenkepanelBase className={`${className} varsel-panel`} href={innhold.href} border={true}>
+  <LenkepanelBase
+    className={`${className} varsel-panel`}
+    href={innhold.href}
+    border={true}
+    onClick={() => logLinkClick(innhold.href, "Koronavarsel")}
+  >
     <div className={`${className}__ikon-kol`}>
       <div className={`${className}__pulse`} />
       <div className={`${className}__sirkel`} />

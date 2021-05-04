@@ -37,3 +37,8 @@ export const logLinkClick = (href: string, linkText?: string) => {
     lenketekst: linkText,
   });
 };
+
+export const logPageview = (title: string) =>
+  logAmplitudeEvent("sidevisning", {
+    sidetittel: title,
+  });

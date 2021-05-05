@@ -7,7 +7,11 @@ import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
 import Topplinje from "../../components/topp-linje/ToppLinje";
 import { ResultatvisningVedSubmit } from "./components/ResultatvisningVedSubmit";
 import { ResultatvisningDynamisk } from "./components/ResultatvisningDynamisk";
-import { kjorSokOgReturnerResultat, minQueryLength, SokeResultat } from "./FinnNavKontorSok";
+import {
+  kjorSokOgReturnerResultat,
+  minQueryLength,
+  SokeResultat,
+} from "./FinnNavKontorSok";
 import { paths } from "../../Config";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
@@ -20,7 +24,7 @@ const FinnNavKontorPage = () => {
   const [sokeResultat, setSokeResultat] = useState<SokeResultat | null>();
   const [
     sokeResultatDynamisk,
-    setSokeResultatDynamisk
+    setSokeResultatDynamisk,
   ] = useState<SokeResultat | null>();
 
   return (
@@ -47,7 +51,7 @@ const FinnNavKontorPage = () => {
         <Form
           onSubmit={() => {
             inputElement &&
-            setSokeResultat(kjorSokOgReturnerResultat(inputElement.value));
+              setSokeResultat(kjorSokOgReturnerResultat(inputElement.value));
             setSokeResultatDynamisk(null);
           }}
           className={`${cssPrefix}__input-gruppe`}
@@ -62,13 +66,13 @@ const FinnNavKontorPage = () => {
               type={"text"}
               autoFocus={true}
               autoComplete={"off"}
-              onFocus={e => setInputElement(e.target)}
-              onChange={e =>
+              onFocus={(e) => setInputElement(e.target)}
+              onChange={(e) =>
                 setSokeResultatDynamisk(
                   kjorSokOgReturnerResultat(e.target.value)
                 )
               }
-              onKeyDown={e => e.key === "Escape" && e.currentTarget.blur()}
+              onKeyDown={(e) => e.key === "Escape" && e.currentTarget.blur()}
             />
             <Knapp
               htmlType={"submit"}
@@ -81,15 +85,15 @@ const FinnNavKontorPage = () => {
             </Knapp>
           </div>
           {sokeResultatDynamisk &&
-          sokeResultatDynamisk.query.length >= minQueryLength && (
-            <div
-              className={`${cssPrefix}__preview-container`}
-              id={"preview-container-id"}
-              tabIndex={-1}
-            >
-              <ResultatvisningDynamisk resultat={sokeResultatDynamisk} />
-            </div>
-          )}
+            sokeResultatDynamisk.query.length >= minQueryLength && (
+              <div
+                className={`${cssPrefix}__preview-container`}
+                id={"preview-container-id"}
+                tabIndex={-1}
+              >
+                <ResultatvisningDynamisk resultat={sokeResultatDynamisk} />
+              </div>
+            )}
         </Form>
         {sokeResultat && (
           <div className={`${cssPrefix}__resultat-container`}>

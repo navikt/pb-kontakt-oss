@@ -1,6 +1,6 @@
 {
   "name": "pb-kontakt-oss",
-  "version": "3.5.57-prod",
+  "version": "3.6.0-dev",
   "private": true,
   "author": "NAV",
   "license": "MIT",
@@ -24,6 +24,7 @@
     "@navikt/fnrvalidator": "^1.1.2",
     "@navikt/nav-dekoratoren-moduler": "^1.2.2",
     "@sanity/block-content-to-react": "^2.0.7",
+    "amplitude-js": "^8.1.0",
     "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "calidation": "^1.16.2",
@@ -85,6 +86,7 @@
     "typescript": "3.9.6"
   },
   "devDependencies": {
+    "@types/amplitude-js": "^7.0.1",
     "@types/calidation": "^1.16.2",
     "@types/fetch-mock": "^7.3.2",
     "@types/jest": "26.0.3",

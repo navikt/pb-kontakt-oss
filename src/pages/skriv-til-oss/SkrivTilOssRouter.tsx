@@ -10,21 +10,19 @@ import { localePath, validLocales } from "../../utils/locale";
 const SkrivTilOssRouter = () => {
   return (
     <Switch>
-      {validLocales.flatMap(locale => [
-        (
-          <Route
-            exact={true}
-            path={localePath(paths.skrivTilOss.forside, locale)}
-            component={SkrivTilOssForside}
-          />
-        ),
-        (
-          <Route
-            exact={true}
-            path={localePath(paths.skrivTilOss.hjelpemidler, locale)}
-            component={TemaHjelpemidler}
-          />
-        )
+      {validLocales.flatMap((locale) => [
+        <Route
+          exact={true}
+          path={localePath(paths.skrivTilOss.forside, locale)}
+          component={SkrivTilOssForside}
+          key={`${locale}-1`}
+        />,
+        <Route
+          exact={true}
+          path={localePath(paths.skrivTilOss.hjelpemidler, locale)}
+          component={TemaHjelpemidler}
+          key={`${locale}-2`}
+        />,
       ])}
       <Route>
         <NotFound />

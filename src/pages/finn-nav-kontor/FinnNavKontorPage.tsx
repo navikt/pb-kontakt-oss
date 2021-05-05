@@ -16,7 +16,6 @@ import { paths } from "../../Config";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
 import { Kanal } from "../../types/kanaler";
-import { logAmplitudeEvent } from "../../utils/amplitude";
 
 const cssPrefix = "finn-kontor";
 
@@ -51,12 +50,8 @@ const FinnNavKontorPage = () => {
       <div className={`${cssPrefix}__innhold`}>
         <Form
           onSubmit={() => {
-            if (inputElement) {
+            inputElement &&
               setSokeResultat(kjorSokOgReturnerResultat(inputElement.value));
-              logAmplitudeEvent("Kontor-søk submit", {
-                sokInput: inputElement.value,
-              });
-            }
             setSokeResultatDynamisk(null);
           }}
           className={`${cssPrefix}__input-gruppe`}

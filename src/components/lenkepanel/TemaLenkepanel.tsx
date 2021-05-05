@@ -27,7 +27,11 @@ const TemaLenkepanel = ({
   const onClick = () => {
     logEvent({ event: lenkepanelData.grafanaId });
     if (url) {
-      logLinkClick(url, formatMessage({ id: lenkepanelData.fallbackTittelId }));
+      logLinkClick(
+        url,
+        formatMessage({ id: lenkepanelData.fallbackTittelId }),
+        "skriv-til-oss"
+      );
     }
   };
 

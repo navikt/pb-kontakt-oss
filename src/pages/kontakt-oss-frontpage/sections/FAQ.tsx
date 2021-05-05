@@ -17,9 +17,12 @@ const FAQ = () => {
   const [{ faq }] = useStore();
   const localeString = useLocaleString();
 
-  const lenkerFraSanity = faq.faqLenker.length > 0 &&
-    faq.faqLenker.map(lenke =>
-      ({ lenke: localeString(lenke.lenke), tekst: localeString(lenke.tittel) }));
+  const lenkerFraSanity =
+    faq.faqLenker.length > 0 &&
+    faq.faqLenker.map((lenke) => ({
+      lenke: localeString(lenke.lenke),
+      tekst: localeString(lenke.tittel),
+    }));
 
   const lenkerFAQ = lenkerFraSanity || lenkerFAQDefault;
 
@@ -38,17 +41,19 @@ const FAQ = () => {
                   className={"lenke__avstand-under"}
                   isExternal={true}
                   key={index}
+                  linkGroup={"faq"}
                 >
                   {lenkerFraSanity ? tekst : <FormattedMessage id={tekst} />}
                 </RouterLenke>
               );
-            })
-          }
+            })}
           {lenkerFAQ.length > visElementer && (
             <VisMer visFlere={visFlereFAQ} onClick={toggleVisFlereFAQ} />
           )}
         </>
-      ) : <NavContentLoader lines={6} />}
+      ) : (
+        <NavContentLoader lines={6} />
+      )}
     </IkonPanel>
   );
 };

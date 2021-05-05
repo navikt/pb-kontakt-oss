@@ -35,7 +35,7 @@ const TilbakemeldingLenkepanel = (props: Props) => {
           </Link>
         );
       }}
-      onClick={() => logLinkClick(props.to, props.tittel)}
+      onClick={() => logLinkClick(props.to, props.tittel, "tilbakemelding")}
     >
       <div className={"linkbox__row"}>
         {props.icon && (

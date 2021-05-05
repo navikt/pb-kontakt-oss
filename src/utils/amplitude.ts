@@ -31,10 +31,15 @@ export const logAmplitudeEvent =
     ? logAmplitudeEventDev
     : logAmplitudeEventProd;
 
-export const logLinkClick = (href: string, linkText?: string) => {
+export const logLinkClick = (
+  href: string,
+  linkText: string | undefined,
+  linkGroup?: string
+) => {
   logAmplitudeEvent("navigere", {
     destinasjon: href,
     lenketekst: linkText,
+    lenkegruppe: linkGroup,
   });
 };
 

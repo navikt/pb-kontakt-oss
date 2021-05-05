@@ -12,6 +12,7 @@ type Props = {
   isExternal?: boolean;
   className?: string;
   id?: string;
+  linkGroup?: string;
 };
 
 const lenkeTekstMedChevron = (tekst: React.ReactNode) => (
@@ -40,12 +41,24 @@ const getTextStringFromChildren = (
 };
 
 const RouterLenkeMedChevron = (props: Props) => {
-  const { href, children, isExternal, className, id, onClick } = props;
+  const {
+    href,
+    children,
+    isExternal,
+    className,
+    id,
+    onClick,
+    linkGroup,
+  } = props;
   const { formatMessage } = useIntl();
   const lenkeTekst = lenkeTekstMedChevron(children);
 
   const onClickWithTracking = () => {
-    logLinkClick(href, getTextStringFromChildren(children, formatMessage));
+    logLinkClick(
+      href,
+      getTextStringFromChildren(children, formatMessage),
+      linkGroup
+    );
     onClick?.();
   };
 

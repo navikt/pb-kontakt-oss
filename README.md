@@ -1,8 +1,8 @@
-# Kontakt oss
+# Tilbakemeldinger
 
 ![Deploy-to-prod](https://github.com/navikt/pb-kontakt-oss/workflows/Deploy-to-prod/badge.svg) | ![Deploy-to-dev](https://github.com/navikt/pb-kontakt-oss/workflows/Deploy-to-dev/badge.svg)
 
-Chat, telefon, skriv til oss, klage og tilbakemelding, sosiale medier, m.m.
+Frontend for innsending av tilbakemeldinger til NAV. Klage, ros og tekniske feil og mangler.
 
 ## Komme i gang
 

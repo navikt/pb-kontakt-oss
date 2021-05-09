@@ -14,7 +14,7 @@ import { sjekkForFeil } from "utils/validators";
 import { FormattedMessage } from "react-intl";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import VeilederIcon from "assets/Veileder.svg";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
+import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import { useStore } from "../../../providers/Provider";
 import { logAmplitudeEvent } from "../../../utils/amplitude";
 
@@ -106,7 +106,7 @@ const BAS = () => {
 
   return (
     <div className="pagecontent">
-      <Topplinje />
+      <Topplinje showLanguageSelector={false} />
       <div className="bestilling-av-samtale__header">
         <div className="bestilling-av-samtale__tittel">
           <Sidetittel>

@@ -17,7 +17,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
-import Topplinje from "components/topp-linje/ToppLinje";
+import Topplinje from "components/decorator-widgets/DecoratorWidgets";
 import SelectEnhet from "components/input-fields/SelectEnhet";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 import { VarselVisning } from "../../../components/varsler/VarselVisning";
@@ -118,7 +118,7 @@ const Ros = () => {
       <Header
         title={intl.formatMessage({ id: "tilbakemeldinger.ros.form.tittel" })}
       />
-      <VarselVisning kanal={Kanal.Ros} visKoronaVarsel={false} />
+      <VarselVisning kanal={Kanal.Ros} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}

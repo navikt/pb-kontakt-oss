@@ -40,7 +40,11 @@ const getSegmentLenker = (locale: string): Array<BreadcrumbLenke> => {
   });
 };
 
-export const ToppLinje = () => {
+type Props = {
+  showLanguageSelector?: boolean;
+};
+
+export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
   const location = useLocation();
   const history = useHistory();
   const [, dispatch] = useStore();
@@ -56,6 +60,10 @@ export const ToppLinje = () => {
 
   // Set languages in decorator
   useEffect(() => {
+    if (!showLanguageSelector) {
+      return;
+    }
+
     const subSegments = location.pathname
       .split(forsidePath)[1]
       .split("/")
@@ -93,4 +101,4 @@ export const ToppLinje = () => {
   return null;
 };
 
-export default ToppLinje;
+export default DecoratorWidgets;

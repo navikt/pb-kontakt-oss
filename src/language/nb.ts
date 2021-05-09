@@ -16,41 +16,12 @@ export default {
     "Når du søker opp kontoret ditt finner du informasjon. Er du i en krisesituasjon, kan du ringe og få en time på " +
     "NAV-kontoret. Du kan alltid ta kontakt med NAV i digitale kanaler.",
   "varsel.koronavirus.navkontor.lenke": "Kontakt med NAV",
-  "varsel.teknisk.feil.chat":
-    "Det er for øyeblikket tekniske problemer med chat-tjenesten vår. Forsøk å laste inn siden på nytt dersom chatten ikke starter.",
-
-  //
-  // Språk
-  //
-  "sprak.velg": "Språk/Language",
-  "sprak.valgt": "(valgt)",
-  "sprak.nb": "Norsk",
-  "sprak.en": "English",
-  "sprak.lenke.norsk": "",
 
   //
   // Breadcrumbs
   //
   "breadcrumb.nb": "Kontakt oss",
-
-  "breadcrumb.skriv-til-oss": "Skriv til oss",
-  "breadcrumb.arbeidssoker": "Arbeidssøker",
-  "breadcrumb.syk": "Syk",
-  "breadcrumb.familieogbarn": "Familie og barn",
-  "breadcrumb.hjelpemidler": "Hjelpemidler",
-
-  "breadcrumb.chat": "Chat",
-  "breadcrumb.arbeidsgiver": "Arbeidsgiver og samhandler",
-  "breadcrumb.jobbsoker": "Jobbsøker",
-  "breadcrumb.ufor": "Ufør",
-  "breadcrumb.familie": "Familie",
-  "breadcrumb.sosialhjelp": "Sosiale tjenester",
-  "breadcrumb.okonomi": "Økonomi",
-  "breadcrumb.eures": "EURES",
-  "breadcrumb.aap": "AAP",
-
   "breadcrumb.finnkontor": "Søk opp NAV-kontor",
-
   "breadcrumb.tilbakemeldinger": "Tilbakemelding",
   "breadcrumb.serviceklage": "Klage på service",
   "breadcrumb.login": "Innlogging",
@@ -59,114 +30,6 @@ export default {
   "breadcrumb.samegiella": "Samegiella",
   "breadcrumb.bestilling-av-samtale":
     "Jearaldat bagadallama oažžut sámegillii telefovnnas",
-
-  //
-  // Forside
-  //
-  "kontaktoss.tittel": "Kontakt oss",
-
-  "kontaktoss.chat.tittel": "Chat med oss",
-  "kontaktoss.chat.beskrivelse":
-    "På chat kan vi ikke svare på saken din, men vi hjelper deg gjerne med generelle spørsmål.",
-  "kontaktoss.chat.knapp": "Chat med oss",
-
-  "kontaktoss.ringoss.tittel": "Ring oss",
-  "kontaktoss.ringoss.knapp": "Alle telefonnumre",
-
-  "faq.intro": "Nå lurer mange på",
-  "faq.visflere": "Vis flere",
-  "faq.visfaerre": "Vis færre",
-
-  "kontaktoss.skrivtiloss.tittel": "Skriv til oss",
-  "kontaktoss.skrivtiloss.beskrivelse":
-    "Send oss spørsmål eller nye opplysninger i saken din. 'Skriv til oss' er et sikkert alternativ til e-post.",
-  "kontaktoss.skrivtiloss.knapp": "Skriv til oss (innlogget)",
-
-  "kontaktoss.kontaktveileder.tittel": "Dialog med veilederen din",
-  "kontaktoss.kontaktveileder.beskrivelse":
-    "Du må være registrert som arbeidssøker for å kontakte veilederen din.",
-  "kontaktoss.kontaktveileder.knapp": "Dialog med veilederen din (innlogget)",
-
-  "kontaktoss.facebook.tittel": "Spør oss på Facebook",
-  "kontaktoss.facebook.foreldrepenger": "Foreldrepenger på Facebook",
-  "kontaktoss.facebook.jobblyst": "Jobblyst på Facebook",
-
-  "kontaktoss.navkontor.tittel": "Finn NAV-kontor",
-  "kontaktoss.navkontor.innlogget.lenke": "Finn ditt NAV-kontor (innlogget)",
-  "kontaktoss.navkontor.uinnlogget.lenke": "Søk opp NAV-kontor",
-  "kontaktoss.hjelpemiddelsentral.lenke": "Finn hjelpemiddelsentral",
-
-  "kontaktoss.tolketjenesten.tittel": "Tolketjenesten",
-  "kontaktoss.tolketjenesten.link":
-    "Kontakt tolketjenesten for døve, døvblinde og hørselshemmede",
-  "kontaktoss.tolketjenesten.link.spraktolk":
-    "Språktolk til samtale med veileder",
-
-  "kontaktoss.klage.tittel": "Klage og tilbakemelding",
-  "kontaktoss.klage.beskrivelse":
-    "Du kan klage hvis du har fått helt eller delvis avslag på søknaden din, og hvis du har hatt en negativ" +
-    " opplevelse i møte med NAV",
-  "kontaktoss.klage.knapp":
-    "Slik går du frem for å klage eller gi tilbakemelding",
-
-  "kontaktoss.tekniskfeil.tittel": "Teknisk feil på nav.no",
-  "kontaktoss.tekniskfeil.link.losselv": "Prøv å løse problemet selv",
-  "kontaktoss.tekniskfeil.link.meldifra": "Meld fra om feil og mangler",
-  "kontaktoss.tekniskfeil.link.ring": "Ring teknisk brukerstøtte",
-
-  "kontaktoss.presse.tittel": "Pressekontakt",
-  "kontaktoss.presse.link": "Pressekontakt",
-
-  "kontaktoss.sosialemedier.tittel": "NAV i sosiale medier",
-  "kontaktoss.sosialemedier.link": "NAV i sosiale medier",
-
-  //
-  // Chat
-  //
-  "chat.forside.tittel": "Chat med oss",
-
-  "chat.knapp.start": "Start chat",
-  "chat.knapp.stengt": "Chatten er stengt",
-
-  //
-  // Default FAQs
-  //
-  "faq.utbetalingsoversikt": "Sjekk utbetalingene dine",
-  "faq.saksoversikt": "Hvordan går det med saken min?",
-  "faq.nesteutbetaling": "Utbetalingsdatoer",
-  "faq.saksbehandlingstider": "Saksbehandlingstider",
-  "faq.endrekontonummer": "Endre kontonummer",
-  "faq.posttilannenadresse": "Vil du ha NAV-post til en annen adresse?",
-
-  //
-  // Skriv til oss
-  //
-  "skrivtiloss.tittel": "Skriv til oss",
-  "skrivtiloss.description":
-    "Her kan du sende en beskjed om endringer som har betydning for saken og oppfølgingen din fra NAV. Normal svartid" +
-    " er 2 arbeidsdager.",
-
-  "skrivtiloss.arbeidssoker.lenke.tittel": "Jobbsøker",
-  "skrivtiloss.syk.lenke.tittel": "Syk",
-  "skrivtiloss.familieogbarn.lenke.tittel": "Foreldre, barn og familie",
-  "skrivtiloss.pensjonist.lenke.tittel": "Pensjonist",
-  "skrivtiloss.ufor.lenke.tittel": "Ufør",
-  "skrivtiloss.ovrig.lenke.tittel": "Bor og/eller jobber i utlandet",
-  "skrivtiloss.ovrig.lenke.description":
-    "Spør om medlemskap i folketrygden under opphold i Norge eller utlandet, trygdeavgift og unntak fra norsk folketrygd, barnebidrag og anerkjennelse av farskap som er fastsatt i utlandet.",
-  "skrivtiloss.sosial.lenke.tittel":
-    "Økonomisk sosialhjelp og andre sosiale tjenester",
-  "skrivtiloss.hjelpemidler.lenke.tittel": "Hjelpemidler",
-  "skrivtiloss.hjelpemidler.generelt.lenke.tittel": "Generelle spørsmål",
-  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel":
-    "Ortopediske hjelpemidler",
-  "skrivtiloss.hjelpemidler.bil.lenke.tittel":
-    "Spørsmål om bil og spesialutstyr til bil",
-
-  "skrivtiloss.hjelpemidler.mellomside.tittel": "Skriv til oss om hjelpemidler",
-  "skrivtiloss.hjelpemidler.description":
-    "Send spørsmål eller opplysninger om tekniske hjelpemidler, ortopediske hjelpemidler, bilstønad, tolk," +
-    " tilrettelegging og tilpasning.",
 
   //
   // Finn NAV-kontor
@@ -201,7 +64,7 @@ export default {
   "tilbakemeldinger.serviceklage.login.tittel": "Klage på service",
   "tilbakemeldinger.serviceklage.login.overskrift": "Ønsker du å logge inn?",
   "tilbakemeldinger.serviceklage.login.beskrivelse":
-    "Vi anbefaler at du logger inn, så slipper du å fylle inn all informasjonen om deg selv.<br></br>" +
+    "Vi anbefaler at du logger inn, så slipper du å fylle inn all informasjonen om deg selv.<br/>" +
     "Du må opppgi hvem du er uansett om du logger inn eller ikke.",
   "tilbakemeldinger.serviceklage.login.knapp": "Logg inn",
   "tilbakemeldinger.serviceklage.login.knapp.fortsettuten":

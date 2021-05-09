@@ -17,7 +17,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import FeilgOgManglerOnskerAaKontaktes from "./FeilOgManglerOnskerAaKontaktes";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
+import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import { triggerHotjar } from "../../../utils/hotjar";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 import { VarselVisning } from "../../../components/varsler/VarselVisning";
@@ -94,7 +94,7 @@ const FOM = () => {
           id: "tilbakemeldinger.feilogmangler.form.tittel",
         })}
       />
-      <VarselVisning kanal={Kanal.FeilOgMangler} visKoronaVarsel={false} />
+      <VarselVisning kanal={Kanal.FeilOgMangler} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}
@@ -178,8 +178,11 @@ const FOM = () => {
                     </Knapp>
                   </div>
                   <div className="tb__knapp">
-                    <Link className="lenkeknapp knapp knapp--flat" to={paths.tilbakemeldinger.forside}>
-                        <FormattedMessage id={"felter.tilbake"} />
+                    <Link
+                      className="lenkeknapp knapp knapp--flat"
+                      to={paths.tilbakemeldinger.forside}
+                    >
+                      <FormattedMessage id={"felter.tilbake"} />
                     </Link>
                   </div>
                 </div>

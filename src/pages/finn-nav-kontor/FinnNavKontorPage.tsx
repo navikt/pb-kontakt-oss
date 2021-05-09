@@ -4,7 +4,7 @@ import { Input, Label } from "nav-frontend-skjema";
 import { Form } from "calidation";
 import { Knapp } from "nav-frontend-knapper";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
-import Topplinje from "../../components/topp-linje/ToppLinje";
+import Topplinje from "../../components/decorator-widgets/DecoratorWidgets";
 import { ResultatvisningVedSubmit } from "./components/ResultatvisningVedSubmit";
 import { ResultatvisningDynamisk } from "./components/ResultatvisningDynamisk";
 import {
@@ -45,7 +45,7 @@ const FinnNavKontorPage = () => {
         </Normaltekst>
       </div>
 
-      <VarselVisning kanal={Kanal.FinnKontor} visKoronaVarsel={false} />
+      <VarselVisning kanal={Kanal.FinnKontor} />
 
       <div className={`${cssPrefix}__innhold`}>
         <Form

@@ -26,7 +26,7 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
 import ServiceKlageOnskerAaKontaktes from "./ServiceKlageOnskerAaKontaktes";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
+import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import ServiceKlageTypeUtdypning from "./ServiceKlageTypeUtdypning";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 import { VarselVisning } from "../../../components/varsler/VarselVisning";
@@ -164,7 +164,7 @@ const ServiceKlage = () => {
           id: "tilbakemeldinger.serviceklage.form.tittel",
         })}
       />
-      <VarselVisning kanal={Kanal.Serviceklage} visKoronaVarsel={false} />
+      <VarselVisning kanal={Kanal.Serviceklage} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}
@@ -334,7 +334,10 @@ const ServiceKlage = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link className="lenkeknapp knapp knapp--flat" to={tilbakeTil}>
+                        <Link
+                          className="lenkeknapp knapp knapp--flat"
+                          to={tilbakeTil}
+                        >
                           <FormattedMessage id={"felter.tilbake"} />
                         </Link>
                       </div>

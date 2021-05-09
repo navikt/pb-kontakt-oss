@@ -6,7 +6,7 @@ import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import Header from "components/header/Header";
 import { FormattedMessage, useIntl } from "react-intl";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
+import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 
 const { loginUrl } = Environment();

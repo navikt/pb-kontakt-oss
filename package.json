@@ -4,7 +4,7 @@
   "private": true,
   "author": "NAV",
   "license": "MIT",
-  "homepage": "/person/kontakt-oss/",
+  "homepage": "/person/kontakt-oss/nb/tilbakemeldinger",
   "scripts": {
     "start": "npm run navkontorexceltiljson && npm-run-all -p start:*",
     "start:lint": "tslint src/**/*.ts*",

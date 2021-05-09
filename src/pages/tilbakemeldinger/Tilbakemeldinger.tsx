@@ -1,9 +1,9 @@
 import React from "react";
 import { lenker } from "./TilbakemeldingerLenker";
 import Header from "../../components/header/Header";
-import TilbakemeldingLenkepanel from "../../components/lenkepanel/TilbakemeldingLenkepanel";
+import Lenkepanel from "../../components/lenkepanel/Lenkepanel";
 import { useIntl } from "react-intl";
-import Topplinje from "../../components/topp-linje/ToppLinje";
+import Topplinje from "../../components/decorator-widgets/DecoratorWidgets";
 import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
@@ -26,9 +26,9 @@ const Tilbakemeldinger = () => {
             title={intl.formatMessage({ id: "tilbakemeldinger.sidetittel" })}
           />
         </div>
-        <VarselVisning kanal={Kanal.Tilbakemelding} visKoronaVarsel={false} />
+        <VarselVisning kanal={Kanal.Tilbakemelding} />
         {lenker(locale).map((lenke) => (
-          <TilbakemeldingLenkepanel
+          <Lenkepanel
             icon={lenke.icon}
             key={lenke.tittel}
             id={lenke.tittel}

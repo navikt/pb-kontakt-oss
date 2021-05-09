@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import VeilederIcon from "assets/Veileder.svg";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import { Knapp } from "nav-frontend-knapper";
 import { Link } from "react-router-dom";
 import InputMelding from "components/input-fields/InputMelding";

@@ -7,48 +7,17 @@ import { useHistory, useLocation } from "react-router-dom";
 import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
 import { Locale, setNewLocale } from "utils/locale";
 import { useStore } from "providers/Provider";
-import Environment from "../../Environments";
 import { useIntl } from "react-intl";
-
-type BreadcrumbLenke = {
-  url: string;
-  lenketekstId: string;
-  isExternal?: boolean;
-};
-
-const getSegmentLenker = (locale: string): Array<BreadcrumbLenke> => {
-  const { baseAppPath } = Environment();
-  const pathSegments = window.location.pathname
-    .replace(/\/person\/kontakt-oss\/*/, "")
-    .split("/");
-
-  // fjerner tomt segment ved trailing slash
-  if (pathSegments.length > 1 && pathSegments[pathSegments.length - 1] === "") {
-    pathSegments.pop();
-  }
-
-  return pathSegments.map((segment, index) => {
-    const combinedSegments = pathSegments.slice(0, index + 1);
-    const segmentPath =
-      combinedSegments.length === 1 ? "" : combinedSegments.join("/");
-
-    const url = `${baseAppPath}/${segmentPath}`;
-    return {
-      url: !url.includes(`${locale}`) ? `${url}${locale}` : url,
-      lenketekstId: `breadcrumb.${segment}`,
-    };
-  });
-};
 
 type Props = {
   showLanguageSelector?: boolean;
 };
 
 export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
-  const location = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
   const [, dispatch] = useStore();
-  const { formatMessage, locale } = useIntl();
+  const { locale, formatMessage } = useIntl();
 
   onLanguageSelect((breadcrumb) => {
     setNewLocale(breadcrumb.locale as Locale, dispatch);
@@ -64,7 +33,7 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
       return;
     }
 
-    const subSegments = location.pathname
+    const subSegments = pathname
       .split(forsidePath)[1]
       .split("/")
       .slice(2)
@@ -84,19 +53,33 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
     ];
 
     setAvailableLanguages(languages);
-  }, [location.pathname]);
+  }, [pathname, showLanguageSelector]);
 
   // Set breadcrumbs in decorator
   useEffect(() => {
-    const lenker = getSegmentLenker(locale);
-    const breadcrumbs = lenker.map((lenke) => ({
-      title: formatMessage({ id: lenke.lenketekstId }),
-      handleInApp: lenke.url.startsWith("/"),
-      url: lenke.url,
-    }));
+    const basePath = `${forsidePath}/${locale}`;
 
-    setBreadcrumbs(breadcrumbs);
-  }, [formatMessage, locale]);
+    const baseBreadcrumb = {
+      url: basePath,
+      title: formatMessage({ id: "breadcrumb.base" }),
+      handleInApp: false,
+    };
+
+    const internalBreadcrumbs = pathname
+      .replace(basePath, "")
+      .split("/")
+      .filter((pathSegment) => pathSegment !== "")
+      .map((pathSegment, index, pathSegmentArray) => {
+        const subPath = pathSegmentArray.slice(0, index + 1).join("/");
+        return {
+          url: `${forsidePath}/${locale}/${subPath}`,
+          title: formatMessage({ id: `breadcrumb.${pathSegment}` }),
+          handleInApp: true,
+        };
+      });
+
+    setBreadcrumbs([baseBreadcrumb, ...internalBreadcrumbs]);
+  }, [locale, formatMessage, pathname]);
 
   return null;
 };

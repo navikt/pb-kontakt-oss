@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import VeilederIcon from "assets/Veileder.svg";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { useStore } from "providers/Provider";
 import { Knapp } from "nav-frontend-knapper";

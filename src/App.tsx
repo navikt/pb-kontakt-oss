@@ -21,7 +21,7 @@ import { KontaktInfo } from "./types/kontaktInfo";
 import { Fodselsnr } from "./types/fodselsnr";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import BestillingAvSamtale from "./pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
-import { paths } from "./Config";
+import { paths, urls } from "./Config";
 import FinnNavKontorPage from "./pages/finn-nav-kontor/FinnNavKontorPage";
 import { Alert } from "./utils/sanity/endpoints/alert";
 import { localePath, validLocales } from "./utils/locale";
@@ -70,7 +70,7 @@ const App = () => {
         dispatch({ type: "SETT_ALERTS_FETCH_FAILED" });
         console.error(err);
       });
-  }, []);
+  }, [auth.authenticated, dispatch]);
 
   let key = 0;
 
@@ -120,6 +120,12 @@ const App = () => {
                 exact={true}
                 path={localePath(paths.tilbakemeldinger.feilogmangler, locale)}
                 component={FeilOgMangler}
+                key={key++}
+              />,
+              <Route
+                exact={true}
+                path={localePath(paths.samegiella.base, locale)}
+                render={() => (window.location.href = urls.samegiella.redirect)}
                 key={key++}
               />,
               <Route

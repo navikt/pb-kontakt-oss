@@ -13,7 +13,7 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { FormattedMessage } from "react-intl";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import VeilederIcon from "assets/Veileder.svg";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import { useStore } from "../../../providers/Provider";
 import { logAmplitudeEvent } from "../../../utils/amplitude";

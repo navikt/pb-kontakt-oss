@@ -20,7 +20,7 @@ export default {
   //
   // Breadcrumbs
   //
-  "breadcrumb.en": "Contact us",
+  "breadcrumb.base": "Contact us",
   "breadcrumb.finnkontor": "Find a NAV office",
   "breadcrumb.tilbakemeldinger": "Feedback",
   "breadcrumb.serviceklage": "Complain about service",

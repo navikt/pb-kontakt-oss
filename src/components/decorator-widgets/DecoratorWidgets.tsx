@@ -30,30 +30,27 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
   // Set languages in decorator
   useEffect(() => {
     if (!showLanguageSelector) {
+      setAvailableLanguages([]);
       return;
     }
 
-    const subSegments = pathname
-      .split(forsidePath)[1]
-      .split("/")
-      .slice(2)
-      .join("/");
+    const subPath = pathname.replace(`${forsidePath}/${locale}`, "");
 
     const languages = [
       {
         locale: "nb",
-        url: `${forsidePath}/nb/${subSegments}`,
+        url: `${forsidePath}/nb/${subPath}`,
         handleInApp: true,
       },
       {
         locale: "en",
-        url: `${forsidePath}/en/${subSegments}`,
+        url: `${forsidePath}/en/${subPath}`,
         handleInApp: true,
       },
     ];
 
     setAvailableLanguages(languages);
-  }, [pathname, showLanguageSelector]);
+  }, [pathname, locale, showLanguageSelector]);
 
   // Set breadcrumbs in decorator
   useEffect(() => {
@@ -79,7 +76,9 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
       });
 
     setBreadcrumbs([baseBreadcrumb, ...internalBreadcrumbs]);
-  }, [locale, formatMessage, pathname]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   return null;
 };

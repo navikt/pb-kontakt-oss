@@ -1,4 +1,4 @@
-export default {
+const en = {
   //
   // Feilside
   //
@@ -212,3 +212,5 @@ export default {
   "takk.melding": "Your message has been sent",
   "takk.knapp": "Go to nav.no",
 };
+
+export default en;

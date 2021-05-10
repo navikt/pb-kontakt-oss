@@ -1,4 +1,4 @@
-export default {
+const nb = {
   //
   // Feilside
   //
@@ -204,3 +204,5 @@ export default {
   "takk.melding": "Meldingen din er sendt",
   "takk.knapp": "Gå til nav.no",
 };
+
+export default nb;

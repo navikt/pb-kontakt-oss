@@ -89,10 +89,12 @@ export const vars = {
   maksLengdeMelding: 10000,
 };
 
-export default {
+const Config = {
   urls,
   paths,
   vars,
   forsidePath,
   useLocalePaths,
 };
+
+export default Config;

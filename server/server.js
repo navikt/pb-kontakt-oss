@@ -74,7 +74,7 @@ schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 server.use(express.json());
 server.use(baseUrl, express.static(buildPath, { index: false }));
 server.get(
-  `${baseUrl}/person/kontakt-oss/nb/tilbakemeldinger/internal/isAlive|isReady`,
+  `${baseUrl}/nb/tilbakemeldinger/internal/isAlive|isReady`,
   (req, res) => res.sendStatus(200)
 );
 

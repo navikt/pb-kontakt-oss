@@ -15,10 +15,10 @@ spec:
      - {{url}}
   {{/each}}
   liveness:
-    path: /person/kontakt-oss/internal/isAlive
+    path: /person/kontakt-oss/nb/tilbakemeldinger/internal/isAlive
     initialDelay: 10
   readiness:
-    path: /person/kontakt-oss/internal/isReady
+    path: /person/kontakt-oss/nb/tilbakemeldinger/internal/isReady
     initialDelay: 10
   replicas:
     min: 2

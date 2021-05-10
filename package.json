@@ -1,10 +1,10 @@
 {
   "name": "pb-kontakt-oss",
-  "version": "3.6.6-dev",
+  "version": "3.6.2-dev",
   "private": true,
   "author": "NAV",
   "license": "MIT",
-  "homepage": "/person/kontakt-oss/nb/tilbakemeldinger",
+  "homepage": "/person/kontakt-oss/tilbakemeldinger",
   "scripts": {
     "start": "npm run navkontorexceltiljson && npm-run-all -p start:*",
     "start:lint": "tslint src/**/*.ts*",

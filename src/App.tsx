@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Tilbakemeldinger from "./pages/tilbakemeldinger/Tilbakemeldinger";
 import Ros from "./pages/tilbakemeldinger/ros-til-nav/Ros";
 import PageNotFound from "./pages/404/404";
@@ -21,10 +21,10 @@ import { KontaktInfo } from "./types/kontaktInfo";
 import { Fodselsnr } from "./types/fodselsnr";
 import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import BestillingAvSamtale from "./pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
-import { paths, urls } from "./Config";
+import { forsidePath, paths, urls } from "./Config";
 import FinnNavKontorPage from "./pages/finn-nav-kontor/FinnNavKontorPage";
 import { Alert } from "./utils/sanity/endpoints/alert";
-import { localePath, validLocales } from "./utils/locale";
+import { defaultLocale, localePath, validLocales } from "./utils/locale";
 
 const App = () => {
   const [{ auth }, dispatch] = useStore();
@@ -143,12 +143,24 @@ const App = () => {
                 key={key++}
               />,
             ])}
-            <Route component={PageNotFound} />
+            <Route component={RedirectToLocaleOrError} />
           </Switch>
         </ScrollToTop>
       </BrowserRouter>
     </>
   );
+};
+
+const RedirectToLocaleOrError = () => {
+  const isLocaleUrl = window.location.pathname
+    .split("/")
+    .some((segment) => validLocales.some((locale) => segment === locale));
+
+  if (!isLocaleUrl) {
+    const subPath = window.location.pathname.split(forsidePath)[1];
+    return <Redirect to={localePath(subPath ? subPath : "", defaultLocale)} />;
+  }
+  return <PageNotFound />;
 };
 
 export default App;

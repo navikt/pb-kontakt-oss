@@ -37,12 +37,16 @@ jobs:
           ingresses:
             - https://www.dev.nav.no/person/kontakt-oss/nb/tilbakemeldinger
             - https://www.dev.nav.no/person/kontakt-oss/en/tilbakemeldinger
+            - https://www.dev.nav.no/person/kontakt-oss/tilbakemeldinger
             - https://www.dev.nav.no/person/kontakt-oss/nb/finnkontor
             - https://www.dev.nav.no/person/kontakt-oss/en/finnkontor
+            - https://www.dev.nav.no/person/kontakt-oss/finnkontor
             - https://www.dev.nav.no/person/kontakt-oss/nb/samegiella
             - https://www.dev.nav.no/person/kontakt-oss/en/samegiella
+            - https://www.dev.nav.no/person/kontakt-oss/samegiella
             - https://www.dev.nav.no/person/kontakt-oss/nb/chat
             - https://www.dev.nav.no/person/kontakt-oss/en/chat
+            - https://www.dev.nav.no/person/kontakt-oss/chat
           image: $IMAGE_REGISTRY/$IMAGE_NAME
           version: $IMAGE_VERSION
           EOF

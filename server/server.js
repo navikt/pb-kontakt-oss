@@ -11,7 +11,7 @@ const officeInfo = require("./enhetsnr-til-enhetsinfo.json");
 const server = express();
 
 const buildPath = path.resolve(__dirname, "../build");
-const baseUrl = "/person/kontakt-oss/nb/tilbakemeldinger";
+const baseUrl = "/person/kontakt-oss/tilbakemeldinger";
 
 const xpHostname =
   process.env.ENV === "dev" ? "https://www.dev.nav.no" : "https://www.nav.no";

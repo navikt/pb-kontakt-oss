@@ -134,6 +134,14 @@ const App = () => {
                 component={BestillingAvSamtale}
                 key={key++}
               />,
+              <Route
+                exact={false}
+                path={localePath(paths.chat.forside, locale)}
+                render={() =>
+                  (window.location.href = `${urls.kontaktOssForside}/${locale}`)
+                }
+                key={key++}
+              />,
             ])}
             <Route component={PageNotFound} />
           </Switch>

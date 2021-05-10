@@ -11,7 +11,7 @@ const officeInfo = require("./enhetsnr-til-enhetsinfo.json");
 const server = express();
 
 const buildPath = path.resolve(__dirname, "../build");
-const baseUrl = "/person/kontakt-oss";
+const baseUrl = "/person/kontakt-oss/nb/tilbakemeldinger";
 
 const xpHostname =
   process.env.ENV === "dev" ? "https://www.dev.nav.no" : "https://www.nav.no";
@@ -73,9 +73,8 @@ schedule.scheduleJob({ hour: 8, minute: 0, second: 0 }, officeUrlCheck);
 // Parse application/json
 server.use(express.json());
 server.use(baseUrl, express.static(buildPath, { index: false }));
-server.get(
-  `${baseUrl}/nb/tilbakemeldinger/internal/isAlive|isReady`,
-  (req, res) => res.sendStatus(200)
+server.get(`${baseUrl}/internal/isAlive|isReady`, (req, res) =>
+  res.sendStatus(200)
 );
 
 // Match everything except internal og static

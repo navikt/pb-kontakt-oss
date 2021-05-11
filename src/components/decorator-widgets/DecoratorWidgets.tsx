@@ -1,19 +1,17 @@
 import { useEffect } from "react";
-import { forsidePath } from "Config";
-import { setBreadcrumbs } from "@navikt/nav-dekoratoren-moduler";
-import { setAvailableLanguages } from "@navikt/nav-dekoratoren-moduler";
-import { onBreadcrumbClick } from "@navikt/nav-dekoratoren-moduler";
 import { useHistory, useLocation } from "react-router-dom";
-import { onLanguageSelect } from "@navikt/nav-dekoratoren-moduler";
-import { Locale, setNewLocale } from "utils/locale";
-import { useStore } from "providers/Provider";
 import { useIntl } from "react-intl";
+import { useStore } from "providers/Provider";
+import { Locale, setNewLocale } from "utils/locale";
+import { forsidePath } from "Config";
+import {
+  onBreadcrumbClick,
+  onLanguageSelect,
+  setAvailableLanguages,
+  setBreadcrumbs,
+} from "@navikt/nav-dekoratoren-moduler";
 
-type Props = {
-  showLanguageSelector?: boolean;
-};
-
-export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
+export const DecoratorWidgets = () => {
   const { pathname } = useLocation();
   const history = useHistory();
   const [, dispatch] = useStore();
@@ -29,12 +27,12 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
 
   // Set languages in decorator
   useEffect(() => {
-    if (!showLanguageSelector) {
+    const subPath = pathname.replace(`${forsidePath}/${locale}`, "");
+
+    if (subPath.startsWith("/samegiella")) {
       setAvailableLanguages([]);
       return;
     }
-
-    const subPath = pathname.replace(`${forsidePath}/${locale}`, "");
 
     const languages = [
       {
@@ -50,7 +48,7 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
     ];
 
     setAvailableLanguages(languages);
-  }, [pathname, locale, showLanguageSelector]);
+  }, [pathname, locale]);
 
   // Set breadcrumbs in decorator
   useEffect(() => {
@@ -82,5 +80,3 @@ export const DecoratorWidgets = ({ showLanguageSelector = true }: Props) => {
 
   return null;
 };
-
-export default DecoratorWidgets;

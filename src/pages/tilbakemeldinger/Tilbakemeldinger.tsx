@@ -3,7 +3,6 @@ import { lenker } from "./TilbakemeldingerLenker";
 import Header from "../../components/header/Header";
 import Lenkepanel from "../../components/lenkepanel/Lenkepanel";
 import { useIntl } from "react-intl";
-import Topplinje from "../../components/decorator-widgets/DecoratorWidgets";
 import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
@@ -16,7 +15,6 @@ const Tilbakemeldinger = () => {
   return (
     <>
       <div className="pagecontent">
-        <Topplinje />
         <MetaTags
           titleId={"tilbakemeldinger.sidetittel"}
           descriptionId={"seo.tilbakemeldinger.description"}

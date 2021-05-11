@@ -17,7 +17,6 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import FeilgOgManglerOnskerAaKontaktes from "./FeilOgManglerOnskerAaKontaktes";
-import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import { triggerHotjar } from "../../../utils/hotjar";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 import { VarselVisning } from "../../../components/varsler/VarselVisning";
@@ -83,7 +82,6 @@ const FOM = () => {
 
   return (
     <div className="pagecontent">
-      <Topplinje />
       <MetaTags
         titleId={"tilbakemeldinger.feilogmangler.tittel"}
         descriptionId={"seo.feilogmangler.description"}

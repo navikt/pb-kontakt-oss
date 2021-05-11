@@ -26,7 +26,6 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
 import ServiceKlageOnskerAaKontaktes from "./ServiceKlageOnskerAaKontaktes";
-import Topplinje from "../../../components/decorator-widgets/DecoratorWidgets";
 import ServiceKlageTypeUtdypning from "./ServiceKlageTypeUtdypning";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 import { VarselVisning } from "../../../components/varsler/VarselVisning";
@@ -153,7 +152,6 @@ const ServiceKlage = () => {
 
   return (
     <div className="pagecontent">
-      <Topplinje />
       <MetaTags
         titleId={"tilbakemeldinger.serviceklage.form.tittel"}
         descriptionId={"seo.klagepaservice.description"}

@@ -25,6 +25,7 @@ import { forsidePath, paths, urls } from "./Config";
 import FinnNavKontorPage from "./pages/finn-nav-kontor/FinnNavKontorPage";
 import { Alert } from "./utils/sanity/endpoints/alert";
 import { defaultLocale, localePath, validLocales } from "./utils/locale";
+import { DecoratorWidgets } from "./components/decorator-widgets/DecoratorWidgets";
 
 const App = () => {
   const [{ auth }, dispatch] = useStore();
@@ -75,79 +76,78 @@ const App = () => {
   let key = 0;
 
   return (
-    <>
-      <BrowserRouter>
-        <ScrollToTop>
-          <Switch>
-            {validLocales.flatMap((locale) => [
-              <Route
-                exact={true}
-                path={localePath(paths.finnDittNavKontorUinnlogget, locale)}
-                component={FinnNavKontorPage}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(paths.tilbakemeldinger.forside, locale)}
-                component={Tilbakemeldinger}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(
-                  paths.tilbakemeldinger.serviceklage.login,
-                  locale
-                )}
-                component={ServiceKlageLogin}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(
-                  paths.tilbakemeldinger.serviceklage.form,
-                  locale
-                )}
-                component={ServiceKlage}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(paths.tilbakemeldinger.rostilnav, locale)}
-                component={Ros}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(paths.tilbakemeldinger.feilogmangler, locale)}
-                component={FeilOgMangler}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(paths.samegiella.base, locale)}
-                render={() => (window.location.href = urls.samegiella.redirect)}
-                key={key++}
-              />,
-              <Route
-                exact={true}
-                path={localePath(paths.samegiella.samtale, locale)}
-                component={BestillingAvSamtale}
-                key={key++}
-              />,
-              <Route
-                exact={false}
-                path={localePath(paths.chat.forside, locale)}
-                render={() =>
-                  (window.location.href = `${urls.kontaktOssForside}/${locale}`)
-                }
-                key={key++}
-              />,
-            ])}
-            <Route component={RedirectToLocaleOrError} />
-          </Switch>
-        </ScrollToTop>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <DecoratorWidgets />
+      <ScrollToTop>
+        <Switch>
+          {validLocales.flatMap((locale) => [
+            <Route
+              exact={true}
+              path={localePath(paths.finnDittNavKontorUinnlogget, locale)}
+              component={FinnNavKontorPage}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(paths.tilbakemeldinger.forside, locale)}
+              component={Tilbakemeldinger}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(
+                paths.tilbakemeldinger.serviceklage.login,
+                locale
+              )}
+              component={ServiceKlageLogin}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(
+                paths.tilbakemeldinger.serviceklage.form,
+                locale
+              )}
+              component={ServiceKlage}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(paths.tilbakemeldinger.rostilnav, locale)}
+              component={Ros}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(paths.tilbakemeldinger.feilogmangler, locale)}
+              component={FeilOgMangler}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(paths.samegiella.base, locale)}
+              render={() => (window.location.href = urls.samegiella.redirect)}
+              key={key++}
+            />,
+            <Route
+              exact={true}
+              path={localePath(paths.samegiella.samtale, locale)}
+              component={BestillingAvSamtale}
+              key={key++}
+            />,
+            <Route
+              exact={false}
+              path={localePath(paths.chat.forside, locale)}
+              render={() =>
+                (window.location.href = `${urls.kontaktOssForside}/${locale}`)
+              }
+              key={key++}
+            />,
+          ])}
+          <Route component={RedirectToLocaleOrError} />
+        </Switch>
+      </ScrollToTop>
+    </BrowserRouter>
   );
 };
 

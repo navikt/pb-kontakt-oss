@@ -11,6 +11,7 @@ jobs:
       - name: Define build environment
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
         run: |
           echo "CI=true" >> $GITHUB_ENV
           echo "IMAGE_REGISTRY=docker.pkg.github.com/$(echo ${GITHUB_REPOSITORY})" >> $GITHUB_ENV
@@ -27,7 +28,7 @@ jobs:
       - run: npm run build
       - name: Docker build and push
         run: |
-          echo $GITHUB_TOKEN | docker login $IMAGE_REGISTRY -u ${GITHUB_REPOSITORY} --password-stdin
+          echo $DOCKER_TOKEN | docker login $IMAGE_REGISTRY -u ${GITHUB_REPOSITORY} --password-stdin
           docker build -t $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_VERSION .
           docker push $IMAGE_REGISTRY/$IMAGE_NAME:$IMAGE_VERSION
       - name: Generate nais variables

@@ -7,6 +7,7 @@ import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
 import { VarselVisning } from "../../components/varsler/VarselVisning";
 import { Kanal } from "../../types/kanaler";
+import { paths } from "../../Config";
 
 const Tilbakemeldinger = () => {
   const intl = useIntl();
@@ -16,6 +17,7 @@ const Tilbakemeldinger = () => {
     <>
       <div className="pagecontent">
         <MetaTags
+          path={paths.tilbakemeldinger.forside}
           titleId={"tilbakemeldinger.sidetittel"}
           descriptionId={"seo.tilbakemeldinger.description"}
         />

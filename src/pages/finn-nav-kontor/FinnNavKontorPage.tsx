@@ -13,8 +13,6 @@ import {
 } from "./FinnNavKontorSok";
 import { paths } from "../../Config";
 import { MetaTags } from "../../components/metatags/MetaTags";
-import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { Kanal } from "../../types/kanaler";
 
 const cssPrefix = "finn-kontor";
 
@@ -40,7 +38,6 @@ const FinnNavKontorPage = () => {
           <FormattedMessage id={"finnkontor.ingress"} />
         </Normaltekst>
       </div>
-      <VarselVisning kanal={Kanal.FinnKontor} />
       <div className={`${cssPrefix}__innhold`}>
         <Form
           onSubmit={() => {

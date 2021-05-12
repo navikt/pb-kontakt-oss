@@ -19,8 +19,6 @@ import { sjekkForFeil } from "utils/validators";
 import FeilgOgManglerOnskerAaKontaktes from "./FeilOgManglerOnskerAaKontaktes";
 import { triggerHotjar } from "../../../utils/hotjar";
 import { MetaTags } from "../../../components/metatags/MetaTags";
-import { VarselVisning } from "../../../components/varsler/VarselVisning";
-import { Kanal } from "../../../types/kanaler";
 
 export type OutboundFeilOgMangler = {
   onskerKontakt: boolean;
@@ -92,7 +90,6 @@ const FOM = () => {
           id: "tilbakemeldinger.feilogmangler.form.tittel",
         })}
       />
-      <VarselVisning kanal={Kanal.FeilOgMangler} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}

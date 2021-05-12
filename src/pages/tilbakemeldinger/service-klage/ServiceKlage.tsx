@@ -28,8 +28,6 @@ import { triggerHotjar } from "utils/hotjar";
 import ServiceKlageOnskerAaKontaktes from "./ServiceKlageOnskerAaKontaktes";
 import ServiceKlageTypeUtdypning from "./ServiceKlageTypeUtdypning";
 import { MetaTags } from "../../../components/metatags/MetaTags";
-import { VarselVisning } from "../../../components/varsler/VarselVisning";
-import { Kanal } from "../../../types/kanaler";
 
 export type OutboundServiceKlage = OutboundServiceKlageBase &
   OutboundServiceKlageExtend;
@@ -162,7 +160,6 @@ const ServiceKlage = () => {
           id: "tilbakemeldinger.serviceklage.form.tittel",
         })}
       />
-      <VarselVisning kanal={Kanal.Serviceklage} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}

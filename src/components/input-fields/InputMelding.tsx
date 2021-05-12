@@ -2,7 +2,7 @@ import { TextareaControlled, TextareaProps } from "nav-frontend-skjema";
 import React, { KeyboardEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { paths, urls, vars } from "../../Config";
-import { Varsel } from "../varsler/Varsel";
+import { Varsel } from "../varsel/Varsel";
 import { useStore } from "../../providers/Provider";
 import { localePath } from "../../utils/locale";
 import Lenke from "nav-frontend-lenker";

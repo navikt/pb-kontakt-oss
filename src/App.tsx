@@ -5,12 +5,9 @@ import Ros from "./pages/tilbakemeldinger/ros-til-nav/Ros";
 import PageNotFound from "./pages/404/404";
 import FeilOgMangler from "./pages/tilbakemeldinger/feil-og-mangler/FeilOgMangler";
 import {
-  fetchAlerts,
   fetchAuthInfo,
   fetchFodselsnr,
   fetchKontaktInfo,
-  fetchTimeoutMs,
-  timeoutPromise,
 } from "./clients/apiClient";
 import { useStore } from "./providers/Provider";
 import { AuthInfo } from "./types/authInfo";
@@ -23,7 +20,6 @@ import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
 import BestillingAvSamtale from "./pages/samisk/bestilling-av-samtale/BestillingAvSamtale";
 import { forsidePath, paths, urls } from "./Config";
 import FinnNavKontorPage from "./pages/finn-nav-kontor/FinnNavKontorPage";
-import { Alert } from "./utils/sanity/endpoints/alert";
 import { defaultLocale, localePath, validLocales } from "./utils/locale";
 import { DecoratorWidgets } from "./components/decorator-widgets/DecoratorWidgets";
 
@@ -56,21 +52,6 @@ const App = () => {
         })
         .catch((error: HTTPError) => console.error(error));
     }
-
-    Promise.race<any>([
-      fetchAlerts(),
-      timeoutPromise(fetchTimeoutMs, "Fetching alerts failed!"),
-    ])
-      .then((alerts: Array<Alert>) => {
-        dispatch({
-          type: "SETT_ALERTS",
-          payload: alerts,
-        });
-      })
-      .catch((err) => {
-        dispatch({ type: "SETT_ALERTS_FETCH_FAILED" });
-        console.error(err);
-      });
   }, [auth.authenticated, dispatch]);
 
   let key = 0;

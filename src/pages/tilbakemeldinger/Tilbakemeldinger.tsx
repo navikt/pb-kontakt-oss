@@ -5,8 +5,6 @@ import Lenkepanel from "../../components/lenkepanel/Lenkepanel";
 import { useIntl } from "react-intl";
 import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
-import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { Kanal } from "../../types/kanaler";
 import { paths } from "../../Config";
 
 const Tilbakemeldinger = () => {
@@ -26,7 +24,6 @@ const Tilbakemeldinger = () => {
             title={intl.formatMessage({ id: "tilbakemeldinger.sidetittel" })}
           />
         </div>
-        <VarselVisning kanal={Kanal.Tilbakemelding} />
         {lenker(locale).map((lenke) => (
           <Lenkepanel
             icon={lenke.icon}

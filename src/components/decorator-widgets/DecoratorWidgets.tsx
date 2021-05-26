@@ -11,11 +11,13 @@ import {
   setBreadcrumbs,
 } from "@navikt/nav-dekoratoren-moduler";
 
+const basePathFilter = new RegExp(`${forsidePath}/(nb|en)?`, "i");
+
 export const DecoratorWidgets = () => {
   const { pathname } = useLocation();
   const history = useHistory();
-  const [, dispatch] = useStore();
-  const { locale, formatMessage } = useIntl();
+  const [{ locale }, dispatch] = useStore();
+  const { formatMessage } = useIntl();
 
   onLanguageSelect((breadcrumb) => {
     setNewLocale(breadcrumb.locale as Locale, dispatch);
@@ -61,7 +63,7 @@ export const DecoratorWidgets = () => {
     };
 
     const internalBreadcrumbs = pathname
-      .replace(basePath, "")
+      .replace(basePathFilter, "")
       .split("/")
       .filter((pathSegment) => pathSegment !== "")
       .map((pathSegment, index, pathSegmentArray) => {
@@ -76,7 +78,7 @@ export const DecoratorWidgets = () => {
     setBreadcrumbs([baseBreadcrumb, ...internalBreadcrumbs]);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname, locale]);
 
   return null;
 };

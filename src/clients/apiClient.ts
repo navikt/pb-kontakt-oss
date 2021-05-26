@@ -8,8 +8,6 @@ import { OutboundBestillingAvSamtale } from "../pages/samisk/bestilling-av-samta
 import { BadRequest } from "../types/errors";
 const { apiUrl, personInfoApiUrl, authUrl } = Environment();
 
-export const fetchTimeoutMs = 3000;
-
 /*
     GET
  */
@@ -39,14 +37,6 @@ export const fetchAuthInfo = () => hentJson(`${authUrl}`);
 
 export const fetchKontaktInfo = () =>
   hentJson(`${personInfoApiUrl}/kontaktinformasjon`);
-
-export const fetchAlerts = () => hentJson(`${apiUrl}/alerts`);
-
-export const fetchFaq = () => hentJson(`${apiUrl}/faq`);
-
-export const fetchChannelInfo = () => hentJson(`${apiUrl}/channels`);
-
-export const fetchThemes = () => hentJson(`${apiUrl}/themes`);
 
 /*
     POST
@@ -96,6 +86,7 @@ export const postSamiskBestillSamtale = (data: OutboundBestillingAvSamtale) =>
  */
 
 const parseJson = (data: any) => data.json();
+
 const sjekkForFeil = async (url: string, response: Response) => {
   if (response.ok) {
     return response;
@@ -110,5 +101,3 @@ const sjekkForFeil = async (url: string, response: Response) => {
     throw error;
   }
 };
-export const timeoutPromise = (ms: number, msg?: string) =>
-  new Promise((_, rej) => setTimeout(() => rej(msg), ms));

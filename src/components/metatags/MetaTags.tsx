@@ -7,9 +7,9 @@ import Environment from "../../Environments";
 import { logPageview } from "../../utils/amplitude";
 
 type Props = {
-  titleId?: string;
+  path: string;
+  titleId: string;
   descriptionId?: string;
-  path?: string;
   children?: JSX.Element;
 };
 

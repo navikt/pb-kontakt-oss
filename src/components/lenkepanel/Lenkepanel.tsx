@@ -17,7 +17,7 @@ export interface Props {
   icon?: string;
 }
 
-const TilbakemeldingLenkepanel = (props: Props) => {
+const Lenkepanel = (props: Props) => {
   const [{ locale }] = useStore();
   return (
     <LenkepanelBase
@@ -76,4 +76,4 @@ const TilbakemeldingLenkepanel = (props: Props) => {
   );
 };
 
-export default TilbakemeldingLenkepanel;
+export default Lenkepanel;

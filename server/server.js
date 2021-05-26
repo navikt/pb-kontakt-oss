@@ -4,31 +4,37 @@ const path = require("path");
 const os = require("os");
 const getHtmlWithDecorator = require("./dekorator");
 const logger = require("./logger");
-const fetch = require('node-fetch');
-const schedule = require('node-schedule');
-const officeInfo = require('./enhetsnr-til-enhetsinfo.json');
+const fetch = require("node-fetch");
+const schedule = require("node-schedule");
+const officeInfo = require("./enhetsnr-til-enhetsinfo.json");
 
 const server = express();
 
 const buildPath = path.resolve(__dirname, "../build");
-const baseUrl = "/person/kontakt-oss";
+const baseUrl = "/person/kontakt-oss/tilbakemeldinger";
 
-const xpHostname = process.env.ENV === 'dev' ? 'https://www.dev.nav.no' : 'https://www.nav.no';
+const xpHostname =
+  process.env.ENV === "dev" ? "https://www.dev.nav.no" : "https://www.nav.no";
 const officeBaseUrl = `${xpHostname}/no/nav-og-samfunn/kontakt-nav/kontorer/`;
 
 // Checks if the urls in the office lookup table are valid
 // Only runs on the leader pod
 const officeUrlCheck = async () => {
-  const isLeader = await fetch(`http://${process.env.ELECTOR_PATH}`).then(res => {
-    if (res.ok) {
-      return res.json();
-    }
-  }).then(json => {
-    return json.name === os.hostname();
-  }).catch((e) => {
-    logger.error(`Error while determining leader pod, proceeding as if pod is leader - ${e}`);
-    return true;
-  });
+  const isLeader = await fetch(`http://${process.env.ELECTOR_PATH}`)
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+    .then((json) => {
+      return json.name === os.hostname();
+    })
+    .catch((e) => {
+      logger.error(
+        `Error while determining leader pod, proceeding as if pod is leader - ${e}`
+      );
+      return true;
+    });
 
   logger.info(`Running office url check if pod is leader - (${isLeader})`);
 
@@ -37,7 +43,7 @@ const officeUrlCheck = async () => {
   }
 
   if (!officeInfo) {
-    logger.error('Office url error: office info not found on server!');
+    logger.error("Office url error: office info not found on server!");
     return;
   }
 
@@ -45,13 +51,19 @@ const officeUrlCheck = async () => {
     const url = `${officeBaseUrl}${office.url}`;
 
     await fetch(url, {
-      method: 'HEAD',
-      timeout: 5000
-    }).then((res) => {
-      if (!res.ok) {
-        logger.error(`Office url error: bad response from ${url} - ${res.status}`);
-      }
-    }).catch((e) => logger.error(`Office url error: error while fetching ${url} - ${e}`))
+      method: "HEAD",
+      timeout: 5000,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          logger.error(
+            `Office url error: bad response from ${url} - ${res.status}`
+          );
+        }
+      })
+      .catch((e) =>
+        logger.error(`Office url error: error while fetching ${url} - ${e}`)
+      );
   }
 };
 

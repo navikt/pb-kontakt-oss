@@ -1,4 +1,4 @@
-export default {
+const en = {
   //
   // Feilside
   //
@@ -16,41 +16,12 @@ export default {
     "information regarding this in the search result for your office. If you are in an emergency situation, you may " +
     "call and get an appointment at the NAV office. You may always contact NAV through digital channels.",
   "varsel.koronavirus.navkontor.lenke": "Contacting NAV",
-  "varsel.teknisk.feil.chat":
-    "We are currently experiencing technical difficulties with our chat service. Try reloading the page if the chat fails to start.",
-
-  //
-  // Språk
-  //
-  "sprak.velg": "Språk/Language",
-  "sprak.valgt": "(selected)",
-  "sprak.nb": "Norsk",
-  "sprak.en": "English",
-  "sprak.lenke.norsk": " (in Norwegian)",
 
   //
   // Breadcrumbs
   //
-  "breadcrumb.en": "Contact us",
-
-  "breadcrumb.skriv-til-oss": "Write to us",
-  "breadcrumb.arbeidssoker": "Jobseeker",
-  "breadcrumb.syk": "Illness",
-  "breadcrumb.familieogbarn": "Family and children",
-  "breadcrumb.hjelpemidler": "Assistive technology",
-
-  "breadcrumb.chat": "Chat",
-  "breadcrumb.arbeidsgiver": "Employers and partners",
-  "breadcrumb.jobbsoker": "Jobseeker",
-  "breadcrumb.ufor": "Disabled",
-  "breadcrumb.familie": "Family",
-  "breadcrumb.sosialhjelp": "Social services",
-  "breadcrumb.okonomi": "Financial advice",
-  "breadcrumb.eures": "EURES",
-  "breadcrumb.aap": "AAP",
-
+  "breadcrumb.base": "Contact us",
   "breadcrumb.finnkontor": "Find a NAV office",
-
   "breadcrumb.tilbakemeldinger": "Feedback",
   "breadcrumb.serviceklage": "Complain about service",
   "breadcrumb.login": "Log in",
@@ -59,120 +30,6 @@ export default {
   "breadcrumb.samegiella": "Samegiella",
   "breadcrumb.bestilling-av-samtale":
     "Jearaldat bagadallama oažžut sámegillii telefovnnas",
-
-  //
-  // Forside
-  //
-  "kontaktoss.tittel": "Contact us",
-
-  "kontaktoss.chat.tittel": "Chat with us",
-  "kontaktoss.chat.beskrivelse":
-    "We can't answer your case on chat, but we're happy to help you with general questions.",
-  "kontaktoss.chat.knapp": "Chat with us",
-
-  "kontaktoss.ringoss.tittel": "Call us",
-  "kontaktoss.ringoss.knapp": "All telephone numbers",
-
-  "faq.intro": "Frequently asked questions",
-  "faq.visflere": "Show more",
-  "faq.visfaerre": "Show fewer",
-
-  "kontaktoss.skrivtiloss.tittel": "Write to us",
-  "kontaktoss.skrivtiloss.beskrivelse":
-    "'Write to us' is a secure alternative to email.",
-  "kontaktoss.skrivtiloss.knapp": "Write to us (login)",
-
-  "kontaktoss.kontaktveileder.tittel": "Dialogue with your counsellor",
-  "kontaktoss.kontaktveileder.beskrivelse":
-    "You must be registered as a jobseeker to contact your counsellor.",
-  "kontaktoss.kontaktveileder.knapp": "Dialogue with your counsellor (login)",
-
-  "kontaktoss.facebook.tittel": "Ask us on Facebook",
-  "kontaktoss.facebook.foreldrepenger":
-    "Parental benefit on Facebook (text in Norwegian)",
-  "kontaktoss.facebook.jobblyst": "Jobseeker on Facebook (text in Norwegian)",
-
-  "kontaktoss.navkontor.tittel": "Find NAV offices",
-  "kontaktoss.navkontor.innlogget.lenke": "Find your local NAV office (login)",
-  "kontaktoss.navkontor.uinnlogget.lenke": "Find a NAV office",
-  "kontaktoss.hjelpemiddelsentral.lenke":
-    "Find a NAV Assistive Technology Centre (text in Norwegian)",
-
-  "kontaktoss.tolketjenesten.tittel": "Interpreter services",
-  "kontaktoss.tolketjenesten.link":
-    "Contact the interpreter service for the deaf, deaf-blind and hearing impaired (text in Norwegian)",
-  "kontaktoss.tolketjenesten.link.spraktolk":
-    "Language interpreter for conversation with counsellor",
-
-  "kontaktoss.klage.tittel": "Complaints and feedback",
-  "kontaktoss.klage.beskrivelse":
-    "You can submit a complaint if your application has been rejected in whole or in part and if you have had a negative" +
-    " experience in your contact with NAV",
-  "kontaktoss.klage.knapp": "How to submit a complaint or feedback to NAV",
-
-  "kontaktoss.tekniskfeil.tittel": "Technical errors on nav.no",
-  "kontaktoss.tekniskfeil.link.losselv":
-    "Options to try solving the problem yourself  (text in Norwegian)",
-  "kontaktoss.tekniskfeil.link.meldifra":
-    "Report errors and wrong or missing information",
-  "kontaktoss.tekniskfeil.link.ring":
-    "Call technical support (text in Norwegian)",
-
-  "kontaktoss.presse.tittel": "Public Relations",
-  "kontaktoss.presse.link": "Contact Public Relations (text in Norwegian)",
-
-  "kontaktoss.sosialemedier.tittel": "NAV on social media",
-  "kontaktoss.sosialemedier.link":
-    "NAV social media accounts and pages (text in Norwegian)",
-
-  //
-  // Chat
-  //
-  "chat.forside.tittel": "Chat with us",
-
-  "chat.knapp.start": "Start chat",
-  "chat.knapp.stengt": "Chat is closed",
-
-  //
-  // Default FAQs
-  //
-  "faq.utbetalingsoversikt": "My payments",
-  "faq.saksoversikt": "What is the status of my application?",
-  "faq.nesteutbetaling": "Payment dates",
-  "faq.saksbehandlingstider": "Application processing times",
-  "faq.endrekontonummer": "Change bank account number",
-  "faq.posttilannenadresse": "Change postal address for NAV-mail",
-
-  //
-  // Skriv til oss
-  //
-  "skrivtiloss.tittel": "Write to us",
-  "skrivtiloss.description":
-    "Here you can send a message about changes that affect your case and your follow-up from NAV. Normal response time" +
-    " is 2 working days.",
-
-  "skrivtiloss.arbeidssoker.lenke.tittel": "Jobseeker",
-  "skrivtiloss.syk.lenke.tittel": "Illness",
-  "skrivtiloss.familieogbarn.lenke.tittel": "Parents, children and family",
-  "skrivtiloss.pensjonist.lenke.tittel": "Pensioner",
-  "skrivtiloss.ufor.lenke.tittel": "Disabled",
-  "skrivtiloss.ovrig.lenke.tittel": "Living and/or working abroad",
-  "skrivtiloss.ovrig.lenke.description":
-    "Write to us about membership in the National Insurance Scheme (folketrygden) during a stay in Norway or abroad, National Insurance contribution (trygdeavgift) and exemptions from the Norwegian National Insurance Scheme, child allowance (barnebidrag) and recognition of paternity (farskap) determined abroad. The form is in Norwegian.",
-  "skrivtiloss.sosial.lenke.tittel":
-    "Financial social assistance and other social assistance services",
-  "skrivtiloss.hjelpemidler.lenke.tittel": "Assistive devices and technology",
-  "skrivtiloss.hjelpemidler.generelt.lenke.tittel": "General questions",
-  "skrivtiloss.hjelpemidler.ortopediske.lenke.tittel":
-    "Orthopaedic assistive devices",
-  "skrivtiloss.hjelpemidler.bil.lenke.tittel":
-    "Questions about cars and special equipment for cars",
-
-  "skrivtiloss.hjelpemidler.mellomside.tittel":
-    "Write to us about assistive technology",
-  "skrivtiloss.hjelpemidler.description":
-    "Send questions or information about assistive technology, orthopaedic assistive technology, car allowance, interpreters," +
-    " facilitation and adaptation.",
 
   //
   // Finn NAV-kontor
@@ -355,3 +212,5 @@ export default {
   "takk.melding": "Your message has been sent",
   "takk.knapp": "Go to nav.no",
 };
+
+export default en;

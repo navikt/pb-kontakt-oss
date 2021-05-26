@@ -13,12 +13,14 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { FormattedMessage } from "react-intl";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import VeilederIcon from "assets/Veileder.svg";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import { useStore } from "../../../providers/Provider";
 import { logAmplitudeEvent } from "../../../utils/amplitude";
+import { MetaTags } from "../../../components/metatags/MetaTags";
+import { paths } from "../../../Config";
 
 type OutboundTidsrom = "FORMIDDAG" | "ETTERMIDDAG" | "BEGGE";
+
 type Tidsrom = {
   [key: string]: boolean;
   FORMIDDAG: boolean;
@@ -39,8 +41,7 @@ export interface OutboundBestillingAvSamtale {
   tidsrom: OutboundTidsrom;
 }
 
-const BAS = () => {
-  document.title = "Bestilling av samtale - www.nav.no";
+const BestillingAvSamtale = () => {
   const [{ kontaktInfo }] = useStore();
   const [loading, settLoading] = useState(false);
   const [success, settSuccess] = useState(false);
@@ -105,141 +106,148 @@ const BAS = () => {
   };
 
   return (
-    <div className="pagecontent">
-      <Topplinje />
-      <div className="bestilling-av-samtale__header">
-        <div className="bestilling-av-samtale__tittel">
-          <Sidetittel>
-            Jearaldat bagadallama oažžut sámegillii telefovnnas
-          </Sidetittel>
-        </div>
-      </div>
-      <div className={"tb__veileder"}>
-        <Veilederpanel
-          svg={<img src={VeilederIcon} alt="Veileder" />}
-          type={"plakat"}
-          kompakt={true}
-        >
-          <div className={"tb__veileder-container"}>
-            <Normaltekst>
-              Diŋgo dás davvisámegilli bálvalusa mas vástiduvvo dutnje
-              sámegillii buot NAV – bálvalusain ja oajuin. Mii veahkehit gávdnat
-              mo du áššiin manná, ja veahkehit du dovdat rivttiid ja
-              geatnegasvuođaid mat leat álbmotoadjolága njuolggadusain. Don
-              gávnnat dieđuid iežat áššis neahttabálvalusas nav.no Ditt NAV. Don
-              sáhtát iskat mii dutnje lea máksojuvvon dás:
-            </Normaltekst>
-            <br />
-            <Normaltekst>
-              Don sáhtat ain riŋget NAV-bálvalussii 55 55 33 33 ja dáhtot ahte
-              davvisámegielat bagadalli riŋge dutnje. Muite addit riegadan- ja
-              persunnummara ja maid telefunnummara masa davvisámegielat galga
-              riŋget.
-            </Normaltekst>
+    <>
+      <MetaTags
+        path={paths.samegiella.samtale}
+        titleId={"Bestilling av samtale - www.nav.no"}
+      />
+      <div className="pagecontent">
+        <div className="bestilling-av-samtale__header">
+          <div className="bestilling-av-samtale__tittel">
+            <Sidetittel>
+              Jearaldat bagadallama oažžut sámegillii telefovnnas
+            </Sidetittel>
           </div>
-        </Veilederpanel>
-      </div>
-      <Box>
-        {success ? (
-          <Takk />
-        ) : (
-          <FormValidation
-            onSubmit={send}
-            config={formConfig}
-            initialValues={initialValues}
+        </div>
+        <div className={"tb__veileder"}>
+          <Veilederpanel
+            svg={<img src={VeilederIcon} alt="Veileder" />}
+            type={"plakat"}
+            kompakt={true}
           >
-            {({ errors, fields, submitted, setField, isValid }) => (
-              <div className={"skjema__content"}>
-                <div>
-                  <InputField
-                    bredde={"M"}
-                    label={"Ovdanamma"}
-                    value={fields.fornavn}
-                    error={errors.fornavn}
-                    onChange={(v) => setField({ fornavn: v })}
-                    submitted={submitted}
-                  />
-                  <InputField
-                    bredde={"M"}
-                    label={"Goargu"}
-                    value={fields.etternavn}
-                    error={errors.etternavn}
-                    onChange={(v) => setField({ etternavn: v })}
-                    submitted={submitted}
-                  />
-                  <InputField
-                    bredde={"S"}
-                    label={"Telefovdna*"}
-                    value={fields.telefonnummer}
-                    error={errors.telefonnummer}
-                    onChange={(v) => setField({ telefonnummer: v })}
-                    submitted={submitted}
-                  />
-                </div>
-                <div className="bestilling-av-samtale__tidsrom">
-                  <legend className="skjema__legend">
-                    Goas heive duinna váldit oktavuođa?
-                  </legend>
-                  <SkjemaGruppe feil={sjekkForFeil(submitted, errors.tidsrom)}>
-                    <Checkbox
-                      label={"08.00-10.00"}
-                      value={"FORMIDDAG"}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setField({
-                          tidsrom: {
-                            ...fields.tidsrom,
-                            // @ts-ignore
-                            [value]: !fields.tidsrom[value],
-                          },
-                        });
-                      }}
-                    />
-                    <Checkbox
-                      label={"13.30-15.30"}
-                      value={"ETTERMIDDAG"}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        setField({
-                          tidsrom: {
-                            ...fields.tidsrom,
-                            // @ts-ignore
-                            [value]: !fields.tidsrom[value],
-                          },
-                        });
-                      }}
-                    />
-                  </SkjemaGruppe>
-                </div>
-                {error && (
+            <div className={"tb__veileder-container"}>
+              <Normaltekst>
+                Diŋgo dás davvisámegilli bálvalusa mas vástiduvvo dutnje
+                sámegillii buot NAV – bálvalusain ja oajuin. Mii veahkehit
+                gávdnat mo du áššiin manná, ja veahkehit du dovdat rivttiid ja
+                geatnegasvuođaid mat leat álbmotoadjolága njuolggadusain. Don
+                gávnnat dieđuid iežat áššis neahttabálvalusas nav.no Ditt NAV.
+                Don sáhtát iskat mii dutnje lea máksojuvvon dás:
+              </Normaltekst>
+              <br />
+              <Normaltekst>
+                Don sáhtat ain riŋget NAV-bálvalussii 55 55 33 33 ja dáhtot ahte
+                davvisámegielat bagadalli riŋge dutnje. Muite addit riegadan- ja
+                persunnummara ja maid telefunnummara masa davvisámegielat galga
+                riŋget.
+              </Normaltekst>
+            </div>
+          </Veilederpanel>
+        </div>
+        <Box>
+          {success ? (
+            <Takk />
+          ) : (
+            <FormValidation
+              onSubmit={send}
+              config={formConfig}
+              initialValues={initialValues}
+            >
+              {({ errors, fields, submitted, setField, isValid }) => (
+                <div className={"skjema__content"}>
                   <div>
-                    <AlertStripeFeil>
-                      <FormattedMessage id={"felter.noegikkgalt"} /> {error}
-                    </AlertStripeFeil>
+                    <InputField
+                      bredde={"M"}
+                      label={"Ovdanamma"}
+                      value={fields.fornavn}
+                      error={errors.fornavn}
+                      onChange={(v) => setField({ fornavn: v })}
+                      submitted={submitted}
+                    />
+                    <InputField
+                      bredde={"M"}
+                      label={"Goargu"}
+                      value={fields.etternavn}
+                      error={errors.etternavn}
+                      onChange={(v) => setField({ etternavn: v })}
+                      submitted={submitted}
+                    />
+                    <InputField
+                      bredde={"S"}
+                      label={"Telefovdna*"}
+                      value={fields.telefonnummer}
+                      error={errors.telefonnummer}
+                      onChange={(v) => setField({ telefonnummer: v })}
+                      submitted={submitted}
+                    />
                   </div>
-                )}
-                <div className="bestilling-av-samtale__knapper">
-                  <div className="bestilling-av-samtale__knapp">
-                    <Knapp
-                      type={"standard"}
-                      htmlType={"submit"}
-                      disabled={loading || (submitted && !isValid)}
+                  <div className="bestilling-av-samtale__tidsrom">
+                    <legend className="skjema__legend">
+                      Goas heive duinna váldit oktavuođa?
+                    </legend>
+                    <SkjemaGruppe
+                      feil={sjekkForFeil(submitted, errors.tidsrom)}
                     >
-                      {loading ? (
-                        <NavFrontendSpinner type={"S"} />
-                      ) : (
-                        "Sádde jearaldaga"
-                      )}
-                    </Knapp>
+                      <Checkbox
+                        label={"08.00-10.00"}
+                        value={"FORMIDDAG"}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setField({
+                            tidsrom: {
+                              ...fields.tidsrom,
+                              // @ts-ignore
+                              [value]: !fields.tidsrom[value],
+                            },
+                          });
+                        }}
+                      />
+                      <Checkbox
+                        label={"13.30-15.30"}
+                        value={"ETTERMIDDAG"}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setField({
+                            tidsrom: {
+                              ...fields.tidsrom,
+                              // @ts-ignore
+                              [value]: !fields.tidsrom[value],
+                            },
+                          });
+                        }}
+                      />
+                    </SkjemaGruppe>
+                  </div>
+                  {error && (
+                    <div>
+                      <AlertStripeFeil>
+                        <FormattedMessage id={"felter.noegikkgalt"} /> {error}
+                      </AlertStripeFeil>
+                    </div>
+                  )}
+                  <div className="bestilling-av-samtale__knapper">
+                    <div className="bestilling-av-samtale__knapp">
+                      <Knapp
+                        type={"standard"}
+                        htmlType={"submit"}
+                        disabled={loading || (submitted && !isValid)}
+                      >
+                        {loading ? (
+                          <NavFrontendSpinner type={"S"} />
+                        ) : (
+                          "Sádde jearaldaga"
+                        )}
+                      </Knapp>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </FormValidation>
-        )}
-      </Box>
-    </div>
+              )}
+            </FormValidation>
+          )}
+        </Box>
+      </div>
+    </>
   );
 };
 
-export default BAS;
+export default BestillingAvSamtale;

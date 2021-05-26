@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import VeilederIcon from "assets/Veileder.svg";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import Veilederpanel from "nav-frontend-veilederpanel";
 import { useStore } from "providers/Provider";
 import { Knapp } from "nav-frontend-knapper";
@@ -26,11 +26,8 @@ import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
 import ServiceKlageOnskerAaKontaktes from "./ServiceKlageOnskerAaKontaktes";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
 import ServiceKlageTypeUtdypning from "./ServiceKlageTypeUtdypning";
 import { MetaTags } from "../../../components/metatags/MetaTags";
-import { VarselVisning } from "../../../components/varsler/VarselVisning";
-import { Kanal } from "../../../types/kanaler";
 
 export type OutboundServiceKlage = OutboundServiceKlageBase &
   OutboundServiceKlageExtend;
@@ -153,7 +150,6 @@ const ServiceKlage = () => {
 
   return (
     <div className="pagecontent">
-      <Topplinje />
       <MetaTags
         titleId={"tilbakemeldinger.serviceklage.form.tittel"}
         descriptionId={"seo.klagepaservice.description"}
@@ -164,7 +160,6 @@ const ServiceKlage = () => {
           id: "tilbakemeldinger.serviceklage.form.tittel",
         })}
       />
-      <VarselVisning kanal={Kanal.Serviceklage} visKoronaVarsel={false} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}
@@ -334,7 +329,10 @@ const ServiceKlage = () => {
                         </Knapp>
                       </div>
                       <div className="tb__knapp">
-                        <Link className="lenkeknapp knapp knapp--flat" to={tilbakeTil}>
+                        <Link
+                          className="lenkeknapp knapp knapp--flat"
+                          to={tilbakeTil}
+                        >
                           <FormattedMessage id={"felter.tilbake"} />
                         </Link>
                       </div>

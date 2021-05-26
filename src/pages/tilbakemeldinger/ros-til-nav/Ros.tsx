@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Veilederpanel from "nav-frontend-veilederpanel";
-import VeilederIcon from "assets/Veileder.svg";
+import VeilederIcon from "assets/icons/Veileder.svg";
 import { Knapp } from "nav-frontend-knapper";
 import { Link } from "react-router-dom";
 import InputMelding from "components/input-fields/InputMelding";
@@ -17,11 +17,8 @@ import { FormattedMessage, useIntl } from "react-intl";
 import Takk from "components/takk/Takk";
 import { sjekkForFeil } from "utils/validators";
 import { triggerHotjar } from "utils/hotjar";
-import Topplinje from "components/topp-linje/ToppLinje";
 import SelectEnhet from "components/input-fields/SelectEnhet";
 import { MetaTags } from "../../../components/metatags/MetaTags";
-import { VarselVisning } from "../../../components/varsler/VarselVisning";
-import { Kanal } from "../../../types/kanaler";
 
 type HVEM_ROSES = "NAV_KONTAKTSENTER" | "NAV_DIGITALE_TJENESTER" | "NAV_KONTOR";
 
@@ -109,7 +106,6 @@ const Ros = () => {
   };
   return (
     <div className="pagecontent">
-      <Topplinje />
       <MetaTags
         titleId={"tilbakemeldinger.ros.tittel"}
         descriptionId={"seo.rostilnav.description"}
@@ -118,7 +114,6 @@ const Ros = () => {
       <Header
         title={intl.formatMessage({ id: "tilbakemeldinger.ros.form.tittel" })}
       />
-      <VarselVisning kanal={Kanal.Ros} visKoronaVarsel={false} />
       <div className={"tb__veileder"}>
         <Veilederpanel
           svg={<img src={VeilederIcon} alt="Veileder" />}

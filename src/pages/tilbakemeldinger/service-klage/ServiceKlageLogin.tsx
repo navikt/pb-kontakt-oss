@@ -6,7 +6,6 @@ import { useLocalePaths } from "Config";
 import Box from "components/box/Box";
 import Header from "components/header/Header";
 import { FormattedMessage, useIntl } from "react-intl";
-import Topplinje from "../../../components/topp-linje/ToppLinje";
 import { MetaTags } from "../../../components/metatags/MetaTags";
 
 const { loginUrl } = Environment();
@@ -22,7 +21,6 @@ const ServiceKlageLogin = () => {
 
   return (
     <div className="pagecontent">
-      <Topplinje />
       <MetaTags
         titleId={"tilbakemeldinger.serviceklage.login.tittel"}
         path={paths.tilbakemeldinger.serviceklage.login}

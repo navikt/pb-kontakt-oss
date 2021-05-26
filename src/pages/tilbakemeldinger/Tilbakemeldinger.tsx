@@ -1,13 +1,11 @@
 import React from "react";
 import { lenker } from "./TilbakemeldingerLenker";
 import Header from "../../components/header/Header";
-import TilbakemeldingLenkepanel from "../../components/lenkepanel/TilbakemeldingLenkepanel";
+import Lenkepanel from "../../components/lenkepanel/Lenkepanel";
 import { useIntl } from "react-intl";
-import Topplinje from "../../components/topp-linje/ToppLinje";
 import { useStore } from "../../providers/Provider";
 import { MetaTags } from "../../components/metatags/MetaTags";
-import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { Kanal } from "../../types/kanaler";
+import { paths } from "../../Config";
 
 const Tilbakemeldinger = () => {
   const intl = useIntl();
@@ -16,8 +14,8 @@ const Tilbakemeldinger = () => {
   return (
     <>
       <div className="pagecontent">
-        <Topplinje />
         <MetaTags
+          path={paths.tilbakemeldinger.forside}
           titleId={"tilbakemeldinger.sidetittel"}
           descriptionId={"seo.tilbakemeldinger.description"}
         />
@@ -26,9 +24,8 @@ const Tilbakemeldinger = () => {
             title={intl.formatMessage({ id: "tilbakemeldinger.sidetittel" })}
           />
         </div>
-        <VarselVisning kanal={Kanal.Tilbakemelding} visKoronaVarsel={false} />
         {lenker(locale).map((lenke) => (
-          <TilbakemeldingLenkepanel
+          <Lenkepanel
             icon={lenke.icon}
             key={lenke.tittel}
             id={lenke.tittel}

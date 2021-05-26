@@ -2,10 +2,9 @@ import { TextareaControlled, TextareaProps } from "nav-frontend-skjema";
 import React, { KeyboardEvent, useState } from "react";
 import { FormattedMessage } from "react-intl";
 import { paths, urls, vars } from "../../Config";
-import { Varsel } from "../varsler/Varsel";
+import { Varsel } from "../varsel/Varsel";
 import { useStore } from "../../providers/Provider";
 import { localePath } from "../../utils/locale";
-import { Link } from "react-router-dom";
 import Lenke from "nav-frontend-lenker";
 
 interface Props extends Omit<TextareaProps, "onChange"> {
@@ -22,7 +21,9 @@ const InputMelding = (props: Props) => {
 
   return (
     <div>
-      <label className={"skjemagruppe__legend"} htmlFor="InputMelding-textarea">{label}</label>
+      <label className={"skjemagruppe__legend"} htmlFor="InputMelding-textarea">
+        {label}
+      </label>
       <div className={"felter__melding-advarsel"}>
         <Varsel type={"advarsel"}>
           <FormattedMessage
@@ -48,12 +49,12 @@ const InputMelding = (props: Props) => {
                 </Lenke>
               ),
               SkrivTilOssLenke: (text: string) => (
-                <Link
+                <Lenke
                   className={"lenke"}
-                  to={localePath(paths.skrivTilOss.forside, locale)}
+                  href={localePath(paths.skrivTilOss.forside, locale)}
                 >
                   {text}
-                </Link>
+                </Lenke>
               ),
             }}
           />

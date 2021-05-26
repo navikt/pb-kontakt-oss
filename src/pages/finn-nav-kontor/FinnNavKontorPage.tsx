@@ -4,7 +4,6 @@ import { Input, Label } from "nav-frontend-skjema";
 import { Form } from "calidation";
 import { Knapp } from "nav-frontend-knapper";
 import { Normaltekst, Sidetittel } from "nav-frontend-typografi";
-import Topplinje from "../../components/topp-linje/ToppLinje";
 import { ResultatvisningVedSubmit } from "./components/ResultatvisningVedSubmit";
 import { ResultatvisningDynamisk } from "./components/ResultatvisningDynamisk";
 import {
@@ -14,22 +13,17 @@ import {
 } from "./FinnNavKontorSok";
 import { paths } from "../../Config";
 import { MetaTags } from "../../components/metatags/MetaTags";
-import { VarselVisning } from "../../components/varsler/VarselVisning";
-import { Kanal } from "../../types/kanaler";
 
 const cssPrefix = "finn-kontor";
 
 const FinnNavKontorPage = () => {
   const [inputElement, setInputElement] = useState<HTMLInputElement>();
   const [sokeResultat, setSokeResultat] = useState<SokeResultat | null>();
-  const [
-    sokeResultatDynamisk,
-    setSokeResultatDynamisk,
-  ] = useState<SokeResultat | null>();
+  const [sokeResultatDynamisk, setSokeResultatDynamisk] =
+    useState<SokeResultat | null>();
 
   return (
     <div className={`${cssPrefix} pagecontent`}>
-      <Topplinje />
       <MetaTags
         titleId={"finnkontor.tittel"}
         descriptionId={"finnkontor.ingress"}
@@ -44,9 +38,6 @@ const FinnNavKontorPage = () => {
           <FormattedMessage id={"finnkontor.ingress"} />
         </Normaltekst>
       </div>
-
-      <VarselVisning kanal={Kanal.FinnKontor} visKoronaVarsel={false} />
-
       <div className={`${cssPrefix}__innhold`}>
         <Form
           onSubmit={() => {

@@ -18,7 +18,9 @@
     "docker-start": "docker run --name pb-kontakt-oss -p 8080:8080 -t -d tilbakemeldinger",
     "docker-kill": "npm run docker-stop && npm run docker-rm",
     "docker-rm": "docker rm pb-kontakt-oss",
-    "docker-stop": "docker stop pb-kontakt-oss"
+    "docker-stop": "docker stop pb-kontakt-oss",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.4",
@@ -62,7 +64,8 @@
     "react-dom": "^17.0.2",
     "react-intl": "^5.17.5",
     "react-meta-tags": "^1.0.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "snyk": "^1.609.0"
   },
   "devDependencies": {
     "@types/amplitude-js": "^7.0.1",
@@ -97,5 +100,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "snyk": true
 }
